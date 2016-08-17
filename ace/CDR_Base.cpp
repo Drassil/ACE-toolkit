@@ -843,7 +843,7 @@ ACE_CDR::Fixed ACE_CDR::Fixed::from_integer (ACE_CDR::ULongLong val)
 
 ACE_CDR::Fixed ACE_CDR::Fixed::from_floating (LongDouble val)
 {
-#ifdef ACE_OPENVMS
+#if defined ACE_OPENVMS || (defined ACE_VXWORKS && !defined __RTP__)
   typedef double BigFloat;
 #elif defined NONNATIVE_LONGDOUBLE
   typedef LongDouble::NativeImpl BigFloat;
@@ -852,7 +852,7 @@ ACE_CDR::Fixed ACE_CDR::Fixed::from_floating (LongDouble val)
 #endif
 
   Fixed f;
-  f.digits_ = 0;
+  f.digits_ = f.scale_ = 0;
   bool negative = false;
   if (val < 0)
     {
@@ -864,7 +864,10 @@ ACE_CDR::Fixed ACE_CDR::Fixed::from_floating (LongDouble val)
   const size_t digits_left =
     static_cast<size_t> (1 + ((val > 0) ? std::log10 (val) : 0));
   if (digits_left > MAX_DIGITS)
-    return f;
+    {
+      ACE_OS::memset (f.value_, 0, sizeof f.value_);
+      return f;
+    }
 
   f.digits_ = MAX_DIGITS;
   f.scale_ = 0;
@@ -914,42 +917,25 @@ void ACE_CDR::Fixed::normalize (UShort min_scale)
   if (this->value_[15] & 0xf0 || !this->scale_)
     return;
 
-  size_t bytes = 0; // number of bytes to shift down
-  while (2 * (bytes + 1) < this->scale_
-         && this->scale_ - 2 * (bytes + 1) >= min_scale
-         && !this->value_[14 - bytes])
-    ++bytes;
+  // Calculate the number of nibbles that can be moved.
+  ACE_CDR::Octet nibbles = 0;
+  while (this->digit(nibbles) == 0 && this->scale_ - nibbles > min_scale)
+    ++nibbles;
 
-  const bool extra_nibble = 2 * (bytes + 1) <= this->scale_
-                            && this->scale_ - 2 * (bytes + 1) >= min_scale
-                            && !(this->value_[14 - bytes] & 0xf);
-  const size_t nibbles = 1 /*[15].high*/ + bytes * 2 + extra_nibble;
-  this->digits_ -= static_cast<Octet> (nibbles);
-  this->scale_ -= static_cast<Octet> (nibbles);
+  // Move and clear the nibbles.
+  for (ACE_CDR::Octet idx = nibbles; idx != this->digits_; ++idx) {
+    this->digit (idx - nibbles, this->digit (idx));
+    this->digit (idx, 0);
+  }
 
-  if (extra_nibble)
-    {
-      const bool sign = this->sign ();
-      std::memmove (this->value_ + bytes + 1, this->value_, 15 - bytes);
-      std::memset (this->value_, 0, bytes + 1);
-      this->value_[15] |= sign ? NEGATIVE : POSITIVE;
-    }
-  else
-    {
-      this->value_[15] = (this->value_[14 - bytes] & 0xf) << 4
-                         | (this->value_[15] & 0xf);
-      for (size_t i = 14; i > bytes; --i)
-        this->value_[i] = (this->value_[i - bytes - 1] & 0xf) << 4
-                          | (this->value_[i - bytes] >> 4);
-      this->value_[bytes] = this->value_[0] >> 4;
-      std::memset (this->value_, 0, bytes);
-    }
+  this->scale_ -= nibbles;
+  this->digits_ -= nibbles;
 }
 
 ACE_CDR::Fixed ACE_CDR::Fixed::from_string (const char *str)
 {
-  const bool negative = str && *str == '-';
-  if (negative || (str && *str == '+'))
+  const bool negative = *str == '-';
+  if (negative || *str == '+')
     ++str;
 
   const size_t span = ACE_OS::strspn (str, ".0123456789");
@@ -1157,14 +1143,16 @@ ACE_CDR::Fixed::ConstIterator ACE_CDR::Fixed::pre_add (const ACE_CDR::Fixed &f)
 
   if (f.digits_ - f.scale_ > this->digits_ - this->scale_)
     {
-      this->digits_ += f.digits_ - f.scale_ - this->digits_ + this->scale_;
-      if (this->digits_ > MAX_DIGITS)
+      ACE_CDR::Octet new_digits = this->digits_ + (f.digits_ - f.scale_) - (this->digits_ - this->scale_);
+      if (new_digits > MAX_DIGITS)
         {
-          for (size_t i = 0; i < static_cast<size_t> (this->digits_ - MAX_DIGITS); ++i)
+          for (size_t i = 0; i < static_cast<size_t> (new_digits - MAX_DIGITS); ++i)
             this->digit (static_cast<int> (i), 0);
-          this->normalize (this->scale_ - MAX_DIGITS - this->digits_);
+          this->normalize (this->scale_ - (new_digits - MAX_DIGITS));
           this->digits_ = MAX_DIGITS;
         }
+      else
+        this->digits_ = new_digits;
     }
   return rhs_iter;
 }
@@ -1391,10 +1379,15 @@ ACE_CDR::Fixed &ACE_CDR::Fixed::operator/= (const Fixed &rhs)
   if (neg)
     this->value_[15] = (this->value_[15] & 0xf0) | POSITIVE;
 
-  Fixed r, q = this->div_helper2 (rhs_no_scale, r);
+  Fixed r;
+  Fixed q = this->div_helper2 (rhs_no_scale, r);
+  q.scale_ = this->scale_;
 
-  if (!r)
-    return *this = neg ? -q : q;;
+  if (!r) {
+    *this = neg ? -q : q;
+    this->normalize ();
+    return *this;
+  }
 
   const int shift = q.lshift (MAX_DIGITS);
   if (shift)
@@ -1458,6 +1451,7 @@ ACE_CDR::Fixed ACE_CDR::Fixed::div_helper1 (const Fixed &rhs, Fixed &r) const
   if (q > 9)
     q = 9;
   Fixed t = from_integer (LongLong (q)) * rhs;
+  t.scale_ = this->scale_;
   for (int i = 0; i < 2 && t > *this; ++i)
     {
       --q;

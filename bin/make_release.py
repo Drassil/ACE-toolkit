@@ -820,7 +820,6 @@ def create_file_lists (base_dir, prefix, exclude):
             fullitem = os.path.join (relroot, item)
             if fullitem in exclude or item in exclude:
 #                print "Removing " + fullitem + " from consideration...."
-                files.remove (item)
                 continue
             else:
                 if bin_regex.search (fullitem) is not None:
@@ -861,7 +860,7 @@ def package (stage_dir, package_dir, decorator):
         pass # swallow any errors
 
     text_files, bin_files = create_file_lists (join (stage_dir, "ACE_wrappers"),
-                                               "ACE_wrappers", ["TAO"])
+                                               "ACE_wrappers", ["TAO", ".gitignore"])
 
 #    write_file_lists ("fACE" + decorator, text_files, bin_files)
     update_packages ("\n".join (text_files),
@@ -876,7 +875,7 @@ def package (stage_dir, package_dir, decorator):
 
     # for TAO:
     text_files, bin_files = create_file_lists (join (stage_dir, "ACE_wrappers/TAO"),
-                                                     "ACE_wrappers/TAO", ["CIAO", "DAnCE"])
+                                                     "ACE_wrappers/TAO", ["CIAO", "DAnCE", ".gitignore"])
 
 #    write_file_lists ("fTAO" + decorator, text_files, bin_files)
     update_packages ("\n".join (text_files),
@@ -891,7 +890,7 @@ def package (stage_dir, package_dir, decorator):
 
     # for DAnCE:
     text_files, bin_files = create_file_lists (join (stage_dir, "ACE_wrappers/TAO/DAnCE"),
-                                               "ACE_wrappers/TAO/DAnCE", [])
+                                               "ACE_wrappers/TAO/DAnCE", [".gitignore"])
 
 #    write_file_lists ("fTAO" + decorator, text_files, bin_files)
     update_packages ("\n".join (text_files),
@@ -905,7 +904,7 @@ def package (stage_dir, package_dir, decorator):
     bin_files = list ()
     # for CIAO:
     text_files, bin_files = create_file_lists (join (stage_dir, "ACE_wrappers/TAO/CIAO"),
-                                               "ACE_wrappers/TAO/CIAO", [])
+                                               "ACE_wrappers/TAO/CIAO", [".gitignore"])
 
 #    write_file_lists ("fCIAO" + decorator, text_files, bin_files)
     update_packages ("\n".join (text_files),
@@ -941,8 +940,8 @@ def generate_workspaces (stage_dir):
     mpc_option += ' -relative CIAO_ROOT=' + stage_dir + '/ACE_wrappers/TAO/CIAO '
     mpc_option += ' -relative DANCE_ROOT=' + stage_dir + '/ACE_wrappers/TAO/DAnCE '
     msvc_exclude_option = ' -exclude TAO/CIAO/CIAO_TAO_DAnCE_OpenDDS.mwc,TAO/CIAO/CIAO_TAO_OpenDDS.mwc,TAO/CIAO/CIAO_TAO_DAnCE_OpenDDS_shapes.mwc '
-    vc11_option = ' -name_modifier *_vc11 '
     vc12_option = ' -name_modifier *_vc12 '
+    vc14_option = ' -name_modifier *_vc14 '
 
     redirect_option = str ()
     if not opts.verbose:
@@ -951,11 +950,12 @@ def generate_workspaces (stage_dir):
     print "\tGenerating GNUmakefiles...."
     ex (mpc_command + " -type gnuace " + exclude_option + workers_option + mpc_option + redirect_option)
 
-    print "\tGenerating VC11 solutions..."
-    ex (mpc_command + " -type vc11 "  + msvc_exclude_option + mpc_option + workers_option + vc11_option + redirect_option)
-
     print "\tGenerating VC12 solutions..."
     ex (mpc_command + " -type vc12 "  + msvc_exclude_option + mpc_option + workers_option + vc12_option + redirect_option)
+
+    print "\tGenerating VC14 solutions..."
+    ex (mpc_command + " -type vc14 "  + msvc_exclude_option + mpc_option + workers_option + vc14_option + redirect_option)
+
 
     print "\tCorrecting permissions for all generated files..."
     ex ("find ./ -name '*.vc[p,w]' -or -name '*.bmak' -or -name '*.vcproj' -or -name '*.sln' -or -name '*.vcxproj' -or -name '*.filters' -or -name 'GNUmake*' | xargs chmod 0644")
