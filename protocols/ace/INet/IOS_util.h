@@ -1,5 +1,3 @@
-// $Id: IOS_util.h 90737 2010-06-21 09:46:14Z mcorino $
-
 /**
  * @file IOS_util.h
  *

@@ -1,4 +1,3 @@
-# $Id: platform_hpux_gcc.GNU 93403 2011-02-17 18:54:42Z olli $
 #
 
 buildbits ?= 64

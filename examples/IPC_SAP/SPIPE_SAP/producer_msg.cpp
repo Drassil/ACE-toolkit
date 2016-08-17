@@ -1,5 +1,3 @@
-// $Id: producer_msg.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/OS_Memory.h"
 #include "ace/SPIPE_Addr.h"

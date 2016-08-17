@@ -1,5 +1,3 @@
-// $Id: Kokyu.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "Kokyu.h"
 
 #include "Default_Dispatcher_Impl.h"

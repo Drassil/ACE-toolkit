@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
   <HEAD>
-    <!-- $Id: simple_footprint.shtml 84697 2009-03-03 13:33:01Z johnnyw $ -->
+    <!-- $Id$ -->
     <TITLE>Footprint Metrics Detailed Results</TITLE>
     <LINK href="Stats.css" rel="stylesheet" type="text/css">
   </HEAD>

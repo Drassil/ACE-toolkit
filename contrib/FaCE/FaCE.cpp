@@ -1,5 +1,3 @@
-// $Id: FaCE.cpp 85504 2009-06-04 09:41:32Z johnnyw $
-
 #include "FaCE.h"
 
 #ifdef NO_ACE
@@ -28,7 +26,7 @@ const ACE_TCHAR* g_ParameterFileName = ACE_TEXT("Parameters.txt");
  * parameters and parameter history file.
  *
  * @author Si Mong Park (spark@ociweb.com)
- * @version $Revision: 85504 $ $Date: 2009-06-04 11:41:32 +0200 (Thu, 04 Jun 2009) $
+ * @version $Revision$ $Date$
  */
 class ParameterList
 {
@@ -302,7 +300,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_COMMAND  - process the application menu
 //  WM_PAINT    - Paint the main window
 //  WM_DESTROY  - post a quit message and return
-//
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {

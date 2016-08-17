@@ -3,12 +3,9 @@
 /**
  *  @file     oid.cpp
  *
- *  $Id: oid.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  * This module contains the implementation of the oid class. This
  * includes all protected and public member functions. The oid class
  * may be compiled stand alone without the use of any other library.
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

@@ -1,5 +1,3 @@
-// $Id: Peer.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #define ACE_BUILD_SVC_DLL
 
 #include "ace/OS_NS_stdio.h"
@@ -491,7 +489,7 @@ Peer_Handler::await_connection_id (void)
   ssize_t n = this->peer ().recv (&this->connection_id_,
                                   sizeof this->connection_id_);
 
-  if (n != sizeof this->connection_id_)
+  if (n != (ssize_t) sizeof this->connection_id_)
     {
       if (n == 0)
         ACE_ERROR_RETURN ((LM_ERROR,

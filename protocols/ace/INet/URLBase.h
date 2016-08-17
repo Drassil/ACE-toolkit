@@ -1,5 +1,3 @@
-// $Id: URLBase.h 93745 2011-04-05 14:28:43Z mcorino $
-
 /**
  * @file URLBase.h
  *
@@ -130,11 +128,7 @@ namespace ACE
               ACE_CString path_;
 
             public:
-#if (defined(_MSC_VER) || defined(__MINGW32__))
               class ACE_INET_Export Factory
-#else
-              class Factory
-#endif
                 {
                   public:
                     Factory ();

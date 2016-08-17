@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: Handle_Broadcast.h 80826 2008-03-04 14:51:23Z wotte $
-
 /* Handles INET broadcast datagram messages from remote hosts on the local subnet. */
 
 #ifndef _HANDLE_BROADCAST_H

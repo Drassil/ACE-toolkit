@@ -1,4 +1,3 @@
-// $Id: test_position_independent_malloc.h 80826 2008-03-04 14:51:23Z wotte $
 //
 // Define struct used in test_position_independent_malloc.cpp - needs
 // to be in a separate file for template generation on AIX IBM C++.

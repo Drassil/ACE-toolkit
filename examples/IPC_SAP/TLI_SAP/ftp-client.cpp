@@ -1,5 +1,3 @@
-// $Id: ftp-client.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/TLI_Connector.h"
 #include "ace/Log_Msg.h"
 #include "ace/OS_NS_fcntl.h"

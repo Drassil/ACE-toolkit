@@ -1,5 +1,3 @@
-// $Id: ntalker.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Listens to multicast address.  After first message received, will
 // listen for 5 more seconds.  Prints Mbits/sec received from client.
 

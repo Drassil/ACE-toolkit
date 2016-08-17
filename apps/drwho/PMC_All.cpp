@@ -1,5 +1,3 @@
-// $Id: PMC_All.cpp 81993 2008-06-16 20:26:16Z sowayaa $
-
 #include "global.h"
 #include "Options.h"
 #include "HT_Client.h"

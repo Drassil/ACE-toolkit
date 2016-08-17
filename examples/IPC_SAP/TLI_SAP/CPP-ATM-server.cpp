@@ -1,5 +1,3 @@
-// $Id: CPP-ATM-server.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/TLI_Acceptor.h"
 #include "ace/ATM_Addr.h"
 #include "ace/Log_Msg.h"

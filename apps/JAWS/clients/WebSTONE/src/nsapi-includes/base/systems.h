@@ -1,6 +1,4 @@
 /*
- * $Id: systems.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * Copyright (c) 1994, 1995.  Netscape Communications Corporation.  All
  * rights reserved.
  *
@@ -34,7 +32,7 @@
 #endif
 
 /* Linux is not currently supported */
-#ifdef linux
+#ifdef ACE_LINUX
 
 #define FILE_UNIX
 #undef FILE_STDIO

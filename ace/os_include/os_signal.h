@@ -6,8 +6,6 @@
  *
  *  signals
  *
- *  $Id: os_signal.h 93792 2011-04-07 11:48:50Z mcorino $
- *
  *  @author Don Hinton <dhinton@dresystems.com>
  *  @author This code was originally in various places including ace/OS.h.
  */
@@ -18,7 +16,7 @@
 
 #include /**/ "ace/pre.h"
 
-#include "ace/config-lite.h"
+#include /**/ "ace/config-lite.h"
 
 #if !defined (ACE_LACKS_PRAGMA_ONCE)
 # pragma once
@@ -48,9 +46,9 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-#if defined (ACE_LACKS_SIGSET) && !defined (__MINGW32__)
+#if defined (ACE_LACKS_SIGSET_T)
   typedef u_int sigset_t;
-#endif /* ACE_LACKS_SIGSET && !sigset_t */
+#endif /* ACE_LACKS_SIGSET_T && !sigset_t */
 
 #if !defined (ACE_HAS_SIG_ATOMIC_T)
    typedef int sig_atomic_t;

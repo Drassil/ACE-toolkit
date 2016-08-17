@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Options.inl 91813 2010-09-17 07:52:52Z johnnyw $
-
 /* Option manager for ustreams */
 
 // Since this is only included in Options.h these should stay

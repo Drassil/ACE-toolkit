@@ -1,4 +1,4 @@
-// -*- C++ -*-  $Id: SAXPrint_Handler.cpp 91257 2010-08-03 11:54:04Z johnnyw $
+// -*- C++ -*-
 
 #include "SAXPrint_Handler.h"
 #include "ace/ACE.h"

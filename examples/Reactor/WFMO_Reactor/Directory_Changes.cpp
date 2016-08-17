@@ -2,12 +2,8 @@
 /**
  *  @file    Directory_Changes.cpp
  *
- *  $Id: Directory_Changes.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This application tests the working of WFMO_Reactor when users
  *  are interested in monitoring changes in the filesystem.
- *
  *
  *  @author Irfan Pyarali
  */
@@ -22,8 +18,6 @@
 #include "ace/OS_NS_unistd.h"
 #include "ace/OS_NS_fcntl.h"
 #include "ace/Log_Msg.h"
-
-
 
 static int stop_test = 0;
 static const ACE_TCHAR *directory = ACE_TEXT (".");
@@ -109,7 +103,7 @@ ACE_TMAIN (int, ACE_TCHAR *[])
   Event_Handler handler (reactor);
 
   int result = ACE_OS::thr_create ((ACE_THR_FUNC) worker, 0, 0, 0);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   for (result = 0; result != -1; result = reactor.handle_events ())
     continue;

@@ -4,11 +4,8 @@
 /**
  *  @file    MT_Reactor_Timer_Test.h
  *
- *  $Id: MT_Reactor_Timer_Test.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This file contains class definitions needed for template
  *    instantiation in the MT_Reactor_Timer_Test.cpp file.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */

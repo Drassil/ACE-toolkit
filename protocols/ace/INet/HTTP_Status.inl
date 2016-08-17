@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: HTTP_Status.inl 90450 2010-06-08 07:25:58Z mcorino $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 namespace ACE

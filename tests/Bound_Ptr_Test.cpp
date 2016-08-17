@@ -1,10 +1,6 @@
-// $Id: Bound_Ptr_Test.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 //=============================================================================
 /**
  *  @file    Bound_Ptr_Test.cpp
- *
- *  $Id: Bound_Ptr_Test.cpp 91671 2010-09-08 18:39:23Z johnnyw $
  *
  *  This example tests the <ACE_Strong_Bound_Ptr> and
  *  <ACE_Weak_Bound_Ptr> and illustrates how they may be dispersed

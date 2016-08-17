@@ -1,5 +1,3 @@
-// $Id: dll.h 80826 2008-03-04 14:51:23Z wotte $
-
 // To use the export macros with a DLL, a file will need to be
 // created (see ACE_wrapper/bin/generate_export_file.pl) and
 // included.  This file defines Test_Export (and the

@@ -1,5 +1,3 @@
-// $Id: BufferedStreamBuffer.h 94075 2011-05-23 06:57:42Z johnnyw $
-
 /**
  * @file BufferedStreamBuffer.h
  *

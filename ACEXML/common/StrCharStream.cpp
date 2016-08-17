@@ -1,5 +1,3 @@
-// $Id: StrCharStream.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ACEXML/common/StrCharStream.h"
 #include "ACEXML/common/Encoding.h"
 #include "ace/ACE.h"

@@ -3,16 +3,12 @@
 /**
  *  @file    MEM_Stream_Test.cpp
  *
- *  $Id: MEM_Stream_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a test of the <ACE_MEM_Acceptor> and
  *   <ACE_MEM_Connector> classes.
- *
  *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
-
 
 #include "test_config.h"
 #include "ace/OS_NS_stdio.h"
@@ -28,8 +24,6 @@
 #include "ace/Svc_Handler.h"
 #include "ace/Singleton.h"
 #include "ace/Atomic_Op.h"
-
-
 
 #if (defined (ACE_HAS_THREADS) || defined (ACE_HAS_PROCESS_SPAWN)) && \
     (ACE_HAS_POSITION_INDEPENDENT_POINTERS == 1)
@@ -178,7 +172,9 @@ run_client (u_short port,
 
   if (connector.connect (stream, to_server.get_remote_addr ()) == -1)
     ACE_ERROR_RETURN ((LM_ERROR,
-                       ACE_TEXT ("%p\n"), ACE_TEXT ("connector.connect()")),
+                       ACE_TEXT ("Failed to connect to <%C> %p\n"),
+                       to_server.get_host_name (),
+                       ACE_TEXT ("connector.connect()")),
                       -1);
 
   ACE_TCHAR buf[MAXPATHLEN];
@@ -490,14 +486,10 @@ run_main (int argc, ACE_TCHAR *argv[])
     }
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
+#define ACE_Atomic_Op_type \
+    ACE_Atomic_Op< ACE_SYNCH_MUTEX, u_short>
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, ACE_Atomic_Op_type, ACE_SYNCH_RECURSIVE_MUTEX);
 
-template ACE_Singleton<ACE_Atomic_Op<ACE_SYNCH_MUTEX, u_short>,
-                       ACE_SYNCH_RECURSIVE_MUTEX> *
-  ACE_Singleton<ACE_Atomic_Op<ACE_SYNCH_MUTEX, u_short>,
-                ACE_SYNCH_RECURSIVE_MUTEX>::singleton_;
-
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
 
 #else
 int

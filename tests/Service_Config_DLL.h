@@ -4,8 +4,6 @@
 /**
  * @file Service_Config_DLL.h
  *
- * $Id: Service_Config_DLL.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * @author Ossama Othman <ossama@uci.edu>
  */
 //=============================================================================

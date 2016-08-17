@@ -5,13 +5,10 @@
 /**
  *  @file    snmp.h
  *
- *  $Id: snmp.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * SNMP class defintion. The Snmp class provides an object oriented
  * approach to SNMP. The SNMP class is an encapsulation of SNMP
  * sessions, gets, sets, etc. The class manages all SNMP
  * resources and provides complete retry and timeout capability.
- *
  *
  *  @author Peter E Mellquist  design
  *  @author first implementation Michael R. MacFaden port to ACE / use Reactor pattern
@@ -55,6 +52,7 @@ class Snmp;
 class ASNMP_Export Snmp_Result
 {
   public:
+    Snmp_Result ();
     virtual ~Snmp_Result();
     virtual void result(Snmp *snmp, int result) = 0;
 };

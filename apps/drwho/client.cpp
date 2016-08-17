@@ -3,10 +3,7 @@
 /**
  *  @file    client.cpp
  *
- *  $Id: client.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Client driver program for drwho.
- *
  *
  *  @author Douglas C. Schmidt
  */

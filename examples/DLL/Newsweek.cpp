@@ -1,5 +1,3 @@
-// $Id: Newsweek.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #define ACE_BUILD_SVC_DLL
 
 #include "Newsweek.h"

@@ -1,5 +1,3 @@
-// $Id: Entity_Manager.inl 80826 2008-03-04 14:51:23Z wotte $
-
 ACEXML_INLINE int
 ACEXML_Entity_Manager::add_entity (const ACEXML_Char *ref,
                                    const ACEXML_Char *v)

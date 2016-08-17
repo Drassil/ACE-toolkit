@@ -3,11 +3,8 @@
 /**
  *  @file    Octet_Test.cpp
  *
- *  $Id: Octet_Test.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Test all the member functions of the OCTET class. An Object
  *  representing an ASN.1 Integer64 SMI OCTET STRING SYNTAX.
- *
  *
  *  @author Michael R. MacFaden <mrm@cisco.com>
  */

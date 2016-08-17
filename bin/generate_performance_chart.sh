@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# $Id: generate_performance_chart.sh 84708 2009-03-04 10:15:35Z johnnyw $
-#
 
 gnuplot <<_EOF_ >/dev/null 2>&1
     set xdata time

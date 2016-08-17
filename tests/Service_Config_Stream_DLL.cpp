@@ -1,5 +1,3 @@
-// $Id: Service_Config_Stream_DLL.cpp 93929 2011-04-17 13:39:43Z cbeaulac $
-
 #include "Service_Config_Stream_DLL.h"
 #include "ace/Service_Repository.h"
 #include "ace/Service_Types.h"

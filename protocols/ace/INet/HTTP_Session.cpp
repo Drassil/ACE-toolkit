@@ -1,5 +1,3 @@
-// $Id: HTTP_Session.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #ifndef ACE_HTTP_SESSION_CPP
 #define ACE_HTTP_SESSION_CPP
 

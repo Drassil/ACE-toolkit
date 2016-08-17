@@ -25,7 +25,7 @@ use vars qw(@ISA);
 # Data Section
 # ************************************************************
 
-my $targets = 'clean depend generated realclean $(CUSTOM_TARGETS)';
+my $targets = 'clean generated realclean $(CUSTOM_TARGETS)';
 
 # ************************************************************
 # Subroutine Section
@@ -40,7 +40,7 @@ sub workspace_file_extension {
 sub pre_workspace {
   my($self, $fh) = @_;
   $self->workspace_preamble($fh, $self->crlf(), 'NMAKE Workspace',
-                            '$Id: NMakeWorkspaceCreator.pm 1934 2010-11-12 12:40:22Z elliott_c $');
+                            '');
 }
 
 

@@ -5,8 +5,6 @@
 /**
  *  @file    Logging_Handler.h
  *
- *  $Id: Logging_Handler.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Doug Schmidt
  */
 //=============================================================================

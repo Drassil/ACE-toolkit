@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: URL_Properties.inl 92580 2010-11-15 09:48:02Z johnnyw $
-
 ACE_INLINE size_t
 ACE_WString_Helper::size (const ACE_WString &wstr)
 {

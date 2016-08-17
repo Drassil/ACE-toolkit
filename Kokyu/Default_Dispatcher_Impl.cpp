@@ -1,5 +1,3 @@
-// $Id: Default_Dispatcher_Impl.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "Default_Dispatcher_Impl.h"
 #include "ace/Sched_Params.h"
 

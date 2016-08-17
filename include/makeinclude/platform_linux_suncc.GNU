@@ -1,4 +1,3 @@
-# $Id: platform_linux_suncc.GNU 93520 2011-03-10 11:05:17Z olli $
 
 # This file should allow ACE to be built on Linux, using the Sun compiler.
 # The Sun compiler on linux is still in the Alpha stage, so no guarantees

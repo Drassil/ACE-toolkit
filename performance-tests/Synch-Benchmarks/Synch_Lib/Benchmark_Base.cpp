@@ -1,5 +1,3 @@
-// $Id: Benchmark_Base.cpp 93651 2011-03-28 08:49:11Z johnnyw $
-
 #if !defined (SYNCHLIB_BUILD_DLL)
 #define  SYNCHLIB_BUILD_DLL
 #endif /* SYNCHLIB_BUILD_DLL */

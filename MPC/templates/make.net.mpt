@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: make.net.mpt 1610 2009-08-05 18:43:15Z elliott_c $
-
 conditional_include "windowscommon"
 
 mcs {

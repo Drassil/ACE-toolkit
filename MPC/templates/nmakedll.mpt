@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: nmakedll.mpt 1488 2008-10-07 14:10:32Z johnnyw $
-
 conditional_include "common"
 conditional_include "windowscommon"
 

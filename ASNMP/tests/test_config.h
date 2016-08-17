@@ -4,8 +4,6 @@
 /**
  *  @file    test_config.h
  *
- *  $Id: test_config.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Prashant Jain <pjain@cs.wustl.edu>
  *  @author Tim Harrison <harrison@cs.wustl.edu>
  *  @author and David Levine <levine@cs.wustl.edu>

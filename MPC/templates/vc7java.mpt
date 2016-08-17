@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: vc7java.mpt 1118 2007-01-02 18:07:32Z elliott_c $
-
 conditional_include "common"
 conditional_include "windowscommon"
 

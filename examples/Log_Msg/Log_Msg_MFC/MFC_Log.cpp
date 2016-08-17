@@ -1,4 +1,3 @@
-// $Id: MFC_Log.cpp 80826 2008-03-04 14:51:23Z wotte $
 // MFC_Log.cpp: implementation of the MFC_Log class.
 //
 //////////////////////////////////////////////////////////////////////

@@ -1,5 +1,3 @@
-// $Id: HTTP_Server.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #ifndef ACE_BUILD_SVC_DLL
 #define ACE_BUILD_SVC_DLL
 #endif /* ACE_BUILD_SVC_DLL */
@@ -86,6 +84,7 @@ HTTP_Server::parse_args (int argc, ACE_TCHAR *argv[])
         else if (ACE_OS::strcmp (get_opt.opt_arg (), ACE_TEXT ("THR_DETACHED")) == 0)
           {
           }
+        break;
       case 'i':
         // SYNCH  -> synchronous I/O
         // ASYNCH -> asynchronous I/O

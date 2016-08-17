@@ -1,5 +1,3 @@
-// $Id: test_open.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/Naming_Context.h"
 #include "ace/Log_Msg.h"

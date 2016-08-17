@@ -3,11 +3,8 @@
 /**
  *  @file    Refcounted_Event_Handler_Test_DevPoll.cpp
  *
- *  $Id: Refcounted_Event_Handler_Test_DevPoll.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This is a simple test that checks the order of dispatching of
  *  ACE Reactors.  Order should be: timeout, output, and then input.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */

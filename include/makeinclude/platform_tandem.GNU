@@ -1,4 +1,3 @@
-# $Id: platform_tandem.GNU 91285 2010-08-05 08:29:30Z johnnyw $
 
 # NonStop-UX NCC 3.20
 

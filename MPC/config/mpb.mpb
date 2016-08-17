@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: mpb.mpb 1754 2010-04-24 23:41:07Z elliott_c $
-
 project {
   // Allow users to specify .mpb files in their project.  This gives the
   // opportunity to see them in IDE's and to install them using

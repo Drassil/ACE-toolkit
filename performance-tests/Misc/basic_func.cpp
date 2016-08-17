@@ -1,5 +1,3 @@
-// $Id: basic_func.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "basic_func.h"
 
 int A, BB, C, D, E, F;

@@ -3,12 +3,9 @@
 /**
  *  @file    test_early_timeouts.cpp
  *
- *  $Id: test_early_timeouts.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  On some platforms, select() returns before the time value
  *  specified.  This tests counts the number of times this happens
  *  and the max early timeout.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */
@@ -21,7 +18,7 @@
 #include "ace/Time_Value.h"
 #include "ace/OS_NS_sys_time.h"
 #include "ace/OS_NS_sys_select.h"
-
+#include "ace/Truncate.h"
 
 
 int
@@ -71,7 +68,7 @@ ACE_TMAIN (int, ACE_TCHAR *[])
       starting_time_of_day = ACE_OS::gettimeofday ();
 
       // Wait for timeout
-      result = ACE_OS::select ((int) dummy_pipe.read_handle (), dummy_handle_set, 0, 0, &timeout);
+      result = ACE_OS::select (ACE_Utils::truncate_cast<int> ((intptr_t)dummy_pipe.read_handle ()), dummy_handle_set, 0, 0, &timeout);
       ACE_ASSERT (result == 0);
 
       // Note the time after select

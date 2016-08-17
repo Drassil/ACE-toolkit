@@ -1,7 +1,5 @@
 /* -*- c++ -*- */
 // Hey Emacs!  This is a C++ file!
-// $Id: Cache_Manager_T.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_CACHE_MANAGER_T_H
 #define JAWS_CACHE_MANAGER_T_H
 

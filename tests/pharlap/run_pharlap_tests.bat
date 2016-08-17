@@ -1,5 +1,5 @@
 @echo off
-rem $Id: run_pharlap_tests.bat 80826 2008-03-04 14:51:23Z wotte $
+rem $Id$
 
 rem    This file runs all the tests on PharLap ETS.
 rem    To use this either give it no arguments to run all the tests or

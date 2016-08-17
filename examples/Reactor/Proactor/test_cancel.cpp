@@ -3,8 +3,6 @@
 /**
  *  @file    test_cancel.cpp
  *
- *  $Id: test_cancel.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This program tests cancelling an Asynchronous Operation in the
  *  Proactor framework.
  *
@@ -25,7 +23,6 @@
  * ./test_cancel -p <port_number>
  * Then telnet to this port and send <read_size> bytes and your
  * connection should get closed down.
- *
  *
  *  @author Irfan Pyarali (irfan@cs.wustl.edu)
  */

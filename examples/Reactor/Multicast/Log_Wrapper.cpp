@@ -1,5 +1,3 @@
-// $Id: Log_Wrapper.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // client.C
 
 #include "Log_Wrapper.h"

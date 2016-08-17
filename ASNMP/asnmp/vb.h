@@ -6,14 +6,11 @@
 /**
  *  @file     vb.h
  *
- *  $Id: vb.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * This module contains the class definition for the variable binding (VB)
  * class. The VB class is an encapsulation of a SNMP VB. A VB object is
  * composed of one SNMP++ Oid and one SMI value. The Vb class utilizes Oid
  * objects and thus requires the Oid class. To use this class,
  * set oid, value then call valid() to be sure object was constructed correctly.
- *
  *
  *  @author Peter E Mellquist
  */

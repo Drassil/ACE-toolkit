@@ -1,5 +1,3 @@
-// $Id: server_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // The main test driver for the dynamically configured server.
 
 #include "ace/OS_NS_unistd.h"

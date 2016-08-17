@@ -2,7 +2,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     & eval 'exec perl -S $0 $argv:q'
     if 0;
 
-# $Id: create_ace_build.pl 80826 2008-03-04 14:51:23Z wotte $
 #
 # Creates an ACE build tree in directory "build/<build name>" below the $ACE_ROOT
 # directory.  The build tree directory structure mirrors that of the ACE

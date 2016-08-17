@@ -1,7 +1,6 @@
 /*
  * ACE reactor demonstration
  *
- * $Id: client.cpp 92066 2010-09-28 08:33:14Z vzykov $
  * Date: 26-Jan-2006
  */
 
@@ -52,8 +51,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv) {
                          ACE_TEXT ("%N:%l: Failed to allocate ")
                          ACE_TEXT ("data buffer.\n")), -1);
 
-    // put someData in an auto_ptr so it gets deleted automatically
-    auto_ptr<char> pSomeData(someData);
+    // put someData in a kind of auto_ptr so it gets deleted automatically
+    ACE_Auto_Array_Ptr<char> pSomeData(someData);
 
     // parse the <count> argument if available
     if ((argc == 3) && (((count = ACE_OS::strtol(argv[2], 0, 10)) < 1) ||
@@ -86,7 +85,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv) {
             // send the request to the server (number of MiB in the next call)
             // Note: only use the sizeof and pointer to int on compatible
             //       platforms (i.e. little-endian/big-endian, data type size)
-            if (stream.send_n(&size, sizeof(size), &connTimeout) != sizeof(size)) {
+            if (stream.send_n(&size, sizeof(size), &connTimeout) != (ssize_t) sizeof(size)) {
                 ACE_ERROR((LM_ERROR, ACE_TEXT("%N:%l: Failed to  send ")
                            ACE_TEXT ("request. (errno = %i: %m)\n"), ACE_ERRNO_GET));
                 throw 1;

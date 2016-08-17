@@ -2,14 +2,10 @@
 /**
  *  @file    Handle_Close.cpp
  *
- *  $Id: Handle_Close.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This application tests whether handle_close gets called and if
  *  the correct masks are passed along.  The handler should get
  *  handle_close called for all three masks (READ, WRITE, and
  *  EXCEPT).
- *
  *
  *  @author Irfan Pyarali
  */
@@ -49,8 +45,7 @@ write_to_pipe (ACE_Pipe &pipe)
   ssize_t result = ACE::send (pipe.write_handle (),
                               data,
                               len);
-  ACE_ASSERT ((size_t)result == len);
-  ACE_UNUSED_ARG (result);
+  ACE_TEST_ASSERT ((size_t)result == len);
 }
 
 // Simple handler class
@@ -72,19 +67,17 @@ public:
     return this->pipe_.read_handle ();
   }
 
-  int handle_close (ACE_HANDLE handle,
+  int handle_close (ACE_HANDLE,
                     ACE_Reactor_Mask close_mask)
   {
-    ACE_UNUSED_ARG (handle);
     ACE_DEBUG ((LM_DEBUG,
                 "Handler::handle_close called with mask = %d\n",
                 close_mask));
     return 0;
   }
 
-  int handle_input (ACE_HANDLE handle)
+  int handle_input (ACE_HANDLE)
   {
-    ACE_UNUSED_ARG (handle);
     ACE_DEBUG ((LM_DEBUG, "Handler::handle_input\n"));
 
     // Remove for reading
@@ -101,8 +94,7 @@ public:
       {
         int result = this->reactor ()->cancel_wakeup (this,
                                                       ACE_Event_Handler::READ_MASK);
-        ACE_ASSERT (result != -1);
-        ACE_UNUSED_ARG (result);
+        ACE_TEST_ASSERT (result != -1);
       }
 
     // Write to the pipe; this causes handle_input to get called.
@@ -154,8 +146,7 @@ public:
     // Remove for reading
     int result = this->reactor ()->remove_handler (this,
                                                    ACE_Event_Handler::READ_MASK);
-    ACE_ASSERT (result == 0);
-    ACE_UNUSED_ARG (result);
+    ACE_TEST_ASSERT (result == 0);
 
     return 0;
   }
@@ -169,36 +160,34 @@ public:
     int result = this->reactor ()->mask_ops (this,
                                              ACE_Event_Handler::READ_MASK,
                                              ACE_Reactor::ADD_MASK);
-    ACE_ASSERT (result != -1);
+    ACE_TEST_ASSERT (result != -1);
 
     ACE_Reactor_Mask old_masks =
       ACE_Event_Handler::WRITE_MASK |
       ACE_Event_Handler::EXCEPT_MASK;
 
-    ACE_ASSERT (old_masks ==
+    ACE_TEST_ASSERT (old_masks ==
                 static_cast<ACE_Reactor_Mask> (result));
-    ACE_UNUSED_ARG (old_masks);
 
     // Get new masks
     result = this->reactor ()->mask_ops (this,
                                          ACE_Event_Handler::NULL_MASK,
                                          ACE_Reactor::GET_MASK);
-    ACE_ASSERT (result != -1);
+    ACE_TEST_ASSERT (result != -1);
 
     ACE_Reactor_Mask current_masks =
       ACE_Event_Handler::READ_MASK |
       ACE_Event_Handler::WRITE_MASK |
       ACE_Event_Handler::EXCEPT_MASK;
 
-    ACE_ASSERT (current_masks ==
+    ACE_TEST_ASSERT (current_masks ==
                 static_cast<ACE_Reactor_Mask> (result));
-    ACE_UNUSED_ARG (current_masks);
 
     // Remove for writing
     ACE_Reactor_Mask mask = ACE_Event_Handler::WRITE_MASK | ACE_Event_Handler::DONT_CALL;
     result = this->reactor ()->remove_handler (this,
                                                mask);
-    ACE_ASSERT (result == 0);
+    ACE_TEST_ASSERT (result == 0);
 
     // Write to the pipe; this causes handle_input to get called.
     if (!write_to_pipe_in_main)
@@ -282,10 +271,10 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   ACE_Pipe pipe1, pipe2;
 
   result = pipe1.open ();
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = pipe2.open ();
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   // Create handlers
   Handler handler (pipe1);
@@ -306,11 +295,11 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
 
   result = reactor->register_handler (&handler,
                                       handler_mask);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = reactor->register_handler (&different_handler,
                                       different_handler_mask);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   // Write to the pipe; this causes handle_input to get called.
   if (write_to_pipe_in_main)
@@ -322,12 +311,10 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   // Note that handle_output will get called automatically since the
   // pipe is writable!
 
-  //FUZZ: disable check_for_lack_ACE_OS
   // Run for three seconds
-  ACE_Time_Value time (3);
-  //FUZZ: enable check_for_lack_ACE_OS
+  ACE_Time_Value wait_time (3);
 
-  reactor->run_reactor_event_loop (time);
+  reactor->run_reactor_event_loop (wait_time);
 
   ACE_DEBUG ((LM_DEBUG, "\nClosing down the application\n\n"));
 

@@ -1,5 +1,3 @@
-// $Id: remote_service_directory_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Test program for the INET IPC-SAPs...
 
 #include "ace/OS_main.h"

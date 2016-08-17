@@ -1,5 +1,3 @@
-// $Id: Element_Tree.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ACEXML/parser/debug_validator/Element_Tree.h"
 
 #if !defined (__ACEXML_INLINE__)

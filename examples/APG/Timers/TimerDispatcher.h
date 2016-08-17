@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: TimerDispatcher.h 80826 2008-03-04 14:51:23Z wotte $
-
 #if !defined(TIMER_DISPATCHER_H)
 #define TIMER_DISPATCHER_H
 

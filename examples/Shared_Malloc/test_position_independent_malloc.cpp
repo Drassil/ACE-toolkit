@@ -1,5 +1,3 @@
-// $Id: test_position_independent_malloc.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test the capability of the "position-independent" <ACE_Malloc> to
 // handle a single malloc that can be rooted at different base
 // addresses each time it's used.  The actual backing store used by

@@ -7,7 +7,7 @@ eval '(exit $?0)' && eval 'exec perl -w -S $0 ${1+"$@"}'
 # Description   : Generate dependencies for Make and NMake.
 # Author        : Chad Elliott
 # Create Date   : 5/06/2002
-#            $Id: depgen.pl 1469 2008-08-20 08:38:13Z johnnyw $
+#
 # ************************************************************
 
 # ************************************************************

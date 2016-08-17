@@ -3,11 +3,8 @@
 /**
  *  @file    transaction.cpp
  *
- *  $Id: transaction.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  implements blocking SNMPv1 API using a simple state machine
  * transactions over UDP/IP networks
- *
  *
  *  @author Michael R MacFaden  mrm@cisco.com - remove v2c
  *  @author async
@@ -105,7 +102,7 @@ int transaction::run(transaction_result * r)
 
     // register a time handler and a socket with this
     ACE_Time_Value to (params_.get_timeout());
-    if (reactor->schedule_timer(this, 0, to, to) < 0)
+    if (reactor->schedule_timer(this, 0, to, to) == -1)
         return SNMP_CLASS_INTERNAL_ERROR;
 
     if ((rc = this->send()) < 0)      // send pkt to agent

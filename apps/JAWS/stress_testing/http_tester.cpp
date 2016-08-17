@@ -1,5 +1,3 @@
-// $Id: http_tester.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "client.h"
 
 int Client_Parameters::tcp_nodelay;

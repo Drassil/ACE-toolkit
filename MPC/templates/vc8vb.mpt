@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: vc8vb.mpt 1071 2006-10-26 15:45:22Z elliott_c $
-
 conditional_include "common"
 conditional_include "windowscommon"
 

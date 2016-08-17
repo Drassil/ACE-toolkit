@@ -1,5 +1,3 @@
-// $Id: SigHandlers.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_unistd.h"
 #include "ace/Log_Msg.h"
 #include "ace/Signal.h"
@@ -16,7 +14,7 @@ public:
 
   virtual int handle_signal (int signum, siginfo_t * = 0, ucontext_t * = 0)
   {
-    ACE_TRACE (ACE_TEXT ("MySignalHandler::handle_signal"));
+    ACE_TRACE ("MySignalHandler::handle_signal");
 
     // Make sure the right handler was called back..
     ACE_ASSERT(signum == this->signum_);

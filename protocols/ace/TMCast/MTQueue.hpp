@@ -1,4 +1,3 @@
-// $Id: MTQueue.hpp 91633 2010-09-07 14:27:13Z johnnyw $
 // author    : Boris Kolpackov <boris@dre.vanderbilt.edu>
 
 #ifndef TMCAST_MT_QUEUE_HPP

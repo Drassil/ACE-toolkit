@@ -5,11 +5,7 @@
 /**
  *  @file    snmperrs.h
  *
- *  $Id: snmperrs.h 81110 2008-03-27 12:39:06Z elliott_c $
- *
  * Definition of error macros and error strings
- *
- *
  */
 //=============================================================================
 

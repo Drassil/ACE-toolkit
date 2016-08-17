@@ -1,17 +1,10 @@
 // -*- MPC -*-
-// $Id: jaws3.mpc 90826 2010-06-24 09:07:33Z johnnyw $
-
 project(JAWS3) : ace_output, acelib {
     sharedname = JAWS3
     dynamicflags += JAWS_BUILD_DLL
     avoids += uses_wchar
     avoids += ace_for_tao
-
-    specific(automake) {
-      includes += $(srcdir)/..
-    } else {
-      includes += ..
-    }
+    includes += ..
 
     Source_Files {
         Asynch_IO.cpp
@@ -78,12 +71,7 @@ project(JAWS3) : ace_output, acelib {
 project(JAWS3_server) : aceexe {
     avoids += uses_wchar
     avoids += ace_for_tao
-
-    specific(automake) {
-      includes += $(srcdir)/..
-    } else {
-      includes += ..
-    }
+    includes += ..
 
     exename = main
     after += JAWS3

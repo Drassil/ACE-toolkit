@@ -3,11 +3,8 @@
 /**
  *  @file    Reference_Counted_Event_Handler_Test.cpp
  *
- *  $Id: Reference_Counted_Event_Handler_Test.cpp 94113 2011-05-27 14:44:29Z msmit $
- *
  *  This test is used to check reference counting of the Event
  *  Handler when it interacts with the Reactor.
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */

@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: ETCL_Constraint.cpp 92173 2010-10-07 12:36:17Z olli $
-
 #include "ace/ACE.h"
 
 #include "ace/ETCL/ETCL_Constraint.h"

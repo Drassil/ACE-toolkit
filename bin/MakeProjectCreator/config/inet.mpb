@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: inet.mpb 91395 2010-08-19 12:11:30Z mcorino $
-
 project : acelib {
   avoids   += wince
   avoids   += old_stdstream

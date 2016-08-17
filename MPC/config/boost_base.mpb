@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: boost_base.mpb 1511 2008-11-11 10:40:26Z johnnyw $
-
 project {
   requires += boost
   includes += $(BOOST_ROOT)/include/$(BOOST_VERSION) $(BOOST_ROOT)/.

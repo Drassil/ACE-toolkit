@@ -1,9 +1,6 @@
-// $Id: Proactor_Test_IPV6.cpp 92900 2010-12-17 14:45:11Z mcorino $
 // ============================================================================
 /**
  *  @file Proactor_Test_IPV6.cpp
- *
- *  $Id: Proactor_Test_IPV6.cpp 92900 2010-12-17 14:45:11Z mcorino $
  *
  *  This program illustrates how the ACE_Proactor can be used to
  *  implement an application that does various asynchronous
@@ -1844,7 +1841,7 @@ parse_args (int argc, ACE_TCHAR *argv[])
   xfer_limit = 50 * ACE_OS::strlen (complete_message);
 
   // Linux kernels up to at least 2.6.9 (RHEL 4) can't do full duplex aio.
-# if defined (linux)
+# if defined (ACE_LINUX)
   duplex = 0;
 #endif
 
@@ -1982,7 +1979,7 @@ run_main (int, ACE_TCHAR *[])
 
   ACE_DEBUG ((LM_INFO,
               ACE_TEXT ("Threads or Asynchronous IO is unsupported.\n")
-              ACE_TEXT ("Proactor_Test will not be run.")));
+              ACE_TEXT ("Proactor_Test_IPV6 will not be run.\n")));
 
   ACE_END_TEST;
 

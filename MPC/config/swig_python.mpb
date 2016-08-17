@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: swig_python.mpb 1754 2010-04-24 23:41:07Z elliott_c $
-
 project {
   Define_Custom(SWIG) {
     command           = swig

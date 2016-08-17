@@ -1,5 +1,3 @@
-// $Id: Simple1.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Log_Msg.h"
 
 void foo (void);

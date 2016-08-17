@@ -3,8 +3,6 @@
 // Driver program for the gperf hash function generator.
 
 /**
- * $Id: gperf.cpp 93359 2011-02-11 11:33:12Z mcorino $
- *
  * Copyright (C) 1989 Free Software Foundation, Inc.
  * written by Douglas C. Schmidt (schmidt@cs.wustl.edu)
  *

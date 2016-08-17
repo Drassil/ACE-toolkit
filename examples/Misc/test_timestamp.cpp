@@ -1,5 +1,3 @@
-// $Id: test_timestamp.cpp 92791 2010-12-04 16:25:22Z shuston $
-
 // Test the ACE::timestamp method.
 
 #include "ace/OS_main.h"

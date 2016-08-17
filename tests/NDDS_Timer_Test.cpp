@@ -2,10 +2,7 @@
 /**
  *  @file    NDDS_Timer_Test.cpp
  *
- *  $Id: NDDS_Timer_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Simple test of NDDS_Timer. Copied from NDDS_Timer_Test.
- *
  *
  *  @author Marcel Smit <msmit@remedy.nl>
  */

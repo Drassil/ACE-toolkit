@@ -5,7 +5,7 @@
 
    Copyright (C) 1998-2005 Gilles Vollant
 
-   $Id: ioapi.c 80826 2008-03-04 14:51:23Z wotte $
+
 */
 
 #include <stdio.h>

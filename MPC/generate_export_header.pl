@@ -6,7 +6,6 @@ eval '(exit $?0)' && eval 'exec perl -w -S $0 ${1+"$@"}'
 # ******************************************************************
 #      Author: Chad Elliott
 #        Date: 3/1/2006
-#         $Id: generate_export_header.pl 1469 2008-08-20 08:38:13Z johnnyw $
 # Description: Generate an export header file for use with various compilers
 # ******************************************************************
 

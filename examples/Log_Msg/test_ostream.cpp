@@ -3,11 +3,8 @@
 /**
  *  @file    test_ostream.cpp
  *
- *  $Id: test_ostream.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *   This program tests the Log_Msg abstraction wrt writing to
  *   stderr and to a file.
- *
  *
  *  @author Irfan Pyarali <irfan@cse.wustl.edu>
  */

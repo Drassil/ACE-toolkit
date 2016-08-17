@@ -3,10 +3,7 @@
 /**
  *  @file     counter.cpp
  *
- *  $Id: counter.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Class implementation for SMI Counter32 class.
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

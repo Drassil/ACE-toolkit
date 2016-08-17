@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_linux_common.GNU 93462 2011-03-02 12:45:06Z olli $
 
 # We always include config-linux.h on Linux platforms.
 ACE_PLATFORM_CONFIG ?= config-linux.h
@@ -107,6 +106,12 @@ ifeq ($(ssl),1)
   # at least until we migrate to Autoconf.
   PLATFORM_SSL_CPPFLAGS += -I/usr/kerberos/include
 endif # ssl
+
+PLATFORM_LARGEFILE_CFLAGS := $(shell getconf LFS_CFLAGS 2> /dev/null || echo Unknown)
+ifdef PLATFORM_LARGEFILE_CFLAGS
+  # Large file support
+  CPPFLAGS += $(PLATFORM_LARGEFILE_CFLAGS)
+endif #largefile
 
 SYSARCH := $(shell uname -m)
 

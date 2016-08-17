@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_freebsd.GNU 93896 2011-04-14 09:27:54Z olli $
 
 # platform_freebsd.GNU
 
@@ -13,8 +12,8 @@ optimize ?= 1
 threads ?= 1
 versioned_so ?= 1
 
-CC              = gcc
-CXX             = g++
+CC              ?= gcc
+CXX             ?= g++
 
 AR              = ar
 ARFLAGS         = ruv
@@ -56,8 +55,8 @@ PLATFORM_GTK_CPPFLAGS = $(shell gtk-config --cflags)
 PLATFORM_GTK_LIBS = $(shell gtk-config --libs)
 PLATFORM_GTK_LDFLAGS =
 
-PLATFORM_FOX_CPPFLAGS ?= -I/usr/include/fox
-PLATFORM_FOX_LIBS ?= -lFOX
+PLATFORM_FOX_CPPFLAGS ?= -I/usr/local/include/fox-1.6
+PLATFORM_FOX_LIBS ?= -lFOX-1.6
 PLATFORM_FOX_LDFLAGS ?=
 
 PLATFORM_TK_CPPFLAGS=$(shell . /usr/local/lib/tk8.*/tkConfig.sh && echo -n $$TK_INCLUDE_SPEC)

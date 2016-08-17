@@ -1,5 +1,3 @@
-// $Id: test_io.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test program for different methods of copying files.
 
 #include "ace/OS_NS_stdio.h"

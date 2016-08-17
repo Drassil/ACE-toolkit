@@ -1,5 +1,3 @@
-// $Id: ACE.cpp 93989 2011-04-22 19:06:07Z johnnyw $
-
 #include "ace/ACE.h"
 
 #include "ace/Basic_Types.h"
@@ -8,7 +6,8 @@
 #include "ace/SString.h"
 #include "ace/Version.h"
 #include "ace/Message_Block.h"
-#include "ace/Log_Msg.h"
+#include "ace/Log_Category.h"
+#include "ace/Flag_Manip.h"
 #include "ace/OS_NS_sys_select.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_strings.h"
@@ -64,7 +63,7 @@ ACE::out_of_handles (int error)
 #elif defined (HPUX)
       // On HPUX, we need to check for EADDRNOTAVAIL also.
       error == EADDRNOTAVAIL ||
-#elif defined (linux)
+#elif defined (ACE_LINUX)
       // On linux, we need to check for ENOENT also.
       error == ENOENT ||
       // For RedHat5.2, need to check for EINVAL too.
@@ -159,7 +158,7 @@ ACE::nibble2hex (u_int n)
 bool
 ACE::debug (void)
 {
-  static const char* debug = ACE_OS::getenv ("ACE_DEBUG");
+  static const char* debug = ACE_OS::getenv ("ACELIB_DEBUG");
   return (ACE::debug_ != 0) ? ACE::debug_ : (debug != 0 ? (*debug != '0') : false);
 }
 
@@ -1013,7 +1012,8 @@ ACE::recvv_n_i (ACE_HANDLE handle,
         {
           char *base = static_cast<char *> (iov[s].iov_base);
           iov[s].iov_base = base + n;
-          iov[s].iov_len = iov[s].iov_len - n;
+          // This blind cast is safe because n < iov_len, after above loop.
+          iov[s].iov_len = iov[s].iov_len - static_cast<u_long> (n);
         }
     }
 
@@ -1079,7 +1079,8 @@ ACE::recvv_n_i (ACE_HANDLE handle,
         {
           char *base = reinterpret_cast<char *> (iov[s].iov_base);
           iov[s].iov_base = base + n;
-          iov[s].iov_len = iov[s].iov_len - n;
+          // This blind cast is safe because n < iov_len, after above loop.
+          iov[s].iov_len = iov[s].iov_len - static_cast<u_long> (n);
         }
     }
 
@@ -1528,7 +1529,7 @@ ACE::t_snd_n_i (ACE_HANDLE handle,
         {
           // Check for possible blocking.
           if (n == -1 &&
-              errno == EWOULDBLOCK || errno == ENOBUFS)
+              (errno == EWOULDBLOCK || errno == ENOBUFS))
             {
               // Wait upto <timeout> for the blocking to subside.
               int const rtn = ACE::handle_write_ready (handle, timeout);
@@ -1791,7 +1792,8 @@ ACE::sendv_n_i (ACE_HANDLE handle,
         {
           char *base = reinterpret_cast<char *> (iov[s].iov_base);
           iov[s].iov_base = base + n;
-          iov[s].iov_len = iov[s].iov_len - n;
+          // This blind cast is safe because n < iov_len, after above loop.
+          iov[s].iov_len = iov[s].iov_len - static_cast<u_long> (n);
         }
     }
 
@@ -1863,7 +1865,8 @@ ACE::sendv_n_i (ACE_HANDLE handle,
         {
           char *base = reinterpret_cast<char *> (iov[s].iov_base);
           iov[s].iov_base = base + n;
-          iov[s].iov_len = iov[s].iov_len - n;
+          // This blind cast is safe because n < iov_len, after above loop.
+          iov[s].iov_len = iov[s].iov_len - static_cast<u_long> (n);
         }
     }
 
@@ -2105,7 +2108,8 @@ ACE::readv_n (ACE_HANDLE handle,
         {
           char *base = reinterpret_cast<char *> (iov[s].iov_base);
           iov[s].iov_base = base + n;
-          iov[s].iov_len = iov[s].iov_len - n;
+          // This blind cast is safe because n < iov_len, after above loop.
+          iov[s].iov_len = iov[s].iov_len - static_cast<u_long> (n);
         }
     }
 
@@ -2147,7 +2151,8 @@ ACE::writev_n (ACE_HANDLE handle,
         {
           char *base = reinterpret_cast<char *> (iov[s].iov_base);
           iov[s].iov_base = base + n;
-          iov[s].iov_len = iov[s].iov_len - n;
+          // This blind cast is safe because n < iov_len, after above loop.
+          iov[s].iov_len = iov[s].iov_len - static_cast<u_long> (n);
         }
     }
 
@@ -2304,7 +2309,7 @@ ACE::format_hexdump (const char *buffer,
                                ACE_TEXT (" "));
               ++obuf;
             }
-          textver[j] = ACE_OS::ace_isprint (c) ? c : '.';
+          textver[j] = ACE_OS::ace_isprint (c) ? c : u_char ('.');
         }
 
       textver[j] = 0;
@@ -2336,7 +2341,7 @@ ACE::format_hexdump (const char *buffer,
                                ACE_TEXT (" "));
               ++obuf;
             }
-          textver[i] = ACE_OS::ace_isprint (c) ? c : '.';
+          textver[i] = ACE_OS::ace_isprint (c) ? c : u_char ('.');
         }
 
       for (i = size % 16; i < 16; i++)
@@ -2421,7 +2426,7 @@ ACE::timestamp (const ACE_Time_Value& time_value,
                     tms.tm_sec,
                     static_cast<long> (cur_time.usec()));
   date_and_time[date_and_timelen - 1] = '\0';
-  return &date_and_time[11 + (return_pointer_to_first_digit != 0)];
+  return &date_and_time[10 + (return_pointer_to_first_digit != 0)];
 }
 
 // This function rounds the request to a multiple of the page size.
@@ -2548,7 +2553,13 @@ ACE::handle_timed_complete (ACE_HANDLE h,
 
   else
 # if defined (ACE_HAS_POLL)
-    need_to_check = (fds.revents & POLLIN);
+    {
+      // The "official" bit for failed connect is POLLIN. However, POLLERR
+      // is often set and there are occasional cases seen with some kernels
+      // where only POLLERR is set on a failed connect.
+      need_to_check = (fds.revents & POLLIN) || (fds.revents & POLLERR);
+      known_failure = (fds.revents & POLLERR);
+    }
 # else
     need_to_check = true;
 # endif /* ACE_HAS_POLL */
@@ -2806,7 +2817,7 @@ ACE::max_handles (void)
 #endif /* RLIMIT_NOFILE && !ACE_LACKS_RLIMIT */
 
 #if defined (_SC_OPEN_MAX)
-  return ACE_OS::sysconf (_SC_OPEN_MAX);
+  return static_cast<int> (ACE_OS::sysconf (_SC_OPEN_MAX));
 #elif defined (FD_SETSIZE)
   return FD_SETSIZE;
 #else
@@ -3332,7 +3343,7 @@ namespace
             // characters are allowed as the range endpoints.  These characters
             // are the same values in both signed and unsigned chars so we
             // don't have to account for any "pathological cases."
-            for (char range = p[-1] + 1; range <= p[1]; ++range)
+            for (char range = static_cast<char> (p[-1] + 1); range <= p[1]; ++range)
               {
                 if (equal_char (s, range, case_sensitive))
                   {

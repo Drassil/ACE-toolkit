@@ -1,5 +1,3 @@
-// $Id: hist.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 /* Replacement for CSIM histogram created by Alex Carobus 7/20/98
    #include <std/disclaimer.h>
    */

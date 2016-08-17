@@ -2,11 +2,8 @@
 
 /** @file   URL_Addr.h
  *
- *  $Id: URL_Addr.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
- *
  */
 
 #ifndef _ACEXML_URL_ADDR_H
@@ -25,7 +22,7 @@
 #include "ACEXML/common/ACEXML_Export.h"
 
 /**
- *  @class ACEXML_URL_Addr URL_Addr.h "ACEXML/common/URL_Addr.h"
+ *  @class ACEXML_URL_Addr
  *
  *  Defines a URL address family address format.
  */

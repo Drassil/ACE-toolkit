@@ -1,5 +1,3 @@
-// $Id: FTP_Session.cpp 90895 2010-06-28 11:36:25Z mcorino $
-
 #ifndef ACE_FTP_SESSION_CPP
 #define ACE_FTP_SESSION_CPP
 
@@ -227,7 +225,7 @@ namespace ACE
                                   ACE_TEXT ("(%d) FTP_Session::send_request - ")
                                   ACE_TEXT ("reconnect failed\n"),
                                   ACE_OS::last_error ()));
-                return ACE::IOS::Null::out_stream_;
+                return false;
               }
           }
 

@@ -4,11 +4,8 @@
 /**
  *  @file    Magazine.h
  *
- *  $Id: Magazine.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  Abstract class whose methods are implemented by the derived
  *  classes.
- *
  *
  *  @author Kirthika Parameswaran <kirthika@cs.wustl.edu>
  */

@@ -1,5 +1,3 @@
-// $Id: SS_Service_Handler.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 #define ACE_BUILD_SVC_DLL
 
 #include "ace/Get_Opt.h"

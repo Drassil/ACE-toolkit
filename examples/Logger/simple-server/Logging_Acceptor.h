@@ -4,8 +4,6 @@
 /**
  *  @file    Logging_Acceptor.h
  *
- *  $Id: Logging_Acceptor.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Doug Schmidt
  */
 //=============================================================================

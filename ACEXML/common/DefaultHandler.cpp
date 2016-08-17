@@ -1,4 +1,4 @@
-// -*- C++ -*-  $Id: DefaultHandler.cpp 91257 2010-08-03 11:54:04Z johnnyw $
+// -*- C++ -*-
 
 #include "ACEXML/common/DefaultHandler.h"
 

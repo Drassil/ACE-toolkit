@@ -1,4 +1,3 @@
-# $Id: platform_integrity_ghs.GNU 91285 2010-08-05 08:29:30Z johnnyw $
 CROSS-COMPILE = 1
 
 debug ?= 1

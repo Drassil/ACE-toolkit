@@ -4,8 +4,6 @@
 /**
  *  @file    Jaws_IO.h
  *
- *  $Id: Jaws_IO.h 93652 2011-03-28 08:55:39Z johnnyw $
- *
  *  @author James Hu
  */
 //=============================================================================
@@ -111,7 +109,6 @@ protected:
  * @class JAWS_Synch_IO
  *
  * @brief This class defines the interface for a Synchronous I/O class.
- *
  */
 class JAWS_Export JAWS_Synch_IO : public JAWS_IO
 {
@@ -172,7 +169,6 @@ typedef ACE_Singleton<JAWS_Synch_IO, ACE_SYNCH_MUTEX>
  * @class JAWS_Asynch_IO
  *
  * @brief This class defines the interface for a Asynchronous I/O class.
- *
  */
 class JAWS_Export JAWS_Asynch_IO : public JAWS_IO
 {

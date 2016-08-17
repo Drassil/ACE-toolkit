@@ -1,4 +1,3 @@
-// $Id: yacc.mpb 1754 2010-04-24 23:41:07Z elliott_c $
 project {
   requires += yacc
   Define_Custom(YACC) {

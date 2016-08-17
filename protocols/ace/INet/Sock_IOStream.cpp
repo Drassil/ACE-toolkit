@@ -1,5 +1,3 @@
-// $Id: Sock_IOStream.cpp 90789 2010-06-23 10:30:53Z mcorino $
-
 #ifndef ACE_IOS_SOCK_IOSTREAM_CPP
 #define ACE_IOS_SOCK_IOSTREAM_CPP
 

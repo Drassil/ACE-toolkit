@@ -1,4 +1,3 @@
-/* $Id: getopt.c 81993 2008-06-16 20:26:16Z sowayaa $ */
 /* this is a public domain version of getopt */
 /* FTP Site: ftp.uu.net/pub/OS/unix/bsd-sources/lib/librpc/etc/getopt.c */
 

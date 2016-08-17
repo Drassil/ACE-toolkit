@@ -1,5 +1,3 @@
-// $Id: bounded_buffer.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This short program copies stdin to stdout via the use of an ASX
 // Message_Queue.  It illustrates an implementation of the classic
 // "bounded buffer" program.

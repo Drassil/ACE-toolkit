@@ -1,6 +1,4 @@
 // QoS_Signal_Handler.cpp
-// $Id: QoS_Signal_Handler.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Log_Msg.h"
 #include "QoS_Signal_Handler.h"
 

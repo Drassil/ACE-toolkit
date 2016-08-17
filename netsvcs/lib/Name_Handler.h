@@ -4,8 +4,6 @@
 /**
  *  @file    Name_Handler.h
  *
- *  $Id: Name_Handler.h 84498 2009-02-17 18:08:47Z johnnyw $
- *
  *  @author Prashant Jain
  *  @author Gerhard Lenzer
  *  @author and Douglas C. Schmidt

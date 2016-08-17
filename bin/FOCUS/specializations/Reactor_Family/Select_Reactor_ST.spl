@@ -7,7 +7,7 @@
  *   is a select reactor.
  *
  *   @author Arvind S. Krishna <arvindk@dre.vanderbilt.edu>
- *   $Id: Select_Reactor_ST.spl 80826 2008-03-04 14:51:23Z wotte $
+ *   $Id$
 -->
 
 <transform>

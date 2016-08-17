@@ -1,5 +1,3 @@
-// $Id: Cache_Manager_T.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #ifndef JAWS_CACHE_MANAGER_T_CPP
 #define JAWS_CACHE_MANAGER_T_CPP
 

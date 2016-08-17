@@ -1,5 +1,3 @@
-// $Id: broadcast_client_test.cpp 93539 2011-03-13 09:40:44Z vzykov $
-
 // Tests out the broadcast service of the
 // Internet domain IPC-SAP dgram abstraction.
 

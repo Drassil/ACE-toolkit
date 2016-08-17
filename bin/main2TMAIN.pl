@@ -2,7 +2,6 @@ eval '(exit $?0)' && eval 'exec perl -pi -S $0 ${1+"$@"}'
     & eval 'exec perl -pi -S $0 $argv:q'
     if 0;
 
-# $Id: main2TMAIN.pl 80826 2008-03-04 14:51:23Z wotte $
 #
 # You may want to run the "find" command with this script, which maybe
 # something like this:

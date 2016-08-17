@@ -1,5 +1,3 @@
-// $Id: server_loggerd.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This server daemon collects, formats, and displays logging
 // information forwarded from client daemons running on other hosts in
 // the network.
@@ -77,8 +75,5 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   return 0;
 }
 
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, ACE_Reactor, ACE_Null_Mutex);
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<ACE_Reactor, ACE_Null_Mutex> *
-  ACE_Singleton<ACE_Reactor, ACE_Null_Mutex>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */

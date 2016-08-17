@@ -1,5 +1,3 @@
-// $Id: Waiter.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Proactor.h"
 
 #include "JAWS/Waiter.h"

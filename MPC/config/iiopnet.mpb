@@ -1,5 +1,3 @@
-// $Id: iiopnet.mpb 1754 2010-04-24 23:41:07Z elliott_c $
-
 project {
   custom_only = 1
 

@@ -2,10 +2,7 @@
 /**
  *  @file  DSRT_Dispatch_Item_T.h
  *
- *  $Id: DSRT_Dispatch_Item_T.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Venkita Subramonian (venkita@cs.wustl.edu)
- *
  */
 
 #ifndef DSRT_DISPATCH_ITEM_H

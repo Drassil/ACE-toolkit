@@ -1,5 +1,3 @@
-// $Id: Event_Analyzer.cpp 93833 2011-04-09 17:53:42Z mcorino $
-
 #include "ace/OS_NS_string.h"
 #include "ace/Truncate.h"
 #include "Event_Analyzer.h"

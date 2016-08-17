@@ -1,5 +1,3 @@
-// $Id: Timer.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #ifndef JAWS_BUILD_DLL
 #define JAWS_BUILD_DLL
 #endif

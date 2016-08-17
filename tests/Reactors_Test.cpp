@@ -3,11 +3,8 @@
 /**
  *  @file    Reactors_Test.cpp
  *
- *  $Id: Reactors_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a test that performs a torture test of multiple
  *    <ACE_Reactors> and <ACE_Tasks> in the same process.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu>
  *  @author Detlef Becker <Detlef.Becker@med.siemens.de>

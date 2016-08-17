@@ -1,6 +1,5 @@
 
 // -*- C++ -*-
-// $Id: INet_Export.h 90416 2010-06-04 18:54:15Z mcorino $
 // Definition for Win32 Export directives.
 // This file is generated automatically by generate_export_file.pl ACE_INET
 // ------------------------------

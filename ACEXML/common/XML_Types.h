@@ -7,8 +7,6 @@
  * This file collects the type definitions for data types
  * used in ACE XML parser.
  *
- *  $Id: XML_Types.h 92580 2010-11-15 09:48:02Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================

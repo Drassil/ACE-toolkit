@@ -1,5 +1,3 @@
-// $Id: Sig_List.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // File: Sig_List.cpp
 
 // Author: Phil Mesnier

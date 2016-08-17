@@ -1,5 +1,3 @@
-// $Id: OS_NS_unistd.cpp 92712 2010-11-25 12:22:13Z johnnyw $
-
 #include "ace/OS_NS_unistd.h"
 
 #if !defined (ACE_HAS_INLINED_OSCALLS)
@@ -344,7 +342,7 @@ ACE_OS::fork_exec (ACE_TCHAR *argv[])
           if (ACE_OS::execv (argv[0], argv) == -1)
             {
               // The OS layer should not print stuff out
-              // ACE_ERROR ((LM_ERROR,
+              // ACELIB_ERROR ((LM_ERROR,
               //             "%p Exec failed\n"));
 
               // If the execv fails, this child needs to exit.
@@ -707,8 +705,11 @@ ACE_OS::pwrite (ACE_HANDLE handle,
   return (ssize_t) bytes_written;
 
 #   else /* ACE_WIN32 */
-
+#     if defined (ACE_HAS_NON_CONST_PWRITE)
+  return ::pwrite (handle, const_cast<void*> (buf), nbytes, offset);
+#     else
   return ::pwrite (handle, buf, nbytes, offset);
+#     endif
 #   endif /* ACE_WIN32 */
 # else /* ACE_HAS_P_READ_WRITE */
 

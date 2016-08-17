@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# $Id: g++_metric.sh 91813 2010-09-17 07:52:52Z johnnyw $
-#
 # This simple script is used to gather compile time metrics.  You can use
 # it with make like this:
 #

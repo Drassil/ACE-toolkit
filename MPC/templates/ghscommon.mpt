@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ghscommon.mpt 1060 2006-09-22 14:03:20Z elliott_c $
-
 conditional_include "common"
 conditional_include "unixcommon"
 

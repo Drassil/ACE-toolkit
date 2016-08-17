@@ -1,5 +1,3 @@
-// $Id: PM_Server.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "Rwho_DB_Manager.h"
 #include "PM_Server.h"

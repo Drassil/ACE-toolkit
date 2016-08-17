@@ -3,10 +3,7 @@
 /**
  *  @file     integer.cpp
  *
- *  $Id: integer.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  * Class implemtation for SMI Integer classes.
- *
  *
  *  @author Jeff MeyerMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

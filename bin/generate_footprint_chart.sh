@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# $Id: generate_footprint_chart.sh 84756 2009-03-09 07:08:59Z johnnyw $
-#
 
 gnuplot <<_EOF_ >/dev/null 2>&1
   set xdata time

@@ -1,7 +1,5 @@
 /* -*- C++ -*- */
 /*
-** $Id: HA_Proactive_Status.h 80826 2008-03-04 14:51:23Z wotte $
-**
 ** Example program from The ACE Programmer's Guide, Chapter 8.
 ** Copyright 2003 Addison-Wesley. All Rights Reserved.
 */

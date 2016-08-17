@@ -3,13 +3,10 @@
 /**
  *  @file    Simple_Message_Block_Test.cpp
  *
- *  $Id: Simple_Message_Block_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This test program is a torture test that illustrates how
  *    ACE_Message_Block reference counting works, how and when locks
  *    are used, how memory is managed, and how continuation chains
  *    of message blocks are made. Ideally used with purify :-)
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */

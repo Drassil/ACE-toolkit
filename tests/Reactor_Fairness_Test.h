@@ -3,13 +3,10 @@
 /**
  *  @file    Reactor_Fairness_Test.h
  *
- *  $Id: Reactor_Fairness_Test.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This file includes template class definitions for the
  *  Reactor_Fairness_Test.cpp program.  This class gets its own
  *  header file to work around AIX C++ compiler "features" related
  *  to template instantiation...
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */

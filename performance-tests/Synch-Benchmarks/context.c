@@ -1,5 +1,3 @@
-/* $Id: context.c 80826 2008-03-04 14:51:23Z wotte $ */
-
 /* FUZZ: disable check_for_improper_main_declaration */
 
 #include <stdio.h>

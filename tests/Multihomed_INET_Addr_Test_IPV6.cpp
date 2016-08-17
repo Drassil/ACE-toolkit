@@ -2,12 +2,9 @@
 /**
  *  @file    Multihomed_INET_Addr_Test_IPV6.cpp
  *
- *  $Id: Multihomed_INET_Addr_Test_IPV6.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   Performs several tests on the Multihomed_ACE_INET_Addr class.
  *   It creates several IPv6 addresses and checks that the
  *   address formed by the class is valid.
- *
  *
  *  @author Edward Mulholland (emulholl@atl.lmco.com) Brian Buesker (bbuesker@qualcomm.com) - Added testing of                                         ACE_Multihomed_INET_Addr class                                         using IPv6 addresses based on                                         Multihomed_INET_Addr_Test.
  */

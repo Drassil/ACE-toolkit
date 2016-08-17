@@ -1,6 +1,5 @@
 
 // -*- C++ -*-
-// $Id: Service_Config_Stream_DLL_Export.h 86267 2009-07-28 21:38:16Z shuston $
 // Definition for Win32 Export directives.
 // This file is generated automatically by generate_export_file.pl
 // ------------------------------

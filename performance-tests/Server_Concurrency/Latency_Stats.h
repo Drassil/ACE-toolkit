@@ -1,5 +1,3 @@
-// $Id: Latency_Stats.h 80826 2008-03-04 14:51:23Z wotte $
-
 class Latency_Stats
 {
 public:
@@ -35,12 +33,7 @@ inline void
 Latency_Stats::sample (ACE_hrtime_t sample)
 {
   this->sum_  += sample;
-#ifndef ACE_LACKS_LONGLONG_T
   this->sum2_ += sample * sample;
-#else
-  // possible loss of precision here due to lack of 64bit support
-  this->sum2_ += sample * sample.lo();
-#endif
   if (this->n_ == 0)
     {
       this->min_ = sample;
@@ -61,19 +54,15 @@ Latency_Stats::dump_results (const ACE_TCHAR *test_name,
     return;
 
   ACE_hrtime_t avg = this->sum_ / this->n_;
-#ifndef ACE_LACKS_LONGLONG_T
   ACE_hrtime_t dev =
     this->sum2_ / this->n_ - avg*avg;
-#else
-  ACE_hrtime_t dev =
-    this->sum2_ / this->n_ - avg.lo()*avg.lo();
-#endif
-  ACE_UINT32 gsf = ACE_High_Res_Timer::global_scale_factor ();
+  ACE_High_Res_Timer::global_scale_factor_type gsf =
+    ACE_High_Res_Timer::global_scale_factor ();
 
-  double min_usec = ACE_CU64_TO_CU32 (this->min_) / gsf;
-  double max_usec = ACE_CU64_TO_CU32 (this->max_) / gsf;
-  double avg_usec = ACE_CU64_TO_CU32 (avg) / gsf;
-  double dev_usec = ACE_CU64_TO_CU32 (dev) / (gsf * gsf);
+  ACE_UINT64 min_usec = this->min_ / gsf;
+  ACE_UINT64 max_usec = this->max_ / gsf;
+  ACE_UINT64 avg_usec = avg / gsf;
+  ACE_UINT64 dev_usec = dev / (gsf * gsf);
   ACE_DEBUG ((LM_DEBUG,
               "%s/%s: %.2f/%.2f/%.2f/%.2f (min/avg/max/var^2) [usecs]\n",
               test_name, sub_test,

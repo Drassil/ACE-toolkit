@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: makedll.mpt 1934 2010-11-12 12:40:22Z elliott_c $
-
 // ***********************************************************************
 // The default compiler for the 'make' project type is gcc (provided by
 // the fill_value() method in MakeProjectCreator.pm).  This can be
@@ -36,6 +34,7 @@ supports_include = 1
 visibility       =
 depgen_flags     =
 cc               = cc
+notparallel      = 1
 
 // ***********************************************************************
 // Configuration Section
@@ -356,6 +355,7 @@ cygwin {
   exe_ext    = .exe
   rc         = windres
   res_ext    = .o
+  pic        =
   depgen_flags = -t make
 }
 
@@ -370,6 +370,7 @@ mingw_msys {
   rc           = rc
   pic          =
   depgen_flags = -t make
+  gnumake = 1
 }
 
 // MinGW compiler with the built-in Windows shell and native make
@@ -396,6 +397,7 @@ mingw {
   depgen_flags = -t make
   echo_outer_quote =
   expanded_variable_assignment = 1
+  gnumake = 1
 }
 
 dmc_win {

@@ -3,8 +3,6 @@
 /**
  *  @file    process_manager.cpp
  *
- *  $Id: process_manager.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  * Test out the mechanisms provided by the ACE_Process_Manager.
  * Using the global ACE_Process_Manager::instance(), we first spawn
  * some processes (re-invoke this program, and plain-old-fork on
@@ -15,7 +13,6 @@
  * autoreap to clean up.
  *
  * Specific-pid and generic exit-handler functions are also tested.
- *
  *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu> and Dave Madden <dhm@mersenne.com>
  */

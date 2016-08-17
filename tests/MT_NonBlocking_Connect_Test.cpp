@@ -3,9 +3,6 @@
 /**
  *  @file    MT_NonBlocking_Connect_Test.cpp
  *
- *  $Id: MT_NonBlocking_Connect_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
- *
  *  This test makes non-blocking connects from multiple threads. Things are
  *  complicated by the fact that after the connection is attempted reactor's
  *  handle_events() is called and this leads to possible connection
@@ -13,7 +10,6 @@
  *  oneway with SYNC_NONE sync scope policy.
  *  The following reactors are tested: Select, TP, WFMO, and Dev Poll
  *  (if enabled).
- *
  *
  *  @author Vladimir Zykov <vladimir.zykov@prismtech.com>
  */

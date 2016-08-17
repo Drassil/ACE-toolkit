@@ -1,5 +1,3 @@
-// $Id: CPP-unclient.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // ACE_LSOCK Client.
 
 #include "ace/LSOCK_Connector.h"

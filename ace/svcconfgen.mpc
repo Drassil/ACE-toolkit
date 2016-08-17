@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: svcconfgen.mpc 89216 2010-02-25 07:39:30Z johnnyw $
-
 project(ace_svcconf_gen) {
   requires += ace_svcconf_gen
   verbatim(gnuace, local) {

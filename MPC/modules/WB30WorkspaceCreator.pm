@@ -22,10 +22,6 @@ use vars qw(@ISA);
 # Subroutine Section
 # ************************************************************
 
-sub get_id_for_comment {
-  return '$Id: WB30WorkspaceCreator.pm 1874 2010-08-05 17:01:36Z mitza $';
-}
-
 sub get_project_prefix {
   return 'wb_';
 }

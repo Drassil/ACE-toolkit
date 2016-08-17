@@ -1,4 +1,3 @@
-// $Id: Rwho_DB_Manager.cpp 81993 2008-06-16 20:26:16Z sowayaa $
 #include "global.h"
 #include "Options.h"
 #include "Rwho_DB_Manager.h"

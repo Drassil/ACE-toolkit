@@ -1,5 +1,3 @@
-// $Id: C-inserver.cpp 91685 2010-09-09 09:35:14Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_sys_socket.h"

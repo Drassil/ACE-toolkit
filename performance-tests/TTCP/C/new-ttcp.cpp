@@ -1,5 +1,3 @@
-// $Id: new-ttcp.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 /*
  *    T T C P . C
  *
@@ -724,7 +722,6 @@ prep_timer ()
 
 /*
  *                    R E A D _ T I M E R
- *
  */
 double
 read_timer (char *str, int len)

@@ -3,12 +3,9 @@
 /**
  *  @file    SString_Test.cpp
  *
- *  $Id: SString_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a simple test that illustrates the use of ACE_CString
  *    and ACE_WString. No command line arguments are needed to run
  *    the test.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu>
  */

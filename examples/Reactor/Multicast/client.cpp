@@ -1,5 +1,3 @@
-// $Id: client.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This program reads in messages from stdin and sends them to a
 // Log_Wrapper.
 

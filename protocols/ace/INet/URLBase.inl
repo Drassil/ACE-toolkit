@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: URLBase.inl 90757 2010-06-22 07:52:02Z mcorino $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 namespace ACE

@@ -1,5 +1,3 @@
-// $Id: thread_specific.cpp 92052 2010-09-27 14:20:22Z vzykov $
-
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/OS_main.h"

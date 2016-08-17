@@ -2,7 +2,7 @@
 /**
   *  @file   server.cpp
   *
-  *  $Id: server.cpp 80826 2008-03-04 14:51:23Z wotte $
+  *
   *
   *  @author Craig Rodrigues <crodrigu@bbn.com>
   *  @brief  Start a server which listens for UDP packets on a specified port.

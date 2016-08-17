@@ -1,5 +1,3 @@
-// $Id: DSRT_Dispatch_Item_T.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #ifndef DSRT_DISPATCH_ITEM_T_CPP
 #define DSRT_DISPATCH_ITEM_T_CPP
 

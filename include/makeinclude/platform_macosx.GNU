@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_macosx.GNU 93965 2011-04-21 08:16:30Z johnnyw $
 
 # support for Mac OS X 10.2 (jaguar), 10.3 (panther)
 # Note: /sw/lib & /sw/include are inserted for the convience of Fink

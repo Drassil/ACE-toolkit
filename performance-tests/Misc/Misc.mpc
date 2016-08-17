@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Misc.mpc 91695 2010-09-09 13:04:16Z johnnyw $
-
 project(*basic_perf) : aceexe {
   avoids += ace_for_tao
   exename = basic_perf

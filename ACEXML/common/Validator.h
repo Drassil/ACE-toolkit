@@ -4,8 +4,6 @@
 /**
  *  @file    Validator.h
  *
- *  $Id: Validator.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -23,7 +21,7 @@
 #include "ACEXML/common/SAXExceptions.h"
 
 /**
- * @class ACEXML_Validator Validator.h "common/Validator.h"
+ * @class ACEXML_Validator
  *
  * @brief An abstract virtual class defining validator interface.
  *

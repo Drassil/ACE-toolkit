@@ -21,6 +21,9 @@ use TemplateParser;
 use FeatureParser;
 use CommandHelper;
 
+use Data::Dumper;
+#use Tie::IxHash;
+
 use vars qw(@ISA);
 @ISA = qw(Creator);
 
@@ -189,7 +192,7 @@ my $cppresource = 'resource_files';
 
 ## Valid component names within a project along with the valid file extensions
 my %cppvc = ('source_files'        => [ "\\.cpp", "\\.cxx", "\\.cc", "\\.c", "\\.C", ],
-             'template_files'      => [ "_T\\.cpp", "_T\\.cxx", "_T\\.cc", "_T\\.c", "_T\\.C", "_t\\.cpp", "_t\\.cxx", "_t\\.cc", "_t\\.c", "_t\\.C" ],
+             'template_files'      => [ "_T\\.cpp", "_T\\.cxx", "_T\\.cc", "_T\\.c", "_T\\.C", "_t\\.cpp", "_t\\.cxx", "_t\\.cc", "_t\\.c", "_t\\.C", "\\.tpp" ],
              'header_files'        => [ "\\.h", "\\.hpp", "\\.hxx", "\\.hh", ],
              'inline_files'        => [ "\\.i", "\\.ipp", "\\.inl", ],
              'documentation_files' => [ "README", "readme", "\\.doc", "\\.txt", "\\.html" ],
@@ -225,6 +228,10 @@ my %csvc = ('source_files'        => [ "\\.cs" ],
             'ico_files'           => [ "\\.ico" ],
             'documentation_files' => [ "README", "readme", "\\.doc", "\\.txt", "\\.html" ],
             'embedded_resource_files' => [],
+            'resource_files'      => [],
+            'page_files'          => [],
+            'appdef_files'        => [],
+            'splash_files'        => [],
            );
 
 my %csma = ('source_files' => [ 'dependent_upon',
@@ -298,7 +305,7 @@ my %mains;
 # ************************************************************
 
 sub new {
-  my($class, $global, $inc, $template, $ti, $dynamic, $static, $relative, $addtemp, $addproj, $progress, $toplevel, $baseprojs, $gfeature, $relative_f, $feature, $features, $hierarchy, $exclude, $makeco, $nmod, $applypj, $genins, $into, $language, $use_env, $expandvars, $gendot, $comments, $foreclipse) = @_;
+  my($class, $global, $inc, $template, $ti, $dynamic, $static, $relative, $addtemp, $addproj, $progress, $toplevel, $baseprojs, $gfeature, $relative_f, $feature, $features, $hierarchy, $exclude, $makeco, $nmod, $applypj, $genins, $into, $language, $use_env, $expandvars, $gendot, $comments, $foreclipse, $pid) = @_;
   my $self = $class->SUPER::new($global, $inc,
                                 $template, $ti, $dynamic, $static,
                                 $relative, $addtemp, $addproj,
@@ -349,6 +356,9 @@ sub new {
 
   $self->add_default_matching_assignments();
   $self->reset_generating_types();
+
+  $self->{'pid'} = $pid;
+  $self->{'llctr'} = 0; # counts the hash insertion order for mp-mpc
 
   return $self;
 }
@@ -463,7 +473,14 @@ sub process_assignment {
       ## added.  This function will be called for each one, so we only
       ## need to handle one at a time.
       if ($value =~ s/(\s*([^:]+)):([^\s]+)/$1/) {
-        $self->{'dependency_attributes'}->{$2} = $3;
+        ## The value may contain multiple projects.  But, only one
+        ## dependency attribute will be present at any time.  So, once we
+        ## get here, we need to remove any of the other projects from the
+        ## front of the key string.
+        my $key = $2;
+        my $value = $3;
+        $key =~ s/.*\s+//;
+        $self->{'dependency_attributes'}->{$key} = $value;
       }
 
       ## Check the after value and warn the user in the event that it
@@ -871,8 +888,16 @@ sub parse_line {
                   elsif (index($cwd, $start) == 0) {
                     $amount = length($start) + 1;
                   }
-                  $self->{'lib_locations'}->{$val} =
+                  if ($self->{'pid'} eq 'child') {
+                    $self->{'lib_locations'}->{$val} =
+                      ++$self->{'llctr'} . '|' .
                       substr($cwd, $amount);
+                  }
+                  else {
+
+                    $self->{'lib_locations'}->{$val} =
+                      substr($cwd, $amount);
+                  }
                   last;
                 }
               }
@@ -1473,6 +1498,10 @@ sub parse_components {
     $$names{$name} = $comps;
   }
   $$comps{$current} = [] if (!defined $$comps{$current});
+
+  # preserve order
+  #tie %$names, "Tie::IxHash";
+  #tie %$comps, "Tie::IxHash";
 
   my $count = 0;
   while(<$fh>) {
@@ -2570,7 +2599,6 @@ sub add_generated_files {
 
   ## This method is called by list_default_generated.  It performs the
   ## actual file insertion and grouping.
-
   ## Get the generated filenames
   my @added;
   foreach my $file (keys %$arr) {
@@ -3319,6 +3347,8 @@ sub list_default_generated {
     if (defined $self->{$gentype}) {
       ## Build up the list of files
       my %arr;
+      #tie %arr, "Tie::IxHash"; # preserve insertion order.
+
       my $names = $self->{$gentype};
       my $group;
       foreach my $name (keys %$names) {
@@ -4658,7 +4688,7 @@ sub check_features {
 
   if ($info && !$status) {
     $self->details("Skipping " . $self->get_assignment('project_name') .
-                   " ($self->{'current_input'}), it $why.");
+                   " ($self->{'current_input'}); it $why.");
   }
 
   return $status;
@@ -4998,7 +5028,6 @@ sub write_project {
         if (!$status) {
           return $status, $error;
         }
-
         ## We don't need to pass a file name here.  write_output_file()
         ## will determine the file name for itself.
         ($status, $error) = $self->write_output_file($webapp);
@@ -5033,7 +5062,22 @@ sub get_project_info {
 
 
 sub get_lib_locations {
-  return $_[0]->{'lib_locations'};
+  if ($_[0]->{'pid'} eq 'child') {
+    my $lib_locs;
+    for my $k (sort { substr($a, 0 , index ($a, '|')) <=>
+                        substr ($b, 0, index ($b, '|')) } keys %{$_[0]->{'lib_locations'}}) {
+
+      # if we are a worker, we need to strip leading 'number|'
+      my $x = $_[0]->{'lib_locations'}->{$k};
+      $x =~ s/\d+\|//;
+
+      $lib_locs->{substr ($k, index ($k, '|') + 1)} = $x;
+    }
+    return $lib_locs
+  }
+  else {
+    return $_[0]->{'lib_locations'};
+  }
 }
 
 
@@ -5452,8 +5496,10 @@ sub project_file_name {
   ## Fill in the name if one wasn't provided
   $name = $self->get_assignment('project_name') if (!defined $name);
 
+  ## Apply the transformation so that any name modifiers are utilized.
   return $self->get_modified_project_file_name(
-                                     $self->project_file_prefix() . $name,
+                                     $self->project_file_prefix() .
+                                     $self->transform_file_name($name),
                                      $self->project_file_extension());
 }
 

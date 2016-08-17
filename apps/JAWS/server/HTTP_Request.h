@@ -4,8 +4,6 @@
 /**
  *  @file    HTTP_Request.h
  *
- *  $Id: HTTP_Request.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author James Hu
  */
 //=============================================================================
@@ -30,7 +28,6 @@ ACE_END_VERSIONED_NAMESPACE_DECL
  * @class HTTP_Request
  *
  * @brief This parses the client request of an HTTP transaction.
- *
  */
 class HTTP_Request
 {

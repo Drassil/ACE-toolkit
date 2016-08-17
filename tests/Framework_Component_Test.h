@@ -3,11 +3,8 @@
 /**
  *  @file    Framework_Component_Test.h
  *
- *  $Id: Framework_Component_Test.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Define class needed for generating templates. IBM C++ requires this to
  *  be in its own file for auto template instantiation.
- *
  *
  *  @author Don Hinton <dhinton@ieee.org>
  */

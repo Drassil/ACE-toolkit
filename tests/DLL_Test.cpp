@@ -3,10 +3,7 @@
 /**
  *  @file    DLL_Test.cpp
  *
- *  $Id: DLL_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test illustrates the use of <ACE_DLL> wrapper class.
- *
  *
  *  @author Kirthika Parameswaran  <kirthika@cs.wustl.edu>
  */

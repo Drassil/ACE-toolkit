@@ -1,5 +1,3 @@
-// $Id: snmp_agent.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // This server daemon processes SNMPv1 requests over MIB II System group
 
 #include "snmp_agent.h"

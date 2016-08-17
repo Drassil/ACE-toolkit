@@ -1,5 +1,3 @@
-// $Id: Asynch_IO.cpp 85419 2009-05-22 10:52:11Z johnnyw $
-
 #ifndef JAWS_BUILD_DLL
 #define JAWS_BUILD_DLL
 #endif /*JAWS_BUILD_DLL*/

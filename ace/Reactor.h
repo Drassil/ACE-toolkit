@@ -4,8 +4,6 @@
 /**
  *  @file    Reactor.h
  *
- *  $Id: Reactor.h 93792 2011-04-07 11:48:50Z mcorino $
- *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */
@@ -178,18 +176,23 @@ public:
 
   // These methods work with an instance of a reactor.
   /**
-   * Run the event loop until the
-   * ACE_Reactor::handle_events()/ACE_Reactor::alertable_handle_events()
-   * method returns -1 or the end_reactor_event_loop() method is invoked.
+   * Run the event loop until the ACE_Reactor::handle_events() or
+   * ACE_Reactor::alertable_handle_events() method returns -1 or
+   * the end_reactor_event_loop() method is invoked.
    */
   int run_reactor_event_loop (REACTOR_EVENT_HOOK = 0);
   int run_alertable_reactor_event_loop (REACTOR_EVENT_HOOK = 0);
 
   /**
    * Run the event loop until the ACE_Reactor::handle_events() or
-   * <ACE_Reactor::alertable_handle_events> methods returns -1, the
+   * ACE_Reactor::alertable_handle_events() method returns -1, the
    * end_reactor_event_loop() method is invoked, or the ACE_Time_Value
-   * expires.
+   * expires while the underlying event demultiplexer is waiting for
+   * events.
+   * Note that it is possible for events to continuously be available,
+   * avoiding the need to wait for events. In this situation the timeout
+   * value will not have an opportunity to expire until the next time
+   * the underlying event demultiplexer waits for events.
    */
   int run_reactor_event_loop (ACE_Time_Value &tv,
                               REACTOR_EVENT_HOOK = 0);
@@ -457,15 +460,12 @@ public:
    * Install the new disposition (if given) and return the previous
    * disposition (if desired by the caller).
    *
-   * Note that, unlike removing handler for I/O events,
-   * ACE_Event_Handler::handle_close() will not be called when the
-   * handler is removed. Neither will any reference-counting activity be
-   * involved.
-   *
-   * @note There's an existing enhancement request in Bugzilla,
-   * #2368, to change this behavior so that ACE_Event_Handler::handle_close()
-   * is called when the signal handler is removed. Thus, there's some chance
-   * this behavior will change in a future version of ACE.
+   * Note that the registered handler's ACE_Event_Handler::handle_close ()
+   * callback will be called to indicate the signal handler has been removed.
+   * Unlike with I/O handles, there is no way to prevent this callback. The
+   * handle_close() callback can check the passed mask for the value
+   * ACE_Event_Handler::SIGNAL_MASK to tell when the callback is the result
+   * of a signal handler removal.
    */
   int remove_handler (int signum,
                       ACE_Sig_Action *new_disp,
@@ -622,6 +622,9 @@ public:
    * number of timers associated with the event handler.
    * ACE_Event_Handler::remove_reference() will also be called once
    * for every timer associated with the event handler.
+   *
+   * In case this operation is called with a nil event_handler
+   * it returns with 0 as the number of handlers cancelled.
    *
    * Returns number of handlers cancelled.
    */

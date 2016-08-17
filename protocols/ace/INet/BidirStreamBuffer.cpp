@@ -1,5 +1,3 @@
-// $Id: BidirStreamBuffer.cpp 90789 2010-06-23 10:30:53Z mcorino $
-
 #ifndef ACE_IOS_BIDIR_STREAM_BUFFER_CPP
 #define ACE_IOS_BIDIR_STREAM_BUFFER_CPP
 

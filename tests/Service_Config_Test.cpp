@@ -4,8 +4,6 @@
 /**
  *  @file    Service_Config_Test.cpp
  *
- *  $Id: Service_Config_Test.cpp 93550 2011-03-15 21:26:56Z olli $
- *
  *  This is a simple test to make sure the ACE Service Configurator
  *  framework is working correctly.
  *
@@ -175,7 +173,10 @@ testFailedServiceInit (int, ACE_TCHAR *[])
 void
 testLoadingServiceConfFileAndProcessNo (int argc, ACE_TCHAR *argv[])
 {
+  u_int error0 = error;
   ACE_ARGV new_argv;
+
+  ACE_DEBUG ((LM_DEBUG, ACE_TEXT("Starting testLoadingServiceConfFileAndProcessNo\n")));
 
 #if defined (ACE_USES_WCHAR)
   // When using full Unicode support, use the version of the Service
@@ -204,6 +205,23 @@ testLoadingServiceConfFileAndProcessNo (int argc, ACE_TCHAR *argv[])
     ACE_TEXT (ACE_DEFAULT_SVC_CONF_EXT);
 #endif  /* ACE_USES_WCHAR */
 
+  ACE_TCHAR pid_file_name [MAXPATHLEN];
+#if defined (TEST_DIR)
+  ACE_OS::strcpy (pid_file_name, TEST_DIR);
+  ACE_OS::strcat (pid_file_name, ACE_DIRECTORY_SEPARATOR_STR);
+  ACE_OS::strcat (pid_file_name, ACE_TEXT ("Service_Config_Test.pid"));
+#else
+  ACE_OS::strcpy (pid_file_name, ACE_TEXT ("Service_Config_Test.pid"));
+#endif
+  ACE_TCHAR svc_conf_file_name [MAXPATHLEN];
+#if defined (TEST_DIR)
+  ACE_OS::strcpy (svc_conf_file_name, TEST_DIR);
+  ACE_OS::strcat (svc_conf_file_name, ACE_DIRECTORY_SEPARATOR_STR);
+  ACE_OS::strcat (svc_conf_file_name, svc_conf);
+#else
+  ACE_OS::strcpy (svc_conf_file_name, svc_conf);
+#endif
+
   // Process the Service Configurator directives in this test's Making
   // sure we have more than one option with an argument, to capture
   // any errors caused by "reshuffling" of the options.
@@ -212,9 +230,9 @@ testLoadingServiceConfFileAndProcessNo (int argc, ACE_TCHAR *argv[])
               || new_argv.add (ACE_TEXT ("-k")) == -1
               || new_argv.add (ACE_TEXT ("xxx")) == -1
               || new_argv.add (ACE_TEXT ("-p")) == -1
-              || new_argv.add (ACE_TEXT ("Service_Config_Test.pid")) == -1
+              || new_argv.add (pid_file_name) == -1
               || new_argv.add (ACE_TEXT ("-f")) == -1
-              || new_argv.add (svc_conf) == -1)
+              || new_argv.add (svc_conf_file_name) == -1)
     {
       ACE_ERROR ((LM_ERROR,
                   ACE_TEXT ("line %l %p\n"),
@@ -225,6 +243,8 @@ testLoadingServiceConfFileAndProcessNo (int argc, ACE_TCHAR *argv[])
   // We need this scope to make sure that the destructor for the
   // <ACE_Service_Config> gets called.
   ACE_Service_Config daemon;
+
+  ACE_DEBUG ((LM_DEBUG, ACE_TEXT("Starting daemon using %s\n"), new_argv.buf ()));
 
   if (daemon.open (new_argv.argc (), new_argv.argv ()) == -1 &&
       errno != ENOENT)
@@ -247,6 +267,11 @@ testLoadingServiceConfFileAndProcessNo (int argc, ACE_TCHAR *argv[])
 
   // Wait for all threads to complete.
   ACE_Thread_Manager::instance ()->wait ();
+
+  if (error == error0)
+    ACE_DEBUG ((LM_DEBUG, ACE_TEXT("testLoadingServiceConfFileAndProcessNo completed successfully\n")));
+  else
+    ACE_ERROR ((LM_ERROR, ACE_TEXT("testLoadingServiceConfFileAndProcessNo test failed\n")));
 }
 
 
@@ -456,7 +481,6 @@ testLimits (int , ACE_TCHAR *[])
     ACE_DEBUG ((LM_DEBUG, ACE_TEXT("Limits test completed successfully\n")));
   else
     ACE_DEBUG ((LM_DEBUG, ACE_TEXT("Limits test failed\n")));
-
 }
 
 void
@@ -658,6 +682,7 @@ testNonACEThread ()
   if (thr_h == 0)
     {
       ACE_ERROR ((LM_ERROR, ACE_TEXT ("%p\n"), ACE_TEXT ("_beginthreadex")));
+      ++error;
     }
   else
     {
@@ -671,6 +696,7 @@ testNonACEThread ()
     {
       errno = status;
       ACE_ERROR ((LM_ERROR, ACE_TEXT ("%p\n"), ACE_TEXT ("pthread_create")));
+      ++error;
     }
   else
     {
@@ -680,10 +706,12 @@ testNonACEThread ()
 
   if (error != errors_before)  // The test failed; see if we can still see it
     {
-      if (0 != ACE_Service_Config::instance()->find
-          (ACE_TEXT ("Test_Object_1_Thr")))
-        ACE_ERROR ((LM_ERROR,
-                    ACE_TEXT ("Main thr %t cannot find Test_Object_1_Thr\n")));
+      if (0 != ACE_Service_Config::instance()->find (ACE_TEXT ("Test_Object_1_Thr")))
+        {
+          ACE_ERROR ((LM_ERROR,
+                      ACE_TEXT ("Main thr %t cannot find Test_Object_1_Thr\n")));
+          ++error;
+        }
       else
         ACE_DEBUG ((LM_DEBUG,
                     ACE_TEXT ("Main thr %t DOES find Test_Object_1_Thr\n")));
@@ -695,9 +723,11 @@ testNonACEThread ()
                   ACE_TEXT ("%p\n"),
                   ACE_TEXT ("Error removing service")));
       ++error;
-      return;
     }
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Non-ACE thread lookup test completed\n")));
+  else
+    {
+      ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Non-ACE thread lookup test completed\n")));
+    }
 }
 #endif /* ACE_HAS_WTHREADS || ACE_HAS_PTHREADS */
 
@@ -714,7 +744,16 @@ run_main (int argc, ACE_TCHAR *argv[])
   testLimits (argc, argv);
   testrepository (argc, argv);
 #if defined (ACE_HAS_WTHREADS) || defined (ACE_HAS_PTHREADS)
-  testNonACEThread();
+  unsigned int n_threads = 64;
+#if defined (ACE_DEFAULT_THREAD_KEYS)
+  n_threads = 2 * ACE_DEFAULT_THREAD_KEYS;
+#endif
+  // Test with a large amount of threads to determine whether
+  // TSS works correctly with non ACE threads
+  for (unsigned int i = 0 ; i < n_threads; i++)
+    {
+      testNonACEThread();
+    }
 #endif
 
   ACE_END_TEST;

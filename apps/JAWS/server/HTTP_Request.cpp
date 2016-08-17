@@ -1,5 +1,3 @@
-// $Id: HTTP_Request.cpp 93535 2011-03-11 16:31:22Z olli $
-
 #include "ace/Message_Block.h"
 #include "HTTP_Request.h"
 #include "HTTP_Helpers.h"

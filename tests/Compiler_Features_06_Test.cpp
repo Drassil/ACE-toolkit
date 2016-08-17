@@ -1,5 +1,3 @@
-// $Id: Compiler_Features_06_Test.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 /**
  * @file
  *
@@ -10,7 +8,6 @@
  * in:
  *
  *   http://bugzilla.dre.vanderbilt.edu/show_bug.cgi?id=3715
- *
  */
 
 #include "test_config.h"
@@ -22,8 +19,6 @@
 // We are going to use std::greater<>, the spec requires us to include this
 // header.  Only a few platforms enforce this though...
 #include <functional>
-
-
 
 int
 run_main (int, ACE_TCHAR *[])

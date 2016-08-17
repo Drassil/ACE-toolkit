@@ -4,7 +4,7 @@
 
    Copyright (C) 1998-2005 Gilles Vollant
 
-   $Id: miniunz.c 91813 2010-09-17 07:52:52Z johnnyw $
+
 */
 
 

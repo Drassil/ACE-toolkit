@@ -1,4 +1,4 @@
-<!-- $Id: bczar.html 94255 2011-06-23 07:26:04Z johnnyw $ -->
+<!--  -->
 <body>
   <html>
     <head>
@@ -31,9 +31,9 @@
           guy</a>
       knows most of the information. Ask him to help you out with known problems.
       <li>
-        Keep an eye on the <a href="http://www.dre.vanderbilt.edu/Stats">footprint and
+        Keep an eye on the <a href="http://atcdstats.theaceorb.nl/index.shtml">footprint and
           performance</a> stats. Any abnormal changes should be brought to the
-        attention of the developer resposible for it or to the <a href="mailto:devo-group@list.isis.vanderbilt.edu">
+        attention of the developer responsible for it or to the <a href="mailto:devo-group@list.isis.vanderbilt.edu">
           devo group</a>.
       <li>
       Keep the builds ticking. Any red on the "Last Finished" column in the
@@ -55,7 +55,7 @@
     </P>
     <P>
       The Build Czar is empowered to set up more builds on his own for his
-      convenience. This <a href="https://svn.dre.vanderbilt.edu/viewvc/autobuild/trunk/README?revision=HEAD">
+      convenience. This <a href="https://raw.githubusercontent.com/DOCGroup/autobuild/master/README">
         page </a>has a step by step instructions on how to do that.
     </P>
     <P>
@@ -63,8 +63,14 @@
       of the scoreboard.
     </P>
     <p>Pro-active involvement by the build czar is necessary. Being a pro-active
-      build czar requires monitoring the subversion archive carefully and responding
+      build czar requires monitoring the git repository carefully and responding
       quickly to suspected changes to keep the repo stays stable.</p>
+    <p>After an email from the Coverity scan project check the Coverity project and
+       check that there are no new errors reported. If so, contact the person who
+       introduced the error.</p>
+    <p>Check the daily test statistics email to determine any drop in test failures.
+       Do note that when there are a lot of compile errors the test results are really
+       unusable.</p>
     <hr>
     <h2>Recipe for Cutting a Beta/Minor Kit</h2>
     <P>
@@ -102,18 +108,29 @@
           Make sure your release system has all the needed tools. This can be achieved on Fedora
           using:
           <ul>
-            <li><code>yum install perl svn screen pysvn automake doxygen bzip2 tar gzip openssh graphviz zip</code></li>
+            <li><code>yum install perl svn screen pysvn automake doxygen bzip2 tar gzip openssh graphviz zip libtool GitPython</code></li>
             <li><code>yum update</code></li>
+          </ul>
+          or on OpenSuSE
+          <ul>
+            <li><code>zypper install perl screen python-pysvn automake doxygen bzip2 tar gzip openssh graphviz zip libtool python-gitpython</code></li>
+            <li><code>zypper update</code></li>
           </ul>
           If you want to perform a full build with qt support, than run:
           <ul>
-            <li><code>yum install perl svn screen pysvn automake doxygen bzip2 tar gzip openssh graphviz zip gcc-c++ boost-devel valgrind openssl-devel gcc qt4 fltk-devel bzip2-devel rsync openssl lzo-devel zziplib-devel acpid acpi nfs-utils java xerces-c xerces-c-devel mc qt qt-devel icecream ruby ruby-devel lksctp-tools-devel</code></li>
+            <li><code>yum install ntp rubygem-rmagick bison libxerces-c-devel psmisc yum-utils gdb unzip glibc-devel libasan bison redhat-lsb perl-Pod-Usage rubygems clang make patch libcgroup-devel ant setuptool system-config-network-tui system-config-firewall-tui lcov gnuplot java-1.7.0-openjdk git-svn perl svn screen pysvn automake doxygen bzip2 tar gzip openssh graphviz zip libtool gcc-c++ boost-devel valgrind openssl-devel gcc qt4 fltk-devel bzip2-devel rsync openssl lzo-devel zziplib-devel acpid acpi nfs-utils java xerces-c xerces-c-devel mc qt qt-devel icecream ruby ruby-devel lksctp-tools-devel git telnet GitPython NetworkManager wget mailx</code></li>
           </ul>
+          For some optional i686 packages run
+          <ul>
+            <li><code>yum install openssl-devel.i686 xerces-c-devel.i686 glibc-devel.i686 glibc.i686 libstdc++.i686 ncurses-libs.i686 zlib.i686</code></li>
+          </ul>
+        </li>
+        <li>
+          Setup your ssh access to github according to the github <a href="https://help.github.com/articles/generating-ssh-keys/">ssh documentation</a>
         </li>
         <li>
           Checkout a new workspace on a Fedora system with the last public release and with
           all patches installed.
-
         </li>
         <ul>
           <li>
@@ -124,11 +141,9 @@
             Checkout like this:
             <ul>
               <li>
-                <code>svn co --username &lt;your user id&gt;
-                https://svn.dre.vanderbilt.edu/DOC/Middleware/trunk DOC_ROOT</code></li>
+                <code>git clone https://github.com/DOCGroup/ATCD.git ATCD</code></li>
               <li>
-                <code>svn co --username &lt;your user id&gt;
-                https://svn.dre.vanderbilt.edu/DOC/MPC/trunk DOC_ROOT/ACE/MPC</code></li>
+                <code>git clone https://github.com/DOCGroup/ATCD.git MPC</code></li>
             </ul>
         </ul>
         <li>
@@ -150,7 +165,7 @@
         </li>
         <li>
           Tag the release by executing<br>
-          <code>ACE/bin/make_release.py --beta --update --tag</code><br>
+          <code>ACE/bin/make_release.py --beta --update --tag --push</code><br>
           This will only take a couple minutes to complete and once done successfully,
           you can carry on with BOTH creating the kits and generating the doxygen
           documentation in parallel. NOTE that <code>--beta</code> should be replaced
@@ -161,7 +176,7 @@
         <br>
         In the <em>EXTREMELY</em> unlikely event that something goes wrong during the <em>
           tagging</em> of the repo, the following files must be returned to the state
-        they were in before the release process started and then checked back into SVN:<br>
+        they were in before the release process started and then checked back into git:<br>
         <ul>
           <code>
             <li>
@@ -195,9 +210,8 @@
     ACE+TAO+CIAO-X_Y_Z (where X is the ACE Major version number, and Y & Z are the
     Minor and Beta release numbers of the release that is to be restarted).<p>
       E.g.:<br>
-      <code>svn rm
-        https://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z<br />
-        svn rm https://svn.dre.vanderbilt.edu/DOC/MPC/tags/ACE+TAO+CIAO-X_Y_Z<br />
+      <code>cd ATCD && git tag -d ACE+TAO+CIAO-X_Y_Z<br />
+        cd MPC && git tag -d ACE+TAO+CIAO-X_Y_Z<br />
       </code>
       <br>
       Note that this <em>only</em> needs to be done if the <em>tagging</em> fails. If
@@ -205,11 +219,11 @@
       <li>
         Create the kits by executing<br>
         <code>ACE/bin/make_release.py --kit</code><br>
-        This will take somewhere arround 2-4 hours to complete.
+        This will take somewhere around 2-4 hours to complete.
         <ul>
           <li>
             These commands only tags and creates the kits for the software itself, not
-            documentation, this can be started in parrellel with this activity.
+            documentation, this can be started in parallel with this activity.
           </li>
           <li>
             The kits end up in <tt>$DOC_ROOT/packages</tt></li>
@@ -220,16 +234,19 @@
     <p><code>$ ssh ..<br>
         No default printer<br>
         screen<br>
-        cd /tmp<br>
+        cd $HOME<br>
         rm -rf DOC_ROOT<br>
         mkdir DOC_ROOT<br>
-        export DOC_ROOT=$PWD/DOC_ROOT<br>
+        cd DOC_ROOT<br>
+        export DOC_ROOT=$PWD<br>
         export SIGNATURE="Johnny Willemsen"<br>
         export MAILID=jwillemsen@remedy.nl<br>
-        svn co --username johnnyw https://svn.dre.vanderbilt.edu/DOC/Middleware/trunk DOC_ROOT<br>
-        svn co --username johnnyw https://svn.dre.vanderbilt.edu/DOC/MPC/trunk DOC_ROOT/ACE/MPC<br>
-        cd DOC_ROOT/<br>
-        ACE/bin/make_release.py --beta --update --tag<br>
+        git clone https://github.com/DOCGroup/ATCD.git ATCD<br>
+        git clone https://github.com/DOCGroup/MPC.git MPC<br>
+        cd ATCD<br>
+        ACE/bin/make_release.py --beta --update --verbose<br>
+        ACE/bin/make_release.py --beta --tag --verbose<br>
+        ACE/bin/make_release.py --beta --push --verbose<br>
         ACE/bin/make_release.py --kit<br>
       </code>
     <p>
@@ -246,7 +263,7 @@
       </code>
       <li>
         After the repository is tagged you can also start generating the doxygen
-        documentation in parrellel with the kit generation above.<br>
+        documentation in parallel with the kit generation above.<br>
         <ul>
           <li>
             Login to a release system you prepared with the same packages as above:<br>
@@ -271,20 +288,17 @@
             version number being released e.g. 5_6_7)
             <br>
             <code>svn co
-              svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/ACE
-              ACE_wrappers<br>
-              svn co svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/TAO
-              ACE_wrappers/TAO<br>
-              svn co svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/CIAO
-              ACE_wrappers/TAO/CIAO<br>
-              svn co svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/DAnCE
-              ACE_wrappers/TAO/DAnCE</code>
+              git clone https://github.com/DOCGroup/ATCD.git --depth 1 --branch ACE+TAO+CIAO-6_3_1 ATCD<br>
           </li>
-          <li>Change to the ACE_wrappers directory using <br>
-          cd ACE_wrappers</li>
+          <li>Change to the ATCD directory using <br>
+          cd ATCD</li>
           <li>
             Set the needed environment variables using<br>
-            <code>export ACE_ROOT=$PWD</code></li>
+            <code>export ACE_ROOT=$PWD/ACE</code><br>
+        <code>export TAO_ROOT=$PWD/TAO</code><br>
+        <code>export CIAO_ROOT=$PWD/CIAO</code><br>
+        <code>export DANCE_ROOT=$PWD/DAnCE</code><br>
+        <code>export DDS_ROOT=</code><br></li>
           <li>
             Check the doxygen version at the shell by executing the command:<br>
             <code>doxygen --version</code>
@@ -295,29 +309,26 @@
       </li>
       <li>
         <code>cd $ACE_ROOT</code><br>
-        <code>nohup $ACE_ROOT/bin/generate_rel_manpages &</code><br>
+        <code>$ACE_ROOT/bin/generate_rel_manpages</code><br>
         When this is ready copy the resulting files using<br>
         <code>scp ACE-html.tar.gz ACE-html.tar.bz2 ACE-html.zip ACE-html.tar.gz.md5 ACE-html.tar.bz2.md5 ACE-html.zip.md5 bczar@download.dre.vanderbilt.edu:/export/www/download.dre/ACE+TAO-distribution</code>
       </li></ul>
             <code>
         screen<br>
-        cd /tmp<br>
+        cd $HOME<br>
         rm -rf doxygen<br>
         mkdir doxygen<br>
         cd doxygen<br>
-        svn co
-              svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/ACE
-              ACE_wrappers<br>
-              svn co svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/TAO
-              ACE_wrappers/TAO<br>
-              svn co svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/CIAO
-              ACE_wrappers/TAO/CIAO<br>
-              svn co svn://svn.dre.vanderbilt.edu/DOC/Middleware/tags/ACE+TAO+CIAO-X_Y_Z/DAnCE
-              ACE_wrappers/TAO/DAnCE<br>
-        cd ACE_wrappers<br>
-        export ACE_ROOT=$PWD<br>
-        nohup $ACE_ROOT/bin/generate_rel_manpages &<br>
-        scp ACE-html.tar.gz ACE-html.tar.bz2 ACE-html.zip ACE-html.tar.gz.md5 ACE-html.tar.bz2.md5 ACE-html.zip.md5 bczar@download.dre.vanderbilt.edu:/export/www/download.dre/ACE+TAO-distribution
+        git clone https://github.com/DOCGroup/ATCD.git --depth 1 --branch ACE+TAO+CIAO-6_3_1 ATCD<br>
+        cd ATCD<br>
+        export ACE_ROOT=$PWD/ACE<br>
+        export TAO_ROOT=$PWD/TAO<br>
+        export CIAO_ROOT=$PWD/CIAO<br>
+        export DANCE_ROOT=$PWD/DAnCE<br>
+        export DDS_ROOT=<br>
+        cd ACE<br>
+        $ACE_ROOT/bin/generate_rel_manpages<br>
+        scp ACE-html.tar.gz ACE-html.tar.bz2 ACE-html.zip ACE-html.tar.gz.md5 ACE-html.tar.bz2.md5 ACE-html.zip.md5 bczar@download.dre.vanderbilt.edu:/export/www/download.dre/ACE+TAO-distribution<br>
  </code>
 <br>
       <li>
@@ -327,7 +338,7 @@
           <li>Get from bugzilla the bugs fixed. Use the following
               <a href="http://bugzilla.dre.vanderbilt.edu/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&product=ACE&product=CIAO&product=CoSMIC&product=MPC&product=OpenDDS&product=TAO&long_desc_type=allwordssubstr&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&emailassigned_to1=1&emailtype1=substring&email1=&emailreporter2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=2010-07-04&chfieldto=Now&chfield=resolution&chfieldvalue=FIXED&cmdtype=doit&order=Reuse+same+sort+as+last+time&field0-0-0=noop&type0-0-0=noop&value0-0-0=">query</a> as start query and update the start date.</li>
           <li>
-            Let <a href="mailto:schmidt@cs.wustl.edu">Doug Schmidt</a> review these before
+            Let <a href="mailto:d.schmidt@vanderbilt.edu">Doug Schmidt</a> review these before
             you do anything with them.</li></ul>
 
       <li>
@@ -422,7 +433,7 @@
         Update in the autobuild archive the file configs/scoreboard/releases.xml with
         the made release (version number and release date). This is used by the integrated scoreboard on http://scoreboard.theaceorb.nl  Remember to do a changelog entry.</li>
       <li>
-        Update the ACE_wrappers repo (remember to create a changelog entry, and possiably archive the old changelog to the changelog directory if this has become too long):<ul>
+        Update the ACE_wrappers repo (remember to create a changelog entry, and possibly archive the old changelog to the changelog directory if this has become too long):<ul>
         <li>docs/Download.html to show the new release. Make sure you refer to the
         previous_versions directory, that way we can exactly track how many people
         download a specific version.</li>
@@ -430,7 +441,7 @@
         etc/index.hml to show the new doxygen package you installed</li>
         <li>bin/diff-builds-and-group-fixed-tests-only.sh to give the correct default old_date for this release.</li></ul>
       <li>
-        Update the NEWS, TAO/NEWS, and TAO/CIAO/NEWS files to have a new section for the next release.</li>
+        Update the NEWS, TAO/NEWS, TAO/DAnCE/NEWS, and TAO/CIAO/NEWS files to have a new section for the next release.</li>
       <li>
         Update OpenSuSE Build service using
         <code>
@@ -475,10 +486,7 @@
       </li>
       <li>Compile once on Win32, Linux and Solaris before cutting a beta.</li>
       <li>Trust the release script when making a release. Don't make tar balls by
-      hand. Make sure that the public ftp directories
-      (/project/beguine/ftp/pub/ACE+TAO-distribution and
-      /project/beguine/ftp/pub/ACE+TAO-distribution/diffs) have the right
-      permissions, so that the release script can copy the tar balls.</li>
+      hand.</li>
       <li>When all hell breaks loose, don't wait for the nightly builds to monitor
       improvement. Instead manually start the builds.</li>
       <li>Maintain private up-to-date workspaces for problem platforms (read as
@@ -491,7 +499,7 @@
       <li>Install your public key to the different machines you have frequent access
       to avoid typing password.</li>
       <li>Update this page if you have any more tips for future build czars :-). This
-      page is in svn under <code>ACE_wrappres/docs/bczar/bczar.html</code></li>
+      page is in git under <code>ACE/docs/bczar/bczar.html</code></li>
     </p></ol>
     <hr>
     <Center>

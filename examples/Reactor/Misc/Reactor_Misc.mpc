@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Reactor_Misc.mpc 91371 2010-08-16 22:02:01Z mitza $
-
 project(*event_handler_t) : aceexe {
   exename = event_handler_t
   Source_Files {

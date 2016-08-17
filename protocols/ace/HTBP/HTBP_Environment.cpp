@@ -1,5 +1,3 @@
-// $Id: HTBP_Environment.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "HTBP_Environment.h"
 
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL

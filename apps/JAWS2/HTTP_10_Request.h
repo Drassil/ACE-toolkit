@@ -1,6 +1,4 @@
 // -*- c++ -*-
-// $Id: HTTP_10_Request.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_HTTP_10_REQUEST_H
 #define JAWS_HTTP_10_REQUEST_H
 

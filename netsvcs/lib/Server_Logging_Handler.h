@@ -4,8 +4,6 @@
 /**
  *  @file    Server_Logging_Handler.h
  *
- *  $Id: Server_Logging_Handler.h 84498 2009-02-17 18:08:47Z johnnyw $
- *
  *  @author Doug Schmidt and Per Andersson <Per.Andersson@hfera.ericsson.se>
  */
 //=============================================================================

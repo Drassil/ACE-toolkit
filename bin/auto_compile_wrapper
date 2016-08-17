@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id: auto_compile_wrapper 80826 2008-03-04 14:51:23Z wotte $
+# $Id$
 #
 # Usually cron setups a really miserable enviroment, this script
 # serves two purposes:

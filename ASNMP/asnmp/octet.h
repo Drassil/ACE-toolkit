@@ -6,12 +6,9 @@
 /**
  *  @file    octet.h
  *
- *  $Id: octet.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * This class is fully contained and does not rely on or any other
  * SNMP libraries. This class is portable across any platform
  * which supports C++.
- *
  *
  *  @author Peter E Mellquist  / design/original code Michael R. MacFaden / modified for ACE
  */

@@ -1,5 +1,3 @@
-// $Id: MIF.cpp 84565 2009-02-23 08:20:39Z johnnyw $
-
 #include "ace/ACE.h"
 #include "ace/Auto_Ptr.h"
 #include "ace/Task.h"

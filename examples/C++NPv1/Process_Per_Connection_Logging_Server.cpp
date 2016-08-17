@@ -1,6 +1,4 @@
 /*
-** $Id: Process_Per_Connection_Logging_Server.cpp 80826 2008-03-04 14:51:23Z wotte $
-**
 ** Copyright 2001 Addison Wesley. All Rights Reserved.
 */
 
@@ -146,15 +144,26 @@ Process_Per_Connection_Logging_Server::run_master (int argc, char *argv[])
 int
 Process_Per_Connection_Logging_Server::run_worker (int, char *argv[])
 {
-  intptr_t client_handle_i = ACE_OS::atoi (argv[2]);
-  // Some compilers don't like reinterpret_casting an int to an int, so
-  // only do reinterpret_cast on Windows.
+  // The handle value is passed as a hex pointer value on Windows and a
+  // decimal number everywhere else. See ace/Process.cpp for info.
 #if defined (ACE_WIN32)
+  intptr_t client_handle_i = 0;
+#  if defined (ACE_WIN64)
+  const char *fmt = "%I64x";
+#  else
+  const char *fmt = "%x";
+#  endif /* ACE_WIN64 */
+#  if defined (ACE_HAS_TR24731_2005_CRT)
+  if (::sscanf_s (argv[2], fmt, &client_handle_i) == 0)
+    return -1;
+#  else
+  if (::sscanf (argv[2], fmt, &client_handle_i) == 0)
+    return -1;
+#  endif /* ACE_HAS_TR24731_2005_CRT */
   ACE_HANDLE client_handle =
     reinterpret_cast<ACE_HANDLE> (client_handle_i);
 #else
-  ACE_HANDLE client_handle =
-    static_cast<ACE_HANDLE> (client_handle_i);
+  ACE_HANDLE client_handle = static_cast<ACE_HANDLE> (ACE_OS::atoi (argv[2]));
 #endif /* ACE_WIN32 */
   ACE_SOCK_Stream client (client_handle);
 

@@ -1,5 +1,3 @@
-// $Id: FD-unserver.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/LSOCK_Acceptor.h"
 #include "ace/LSOCK_Stream.h"
 #include "ace/UNIX_Addr.h"

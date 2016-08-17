@@ -1,7 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Developer Studio generated include file.
 // Used by Log_Msg_MFC.rc
-// $Id: Resource.h 91743 2010-09-13 18:24:51Z johnnyw $
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
 #define IDS_ABOUTBOX                    101

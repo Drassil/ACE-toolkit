@@ -2,12 +2,8 @@
 /**
  *  @file    Registry_Changes.cpp
  *
- *  $Id: Registry_Changes.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This application tests the working of Reactor when users are
  *  interested in monitoring changes in the registry.
- *
  *
  *  @author Irfan Pyarali
  */
@@ -126,7 +122,7 @@ ACE_TMAIN (int, ACE_TCHAR *[])
   Event_Handler handler (reactor);
 
   int result = ACE_OS::thr_create ((ACE_THR_FUNC) worker, &handler, 0, 0);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   for (result = 0; result != -1; result = reactor.handle_events ())
     continue;

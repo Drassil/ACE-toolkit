@@ -1,4 +1,4 @@
-// $Id: README 80826 2008-03-04 14:51:23Z wotte $
+
 
 This is a small example how to use process semaphores. We use it to
 synchronize between multiple processes and it was used to analyze

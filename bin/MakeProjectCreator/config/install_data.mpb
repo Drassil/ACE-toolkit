@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: install_data.mpb 90163 2010-05-18 21:42:20Z mitza $
-
 project {
   // With gnuace, when install_this_target = 1 (see install_bin or install_lib)
   // files listed as InstallData_Files { ... } will be installed to the "data"

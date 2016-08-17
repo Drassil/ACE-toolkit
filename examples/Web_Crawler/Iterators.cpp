@@ -1,10 +1,6 @@
-// $Id: Iterators.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Truncate.h"
 #include "Options.h"
 #include "Iterators.h"
-
-
 
 URL_Iterator::~URL_Iterator (void)
 {
@@ -32,7 +28,7 @@ HTML_Body_Iterator::next (ACE_CString &url)
   int href_index = 0;
 
   for (buf = this->url_.stream ().recv (len);
-       buf > 0;
+       buf != 0;
        buf = this->url_.stream ().recv (len))
     {
 

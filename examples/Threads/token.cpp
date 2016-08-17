@@ -1,5 +1,3 @@
-// $Id: token.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test out the ACE Token class.
 
 #include "ace/OS_main.h"

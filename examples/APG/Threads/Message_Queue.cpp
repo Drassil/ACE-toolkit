@@ -1,5 +1,3 @@
-// $Id: Message_Queue.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "ace/config-lite.h"
 #if defined (ACE_HAS_THREADS)
 

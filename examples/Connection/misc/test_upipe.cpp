@@ -1,5 +1,3 @@
-// $Id: test_upipe.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This short program illustrates in implementation of the classic
 // "bounded buffer" program using ACE_UPIPEs.  This program also shows
 // how the ACE_Connector and ACE_Acceptor patterns work when used with

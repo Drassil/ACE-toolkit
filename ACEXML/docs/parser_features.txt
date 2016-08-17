@@ -1,4 +1,4 @@
-/**  -*- HTML-Helper -*- $Id: parser_features.txt 80826 2008-03-04 14:51:23Z wotte $
+/**  -*- HTML-Helper -*-
 @defgroup acexml_parser_features Configurable Special Features of ACEXML Parser
 @{
 

@@ -32,7 +32,7 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 
-   $Id: unzip.h 80826 2008-03-04 14:51:23Z wotte $
+
 
 */
 

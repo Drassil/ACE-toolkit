@@ -1,8 +1,4 @@
-// $Id: OS_NS_sys_socket.cpp 93822 2011-04-08 21:56:45Z mesnier_p $
-
 #include "ace/OS_NS_sys_socket.h"
-
-
 
 #if !defined (ACE_HAS_INLINED_OSCALLS)
 # include "ace/OS_NS_sys_socket.inl"

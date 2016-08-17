@@ -1,5 +1,3 @@
-// $Id: SM_Server.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "Options.h"
 #include "PMS_All.h"
 #include "PMS_Flo.h"

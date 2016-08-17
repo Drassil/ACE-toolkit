@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: openssl.mpb 1577 2009-05-07 15:44:53Z elliott_c $
-
 // openssl is a completely different feature than ssl.
 // Currently ssl uses openssl, and openssl is enabled by
 // default. If we ever add a new ssl library, then you

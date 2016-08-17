@@ -1,5 +1,3 @@
-// $Id: String_Base.cpp 93238 2011-02-01 14:30:38Z shuston $
-
 #ifndef ACE_STRING_BASE_CPP
 #define ACE_STRING_BASE_CPP
 

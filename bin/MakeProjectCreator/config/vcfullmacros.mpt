@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: vcfullmacros.mpt 85353 2009-05-15 14:03:25Z sowayaa $
-
 // ACE specific macros for nmake, vc6, and vc7
 
 Static MFC Release {

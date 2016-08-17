@@ -1,5 +1,3 @@
-// $Id: Hash_Bucket_T.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_HASH_BUCKET_T_CPP
 #define JAWS_HASH_BUCKET_T_CPP
 

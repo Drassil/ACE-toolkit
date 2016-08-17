@@ -6,7 +6,6 @@ eval '(exit $?0)' && eval 'exec perl -w -S $0 ${1+"$@"}'
 # ******************************************************************
 #      Author: Chad Elliott
 #        Date: 4/8/2004
-#         $Id: clone_build_tree.pl 1982 2011-02-02 14:05:37Z johnsonb $
 # Description: Clone a build tree into an alternate location.
 #              This script is a rewrite of create_ace_build.pl and
 #              does not restrict the user to place the build
@@ -37,6 +36,7 @@ my $exclude;
 my @foundFiles;
 my $verbose = 0;
 my $lbuildf = 0;
+my $lnonbuildf = 0;
 my $version = '1.16';
 
 eval 'symlink("", "");';
@@ -61,28 +61,30 @@ sub findCallback {
                  );
 
   if ($matches) {
-    $matches &&= (! -l $_                  &&
-                  ! ( -f $_ && /^core\z/s) &&
-                  ! /^.*\.rej\z/s          &&
-                  ! /^.*\.state\z/s        &&
-                  ! /^.*\.so\z/s           &&
-                  ! /^.*\.[oa]\z/s         &&
-                  ! /^.*\.dll\z/s          &&
-                  ! /^.*\.lib\z/s          &&
-                  ! /^.*\.obj\z/s          &&
-                  ! /^.*~\z/s              &&
-                  ! /^\.\z/s               &&
-                  ! /^\.#.*\z/s            &&
-                  ! /^.*\.ncb\z/s          &&
-                  ! /^.*\.opt\z/s          &&
-                  ! /^.*\.bak\z/s          &&
-                  ! /^.*\.suo\z/s          &&
-                  ! /^.*\.ilk\z/s          &&
-                  ! /^.*\.pdb\z/s          &&
-                  ! /^.*\.pch\z/s          &&
-                  ! /^.*\.log\z/s          &&
-                  ! ( -f $_ && /^.*\.d\z/s )
-                 );
+    if(!$lnonbuildf) {
+      $matches &&= (! -l $_                  &&
+                    ! ( -f $_ && /^core\z/s) &&
+                    ! /^.*\.rej\z/s          &&
+                    ! /^.*\.state\z/s        &&
+                    ! /^.*\.so\z/s           &&
+                    ! /^.*\.[oa]\z/s         &&
+                    ! /^.*\.dll\z/s          &&
+                    ! /^.*\.lib\z/s          &&
+                    ! /^.*\.obj\z/s          &&
+                    ! /^.*~\z/s              &&
+                    ! /^\.\z/s               &&
+                    ! /^\.#.*\z/s            &&
+                    ! /^.*\.ncb\z/s          &&
+                    ! /^.*\.opt\z/s          &&
+                    ! /^.*\.bak\z/s          &&
+                    ! /^.*\.suo\z/s          &&
+                    ! /^.*\.ilk\z/s          &&
+                    ! /^.*\.pdb\z/s          &&
+                    ! /^.*\.pch\z/s          &&
+                    ! /^.*\.log\z/s          &&
+                    ! ( -f $_ && /^.*\.d\z/s )
+                   );
+    }
 
     if ($matches) {
       if (!$lbuildf) {
@@ -108,6 +110,7 @@ sub findCallback {
                     ! /^.*\.bld\z/s        &&
                     ! /^.*\.icc\z/s        &&
                     ! /^.*\.icp\z/s        &&
+                    ! /^.*\.classpath\z/s  &&
                     ! /^.*\.project\z/s    &&
                     ! /^.*\.wrproject\z/s  &&
                     ! /^.*\.wrmakefile\z/s &&
@@ -424,7 +427,7 @@ sub usageAndExit {
                "Create a tree identical in layout to the current directory\n",
                "with the use of ", ($hasSymlink ? "symbolic links or " : ''),
                "hard links.\n\n",
-               "Usage: $base [-b <builddir>] [-d <dmode>] [-f] ",
+               "Usage: $base [-b <builddir>] [-d <dmode>] [-f] [-n]",
                ($hasSymlink ? "[-a] [-l] " : ''),
                "[-v]\n",
                $spc, "[build names...]\n\n",
@@ -435,6 +438,7 @@ sub usageAndExit {
                "<current directory>/build.\n",
                "-d  Set the directory permissions mode.\n",
                "-f  Link build files (Makefile, .dsw, .sln, .etc).\n",
+               "-n  Link non-build files normally avoided (.o,.so, etc.).\n",
                "-s  Set the start directory. It defaults to the ",
                "<current directory>.\n",
                "-v  Enable verbose mode.\n";
@@ -491,6 +495,9 @@ for(my $i = 0; $i <= $#ARGV; ++$i) {
   }
   elsif ($ARGV[$i] eq '-l') {
     $hardlink = 1;
+  }
+  elsif ($ARGV[$i] eq '-n') {
+    $lnonbuildf = 1;
   }
   elsif ($ARGV[$i] eq '-v') {
     $verbose = 1;

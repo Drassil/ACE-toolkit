@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: vc7libexe.mpt 1121 2007-01-06 00:10:13Z shuston $
-
 conditional_include "common"
 conditional_include "windowscommon"
 

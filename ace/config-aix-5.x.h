@@ -1,4 +1,3 @@
-// $Id: config-aix-5.x.h 93530 2011-03-11 12:12:40Z olli $
 //
 // Config file for AIX 5.1 and higher.
 
@@ -192,6 +191,8 @@
 #define ACE_HAS_SELECT_H
 
 #define ACE_HAS_REENTRANT_FUNCTIONS
+
+#define ACE_HAS_SIOCGIFCONF
 
 // Compiler/platform defines the sig_atomic_t typedef
 #define ACE_HAS_SIG_ATOMIC_T

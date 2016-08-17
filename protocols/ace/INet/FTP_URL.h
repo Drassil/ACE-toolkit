@@ -1,5 +1,3 @@
-// $Id: FTP_URL.h 91118 2010-07-17 10:29:57Z mcorino $
-
 /**
  * @file FTP_URL.h
  *

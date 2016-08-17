@@ -1,5 +1,3 @@
-// $Id: FILE.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "ace/Guard_T.h"
 
 #include "JAWS/FILE.h"

@@ -1,6 +1,4 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Retransmit.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "ace/Time_Value.h"     // ACE_Time_Value
 #include "ace/OS_NS_stdlib.h"   // abort
 #include "ace/OS_NS_sys_time.h" // gettimeofday

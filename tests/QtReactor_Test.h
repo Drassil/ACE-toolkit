@@ -1,5 +1,4 @@
 /* -*- C++ -*- */
-// $Id: QtReactor_Test.h 94078 2011-05-23 07:57:12Z mhengstmengel $
 #ifndef QTREACTOR_TEST_H
 #define QTREACTOR_TEST_H
 

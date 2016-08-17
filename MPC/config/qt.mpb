@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: qt.mpb 1754 2010-04-24 23:41:07Z elliott_c $
-
 project {
   requires += qt
   includes += $(QTDIR)/include

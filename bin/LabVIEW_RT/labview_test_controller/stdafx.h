@@ -1,4 +1,3 @@
-// $Id: stdafx.h 80826 2008-03-04 14:51:23Z wotte $
 // stdafx.h : include file for standard system include files, or
 // project specific include files that are used frequently, but are
 // changed infrequently

@@ -1,5 +1,3 @@
-// $Id: test_persistence.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 // Test the persistence capabilities of <ACE_Malloc> when configured
 // for mmap-based shared memory management.
 
@@ -9,6 +7,7 @@
 #include "ace/OS_NS_string.h"
 #include "ace/Malloc_T.h"
 #include "ace/MMAP_Memory_Pool.h"
+#include "ace/Lib_Find.h"
 
 // FUZZ: disable check_for_streams_include
 #include "ace/streams.h"

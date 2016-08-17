@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: Options_Manager.cpp 93539 2011-03-13 09:40:44Z vzykov $
-
 #include "ace/Get_Opt.h"
 #include "ace/os_include/netinet/os_in.h"
 #include "ace/os_include/sys/os_types.h"

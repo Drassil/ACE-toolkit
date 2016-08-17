@@ -1,5 +1,3 @@
-// $Id: test_time_value.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // FUZZ: disable check_for_streams_include
 #include "ace/streams.h"
 

@@ -4,8 +4,6 @@
 /**
  *  @file    Hash_Cache_Map_Manager_T.h
  *
- *  $Id: Hash_Cache_Map_Manager_T.h 93366 2011-02-11 19:30:35Z johnnyw $
- *
  *  @author Kirthika Parameswaran <kirthika@cs.wustl.edu>
  */
 //=============================================================================

@@ -4,8 +4,6 @@
 /**
  *  @file    QtReactor_Test.cpp
  *
- *  $Id: QtReactor_Test.cpp 94078 2011-05-23 07:57:12Z mhengstmengel $
- *
  *  Simple test of QtReactor. Test is intended to verify if QtReactor
  *  correctly cooperates with Qt event loop in typical application. Test
  *  creates a number of timers which send datagrams. These datagrams are
@@ -30,7 +28,6 @@
  *    HandlersRegister     - register of event_handlers, responsible also for
  *                           the analysis of test results.
  *
- *
  *  @author Marek Brudka <mbrudka@elka.pw.edu.pl>
  */
 //=============================================================================
@@ -46,6 +43,7 @@
 #include "ace/Time_Value.h"
 #include "ace/QtReactor/QtReactor.h"
 #include "ace/Event_Handler.h"
+#include "ace/Argv_Type_Converter.h"
 #include "ace/Acceptor.h"
 #include "ace/Connector.h"
 #include "ace/SOCK_Acceptor.h"
@@ -265,14 +263,12 @@ ACE_HANDLE DgramHandler::get_handle () const
   return peer_.get_handle ();
 }
 
-int DgramHandler::handle_input (ACE_HANDLE handle)
+int DgramHandler::handle_input (ACE_HANDLE)
 {
-  ACE_UNUSED_ARG (handle);
   int recvBuffer;
   ACE_INET_Addr peerAddress;
-  int result;
 
-  result = peer_.recv (&recvBuffer, sizeof (recvBuffer) , peerAddress);
+  int result = peer_.recv (&recvBuffer, sizeof (recvBuffer) , peerAddress);
 
   if (0 >= result)
     ACE_ERROR_RETURN ((LM_ERROR,
@@ -865,11 +861,8 @@ TCPAcceptorHandler::~TCPAcceptorHandler ()
   ACE_TRACE ("TCPAcceptorHandler::~TCPAcceptorHandler");
 }
 
-void testNativeReactor (int argc, ACE_TCHAR *argv[])
+void testNativeReactor (int, ACE_TCHAR *[])
 {
-  ACE_UNUSED_ARG (argc);
-  ACE_UNUSED_ARG (argv);
-
   ACE_DEBUG ((LM_INFO, ACE_TEXT ("Testing autotest using native reactor\n")));
 
   ACE_Reactor      reactor;
@@ -896,7 +889,9 @@ void testQtReactor (int argc, ACE_TCHAR *argv[])
   // Qt specific code
   ACE_DEBUG ((LM_INFO, ACE_TEXT ("Testing QtReactor\n")));
 
-  QTestApplication app (argc, argv);
+  ACE_Argv_Type_Converter ct (argc, argv);
+  QTestApplication app (argc, ct.get_ASCII_argv ());
+
   ACE_QtReactor    qtReactor (&app);
   ACE_Reactor      reactor (&qtReactor);
   HandlersRegister handlersRegister (&reactor);

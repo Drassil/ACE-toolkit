@@ -1,5 +1,3 @@
-// $Id: CPP-memclient.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This tests the features of the <ACE_MEM_Connector> and
 // <ACE_MEM_Stream> classes.  In addition, it can be used to test the
 // oneway and twoway latency and throughput at the socket-level.  This
@@ -14,9 +12,6 @@
 #include "ace/Get_Opt.h"
 #include "ace/High_Res_Timer.h"
 
-
-
-
 static int
 run_client (void)
 {
@@ -29,7 +24,7 @@ run_client (void)
                        ACE_TEXT ("connect")), -1);
 
   char buf [MAXPATHLEN];
-  while (ACE_OS::fgets (buf, MAXPATHLEN, stdin) >0)
+  while (ACE_OS::fgets (buf, MAXPATHLEN, stdin) != 0)
     {
       stream.send (buf, ACE_OS::strlen (buf)+1);
       stream.recv (buf, MAXPATHLEN);
@@ -39,9 +34,8 @@ run_client (void)
   return 0;
 }
 
-int ACE_TMAIN (int argc, ACE_TCHAR *argv[])
+int ACE_TMAIN (int, ACE_TCHAR *argv[])
 {
-  ACE_UNUSED_ARG(argc);
   // Initialize the logger.
   ACE_LOG_MSG->open (argv[0]);
 
@@ -50,4 +44,3 @@ int ACE_TMAIN (int argc, ACE_TCHAR *argv[])
 
   return 0;
 }
-

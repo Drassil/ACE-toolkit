@@ -1,6 +1,4 @@
 /*
-** $Id: Service_Reporter.h 91743 2010-09-13 18:24:51Z johnnyw $
-**
 ** Copyright 2002 Addison Wesley. All Rights Reserved.
 */
 

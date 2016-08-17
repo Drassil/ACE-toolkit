@@ -1,5 +1,3 @@
-// $Id: PMS_All.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "Options.h"
 #include "HT_Server.h"
 #include "PMS_All.h"

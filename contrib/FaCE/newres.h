@@ -1,5 +1,3 @@
-// $Id: newres.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 #ifndef __NEWRES_H__
 #define __NEWRES_H__
 

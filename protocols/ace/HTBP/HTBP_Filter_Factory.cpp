@@ -1,5 +1,3 @@
-// $Id: HTBP_Filter_Factory.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "HTBP_Filter_Factory.h"
 #include "HTBP_Inside_Squid_Filter.h"
 #include "HTBP_Outside_Squid_Filter.h"

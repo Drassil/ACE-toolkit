@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: ETCL_Interpreter.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Guard_T.h"
 #include "ace/Truncate.h"
 

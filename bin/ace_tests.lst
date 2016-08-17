@@ -1,4 +1,4 @@
-# $Id: ace_tests.lst 90206 2010-05-20 22:05:46Z mitza $
+# $Id$
 #
 # This is the list of run_test.pl's that need to be run by
 # auto_run_tests.pl.

@@ -4,8 +4,6 @@
 /**
  *  @file    Attributes_Def_Builder.h
  *
- *  $Id: Attributes_Def_Builder.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -24,7 +22,7 @@
 #include "ace/Auto_Ptr.h"
 
 /**
- * @class ACEXML_Attribute_Def_Builder Attributes_Def_Builder.h "common/Attributes_Def_Builder.h"
+ * @class ACEXML_Attribute_Def_Builder
  *
  * @brief An abstract virtual class defining an interface for building an
  *        attribute definition from DTD.

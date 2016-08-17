@@ -1,5 +1,3 @@
-// $Id: event_server.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 // Test the event server.
 
 #include "ace/OS_main.h"

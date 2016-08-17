@@ -1,4 +1,3 @@
-// $Id: Protocol.hpp 91626 2010-09-07 10:59:20Z johnnyw $
 // author    : Boris Kolpackov <boris@dre.vanderbilt.edu>
 
 #ifndef TMCAST_PROTOCOL_HPP

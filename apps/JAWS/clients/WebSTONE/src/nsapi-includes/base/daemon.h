@@ -1,6 +1,4 @@
 /*
- * $Id: daemon.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * Copyright (c) 1994, 1995.  Netscape Communications Corporation.  All
  * rights reserved.
  *
@@ -83,7 +81,7 @@ extern int child_serial;
  * log the daemon pid to (can be NULL). daemon_run never returns.
  *
  * child_callback is a function which will be called every time a new
- * connection is recieved. Session is a new session ID.
+ * connection is received. Session is a new session ID.
  *
  * rcback is a function which is a restart function: When SIGHUP is received,
  * this function will be called. You may give SIG_DFL if you don't want to

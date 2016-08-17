@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: Handle_L_Dgram.h 80826 2008-03-04 14:51:23Z wotte $
-
 // Handles UNIX datagram messages from local host.
 
 #ifndef _HANDLE_L_DGRAM_H

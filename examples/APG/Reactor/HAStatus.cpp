@@ -1,5 +1,3 @@
-// $Id: HAStatus.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "ace/OS_NS_sys_time.h"
 #include "ace/os_include/os_netdb.h"
 

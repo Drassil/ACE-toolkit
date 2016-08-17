@@ -1,6 +1,6 @@
 # -*- Makefile -*-
 #----------------------------------------------------------------------------
-#       $Id: rules.local.GNU 94058 2011-05-12 18:11:57Z shuston $
+#       
 #
 #       Local targets
 #       GNU version
@@ -268,8 +268,9 @@ ifndef LN_S
   endif # ! WIN32
 endif # ! LN_S
 
-# Don't call shell/call directly below since we may need to
-# add the architecture specific suffix to the directory
+# Don't call shell/call directly in the rule below, since we may need to
+# add the architecture specific suffix to the directory.  Using $(shell pwd)
+# instead of just $(PWD) is needed for Korn shell on Solaris.
 ifneq ($(use_pwd_call),1)
 ARCH_SOURCE_DIR := $(patsubst %/,%,$(shell pwd)/$(ARCH))
 else
@@ -311,13 +312,23 @@ else #not vxworks_ntbuild
 	fi
     else #firstword of LN_S is not cp, so we're using real symlinks
       ifneq ($(SOVERSION),)
-	@if test $(ARCH_SOURCE_DIR) != $(@D) ; then \
+       ifneq ($(versioned_so),2)
+	    @if test $(ARCH_SOURCE_DIR) != $(@D) ; then \
 		if test ! -s $@ ; then \
 			$(RM) $(@:%.$(SOEXT)$(SOVERSION)=%.$(SOEXT)); \
 			echo $(LN_S) $(ARCH_SOURCE_DIR)/$(@F) $(@:%.$(SOEXT)$(SOVERSION)=%.$(SOEXT)); \
 			$(LN_S) $(ARCH_SOURCE_DIR)/$(@F) $(@:%.$(SOEXT)$(SOVERSION)=%.$(SOEXT)); \
 		fi ; \
-	fi
+	    fi
+       else
+	    @if test $(ARCH_SOURCE_DIR) != $(@D) ; then \
+		if test ! -s $@ ; then \
+			$(RM) $(@:%$(SOVERSION).$(SOEXT)=%.$(SOEXT)); \
+			echo $(LN_S) $(ARCH_SOURCE_DIR)/$(@F) $(@:%$(SOVERSION).$(SOEXT)=%.$(SOEXT)); \
+			$(LN_S) $(ARCH_SOURCE_DIR)/$(@F) $(@:%$(SOVERSION).$(SOEXT)=%.$(SOEXT)); \
+		fi ; \
+	    fi
+        endif #versioned_so
       endif #SOVERSION
 	@if test $(ARCH_SOURCE_DIR) != $(@D) ; then \
 		if test ! -s $@ ; then \
@@ -350,6 +361,10 @@ ifneq ($(SHLIB_UNCHECKED),)
 	-$(RM) $(SHLIB_UNCHECKED)
 ifeq ($(versioned_so),1)
 	-$(RM) $(SHLIB_UNCHECKED)$(SOVERSION)
+else 
+	ifeq ($(versioned_so),2)
+		-$(RM) $(SHLIB_UNCHECKED:.$(SOEXT)=$(SOVERSION).$(SOEXT))
+	endif
 endif
 endif
 
@@ -412,6 +427,7 @@ endif # DO_CLEANUP
 
 MAKEFILE ?= GNUmakefile
 DEPENDENCY_FILE ?= $(MAKEFILE)
+IDL_DEPENDENCY_FILES ?= $(MAKEFILE)
 
 TAO_ROOT ?= $(ACE_ROOT)/TAO
 
@@ -447,9 +463,21 @@ ifeq ($(lacks_touch),1)
 else
 	touch $(DEPENDENCY_FILE)
 endif
-depend.local: $(DEPENDENCY_FILE)
+depend_idl.local depend.local: $(DEPENDENCY_FILE)
 -include $(DEPENDENCY_FILE)
 endif
+
+ifneq ($(MAKEFILE),$(IDL_DEPENDENCY_FILES))
+$(IDL_DEPENDENCY_FILES):
+ifeq ($(lacks_touch),1)
+	copy NUL $@
+else
+	touch $@
+endif
+depend_idl.local: $(IDL_DEPENDENCY_FILES)
+-include $(IDL_DEPENDENCY_FILES)
+endif
+
 
 ifdef COMSPEC
   DEPGEN ?= perl $(ACE_ROOT)/bin/depgen.pl
@@ -467,12 +495,13 @@ ifeq ($(findstring depgen.pl, $(notdir $(DEPGEN))), depgen.pl)
   endif
 endif
 
+depend_idl.local: $(MAKEFILE) idl_stubs.local incremental_depend_idl
 
 depend.local: $(MAKEFILE) idl_stubs.local
 	@$(RM) $(DEPENDENCY_FILE).old
 	@cp $(DEPENDENCY_FILE) $(DEPENDENCY_FILE).old
 	$(DEPGEN_ENV) $(DEPGEN) -A $(DEPEND_CMD_ARGS) -f $(DEPENDENCY_FILE) \
-	$(CPPFLAGS) -t gnu -DMAKEDEPEND $(CCFLAGS) $(LSRC) $(SRC) $(PSRC)
+	$(CPPFLAGS) -t gnu -DMAKEDEPEND $(CCFLAGS) $(LSRC) $(SRC) $(PSRC) 
 	@if cmp -s $(DEPENDENCY_FILE) $(DEPENDENCY_FILE).old ;\
 	then echo "GNUmakefile dependencies unchanged." ;\
 	else \
@@ -488,6 +517,13 @@ IDL_FILES ?=
 IDL_CLIENT_HDR_EXT ?=
 
 idl_stubs.local: $(foreach file, $(IDL_FILES), $(file)$(IDL_CLIENT_HDR_EXT))
+
+#----------------------------------------------------------------------------
+#       no-op idl dependency :: Makefiles append to this rule if there
+#       are idl dependencies.
+#----------------------------------------------------------------------------
+
+incremental_depend_idl:: ;
 
 #----------------------------------------------------------------------------
 #       Variant targets and conditional macros

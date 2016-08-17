@@ -3,11 +3,8 @@
 /**
  *  @file    Manual_Event_Test.cpp
  *
- *  $Id: Manual_Event_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test verifies the functionality of the <ACE_Manual_Event>
  *  implementation.
- *
  *
  *  @author Martin Corino <mcorino@remedy.nl>
  */
@@ -24,17 +21,6 @@
 #include "ace/OS_NS_unistd.h"
 #include "ace/Atomic_Op.h"
 
-
-
-// msec that times are allowed to differ before test fails.
-#if defined (ACE_HAS_HI_RES_TIMER) || defined (ACE_HAS_AIX_HI_RES_TIMER) || \
-    defined (ACE_HAS_PENTIUM) || defined (ACE_HAS_ALPHA_TIMER) || \
-    defined (ACE_HAS_POWERPC_TIMER)
-# define ACE_ALLOWED_SLACK 100
-#else  /* don't have a high-res timer */
-# define ACE_ALLOWED_SLACK 1100
-#endif /* don't have a high-res timer */
-
 // Test results, 'success' is 0
 static int test_result = 0;
 
@@ -48,13 +34,8 @@ static ACE_Manual_Event evt ((unsigned int) 0);
 static long n_workers = 10;
 
 // Number of wakeups.
-#if defined (ACE_HAS_BUILTIN_ATOMIC_OP)
-static ACE_Atomic_Op<ACE_Thread_Mutex, long>   n_awoken;
-static ACE_Atomic_Op<ACE_Thread_Mutex, long>   n_awoken2;
-#else
-static long                                    n_awoken;
-static long                                    n_awoken2;
-#endif
+static ACE_Atomic_Op<ACE_SYNCH_MUTEX, long>   n_awoken;
+static ACE_Atomic_Op<ACE_SYNCH_MUTEX, long>   n_awoken2;
 
 // Explain usage and exit.
 static void
@@ -144,7 +125,7 @@ worker (void *)
       if (evt.signal () == -1)
         ACE_ERROR ((LM_ERROR, ACE_TEXT (" (%P|%t) %p\n"), ACE_TEXT ("signal")));
 
-      ACE_OS::sleep (ACE_Time_Value (0, 200 * 1000 * 100));  // 200 msec
+      ACE_OS::sleep (ACE_Time_Value (0, 200 * 1000));  // 200 msec
     }
 
   if (evt.wait () == -1)

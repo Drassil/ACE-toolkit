@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: gperf.mpc 93117 2011-01-20 12:11:28Z mcorino $
-
 project(gperf) : aceexe, install, crosscompile {
   install = $(ACE_ROOT)/bin
   exename = ace_gperf

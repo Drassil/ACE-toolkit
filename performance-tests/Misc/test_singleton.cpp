@@ -1,5 +1,3 @@
-// $Id: test_singleton.cpp 92386 2010-10-28 07:44:37Z johnnyw $
-
 // This example illustrates the performance impact of using the
 // Double-Checked Locking pattern compared with using the "standard"
 // practice of acquiring and releasing a lock on every instance()
@@ -161,10 +159,7 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   return 0;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<DC_Singleton, ACE_SYNCH_MUTEX> *
-  ACE_Singleton<DC_Singleton, ACE_SYNCH_MUTEX>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, DC_Singleton, ACE_SYNCH_MUTEX);
 
 #else
 int

@@ -1,27 +1,22 @@
 #!/bin/sh
 #
-# $Id: topinfo_iorsize_stats.sh 91813 2010-09-17 07:52:52Z johnnyw $
-#
 
-if [ $# -lt 4 ]; then
-  echo "Usage: $0 [ROOT] [DEST] [USER] [OPTIMIZED]"
+if [ $# -lt 3 ]; then
+  echo "Usage: $0 [DEST] [USER] [OPTIMIZED]"
   exit 0
 fi
 
-ROOT=$1
-DEST=$2
-US=$3
-OPT=$4
+DEST=$1
+US=$2
+OPT=$3
 
 DATE=`date +%Y/%m/%d-%H:%M`
-cd $ROOT
-ACE_ROOT=$ROOT
-export ACE_ROOT
+cd $ACE_ROOT
 LD_LIBRARY_PATH=$ACE_ROOT/ace
 export LD_LIBRARY_PATH
 PATH=/usr/bin:/bin:$PATH
 export PATH
-cd TAO/performance-tests/Memory/IORsize
+cd $TAO_ROOT/performance-tests/Memory/IORsize
 
 # start the server. If OPT == 1 then start the optimized version, else
 # the non-optimized version
@@ -74,5 +69,5 @@ FILES="server_opt opt server actual"
 for i in $FILES ; do
 /usr/bin/tac ${i}_ior_size.txt > $DEST/data/${i}_ior_size.txt
 /usr/bin/tail -5 ${i}_ior_size.txt > $DEST/data/LAST_${i}_ior_size.txt
-$ROOT/bin/generate_topinfo_charts.sh ${i}_ior_size.txt $DEST/images/${i}_ior_size.png ${i}_ior_size.txt
+$ACE_ROOT/bin/generate_topinfo_charts.sh ${i}_ior_size.txt $DEST/images/${i}_ior_size.png ${i}_ior_size.txt
 done

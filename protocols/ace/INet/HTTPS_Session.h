@@ -1,5 +1,3 @@
-// $Id: HTTPS_Session.h 91122 2010-07-19 08:50:12Z mcorino $
-
 /**
  * @file HTTPS_Session.h
  *

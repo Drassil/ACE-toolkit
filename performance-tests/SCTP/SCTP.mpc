@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: SCTP.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(*SOCK_STREAM_clt) : aceexe {
   avoids += ace_for_tao
   exename = SOCK_STREAM_clt

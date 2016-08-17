@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Performance_Test_Options.inl 80826 2008-03-04 14:51:23Z wotte $
-
 /* Option manager for ustreams */
 
 #include "ace/Get_Opt.h"

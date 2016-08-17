@@ -1,5 +1,3 @@
-// $Id: SSL_CertificateCallback.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #include "ace/INet/SSL_CertificateCallback.h"
 
 #if !defined (__ACE_INLINE__)

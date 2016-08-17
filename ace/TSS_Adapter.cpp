@@ -1,8 +1,6 @@
 /**
  * @file TSS_Adapter.cpp
  *
- * $Id: TSS_Adapter.cpp 93792 2011-04-07 11:48:50Z mcorino $
- *
  * Originally in Synch.cpp
  *
  * @author Douglas C. Schmidt <schmidt@cs.wustl.edu>

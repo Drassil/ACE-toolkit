@@ -5,10 +5,7 @@
 /**
  *  @file    transaction_result.h
  *
- *  $Id: transaction_result.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  An object respresenting a request/reply operation between mgr/agent
- *
  *
  *  @author Michael R. MacFaden
  */

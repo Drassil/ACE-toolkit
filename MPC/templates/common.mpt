@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: common.mpt 1050 2006-08-31 23:19:39Z elliott_c $
-
 // This file contains assignments that are common to all templates
 
 pch_defines += USING_PCH

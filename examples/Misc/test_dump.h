@@ -1,5 +1,3 @@
-// $Id: test_dump.h 92052 2010-09-27 14:20:22Z vzykov $
-
 // Define the classes used with templates in test_dump.cpp
 
 #ifndef __TEST_DUMP_H

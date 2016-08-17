@@ -1,4 +1,3 @@
-// $Id: wxbase.mpb 1934 2010-11-12 12:40:22Z elliott_c $
 project {
   // wxWindows specific variables used by this and other wxWindows related
   // base projects.  You must always set WXWINDOWS_ROOT to the full path of

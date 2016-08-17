@@ -1,4 +1,3 @@
-# $Id: platform_macosx_snowleopard.GNU 93569 2011-03-17 05:00:25Z wotte $
 
 ifeq ($(buildbits),32)
   FLAGS_C_CC += -m32

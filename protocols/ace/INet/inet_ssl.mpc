@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: inet_ssl.mpc 91425 2010-08-23 11:59:32Z mcorino $
-
 project(INet_SSL) : acelib, ace_output, install, inet, ssl {
   sharedname   = ACE_INet_SSL
   dynamicflags += ACE_INET_SSL_BUILD_DLL
@@ -25,4 +23,9 @@ project(INet_SSL) : acelib, ace_output, install, inet, ssl {
   specific {
     install_dir = ace/INet
   }
+
+  Pkgconfig_Files {
+    ACE_INet_SSL.pc.in
+  }
+
 }

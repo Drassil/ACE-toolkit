@@ -1,7 +1,5 @@
 #!/pkg/gnu/bin//perl
 #
-#$Id: wscollect.pl 91813 2010-09-17 07:52:52Z johnnyw $
-#
 # $Header$
 # updated version of the old wscollect script which goes through
 # webstone run directories and summarizes the output in tabular

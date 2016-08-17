@@ -1,6 +1,4 @@
 /*
- * $Id: AcceptHandler.cpp 85359 2009-05-18 06:12:45Z johnnyw $
- *
  * ACE reactor demonstration
  *
  * Date: 26-Jan-2006

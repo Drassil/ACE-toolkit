@@ -1,5 +1,3 @@
-// $Id: Start_Hook.cpp 84565 2009-02-23 08:20:39Z johnnyw $
-
 #include "ace/Thread_Hook.h"
 #include "ace/Task.h"
 #include "ace/Log_Msg.h"

@@ -1,5 +1,3 @@
-// $Id: Activate.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 // Listing 1 code/ch12
 #include "ace/Task.h"
 #include "ace/OS_NS_unistd.h"

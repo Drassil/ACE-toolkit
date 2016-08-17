@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: Handle_L_FIFO.h 80826 2008-03-04 14:51:23Z wotte $
-
 /* Handle connections from local UNIX ACE_FIFO */
 /* Read from a well known ACE_FIFO and write to stdout. */
 

@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_lynxos.GNU 93592 2011-03-19 14:59:29Z olli $
 
 # LynxOS with g++.  Defaults to LynxOS Version 4.0.0.  For Version 4.2.0,
 # for example, add "VERSION=4.2.0" to your make invocation.
@@ -27,7 +26,7 @@ threads ?= 1
 
 ifeq ($(threads),1)
   FLAGS_C_CC += -mthreads
-  SOFLAGS += -mthreads
+  LDFLAGS += -mthreads -L/usr/lib/thread
 endif
 
 ifeq ($(rpc),1)
@@ -37,15 +36,11 @@ endif
 ifeq ($(shared_libs),1)
   CPPFLAGS   += -DACE_HAS_SVR4_DYNAMIC_LINKING
   FLAGS_C_CC += -mshared
-  SOFLAGS    += -mshared
+  LDFLAGS    += -mshared
   LIBS       += -ldl
   ifeq ($(CROSS-COMPILE),1)
     LDFLAGS  += -Wl,-rpath-link,$(ACE_ROOT)/lib
   endif
-endif
-
-ifeq (5.0.0,$(VERSION))
-  LIBS    += -lnetinet
 endif
 
 CC              = gcc
@@ -58,6 +53,7 @@ DCFLAGS         += -g
 DCCFLAGS        += $(DCFLAGS)
 DLD             = $(CXX)
 LD              = $(CXX)
+LIBS            += -lbsd
 OCFLAGS         += -O2
 OCCFLAGS        = $(OCFLAGS)
 PIC             = -fPIC

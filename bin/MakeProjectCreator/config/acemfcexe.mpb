@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: acemfcexe.mpb 93167 2011-01-25 15:34:29Z shuston $
-
 project: aceexe, ace_mfc {
   specific(vc8, vc9, vc10) {
     common_defines -= _CONSOLE

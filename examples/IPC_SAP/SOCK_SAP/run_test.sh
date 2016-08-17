@@ -1,5 +1,4 @@
 #! /bin/sh
-# $Id: run_test.sh 91813 2010-09-17 07:52:52Z johnnyw $
 #
 # Spawns CPP-inserver-fancy and CPP-inclient executables on a single host.
 

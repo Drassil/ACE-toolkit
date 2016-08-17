@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: g++dep 80826 2008-03-04 14:51:23Z wotte $
+# $Id$
 
 # This utility is a lightly editted version of the freed Berkeley
 # script `mkdep'.  The current script is intended to work for GNU G++.

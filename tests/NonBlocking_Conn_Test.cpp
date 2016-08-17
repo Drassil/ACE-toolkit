@@ -3,15 +3,12 @@
 /**
  *  @file    NonBlocking_Conn_Test.cpp
  *
- *  $Id: NonBlocking_Conn_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test checks for the proper working of the following:
  *  - blocking connections
  *  - blocking connections with timeouts
  *  - non-blocking connections
  *  - non-blocking connections without waiting for completions
  *  - non-blocking connections with timeouts
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */

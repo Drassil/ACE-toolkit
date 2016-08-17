@@ -1,4 +1,3 @@
-// $Id: Protocol.h 92900 2010-12-17 14:45:11Z mcorino $
 // author    : Boris Kolpackov <boris@kolpackov.net>
 
 #ifndef ACE_RMCAST_PROTOCOL_H

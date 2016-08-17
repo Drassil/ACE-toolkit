@@ -1,5 +1,3 @@
-// $Id: resource.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 //{{NO_DEPENDENCIES}}
 // Microsoft Developer Studio generated include file.
 // Used by FaCE.rc

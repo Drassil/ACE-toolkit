@@ -1,5 +1,3 @@
-// $Id: test_sock_connector.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/SOCK_Connector.h"
 #include "ace/INET_Addr.h"
 #include "ace/Reactor.h"

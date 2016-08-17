@@ -1,4 +1,4 @@
-// -*- C++ -*- $Id: SAXExceptions.inl 91265 2010-08-03 16:50:54Z johnnyw $
+// -*- C++ -*-
 
 ACEXML_INLINE const ACEXML_Char *
 ACEXML_SAXException::message (void) const

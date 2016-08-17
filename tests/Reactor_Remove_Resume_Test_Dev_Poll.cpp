@@ -1,8 +1,6 @@
 /**
  * @file  Reactor_Remove_Resume_Test_Dev_Poll.cpp
  *
- * $Id: Reactor_Remove_Resume_Test_Dev_Poll.cpp 84565 2009-02-23 08:20:39Z johnnyw $
- *
  * This test verifies that ACE reactors only remove or resume the event
  * handler used during an upcall, not another with same handle value.
  * There is are least one case where the event handler can change

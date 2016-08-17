@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Handle_R_Stream.inl 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "ace/WFMO_Reactor.h"
 #include "ace/OS_NS_stdio.h"
@@ -12,8 +10,16 @@
 ACE_INLINE
 Handle_R_Stream::Handle_R_Stream (void)
 {
-  if (Handle_R_Stream::login_name == 0)
+  if (Handle_R_Stream::login_name == 0) {
+#if !defined(ACE_LACKS_CUSERID)
     Handle_R_Stream::login_name = ACE_OS::cuserid (Handle_R_Stream::login);
+#else
+    Handle_R_Stream::login[0] = '.';
+    Handle_R_Stream::login[1] = '\0';
+    Handle_R_Stream::login_name = Handle_R_Stream::login;
+#endif
+  }
+
 }
 
 ACE_INLINE int

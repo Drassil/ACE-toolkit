@@ -1,4 +1,3 @@
-// $Id: ACE.mwc 86476 2009-08-13 03:27:23Z elliott_c $
 workspace {
   exclude(automake) {
     build

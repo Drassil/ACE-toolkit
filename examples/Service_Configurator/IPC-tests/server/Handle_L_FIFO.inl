@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Handle_L_FIFO.inl 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "ace/Truncate.h"
 #include "ace/OS_NS_stdio.h"

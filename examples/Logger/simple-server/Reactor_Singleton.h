@@ -5,8 +5,6 @@
 /**
  *  @file    Reactor_Singleton.h
  *
- *  $Id: Reactor_Singleton.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Doug Schmidt
  */
 //=============================================================================

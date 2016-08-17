@@ -1,5 +1,3 @@
-// $Id: Task.cpp 84565 2009-02-23 08:20:39Z johnnyw $
-
 #include "ace/OS_NS_sys_time.h"
 
 // Listing 1 code/ch20
@@ -19,7 +17,7 @@ public:
   virtual int handle_timeout (const ACE_Time_Value &,
                               const void *arg)
   {
-    ACE_TRACE (ACE_TEXT ("CB::handle_timeout"));
+    ACE_TRACE ("CB::handle_timeout");
 
     const int *val = static_cast<const int*> (arg);
     ACE_ASSERT((*val) == id_);

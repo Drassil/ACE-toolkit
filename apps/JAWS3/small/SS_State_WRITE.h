@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: SS_State_WRITE.h 91730 2010-09-13 09:31:11Z johnnyw $
-
 #ifndef TERA_SS_STATE_WRITE_H
 #define TERA_SS_STATE_WRITE_H
 

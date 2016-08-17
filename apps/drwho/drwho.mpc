@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: drwho.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(*-client) : aceexe {
   requires += rwho
   avoids += uses_wchar ace_for_tao

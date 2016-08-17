@@ -1,5 +1,3 @@
-// $Id: SOCK_STREAM_clt.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/INET_Addr.h"
 #include "ace/SOCK_Stream.h"
 #include "ace/SOCK_Connector.h"
@@ -37,7 +35,8 @@ extern "C" {
 // global constants
 ACE_CDR::UShort const primerIterations = 100;
 // ace/High_Res_Timer.h describes the need for the following.
-ACE_UINT32 const microsec_clock_scale_factor = ACE_High_Res_Timer::global_scale_factor();
+ACE_High_Res_Timer::global_scale_factor_type const microsec_clock_scale_factor =
+  ACE_High_Res_Timer::global_scale_factor();
 
 // forward declations of functions. Bodies follow main() to improve
 // file readability.

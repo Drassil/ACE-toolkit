@@ -1,10 +1,8 @@
-// $Id: PTimerDispatcher.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "PTimerDispatcher.h"
 
 void PTimer_Dispatcher::wait_for_event (void)
 {
-  ACE_TRACE (ACE_TEXT ("PTimer_Dispatcher::wait_for_event"));
+  ACE_TRACE ("PTimer_Dispatcher::wait_for_event");
 
   while (1)
     {
@@ -33,7 +31,7 @@ PTimer_Dispatcher::schedule (PCB *cb,
                              const ACE_Time_Value &abs_time,
                              const ACE_Time_Value &interval)
 {
-  ACE_TRACE (ACE_TEXT ("PTimer_Dispatcher::schedule_timer"));
+  ACE_TRACE ("PTimer_Dispatcher::schedule_timer");
 
   return this->timer_queue_->schedule
     (cb, arg, abs_time, interval);
@@ -43,13 +41,13 @@ int
 PTimer_Dispatcher::cancel (PCB *cb,
                            int dont_call_handle_close)
 {
-  ACE_TRACE (ACE_TEXT ("PTimer_Dispatcher::cancel"));
+  ACE_TRACE ("PTimer_Dispatcher::cancel");
   return timer_queue_->cancel (cb, dont_call_handle_close);
 }
 
 void PTimer_Dispatcher::set (PTimerQueue *timer_queue)
 {
-  ACE_TRACE (ACE_TEXT ("PTimer_Dispatcher::set"));
+  ACE_TRACE ("PTimer_Dispatcher::set");
 
   timer_queue_ = timer_queue;
 }
@@ -58,12 +56,9 @@ int
 PTimer_Dispatcher::reset_interval (long timer_id,
                                    const ACE_Time_Value &interval)
 {
-  ACE_TRACE (ACE_TEXT ("PTimer_Dispatcher::reset_interval"));
+  ACE_TRACE ("PTimer_Dispatcher::reset_interval");
 
   return timer_queue_->reset_interval (timer_id, interval);
 }
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, PTimer_Dispatcher, ACE_Null_Mutex);
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<PTimer_Dispatcher, ACE_Null_Mutex> *
-      ACE_Singleton<PTimer_Dispatcher, ACE_Null_Mutex>::singleton_;
-# endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */

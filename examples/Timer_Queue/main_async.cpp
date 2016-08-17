@@ -3,12 +3,9 @@
 /**
  *  @file    main_async.cpp
  *
- *  $Id: main_async.cpp 91673 2010-09-08 18:49:47Z johnnyw $
- *
  *    Implements an asynchronous timer queue.
  *    This code exercises the Timer_Queue_Test_Driver class using
  *    signals as an asynchronous mechanism to dispatch events.
- *
  *
  *  @author Douglas Schmidt      <schmidt@cs.wustl.edu> && Sergio Flores-Gaitan <sergio@cs.wustl.edu>
  */

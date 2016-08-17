@@ -4,8 +4,6 @@
 /**
  *  @file    Server_Logging_Handler_T.h
  *
- *  $Id: Server_Logging_Handler_T.h 84378 2009-02-10 18:27:54Z johnnyw $
- *
  *  @author Doug Schmidt and Per Andersson
  */
 //=============================================================================

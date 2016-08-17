@@ -3,11 +3,8 @@
 /**
  *  @file    CDR_File_Test.cpp
  *
- *  $Id: CDR_File_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Checks the functionality of the ACE CDR streams used for file
  *  I/O.
- *
  *
  *  @author Giga Giguashvili <gregoryg@ParadigmGeo.com> and Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */

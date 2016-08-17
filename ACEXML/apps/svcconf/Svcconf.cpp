@@ -1,5 +1,3 @@
-// $Id: Svcconf.cpp 91334 2010-08-10 17:23:35Z johnnyw $
-
 
 #include "Svcconf.h"
 #include "ACEXML/common/FileCharStream.h"

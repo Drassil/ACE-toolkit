@@ -1,5 +1,3 @@
-// $Id: Compiler_Features_10_Test.cpp 94094 2011-05-26 11:09:11Z msmit $
-
 /**
  * @file
  *
@@ -9,7 +7,6 @@
  * mailing list, and the documentation was captured in:
  *
  *   http://bugzilla.dre.vanderbilt.edu/show_bug.cgi?id=3715
- *
  */
 
 #include "test_config.h"

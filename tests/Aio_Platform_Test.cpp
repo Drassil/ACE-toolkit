@@ -9,8 +9,6 @@
  *  $ACE_ROOT/examples/Reactor/Proactor can be used to test the
  *  features further.
  *
- *  $Id: Aio_Platform_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  @author Programming for the Real World. Bill O. GallMeister.  Modified by Alexander Babu Arulanthu <alex@cs.wustl.edu>
  */
 //=============================================================================

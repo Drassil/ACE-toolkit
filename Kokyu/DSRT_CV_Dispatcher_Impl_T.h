@@ -2,10 +2,7 @@
 /**
  *  @file  DSRT_CV_Dispatcher_Impl_T.h
  *
- *  $Id: DSRT_CV_Dispatcher_Impl_T.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Venkita Subramonian (venkita@cs.wustl.edu)
- *
  */
 
 #ifndef DSRT_CV_DISPATCHER_IMPL_T_H

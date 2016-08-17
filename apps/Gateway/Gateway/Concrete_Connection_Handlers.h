@@ -4,11 +4,8 @@
 /**
  *  @file    Concrete_Connection_Handlers.h
  *
- *  $Id: Concrete_Connection_Handlers.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  These are all the subclasses of Connection_Handler that define the
  *  appropriate threaded/reactive Consumer/Supplier behavior.
- *
  *
  *  @author Doug Schmidt <schmidt@cs.wustl.edu>
  */

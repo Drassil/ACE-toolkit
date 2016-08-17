@@ -4,8 +4,6 @@
 /**
  *  @file    Locator.h
  *
- *  $Id: Locator.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -18,7 +16,7 @@
 #include "ACEXML/common/XML_Types.h"
 
 /**
- * @class ACEXML_Locator Locator.h "ACEXML/common/Locator.h"
+ * @class ACEXML_Locator
  *
  * @brief ACEXML_Locator defines operations that an XML locator should support.
  *

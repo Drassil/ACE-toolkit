@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Jaws_IO.h 85419 2009-05-22 10:52:11Z johnnyw $
-
 #ifndef JAWS_IO_H
 #define JAWS_IO_H
 

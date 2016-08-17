@@ -1,5 +1,3 @@
-// $Id: Nodelocal.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Naming_Context.h"
 #include "Temperature_Monitor.h"
 #include "Temperature_Monitor_Options.h"

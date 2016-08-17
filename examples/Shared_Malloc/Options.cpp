@@ -1,5 +1,3 @@
-// $Id: Options.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "Options.h"
 #include "ace/Log_Msg.h"

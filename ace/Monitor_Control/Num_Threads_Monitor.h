@@ -4,8 +4,6 @@
 /**
  * @file Num_Threads_Monitor.h
  *
- * $Id: Num_Threads_Monitor.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  * @author Jeff Parsons <j.parsons@vanderbilt.edu>
  */
 //=============================================================================
@@ -70,7 +68,7 @@ namespace ACE
     private:
       static const char* default_name_;
 
-#if defined (linux)
+#if defined (ACE_LINUX)
       FILE *file_ptr_;
       char buf_[1024];
       unsigned long nthreads_;

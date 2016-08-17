@@ -1,5 +1,3 @@
-// $Id: Bug_3943_Regression_Test.cpp 94132 2011-06-01 05:53:39Z msmit $
-
 // ============================================================================
 //
 // = LIBRARY
@@ -33,7 +31,6 @@
 #include "ace/OS_NS_sys_wait.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/os_include/os_netdb.h"
-
 
 // The following works around bugs with some operating systems, which
 // don't allow multiple threads/process to call accept() on the same
@@ -235,7 +232,7 @@ namespace {
     // Shutdown the <Svc_Handler>.
 
   private:
-    enum Direction { READ, WRITE };
+    enum Direction { READX, WRITEX }; // VxWorks defines READ and WRITE
     bool wait_for_completion(Direction direction);
 
     ssize_t send (IovecGuard& iovec_array,
@@ -590,7 +587,7 @@ Svc_Handler::send_data (void)
   send_desc = ACE_TEXT ("indicating no more messages");
   this->send(FINISHED_CHAR, send_desc);
 
-  this->wait_for_completion(READ);
+  this->wait_for_completion(READX);
   if (close () == -1)
     {
       ACE_ERROR ((LM_ERROR,
@@ -744,7 +741,7 @@ Svc_Handler::send (IovecGuard& iovec_array,
                       send_func_name, send_desc, errno));
           return -1;
         }
-      send_remainder -= send_status;
+      send_remainder -= static_cast<buffer_len> (send_status);
       offset += send_status;
     }
 
@@ -807,7 +804,7 @@ Svc_Handler::recv_data (void)
 
   for (;;)
     {
-      if (!this->wait_for_completion(READ))
+      if (!this->wait_for_completion(READX))
         ACE_ERROR ((LM_ERROR,
                     ACE_TEXT ("(%P|%t) %p\n"),
                     ACE_TEXT ("select")));
@@ -837,7 +834,7 @@ Svc_Handler::recv_data (void)
                 {
                   const char* restartLoc =
                     ACE_OS::strchr(partOfBufferStart, RESTART_CHAR);
-                  if ((restartLoc > 0) && (restartLoc < partOfBufferEnd))
+                  if (restartLoc && (restartLoc < partOfBufferEnd))
                     {
                       ++messages;
                       total_bytes_since_last_message = 0;
@@ -934,7 +931,7 @@ Svc_Handler::wait_for_completion(Direction direction)
 #endif /* ACE_WIN64 */
 
   int result =
-   (direction == READ) ?
+   (direction == READX) ?
     ACE_OS::select (select_width, handle_set, 0, 0, &DEFAULT_TIME_VALUE) :
     ACE_OS::select (select_width, 0, handle_set, 0, &DEFAULT_TIME_VALUE);
   return result != -1;
@@ -1104,7 +1101,8 @@ run_main (int , ACE_TCHAR *[])
 {
   ACE_START_TEST (ACE_TEXT ("Bug_3943_Regression_Test"));
   int status = 0;
-#if !defined (ACE_WIN32) || ((defined (ACE_HAS_WINSOCK2) && (ACE_HAS_WINSOCK2 != 0)) || !defined (ACE_LACKS_SEND))
+#if defined (ACE_HAS_THREADS)
+# if !defined (ACE_WIN32) || ((defined (ACE_HAS_WINSOCK2) && (ACE_HAS_WINSOCK2 != 0)) || !defined (ACE_LACKS_SEND))
   // Acceptor
   ACCEPTOR acceptor;
   ACE_INET_Addr server_addr;
@@ -1124,24 +1122,21 @@ run_main (int , ACE_TCHAR *[])
                   ACE_TEXT ("(%P|%t) starting server at port %d\n"),
                   server_addr.get_port_number ()));
 
-#if defined (ACE_HAS_THREADS)
       if (spawn_threads (&acceptor, &server_addr) == -1)
         ACE_ERROR_RETURN ((LM_ERROR,
                            ACE_TEXT ("(%P|%t) %p\n"),
                            ACE_TEXT ("spawn_threads")),
                           1);
-#else  /* !ACE_HAS_THREADS */
-      ACE_ERROR ((LM_INFO,
-                  ACE_TEXT ("(%P|%t) ")
-                  ACE_TEXT ("only one thread may be run")
-                  ACE_TEXT (" in a process on this platform")));
-#endif /* ACE_HAS_THREADS */
     }
 
   if (!client_complete || !server_complete)
     status = 1;
 
-#endif /* ACE_HAS_WINSOCK2 && (ACE_HAS_WINSOCK2 != 0)) || !ACE_LACKS_SEND */
+# endif /* ACE_HAS_WINSOCK2 && (ACE_HAS_WINSOCK2 != 0)) || !ACE_LACKS_SEND */
+#else  /* !ACE_HAS_THREADS */
+  ACE_ERROR ((LM_INFO,
+              ACE_TEXT ("threads not supported on this platform\n")));
+#endif /* ACE_HAS_THREADS */
 
   ACE_END_TEST;
   return status;

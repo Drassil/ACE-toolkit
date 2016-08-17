@@ -1,5 +1,3 @@
-// $Id: Command_Processor.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_NS_string.h"
 #include "URL.h"
 #include "HTTP_URL.h"
@@ -122,6 +120,4 @@ Command_Processor::insert (Command *command)
   return 0;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<Options, ACE_Null_Mutex> *ACE_Singleton<Options, ACE_Null_Mutex>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, Options, ACE_Null_Mutex);

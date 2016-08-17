@@ -1,4 +1,3 @@
-# $Id: platform_vxworks6.6.GNU 86847 2009-09-30 09:59:46Z johnnyw $
 # VxWorks 6.6
 
 ifeq ($(VXWORKS_VERSION_FLAG),)

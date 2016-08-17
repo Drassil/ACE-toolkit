@@ -1,7 +1,7 @@
 # -*- Makefile -*-
 
 #----------------------------------------------------------------------------
-#  $Id: wrapper_macros.GNU 94058 2011-05-12 18:11:57Z shuston $
+#  
 #----------------------------------------------------------------------------
 #
 #  ACE supports the following flags.  They can be enabled either on
@@ -78,7 +78,10 @@
 #                   If versioned_so is 1 (enabled), the SOVERSION make
 #                   variable can also be set to specify the version info
 #                   to append to the name - it should have a leading '.' -
-#                   else it defaults to .ACE_MAJOR.ACE_MINOR.ACE_BETA.
+#                   else it defaults to .ACE_MAJOR.ACE_MINOR.ACE_BETA. If 2,
+#                   the version will be appended to the name but *before* the
+#                   $(SOEXT) - it should have a lead '-' - else it defaults to
+#                   -ACE_MAJOR.ACE_MINOR.ACE_BETA.
 #  wfmo             Build with wfmo support (Win32 only)
 #  winregistry      Build with windows registry support (Win32 only)
 #  winnt            Build WinNT-specific projects (Win32 only)
@@ -289,11 +292,11 @@ IDL_CLIENT_HDR_EXT ?= C.h
 IDL_CLIENT_INL_EXT ?= C.inl
 IDL_CLIENT_SRC_EXT ?= C.cpp
 IDL_SERVER_HDR_EXT ?= S.h
-IDL_SERVER_INL_EXT ?= S.inl
 IDL_SERVER_SRC_EXT ?= S.cpp
 IDL_SERVER_THDR_EXT ?= S_T.h
 IDL_SERVER_TINL_EXT ?= S_T.inl
 IDL_SERVER_TSRC_EXT ?= S_T.cpp
+IDL_GEN_FILES_DIR ?= .
 
 ifeq (default,$(origin LEX))
   LEX = flex
@@ -450,12 +453,13 @@ ifneq ($(SHLIBA_UNCHECKED),)
 endif # SHLIBA_UNCHECKED
 
 # Let users override the default VDIR directories
+VDIR_PRJ ?=
 ifdef ARCH
-VDIR          ?= $(ARCH)/.obj/
-VSHDIR        ?= $(ARCH)/.shobj/
+VDIR          ?= $(ARCH)/.obj/$(VDIR_PRJ)
+VSHDIR        ?= $(ARCH)/.shobj/$(VDIR_PRJ)
 else
-VDIR          ?= .obj/
-VSHDIR        ?= .shobj/
+VDIR          ?= .obj/$(VDIR_PRJ)
+VSHDIR        ?= .shobj/$(VDIR_PRJ)
 endif
 
 # NOTE: VLDLIBS is defined below, in case it is overridden for static-

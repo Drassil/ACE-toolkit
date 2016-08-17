@@ -1,5 +1,3 @@
-// $Id: Allocator.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/Containers.h"
 #include "ace/Malloc_T.h"
 #include "ace/Synch.h" // Needed for the lock.
@@ -20,7 +18,7 @@ private:
 // Listing 1 code/ch05
 int StackExample::run (void)
 {
-  ACE_TRACE (ACE_TEXT ("StackUser::run"));
+  ACE_TRACE ("StackExample::run");
 
   ACE_Allocator *allocator = 0;
   size_t block_size = sizeof(ACE_Node<DataElement>);
@@ -33,7 +31,7 @@ int StackExample::run (void)
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\n# of live objects %d\n"),
               DataElement::numOfActiveObjects ()));
 
-  ACE_ASSERT (this->runUnboundedStack (allocator) != -1);
+  ACE_TEST_ASSERT (this->runUnboundedStack (allocator) != -1);
 
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\n# of live objects %d\n"),
               DataElement::numOfActiveObjects ()));
@@ -45,7 +43,7 @@ int StackExample::run (void)
 // Listing 2 code/ch05
 int StackExample::runUnboundedStack (ACE_Allocator* allocator)
 {
-  ACE_TRACE (ACE_TEXT ("StackExample::runUnboundedStack"));
+  ACE_TRACE ("StackExample::runUnboundedStack");
 
   // Pass in an allocator during construction.
   ACE_Unbounded_Stack<DataElement> ustack (allocator);
@@ -64,7 +62,7 @@ int StackExample::runUnboundedStack (ACE_Allocator* allocator)
   void* furtherMemory = 0;
   furtherMemory = allocator->malloc
     (sizeof(ACE_Node<DataElement>));
-  ACE_ASSERT (furtherMemory == 0);
+  ACE_TEST_ASSERT (furtherMemory == 0);
 
   // No memory left..
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("%p\n"),
@@ -79,7 +77,7 @@ int StackExample::runUnboundedStack (ACE_Allocator* allocator)
 
   furtherMemory =
     allocator->malloc (sizeof (ACE_Node<DataElement>));
-  ACE_ASSERT (furtherMemory != 0);
+  ACE_TEST_ASSERT (furtherMemory != 0);
 
   return 0;
 }

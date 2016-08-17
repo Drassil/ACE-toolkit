@@ -1,5 +1,4 @@
 // -*- MPC -*-
-// $Id: xerces.mpb 1869 2010-08-05 03:50:05Z elliott_c $
 feature(!xerces2, !xerces3) {
   requires += xerces
 }

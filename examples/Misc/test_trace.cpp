@@ -3,8 +3,6 @@
 /**
  *  @file    test_trace.cpp
  *
- *  $Id: test_trace.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This example illustrates how to use the ACE tracing feature and
  *  the ACE_TRACE macro.  It also shows the use of the ACE_Task_Base
  *  class running as an "active object".
@@ -26,7 +24,6 @@
  *  2. Add #define ACE_NTRACE 0 in config.h
  *  3. Build your app with tracing.
  *
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu> and Irfan Pyarali <irfan@cs.wustl.edu>
  */
 //=============================================================================
@@ -38,8 +35,7 @@
 #include "ace/OS_main.h"
 #include "ace/Signal.h"
 #include "ace/Task.h"
-
-
+#include "ace/Trace.h"
 
 class My_Task : public ACE_Task_Base
 {

@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: splicelib.mpb 1869 2010-08-05 03:50:05Z elliott_c $
-
 project {
   libs        += dcpsccpp
   lit_libs    += dcpsgapi ddsdatabase ddsos

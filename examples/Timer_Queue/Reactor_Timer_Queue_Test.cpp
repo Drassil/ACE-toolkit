@@ -3,10 +3,7 @@
 /**
 *  @file    Reactor_Timer_Queue_Test.cpp
  *
- *  $Id: Reactor_Timer_Queue_Test.cpp 91671 2010-09-08 18:39:23Z johnnyw $
- *
  *  This example tests the timer queue mechanism of ACE_Reactor.
- *
  *
  *  @author Nanbor Wang <nw1@cs.wustl.edu> and Sergio Flores-Gaitan <sergio@cs.wustl.edu>
  */
@@ -138,6 +135,8 @@ Reactor_Timer_Queue_Test_Driver::Reactor_Timer_Queue_Test_Driver (void)
 
 Reactor_Timer_Queue_Test_Driver::~Reactor_Timer_Queue_Test_Driver (void)
 {
+  // unhook our timer queue
+  ACE_Reactor::instance ()->timer_queue (0);
 }
 
 int

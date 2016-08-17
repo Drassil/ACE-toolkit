@@ -1,4 +1,3 @@
-// $Id: Flow.h 91626 2010-09-07 10:59:20Z johnnyw $
 // author    : Boris Kolpackov <boris@kolpackov.net>
 
 #ifndef ACE_RMCAST_FLOW_H
@@ -14,7 +13,7 @@ namespace ACE_RMCast
   class Flow : public Element
   {
   public:
-    Flow (Parameters const& params);
+    Flow (Parameters const& );
 
   public:
     virtual void
@@ -24,7 +23,7 @@ namespace ACE_RMCast
     recv (Message_ptr m);
 
   private:
-    Parameters const& params_;
+    // Parameters const& params_;
 
     Mutex mutex_;
     ACE_Time_Value nak_time_;

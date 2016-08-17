@@ -1,5 +1,3 @@
-// $Id: State.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Task.h"
 
 class HA_CommandHandler : public ACE_Task_Base

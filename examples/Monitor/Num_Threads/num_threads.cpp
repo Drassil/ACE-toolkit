@@ -1,5 +1,3 @@
-// $Id: num_threads.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/OS_NS_unistd.h"
 
 #include "ace/Monitor_Control/Monitor_Control.h"

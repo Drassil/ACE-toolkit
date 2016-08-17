@@ -1,5 +1,3 @@
-// $Id: Performance_Test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #define  ACE_BUILD_SVC_DLL
 
 #include "Performance_Test.h"

@@ -4,8 +4,6 @@
 /**
  *  @file    XMLFilterImpl.h
  *
- *  $Id: XMLFilterImpl.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -22,7 +20,7 @@
 #include "ACEXML/common/ErrorHandler.h"
 
 /**
- * @class ACEXML_XMLFilterImpl XMLFilterImpl.h "ACEXML/common/XMLFilterImpl.h"
+ * @class ACEXML_XMLFilterImpl
  *
  * @brief ACEXML_XMLFilterImpl
  *
@@ -249,7 +247,7 @@ protected:
 
 private:
   ACEXML_XMLReader *parent_;
-  ACEXML_Locator *locator_;
+  // ACEXML_Locator *locator_;
   ACEXML_EntityResolver *entityResolver_;
   ACEXML_DTDHandler *dtdHandler_;
   ACEXML_ContentHandler *contentHandler_;

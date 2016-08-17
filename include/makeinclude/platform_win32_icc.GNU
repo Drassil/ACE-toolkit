@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_win32_icc.GNU 93405 2011-02-17 19:30:42Z olli $
 
 # debug = 1
 # optimize = 1

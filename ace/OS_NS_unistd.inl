@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: OS_NS_unistd.inl 93359 2011-02-11 11:33:12Z mcorino $
-
 #include "ace/OS_NS_sys_utsname.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_errno.h"
@@ -23,7 +20,7 @@
 #  include "ace/os_include/os_unistd.h"
 #endif /* ACE_HAS_ACCESS_EMULATION */
 
-#if defined (ACE_VXWORKS) && (ACE_VXWORKS <= 0x680)
+#if defined (ACE_VXWORKS) && (ACE_VXWORKS <= 0x690)
 #  if defined (__RTP__)
 #    include "ace/os_include/os_strings.h"
 #  else
@@ -478,7 +475,7 @@ ACE_OS::getpgid (pid_t pid)
 #if defined (ACE_LACKS_GETPGID)
   ACE_UNUSED_ARG (pid);
   ACE_NOTSUP_RETURN (-1);
-#elif defined (linux) && __GLIBC__ > 1 && __GLIBC_MINOR__ >= 0
+#elif defined (ACE_LINUX) && __GLIBC__ > 1 && __GLIBC_MINOR__ >= 0
   // getpgid() is from SVR4, which appears to be the reason why GLIBC
   // doesn't enable its prototype by default.
   // Rather than create our own extern prototype, just use the one
@@ -498,7 +495,7 @@ ACE_OS::getpid (void)
 #elif defined (ACE_WIN32)
   return ::GetCurrentProcessId ();
 #else
-  ACE_OSCALL_RETURN (::getpid (), int, -1);
+  ACE_OSCALL_RETURN (::getpid (), pid_t, -1);
 #endif /* ACE_LACKS_GETPID */
 }
 
@@ -955,13 +952,9 @@ ACE_OS::sleep (const ACE_Time_Value &tv)
   // Copy the timeval, because this platform doesn't declare the timeval
   // as a pointer to const.
   timeval tv_copy = tv;
-#  if defined(ACE_TANDEM_T1248_PTHREADS)
-     ACE_OSCALL_RETURN (::spt_select (0, 0, 0, 0, &tv_copy), int, -1);
-#  else
-     //FUZZ: disable check_for_lack_ACE_OS
-     ACE_OSCALL_RETURN (::select (0, 0, 0, 0, &tv_copy), int, -1);
-     //FUZZ: enable check_for_lack_ACE_OS
-#  endif
+  //FUZZ: disable check_for_lack_ACE_OS
+  ACE_OSCALL_RETURN (::select (0, 0, 0, 0, &tv_copy), int, -1);
+  //FUZZ: enable check_for_lack_ACE_OS
 # else  /* ! ACE_HAS_NONCONST_SELECT_TIMEVAL */
   const timeval *tvp = tv;
   //FUZZ: disable check_for_lack_ACE_OS
@@ -1013,7 +1006,12 @@ ACE_OS::swab (const void *src,
   const char *tmp = static_cast<const char*> (src);
   char *from = const_cast<char *> (tmp);
   char *to = static_cast<char *> (dest);
+#  if defined (ACE_HAS_INT_SWAB)
+  int ilength = ACE_Utils::truncate_cast<int> (length);
+  ::swab (from, to, ilength);
+#  else
   ::swab (from, to, length);
+#  endif /* ACE_HAS_INT_SWAB */
 #elif defined (ACE_HAS_CONST_CHAR_SWAB)
   const char *from = static_cast<const char*> (src);
   char *to = static_cast<char *> (dest);
@@ -1114,7 +1112,11 @@ ACE_OS::ualarm (useconds_t usecs, useconds_t interval)
   return ::ualarm (usecs, interval);
 #elif !defined (ACE_LACKS_UNIX_SIGNALS)
   ACE_UNUSED_ARG (interval);
+# if defined (ACE_VXWORKS) && ACE_VXWORKS >= 0x690 && defined (_WRS_CONFIG_LP64)
+  return ::alarm (static_cast<unsigned int> (usecs * ACE_ONE_SECOND_IN_USECS));
+# else
   return ::alarm (usecs * ACE_ONE_SECOND_IN_USECS);
+#endif
 #else
   ACE_UNUSED_ARG (usecs);
   ACE_UNUSED_ARG (interval);
@@ -1135,7 +1137,11 @@ ACE_OS::ualarm (const ACE_Time_Value &tv,
   return ::ualarm (usecs, interval);
 #elif !defined (ACE_LACKS_UNIX_SIGNALS)
   ACE_UNUSED_ARG (tv_interval);
+# if defined (ACE_VXWORKS) && ACE_VXWORKS >= 0x690 && defined (_WRS_CONFIG_LP64)
+  return ::alarm (static_cast<unsigned int> (tv.sec ()));
+# else
   return ::alarm (tv.sec ());
+# endif
 #else
   ACE_UNUSED_ARG (tv_interval);
   ACE_UNUSED_ARG (tv);

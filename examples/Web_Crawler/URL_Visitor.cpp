@@ -1,5 +1,3 @@
-// $Id: URL_Visitor.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_NS_string.h"
 #include "ace/Truncate.h"
 #include "URL_Visitor.h"

@@ -1,4 +1,4 @@
-// -*- C++ -*-  $Id: XML_Codecs.cpp 91671 2010-09-08 18:39:23Z johnnyw $
+// -*- C++ -*-
 
 #include "ace/Auto_Ptr.h"
 #include "ace/OS_Memory.h"

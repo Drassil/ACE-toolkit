@@ -1,5 +1,3 @@
-// $Id: bytes_sent.cpp 82330 2008-07-15 17:30:06Z parsons $
-
 #include "ace/OS_NS_unistd.h"
 
 #include "ace/Monitor_Control/Monitor_Control.h"

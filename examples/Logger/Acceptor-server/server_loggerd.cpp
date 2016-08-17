@@ -1,4 +1,3 @@
-// $Id: server_loggerd.cpp 91670 2010-09-08 18:02:26Z johnnyw $
 // server_loggerd.cpp,v 4.29 2003/12/30 23:18:59 shuston Exp
 
 // This server daemon collects, formats, and displays logging
@@ -261,11 +260,11 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   return 0;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<ACE_Reactor, ACE_Null_Mutex> *
-  ACE_Singleton<ACE_Reactor, ACE_Null_Mutex>::singleton_;
-template ACE_Singleton<Options, ACE_Null_Mutex> *
-  ACE_Singleton<Options, ACE_Null_Mutex>::singleton_;
-template ACE_Singleton<ACE_Test_and_Set <ACE_Null_Mutex, sig_atomic_t>, ACE_Null_Mutex> *
-  ACE_Singleton<ACE_Test_and_Set <ACE_Null_Mutex, sig_atomic_t>, ACE_Null_Mutex>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+//typedef ACE_Test_and_Set<ACE_Null_Mutex, sig_atomic_t>
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, ACE_Reactor, ACE_Null_Mutex);
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, Options, ACE_Null_Mutex);
+#define ACE_Test_and_Set_type \
+  ACE_Test_and_Set<ACE_Null_Mutex, sig_atomic_t>
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, ACE_Test_and_Set_type, ACE_Null_Mutex);
+
+

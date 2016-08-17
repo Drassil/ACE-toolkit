@@ -1,5 +1,3 @@
-/* $Id: Headers.cpp 80826 2008-03-04 14:51:23Z wotte $ */
-
 #include "JAWS/Headers.h"
 #include "ace/OS_NS_stdlib.h"
 #include "ace/OS_NS_strings.h"

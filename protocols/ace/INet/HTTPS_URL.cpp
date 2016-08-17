@@ -1,5 +1,3 @@
-// $Id: HTTPS_URL.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #include "ace/INet/HTTPS_URL.h"
 
 #if !defined (__ACE_INLINE__)

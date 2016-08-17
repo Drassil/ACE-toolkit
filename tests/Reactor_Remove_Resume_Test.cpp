@@ -1,8 +1,6 @@
 /**
  * @file  Reactor_Remove_Resume_Test.cpp
  *
- * $Id: Reactor_Remove_Resume_Test.cpp 84565 2009-02-23 08:20:39Z johnnyw $
- *
  * This test verifies that ACE reactors only remove or resume the event
  * handler used during an upcall, not another with same handle value.
  * There is are least one case where the event handler can change
@@ -463,6 +461,43 @@ run_main (int, ACE_TCHAR *[])
   else
     ACE_ERROR ((LM_INFO,
                 ACE_TEXT ("Test passed.\n")));
+
+#if defined (ACE_HAS_CPP11)
+  ACE_Event_Handler_var nullvar;
+  if (!nullvar)
+  {
+    ACE_DEBUG ((LM_DEBUG,
+                ACE_TEXT ("EH_var explicit operator bool ok\n")));
+  }
+  else
+  {
+    ACE_ERROR ((LM_ERROR,
+                ACE_TEXT ("EH_var explicit operator bool FAILED\n")));
+    ++overall_result;
+  }
+  if (nullvar == nullptr)
+  {
+    ACE_DEBUG ((LM_DEBUG,
+                ACE_TEXT ("EH_var explicit operator== nullptr ok\n")));
+  }
+  else
+  {
+    ACE_ERROR ((LM_ERROR,
+                ACE_TEXT ("EH_var explicit operator== nullptr FAILED\n")));
+    ++overall_result;
+  }
+  if (!(nullvar != nullptr))
+  {
+    ACE_DEBUG ((LM_DEBUG,
+                ACE_TEXT ("EH_var explicit operator!= nullptr ok\n")));
+  }
+  else
+  {
+    ACE_ERROR ((LM_ERROR,
+                ACE_TEXT ("EH_var explicit operator!= nullptr FAILED\n")));
+    ++overall_result;
+  }
+#endif
 
   ACE_END_TEST;
 

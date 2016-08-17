@@ -3,8 +3,6 @@
 /**
  *  @file    gadget_test.cpp
  *
- *  $Id: gadget_test.cpp 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Christopher Kohlhoff <chris@kohlhoff.com>
  */
 //=============================================================================

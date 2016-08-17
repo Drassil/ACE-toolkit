@@ -1,5 +1,3 @@
-// $Id: local_stream_client_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Tests out the UNIX domain IPC-SAP abstraction.
 
 #include "ace/OS_main.h"

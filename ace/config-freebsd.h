@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: config-freebsd.h 93571 2011-03-17 07:37:11Z olli $
-
 // The following configuration file is designed to work for FreeBSD
 
 #ifndef ACE_CONFIG_H
@@ -13,6 +11,11 @@
 
 // Make sure we source in the OS version.
 #include <osreldate.h>
+
+// Make sure system defined macro (not related to ACE_OS::atop)
+// is not defined during ACE compilation
+#include <machine/param.h>
+#undef atop
 
 #include "ace/config-posix.h"
 
@@ -61,6 +64,8 @@
 #define ACE_HAS_THREAD_SPECIFIC_STORAGE
 #define ACE_HAS_TIMEZONE_GETTIMEOFDAY
 #define ACE_HAS_UALARM
+
+#define ACE_HAS_XPG4_MULTIBYTE_CHAR
 
 #define ACE_LACKS_CONDATTR_PSHARED
 #define ACE_LACKS_ISCTYPE
@@ -126,6 +131,7 @@
 
 #if (__FreeBSD_version < 400000)
 # define ACE_LACKS_SIGSET
+# define ACE_LACKS_SIGSET_T
 # define ACE_LACKS_RWLOCK_T
 # define ACE_LACKS_READDIR_R
 # define ACE_LACKS_SETSCHED

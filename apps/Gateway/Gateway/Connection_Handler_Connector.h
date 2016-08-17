@@ -4,8 +4,6 @@
 /**
  *  @file    Connection_Handler_Connector.h
  *
- *  $Id: Connection_Handler_Connector.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Doug Schmidt
  */
 //=============================================================================

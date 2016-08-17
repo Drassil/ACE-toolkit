@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Proactor.mpc 85212 2009-04-29 13:53:34Z johnnyw $
-
 project(*cancel) : aceexe, avoids_ace_for_tao {
   exename = test_cancel
   Source_Files {

@@ -1,5 +1,3 @@
-// $Id: Pipeline_Tasks.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "JAWS/Jaws_IO.h"
 #include "JAWS/Pipeline_Tasks.h"
 #include "JAWS/Pipeline_Handler_T.h"

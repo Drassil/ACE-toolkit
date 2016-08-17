@@ -1,5 +1,3 @@
-// $Id: client.cpp 93539 2011-03-13 09:40:44Z vzykov $
-
 #include "ace/OS_main.h"
 #include "ace/FILE_Addr.h"
 #include "ace/FILE_Connector.h"

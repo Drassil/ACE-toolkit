@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ace_mc.mpb 88736 2010-01-26 22:57:44Z mitza $
-
 project : ace_etcl_parser {
   after += Monitor_Control
   libs += ACE_Monitor_Control

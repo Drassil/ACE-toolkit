@@ -3,11 +3,8 @@
 /**
  *  @file    http_client.cpp
  *
- *  $Id: http_client.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  This is a very simple client.  It accepts URLs from a prompt, and
  *  will try to fetch them.  Also accepts shell escapes.
- *
  *
  *  @author James Hu
  */

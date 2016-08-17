@@ -1,12 +1,8 @@
-// $Id: Log_Message_Receiver.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #if !defined (LOG_MESSAGE_RECEIVER_CPP)
 #define LOG_MESSAGE_RECEIVER_CPP
 
 #include "ace/Log_Msg.h"
 #include "Log_Message_Receiver.h"
-
-
 
 // Type based log message receiver
 template<ACE_SYNCH_DECL> void

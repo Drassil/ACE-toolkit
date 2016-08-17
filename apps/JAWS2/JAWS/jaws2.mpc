@@ -1,16 +1,9 @@
 // -*- MPC -*-
-// $Id: jaws2.mpc 85415 2009-05-22 07:26:32Z johnnyw $
-
 project(JAWS2) : ace_output, acelib {
     sharedname = JAWS2
     dynamicflags += JAWS_BUILD_DLL
     avoids += uses_wchar ace_for_tao
-
-    specific (automake) {
-      includes += $(srcdir)/..
-    } else {
-      includes += ..
-    }
+    includes += ..
 
     Source_Files {
         Assoc_Array.cpp

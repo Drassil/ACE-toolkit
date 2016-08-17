@@ -1,7 +1,5 @@
 /* -*- c++ -*- */
 // Hey Emacs!  This is a C++ file!
-// $Id: Hash_Bucket_T.h 81993 2008-06-16 20:26:16Z sowayaa $
-
 #ifndef JAWS_HASH_BUCKET_T_H
 #define JAWS_HASH_BUCKET_T_H
 

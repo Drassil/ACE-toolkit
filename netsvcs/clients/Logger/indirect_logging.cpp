@@ -1,5 +1,3 @@
-// $Id: indirect_logging.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This is a simple test that sends logging records to the Client
 // Logging Daemon running on the localhost.  This daemon then forwards
 // them to the Server Logging Daemon.  If there is no Server Logging
@@ -9,8 +7,6 @@
 #include "ace/OS_NS_stdlib.h"
 #include "ace/Log_Msg.h"
 #include "ace/Log_Record.h"
-
-
 
 int
 ACE_TMAIN (int argc, ACE_TCHAR *argv[])

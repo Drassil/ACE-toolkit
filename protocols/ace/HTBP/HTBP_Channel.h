@@ -4,8 +4,6 @@
 /**
  *  @file    HTBP_Channel.h
  *
- *  $Id: HTBP_Channel.h 87228 2009-10-26 10:45:28Z vzykov $
- *
  *  @author Phil Mesnier, Priyanka Gontla
  */
 //=============================================================================

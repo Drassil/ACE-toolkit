@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
   <HEAD>
-    <!-- $Id: detailed_performance.shtml 80826 2008-03-04 14:51:23Z wotte $ -->
+    <!-- $Id$ -->
     <TITLE>Performance Metrics Detailed Results</TITLE>
     <LINK href="Stats.css" rel="stylesheet" type="text/css">
   </HEAD>
@@ -12,7 +12,7 @@
     
     <P>
       Results for the performance experiments in
-      <CODE>$ACE_ROOT/TAO/performance-tests</CODE>.
+      <CODE>$TAO_ROOT/performance-tests</CODE>.
       The results for all the tests are combined in a single chart.
     </P>
     <DIV align="center">

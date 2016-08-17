@@ -1,6 +1,4 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Protocol.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "Protocol.h"
 
 namespace ACE_RMCast

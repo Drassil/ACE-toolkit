@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Datagram.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 #ifndef JAWS_DATAGRAM_H
 #define JAWS_DATAGRAM_H
 

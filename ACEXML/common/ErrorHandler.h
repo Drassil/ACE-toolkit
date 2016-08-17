@@ -4,8 +4,6 @@
 /**
  *  @file    ErrorHandler.h
  *
- *  $Id: ErrorHandler.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -22,7 +20,7 @@
 #include "ACEXML/common/SAXExceptions.h"
 
 /**
- * @class ACEXML_ErrorHandler ErrorHandler.h "ACEXML/common/ErrorHandler.h"
+ * @class ACEXML_ErrorHandler
  *
  * @brief ACEXML_ErrorHandler
  *

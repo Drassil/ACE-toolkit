@@ -1,5 +1,3 @@
-// $Id: parse_http_request.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "HTTPU/parse_http_request.h"
 
 Parse_HTTP_Request::Parse_HTTP_Request (const char *request)

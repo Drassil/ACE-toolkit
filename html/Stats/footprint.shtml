@@ -2,12 +2,12 @@
                       "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
   <HEAD>
-    <!-- $Id: footprint.shtml 84736 2009-03-06 09:07:43Z johnnyw $ -->
+    <!-- $Id$ -->
     <TITLE>Footprint Metrics Results</TITLE>
     <LINK href="Stats.css" rel="stylesheet" type="text/css">
   </HEAD>
   <DIV align="center">
-  <h2>ACE+TAO+CIAO Footprint Metrics Results</h2>
+  <h2>ACE+TAO+CIAO+DAnCE Footprint Metrics Results</h2>
 
   </DIV>
   <CENTER>
@@ -30,9 +30,10 @@
    <UL> <LI> Detailed Footprint, for a closer look at the sizes of 
    libraries and its dependencies. 
    <UL>
-   <LI><a href="http://www.dre.vanderbilt.edu/Stats/regular/ace_Footprint.html">ACE</a>
-   <LI><a href="http://www.dre.vanderbilt.edu/Stats/regular/tao_Footprint.html">TAO</a>
-   <LI><a href="http://www.dre.vanderbilt.edu/Stats/regular/ciao_Footprint.html">CIAO</a>
+   <LI><a href="regular/ace_Footprint.html">ACE</a>
+   <LI><a href="regular/tao_Footprint.html">TAO</a>
+   <LI><a href="regular/ciao_Footprint.html">CIAO</a>
+   <LI><a href="regular/dance_Footprint.html">DAnCE</a>
    </UL>
 
 </LI> </UL>

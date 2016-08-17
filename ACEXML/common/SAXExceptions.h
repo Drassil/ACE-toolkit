@@ -4,8 +4,6 @@
 /**
  *  @file    SAXExceptions.h
  *
- *  $Id: SAXExceptions.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -23,7 +21,7 @@
 #include "ACEXML/common/Exception.h"
 
 /**
- * @class ACEXML_SAXException SAXExceptions.h "ACEXML/common/SAXExceptions.h"
+ * @class ACEXML_SAXException
  *
  * @brief ACEXML_SAXException
  *
@@ -160,7 +158,6 @@ protected:
  * @class ACEXML_SAXParseException SAXExceptions.h "ACEXML/common/SAXExceptions.h"
  *
  * @brief ACEXML_SAXParseException
- *
  */
 class ACEXML_Export ACEXML_SAXParseException
   : public ACEXML_SAXException

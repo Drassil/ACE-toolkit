@@ -1,5 +1,3 @@
-// $Id: Tokens.cpp 93591 2011-03-19 06:18:39Z olli $
-
 #include "ace/Local_Tokens.h"
 #include "ace/Token_Manager.h"
 #include "ace/Task.h"

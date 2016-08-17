@@ -1,5 +1,3 @@
-// $Id: Search_Struct.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "Search_Struct.h"
 #include "ace/Log_Msg.h"

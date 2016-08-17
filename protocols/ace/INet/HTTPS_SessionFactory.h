@@ -1,5 +1,3 @@
-// $Id: HTTPS_SessionFactory.h 91425 2010-08-23 11:59:32Z mcorino $
-
 /**
  * @file HTTPS_SessionFactory.h
  *

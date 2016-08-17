@@ -1,6 +1,4 @@
 /*
-** $Id: HA_Proactive_Status.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-**
 ** Example program from The ACE Programmer's Guide, Chapter 8.
 ** Copyright 2003 Addison-Wesley. All Rights Reserved.
 */

@@ -3,10 +3,7 @@
 /**
  *  @file    Based_Pointer_Test.cpp
  *
- *  $Id: Based_Pointer_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test check the Based_Pointer and Based_Pointer_repository classes.
- *
  *
  *  @author Steve Williams  <steve@telxio>
  */

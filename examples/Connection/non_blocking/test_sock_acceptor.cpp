@@ -1,5 +1,3 @@
-// $Id: test_sock_acceptor.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/SOCK_Acceptor.h"
 #include "ace/INET_Addr.h"
 #include "ace/Service_Config.h"

@@ -3,11 +3,8 @@
 /**
  *  @file    TSS_Obj.h
  *
- *  $Id: TSS_Obj.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *   This program tests various features of ACE_Thread and the
  *   thread-specific storage variant of <ACE_SingletonEx>.
- *
  *
  *  @author Prashant Jain and Doug Schmidt
  */

@@ -1,6 +1,4 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Link.cpp 94075 2011-05-23 06:57:42Z johnnyw $
-
 #include "ace/Time_Value.h"        // ACE_Time_Value
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_stdlib.h"

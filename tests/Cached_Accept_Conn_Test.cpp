@@ -3,8 +3,6 @@
 /**
  *  @file    Cached_Accept_Conn_Test.cpp
  *
- *  $Id: Cached_Accept_Conn_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  The test illustrates how the <ACE_Strategy_Connector> works by
  *  showing how you can cache connections on the client using
  *  different caching strategies. Also how connections can be purged
@@ -12,7 +10,6 @@
  *  maintained by the connector. The <ACE_Strategy_Acceptor> can also
  *  explicitly purge connections from the process CONNECTION CACHE on
  *  demand.
- *
  *
  *  @author Kirthika Parameswaran <kirthika@cs.wustl.edu>
  */
@@ -32,8 +29,6 @@
 #if defined(_MSC_VER)
 #pragma warning(disable:4503)
 #endif /* _MSC_VER */
-
-
 
 // Note: To keep both sunCC5.0 without debugging symbols and gcc2.7.3
 // happy, it was necessary to have the definitions of the methods of
@@ -59,8 +54,7 @@ template <class SVC_HANDLER, ACE_PEER_ACCEPTOR_1> int
 Accept_Strategy<SVC_HANDLER, ACE_PEER_ACCEPTOR_2>::open (const ACE_PEER_ACCEPTOR_ADDR &local_addr,
                                                          bool restart)
 {
-  int result = ACCEPT_STRATEGY_BASE::open (local_addr,
-                                           restart);
+  int result = ACCEPT_STRATEGY_BASE::open (local_addr, restart);
 
   if (result == 0)
     return result;

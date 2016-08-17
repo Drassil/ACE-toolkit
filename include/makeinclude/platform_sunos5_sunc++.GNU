@@ -1,6 +1,5 @@
 # -*- Makefile -*-
 
-# $Id: platform_sunos5_sunc++.GNU 93548 2011-03-15 19:32:30Z olli $
 
 # SunOS 5.x (Solaris 2.x) with Sun C++ 4.2 and 5.x
 #
@@ -47,6 +46,7 @@ rwtools ?= 0
 stdcpplib ?= 1
 stlport ?= 0
 threads ?= 1
+pthreads ?= 1
 versioned_so ?= 1
 tk_reactor ?= 0
 ace_with_x11 ?= 0
@@ -101,6 +101,10 @@ endif # fast
 # Make sure we resolve all symbols at link time, see bugzilla 2710
 LDFLAGS         += -z now
 
+# Studio 8 or better has version greater than 5.4 (Studio 8 == CC 5.5).
+STUDIO_8_OR_BETTER = $(shell a=`echo $(CC_VERSION) | sed -e 's/[^0-9]*\([0-9]*\)\.\([0-9]*\).*$$/\1\2/g'`; if test "$$a" -gt 54; then echo 1; else echo 0; fi)
+STUDIO_12_OR_BETTER = $(shell a=`echo $(CC_VERSION) | sed -e 's/[^0-9]*\([0-9]*\)\.\([0-9]*\).*$$/\1\2/g'`; if test "$$a" -gt 58; then echo 1; else echo 0; fi)
+
 ifeq (C++ 5,$(findstring C++ 5,$(CC_VERSION)))
   #### CC 5.0 or later
   #### Inlining appears to cause link problems with early releases of
@@ -142,18 +146,14 @@ ifeq (C++ 5,$(findstring C++ 5,$(CC_VERSION)))
             CFLAGS += -xarch=generic64
             LDFLAGS += -xarch=generic64
           else
-            ifeq (C++ 5.9,$(findstring C++ 5.9,$(CC_VERSION)))
+            # Starting at Studio 12 (CC 5.9), -m64 is used in place of -xarch
+            ifeq (1,$(STUDIO_12_OR_BETTER))
               CFLAGS += -m64
               LDFLAGS += -m64
             else
-              ifeq (C++ 5.10,$(findstring C++ 5.10,$(CC_VERSION)))
-                CFLAGS += -m64
-                LDFLAGS += -m64
-              else
-                CFLAGS += -xarch=v9
-                LDFLAGS += -xarch=v9
-              endif # C++ 5.10
-            endif # C++ 5.9
+              CFLAGS += -xarch=v9
+              LDFLAGS += -xarch=v9
+            endif # C++ 5.9+
           endif # C++ 5.8
         endif # C++ 5.7
       endif # buildbits
@@ -163,13 +163,9 @@ endif # CC 5.0 or later
 
 ifeq ($(shared_libs), 1)
   ifneq ($(static_libs_only), 1)
-
-   # Sun Studio 8 or better has version greater than 5.4 (Studio 8 == CC 5.5).
-    SUN_STUDIO_8_OR_BETTER := $(shell a=`echo $(CC_VERSION) | sed -e 's/[^0-9]*\([0-9]*\)\.\([0-9]*\).*$$/\1\2/g'`; if test "$$a" -gt 54; then echo 1; else echo 0; fi)
-
     # Take advantage of Sun Studio 8 (v5.5) symbol scopes to
     # generate improved shared library binaries.
-    ifeq ($(SUN_STUDIO_8_OR_BETTER),1)
+    ifeq ($(STUDIO_8_OR_BETTER),1)
       ifneq ($(no_hidden_visibility),1)
         CCFLAGS += -xldscope=hidden
       else
@@ -225,7 +221,9 @@ ifeq (C++ 5.10,$(findstring C++ 5.10,$(CC_VERSION)))
 endif
 
 LDFLAGS         += -xildoff
-CPPFLAGS        += -D_POSIX_PTHREAD_SEMANTICS
+ifeq ($(pthreads),1)
+  CPPFLAGS      += -D_POSIX_PTHREAD_SEMANTICS
+endif
 OCFLAGS         += -xO4
 PIC             = -KPIC
 AR              = CC

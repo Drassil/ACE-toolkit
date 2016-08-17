@@ -4,10 +4,7 @@
 /**
  *  @file    BS_Server.h
  *
- *  $Id: BS_Server.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Provides the server's binary search lookup table abstraction.
- *
  *
  *  @author Douglas C. Schmidt
  */

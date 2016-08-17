@@ -1,5 +1,3 @@
-// $Id: URL_Array_Helper.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // URL_Array_Helper.cpp
 
 #ifndef ACE_URL_ARRAY_HELPER_C

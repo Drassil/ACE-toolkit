@@ -1,5 +1,3 @@
-// $Id: FTP_IOStream.h 90891 2010-06-28 09:55:39Z mcorino $
-
 /**
  * @file FTP_IOStream.h
  *

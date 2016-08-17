@@ -5,11 +5,8 @@
 /**
  *  @file    Driver.h
  *
- *  $Id: Driver.h 90086 2010-05-06 12:02:19Z johnnyw $
- *
  *  This code builds an abstraction to factor out common code for
  *  the different implementations of the Timer_Queue.
- *
  *
  *  @author Sergio Flores-Gaitan <sergio@cs.wustl.edu>
  */

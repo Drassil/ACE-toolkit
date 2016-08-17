@@ -2,10 +2,7 @@
 /**
  *  @file   Kokyu_dsrt.h
  *
- *  $Id: Kokyu_dsrt.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Venkita Subramonian (venkita@cs.wustl.edu)
- *
  */
 
 #ifndef KOKYU_DSRT_H

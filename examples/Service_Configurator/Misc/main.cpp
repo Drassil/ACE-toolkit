@@ -3,12 +3,9 @@
 /**
  *  @file    main.cpp
  *
- *  $Id: main.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  * This directory contains an example that illustrates how the ACE
  * Service Configurator can configure static and dynamic services,
  * both from the command-line and from a svc.config file.
- *
  *
  *  @author Doug Schmidt <schmidt@cs.wustl.edu>
  */

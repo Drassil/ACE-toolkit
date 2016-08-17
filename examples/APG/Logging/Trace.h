@@ -1,5 +1,3 @@
-// $Id: Trace.h 92376 2010-10-27 17:52:49Z johnnyw $
-
 #ifndef TRACE_H
 #define TRACE_H
 

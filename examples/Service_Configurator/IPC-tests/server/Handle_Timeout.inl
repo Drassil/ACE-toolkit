@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Handle_Timeout.inl 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Service_Config.h"
 #include "ace/Get_Opt.h"
 #include "ace/OS_NS_stdio.h"

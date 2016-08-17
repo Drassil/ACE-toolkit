@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: Signature.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 // File: Signature.h
 
 // Author: Phil Mesnier

@@ -4,8 +4,6 @@
 /**
  *  @file    EntityResolver.h
  *
- *  $Id: EntityResolver.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -23,7 +21,7 @@
 #include "ACEXML/common/SAXExceptions.h"
 
 /**
- * @class ACEXML_EntityResolver EntityResolver.h "ACEXML/common/EntityResolver.h"
+ * @class ACEXML_EntityResolver
  *
  * @brief ACEXML_EntityResolver
  *

@@ -1,5 +1,3 @@
-// $Id: Binary_Search.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "Options.h"
 #include "Binary_Search.h"
 #include "ace/Log_Msg.h"

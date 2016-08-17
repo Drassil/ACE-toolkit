@@ -1,5 +1,3 @@
-// $Id: File_Parser.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef FILE_PARSER_C
 #define FILE_PARSER_C
 

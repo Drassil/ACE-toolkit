@@ -1,5 +1,3 @@
-// $Id: Concurrency_T.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/Message_Block.h"
 #include "ace/Singleton.h"
 #include "ace/Synch_Traits.h"

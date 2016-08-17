@@ -1,5 +1,3 @@
-// $Id: PM_Client.cpp 81993 2008-06-16 20:26:16Z sowayaa $
-
 #include "Options.h"
 #include "PM_Server.h"
 #include "PM_Client.h"

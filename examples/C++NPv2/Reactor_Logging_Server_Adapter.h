@@ -1,6 +1,4 @@
 /*
-** $Id: Reactor_Logging_Server_Adapter.h 80826 2008-03-04 14:51:23Z wotte $
-**
 ** Copyright 2002 Addison Wesley. All Rights Reserved.
 */
 

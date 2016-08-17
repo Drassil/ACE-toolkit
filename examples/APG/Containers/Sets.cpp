@@ -1,5 +1,3 @@
-// $Id: Sets.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_Memory.h"
 #include "ace/Log_Msg.h"
 #include "ace/Containers.h"
@@ -21,7 +19,7 @@ private:
 
 int SetExample::run (void)
 {
-  ACE_TRACE (ACE_TEXT ("SetExample::run"));
+  ACE_TRACE ("SetExample::run");
 
   ACE_ASSERT (!this->runBoundedSet ());
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\n# of live objects %d\n"),
@@ -36,7 +34,7 @@ int SetExample::run (void)
 // Listing 1 code/ch05
 int SetExample::runBoundedSet ()
 {
-  ACE_TRACE (ACE_TEXT ("SetExample::runBoundedSet"));
+  ACE_TRACE ("SetExample::runBoundedSet");
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Using a bounded set\n")));
   ACE_Bounded_Set<DataElement> bset (100);
 
@@ -86,7 +84,7 @@ int SetExample::runBoundedSet ()
 // Listing 2 code/ch05
 int SetExample::runUnboundedSet ()
 {
-  ACE_TRACE (ACE_TEXT ("SetExample::runUnboundedSet"));
+  ACE_TRACE ("SetExample::runUnboundedSet");
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Using an unbounded set.\n")));
   ACE_Unbounded_Set<DataElement*> uset;
   for (int m = 0; m < 100; m++)

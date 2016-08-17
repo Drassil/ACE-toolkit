@@ -1,5 +1,3 @@
-// $Id: Wrap_Macros_Alt.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "Log_Msg_Alt.h"
 
 void foo (void);

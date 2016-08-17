@@ -4,8 +4,6 @@
 /**
  *  @file    Log_Message_Receiver.h
  *
- *  $Id: Log_Message_Receiver.h 91626 2010-09-07 10:59:20Z johnnyw $
- *
  *  @author Per Andersson
  */
 //=============================================================================
@@ -30,7 +28,6 @@
 // ==========================================================================//
 //------------- General Requirements on a Log Message Receiver --------------//
 // ==========================================================================//
-//
 //  The requirements on a log manager receiver, T, are quite simple.
 //  1: There must exist one "log_record" member function with the following
 //     prototype:
@@ -62,7 +59,6 @@
 // ==========================================================================//
 // ------------ General Description of a Log Message Receiver -------------- //
 // ==========================================================================//
-//
 //  Log Message Receivers, LRMs, are processing log records. It is the
 //  LRM that writes a log message to stderr, stdout, a log file and maybee
 //  converts some of the log messages to notifications, warnings, alarms
@@ -79,7 +75,7 @@
 //  be possible to write more complex LMRs, like one that creates
 //  a new log file each day or keeps a fixed size, round robin,
 //  log file. It should also be possible to have separate LMRs
-//  of the same type that uses differnt log files.
+//  of the same type that uses different log files.
 //
 // ==========================================================================//
 
@@ -115,7 +111,6 @@ public:
 // Instance based log message receiver
 
 // ------------------------ Log_Message_Receiver --------------------------- //
-//
 //  Log_Message_Receiver is little more complicated log message receiver.
 //  It is instance based and have a reference counted implementation.
 //  Log_Message_Receiver is the envelope class for Log_Message_Receiver_Impl.
@@ -175,7 +170,7 @@ private:
  * @brief Implementation with reference count.
  */
 template<ACE_SYNCH_DECL>
-class Log_Message_Receiver_Impl : private ACE_Copy_Disabled
+class Log_Message_Receiver_Impl
 {
 public:
   // Methods for handling reference count and instance lifetime
@@ -201,6 +196,8 @@ private:
 #if !defined (ACE_LACKS_STATIC_DATA_MEMBER_TEMPLATES)
   static ACE_SYNCH_MUTEX_T copy_lock_;
 #endif /* ACE_LACKS_STATIC_DATA_MEMBER_TEMPLATES */
+  ACE_UNIMPLEMENTED_FUNC (void operator= (const Log_Message_Receiver_Impl<ACE_SYNCH_USE> &))
+  ACE_UNIMPLEMENTED_FUNC (Log_Message_Receiver_Impl (const Log_Message_Receiver_Impl<ACE_SYNCH_USE> &))
 };
 
 #if defined (ACE_TEMPLATES_REQUIRE_SOURCE)

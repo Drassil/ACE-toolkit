@@ -1,8 +1,6 @@
 /**
  * @file Bug_2610_Regression_Test.cpp
  *
- * $Id: Bug_2610_Regression_Test.cpp 93017 2011-01-05 23:12:52Z shuston $
- *
  * Reproduces the problems reported in bug 2610:
  *   http://deuce.doc.wustl.edu/bugzilla/show_bug.cgi?id=2610
  *

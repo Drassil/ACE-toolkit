@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: bds4exe.mpt 1116 2006-12-20 09:26:10Z johnnyw $
-
 conditional_include "common"
 conditional_include "windowscommon"
 

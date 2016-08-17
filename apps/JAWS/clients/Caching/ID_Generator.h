@@ -5,8 +5,6 @@
 /**
  *  @file    ID_Generator.h
  *
- *  $Id: ID_Generator.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Nanbor Wang
  */
 //=============================================================================
@@ -27,7 +25,6 @@
  * @class ACE_ID_Generator
  *
  * @brief An unique ID generator.
- *
  */
 class ACE_ID_Generator
 

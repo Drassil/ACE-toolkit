@@ -1,5 +1,3 @@
-// $Id: JAWS_Pipeline.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "JAWS_Pipeline.h"
 
 JAWS_Pipeline::JAWS_Pipeline (void)

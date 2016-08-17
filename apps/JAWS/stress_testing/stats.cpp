@@ -1,5 +1,3 @@
-// $Id: stats.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "stats.h"
 
 Stats::Stats(int size) {

@@ -4,8 +4,6 @@
 /**
  *  @file    MC_Test_Utilities_export.h
  *
- *  $Id: MC_Test_Utilities_export.h 81556 2008-05-01 14:59:00Z parsons $
- *
  *  @author Jeff Parsons <j.parsons@vanderbilt.edu>
  */
 //=============================================================================

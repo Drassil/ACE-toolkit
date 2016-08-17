@@ -1,5 +1,3 @@
-// $Id: task_four.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // The following test was written by Hamutal Yanay & Ari Erev's
 // (Ari_Erev@comverse.com).
 //

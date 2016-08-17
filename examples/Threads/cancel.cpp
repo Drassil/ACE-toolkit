@@ -1,5 +1,3 @@
-// $Id: cancel.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Test out the cooperative thread cancellation mechanisms provided by
 // the ACE_Thread_Manager.
 

@@ -1,5 +1,3 @@
-// $Id: SS_State_ERROR.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 #include "jaws3/IO.h"
 
 #include "SS_State_ERROR.h"

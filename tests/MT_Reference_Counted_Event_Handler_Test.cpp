@@ -3,9 +3,6 @@
 /**
  *  @file    MT_Reference_Counted_Event_Handler_Test.cpp
  *
- *  $Id: MT_Reference_Counted_Event_Handler_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
- *
  *  This test tries to represents what happens in the ORB wrt to
  *  event handlers, reactors, timer queues, threads, and connection
  *  caches, minus the other complexities.  The following reactors
@@ -17,7 +14,6 @@
  *  threaded or reactive. A purger thread is introduced to check the
  *  connection recycling and cache purging.  Nested upcalls are also
  *  tested.
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */
@@ -1288,7 +1284,7 @@ test<REACTOR_IMPL>::test (int ignore_nested_upcalls,
            nested_upcalls == test_configs[i][4]))
         {
 
-#if 0 // defined (linux)
+#if 0 /* defined (ACE_LINUX) */
 
           // @@ I am not sure why but when <make_invocations> is 0 and
           // there is no purger thread, the receiver thread does not

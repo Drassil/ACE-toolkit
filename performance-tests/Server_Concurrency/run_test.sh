@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# $Id: run_test.sh 80826 2008-03-04 14:51:23Z wotte $
-#
 
 for s in 0 25 50 75 100; do
   for w in 1 2 3 4 5 6; do

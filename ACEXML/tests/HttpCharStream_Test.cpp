@@ -1,5 +1,3 @@
-// $Id: HttpCharStream_Test.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ACEXML/common/HttpCharStream.h"
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_main.h"

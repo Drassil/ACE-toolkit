@@ -1,10 +1,6 @@
-// $Id: Print_Handler.h 91257 2010-08-03 11:54:04Z johnnyw $
-
 //=============================================================================
 /**
  *  @file    Print_Handler.h
- *
- *  $Id: Print_Handler.h 91257 2010-08-03 11:54:04Z johnnyw $
  *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */

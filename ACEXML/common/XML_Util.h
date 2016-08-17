@@ -6,8 +6,6 @@
  *
  * Initially contains a function to escape strings for use in XML files.
  *
- *  $Id: XML_Util.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Justin Michel <michel_j@ociweb.com>
  */
 //=============================================================================

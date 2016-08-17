@@ -3,10 +3,7 @@
 /**
  *  @file     target.cpp
  *
- *  $Id: target.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  * Target class defines target SNMP agents.
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

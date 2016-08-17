@@ -3,13 +3,10 @@
 /**
  *  @file    Sig_Handlers_Test.cpp
  *
- *  $Id: Sig_Handlers_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This is a simple program that tests whether the ACE_Sig_Handlers
  *  class works properly.  To run this test, start the application
  *  and then type ^C.  If everything is working properly the test
  *  will shutdown gracefully.
- *
  *
  *  @author Douglas C. Schmidt <schmidt@dre.vanderbilt.edu> and Andreas Drescher <ace at anticat dot ch>
  */

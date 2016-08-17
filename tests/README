@@ -1,4 +1,4 @@
-$Id: README 83939 2008-12-01 18:18:42Z schmidt $
+
 
 This directory contains a battery of "one-button" regression tests
 that exercise many capabilities of ACE on the numerous platforms upon
@@ -13,7 +13,7 @@ features.  Building and running the tests is straightforward:
 2. You then need to run all the tests, e.g., by running the perl script
 
    ACE_ROOT/tests/run_test.pl
-   
+
    Naturally, make sure that you've installed perl first!
 
 3. If everything works then you should see something like this:

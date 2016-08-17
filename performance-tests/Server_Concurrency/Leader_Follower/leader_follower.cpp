@@ -1,5 +1,3 @@
-// $Id: leader_follower.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_main.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/ACE.h"
@@ -173,15 +171,9 @@ Leader_Follower_Task::svc (void)
 
           if (debug >= PRINT_INDIVIDUAL_LATENCY)
             {
-#ifndef ACE_LACKS_LONGLONG_T
               ACE_DEBUG ((LM_DEBUG,
                           "(%t) latency from start of burst: %Q\n",
                           latency_from_start_of_burst));
-#else
-              ACE_DEBUG ((LM_DEBUG,
-                          "(%t) latency from start of burst: %u\n",
-                          latency_from_start_of_burst.lo()));
-#endif
             }
         }
     }

@@ -1,7 +1,5 @@
 #!/pkg/gnu/bin//perl
 #
-#$Id: mine-logs.pl 91813 2010-09-17 07:52:52Z johnnyw $
-#
 #  mine-logs.pl:
 #       script to transform access logs into WebStone workload
 #

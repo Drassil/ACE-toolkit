@@ -1,5 +1,3 @@
-// $Id: HTTP_SessionBase.cpp 91131 2010-07-20 03:58:02Z mcorino $
-
 #include "ace/INet/HTTP_SessionBase.h"
 
 #if !defined (__ACE_INLINE__)

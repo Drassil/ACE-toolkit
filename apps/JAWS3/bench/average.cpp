@@ -1,5 +1,3 @@
-// $Id: average.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 int
 ACE_TMAIN(int, ACE_TCHAR *[])
 {

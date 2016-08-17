@@ -3,11 +3,8 @@
 /**
  *  @file    WFMO_Reactor_Test.cpp
  *
- *  $Id: WFMO_Reactor_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This is a simple test of the WFMO_Reactor.  It makes sure that
  *  removals and suspensions work correctly.
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */

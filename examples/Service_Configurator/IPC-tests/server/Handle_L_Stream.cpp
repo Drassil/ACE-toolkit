@@ -1,5 +1,3 @@
-// $Id: Handle_L_Stream.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "Handle_L_Stream.h"
 
 #if !defined (ACE_LACKS_UNIX_DOMAIN_SOCKETS)

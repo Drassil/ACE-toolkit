@@ -1,5 +1,3 @@
-// $Id: AuthenticationBase.cpp 90891 2010-06-28 09:55:39Z mcorino $
-
 #include "ace/INet/AuthenticationBase.h"
 
 #if !defined (__ACE_INLINE__)
@@ -12,9 +10,17 @@ namespace ACE
 {
   namespace INet
   {
-    AuthenticationBase::~AuthenticationBase () {}
+    AuthenticationBase::~AuthenticationBase ()
+    {
+    }
 
-    AuthenticatorBase::~AuthenticatorBase () {}
+    AuthenticatorBase::AuthenticatorBase ()
+    {
+    }
+
+    AuthenticatorBase::~AuthenticatorBase ()
+    {
+    }
   }
 }
 

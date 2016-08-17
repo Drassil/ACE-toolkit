@@ -1,5 +1,3 @@
-// $Id: test_dll.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This program tests out how the various objects can be loaded
 // dynamically and method calls made on them.
 

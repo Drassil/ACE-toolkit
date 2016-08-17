@@ -3,8 +3,6 @@
 /**
  *  @file    Timer_Queue_Test.cpp
  *
- *  $Id: Timer_Queue_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a simple test of <ACE_Timer_Queue> and four of its
  *    subclasses (<ACE_Timer_List>, <ACE_Timer_Heap>,
  *    <ACE_Timer_Wheel>, and <ACE_Timer_Hash>).  The test sets up a
@@ -12,13 +10,11 @@
  *    functionality of the timer queue is then tested. No command
  *    line arguments are needed to run the test.
  *
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  *  @author Prashant Jain <pjain@cs.wustl.edu>
  *  @author and Darrell Brunsch <brunsch@cs.wustl.edu>
  */
 //=============================================================================
-
 
 #include "test_config.h"
 #include "randomize.h"
@@ -29,13 +25,12 @@
 #include "ace/Timer_Wheel.h"
 #include "ace/Timer_Hash.h"
 #include "ace/Timer_Queue.h"
+#include "ace/Time_Policy.h"
 #include "ace/Recursive_Thread_Mutex.h"
 #include "ace/Null_Mutex.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/Containers_T.h"
-
-
-
+#include "ace/Event_Handler.h"
 
 // Number of iterations for the performance tests.  Some platforms
 // have a very high ACE_DEFAULT_TIMERS (HP-UX is 400), so limit this
@@ -326,7 +321,10 @@ test_performance (ACE_Timer_Queue *tq,
 
   // Set up a bunch of times TIMER_DISTANCE ms apart.
   for (i = 0; i < max_iterations; ++i)
-    times[i] = tq->gettimeofday() + ACE_Time_Value(0, i * TIMER_DISTANCE * 1000);
+    {
+      times[i] = (tq->gettimeofday()
+        + ACE_Time_Value(0, i * TIMER_DISTANCE * 1000));
+    }
 
   ACE_Time_Value last_time = times[max_iterations-1];
 
@@ -674,14 +672,30 @@ run_main (int argc, ACE_TCHAR *argv[])
                   -1);
 
   // Timer_Heap without preallocated memory, using high-res time.
+  // @deprecated
   (void) ACE_High_Res_Timer::global_scale_factor ();
-  ACE_Timer_Heap *tq_heap = new ACE_Timer_Heap;
-  tq_heap->gettimeofday (&ACE_High_Res_Timer::gettimeofday_hr);
+
+  ACE_Timer_Heap *tq_heap =
+    new ACE_Timer_Heap;
+  tq_heap->gettimeofday(&ACE_High_Res_Timer::gettimeofday_hr);
   ACE_NEW_RETURN (tq_stack,
                   Timer_Queue_Stack (tq_heap,
+                                     ACE_TEXT ("ACE_Timer_Heap (high-res timer; deprecated version)"),
+                                     tq_stack),
+                  -1);
+
+  // new (optimized) version
+  typedef ACE_Timer_Heap_T<ACE_Event_Handler *,
+                           ACE_Event_Handler_Handle_Timeout_Upcall,
+                           ACE_SYNCH_RECURSIVE_MUTEX,
+                           ACE_HR_Time_Policy>
+          timer_heap_hr_type;
+  ACE_NEW_RETURN (tq_stack,
+                  Timer_Queue_Stack (new timer_heap_hr_type,
                                      ACE_TEXT ("ACE_Timer_Heap (high-res timer)"),
                                      tq_stack),
                   -1);
+
 
   // Create the Timer ID array
   ACE_NEW_RETURN (timer_ids,
@@ -714,4 +728,3 @@ run_main (int argc, ACE_TCHAR *argv[])
   ACE_END_TEST;
   return 0;
 }
-

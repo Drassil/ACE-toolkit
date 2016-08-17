@@ -4,8 +4,6 @@
 /**
  *  @file   Debug_Attributes_Builder.h
  *
- *  $Id: Debug_Attributes_Builder.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================

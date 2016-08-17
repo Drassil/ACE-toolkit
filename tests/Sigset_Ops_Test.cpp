@@ -3,12 +3,9 @@
 /**
  *  @file    Sigset_Ops_Test.cpp
  *
- *  $Id: Sigset_Ops_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This program tests the correctness of following functions.
  *   sigfillset(), sigemptyset(), sigaddset(), sigdelset(),
  *   sigismember().
- *
  *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */

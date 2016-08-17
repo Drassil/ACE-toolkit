@@ -1,8 +1,6 @@
 /**
  * @file Bug_3532_Regression_Test.cpp
  *
- * $Id: Bug_3532_Regression_Test.cpp 91626 2010-09-07 10:59:20Z johnnyw $
- *
  * Reproduces the problems reported in bug 3532
  *   http://deuce.doc.wustl.edu/bugzilla/show_bug.cgi?id=3532
  *

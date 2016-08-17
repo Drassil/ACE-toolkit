@@ -1,5 +1,3 @@
-// $Id: task_one.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This test program illustrates how the ACE barrier synchronization
 // mechanisms work in conjunction with the ACE_Task and the
 // ACE_Thread_Manager.  It is instructive to compare this with the

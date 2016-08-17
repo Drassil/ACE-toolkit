@@ -1,5 +1,3 @@
-// $Id: Client_Test.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/Service_Config.h"
 #include "ace/Naming_Context.h"
 #include "ace/Dynamic_Service.h"

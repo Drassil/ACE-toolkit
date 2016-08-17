@@ -1,4 +1,4 @@
-// -*- C++ -*-  $Id: Transcode.cpp 91813 2010-09-17 07:52:52Z johnnyw $
+// -*- C++ -*-
 
 #include "ACEXML/common/Transcode.h"
 #include "ace/OS_NS_string.h"

@@ -1,5 +1,3 @@
-// $Id: Element_Tree.inl 80826 2008-03-04 14:51:23Z wotte $
-
 ACEXML_INLINE
 ACEXML_Element_Tree_Node::ACEXML_Element_Tree_Node ()
   : next_ (0)

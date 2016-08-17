@@ -1,5 +1,3 @@
-// $Id: HTTPS_SessionFactory.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #include "ace/INet/HTTPS_SessionFactory.h"
 
 #include "ace/INet/INet_Log.h"

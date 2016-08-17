@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: OS_NS_string.inl 93549 2011-03-15 19:50:24Z olli $
-
 // OS_NS_wchar.h is only needed to get the emulation methods.
 // Perhaps they should be moved.  dhinton
 #include "ace/OS_NS_wchar.h"

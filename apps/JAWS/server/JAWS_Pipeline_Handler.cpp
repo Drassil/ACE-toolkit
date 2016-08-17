@@ -1,5 +1,3 @@
-// $Id: JAWS_Pipeline_Handler.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #ifndef JAWS_PIPELINE_HANDLER_CPP
 #define JAWS_PIPELINE_HANDLER_CPP
 

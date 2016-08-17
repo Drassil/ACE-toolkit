@@ -1,5 +1,3 @@
-// $Id: main.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/Service_Config.h"
 #include "ace/Reactor.h"
 #include "ace/Filecache.h"

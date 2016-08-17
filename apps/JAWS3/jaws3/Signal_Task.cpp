@@ -1,5 +1,3 @@
-// $Id: Signal_Task.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_signal.h"
 #include "ace/OS_NS_Thread.h"
 #include "ace/Thread.h"

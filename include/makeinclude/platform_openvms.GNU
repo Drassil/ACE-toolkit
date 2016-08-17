@@ -1,4 +1,3 @@
-# $Id: platform_openvms.GNU 91285 2010-08-05 08:29:30Z johnnyw $
 
 # for OpenVMS GNV
 

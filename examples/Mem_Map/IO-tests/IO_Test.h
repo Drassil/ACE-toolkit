@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: IO_Test.h 80826 2008-03-04 14:51:23Z wotte $
-
 /* Class hierarchy for the File I/O tests. */
 
 #include "ace/Profile_Timer.h"

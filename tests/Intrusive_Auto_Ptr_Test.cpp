@@ -3,11 +3,8 @@
 /**
  *  @file    Intrusive_Auto_Ptr_Test.cpp
  *
- *  $Id: Intrusive_Auto_Ptr_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test verifies the functionality of the <ACE_Intrusive_Auto_Ptr>
  *  implementation.
- *
  *
  *  @author Iliyan Jeliazkov <iliyan@ociweb.com>
  */
@@ -28,7 +25,7 @@ class One {
   int ref;
 
 public:
-  One (int refcount): ref(refcount)
+  One (int refcount) : m2(0), ref(refcount)
   {
     released = false;
   }
@@ -95,6 +92,27 @@ int run_main (int, ACE_TCHAR *[])
   }
 
   ACE_TEST_ASSERT (One::was_released());
+
+  // Test assigning zero.
+  theone = new One(0);
+  {
+    ACE_TEST_ASSERT (theone->has_refs (0));
+    ACE_TEST_ASSERT (!One::was_released ());
+
+    // Transfer object to instrusive auto ptr.
+    // The reference is expected to increment to 1.
+    ACE_Intrusive_Auto_Ptr<One> ip2(theone);
+
+    ACE_TEST_ASSERT (theone->has_refs (1));
+    ACE_TEST_ASSERT (!One::was_released ());
+
+    // Assign a zero instrusive auto ptr.
+    // The reference is expected to decrement to 0, so that the object is
+    // expected to be released.
+    ACE_Intrusive_Auto_Ptr<One> ip3;
+    ip2 = ip3;
+    ACE_TEST_ASSERT (One::was_released ());
+  }
 
   ACE_END_TEST;
   return 0;

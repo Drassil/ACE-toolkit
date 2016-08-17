@@ -3,8 +3,6 @@
 /**
  *  @file   config-win32.h
  *
- *  $Id: config-win32.h 92120 2010-10-01 12:00:01Z johnnyw $
- *
  *  @brief  Microsoft Windows configuration file.
  *
  *  This file is the ACE configuration file for all of Microsoft Windows
@@ -27,26 +25,27 @@
 // but instead let it be included at the appropriate place in
 // config-win32-borland.h.
 #if !defined (__BORLANDC__)
-#    include "ace/config-win32-common.h"
+#  include "ace/config-win32-common.h"
 #endif /* !__BORLANDC__ */
 
 // Include the config-win32-* file specific to the compiler
 #if defined (__BORLANDC__)
-#    include "ace/config-win32-borland.h"
+#  include "ace/config-win32-borland.h"
 #elif defined (_MSC_VER)
-#    include "ace/config-win32-msvc.h"
+#  include "ace/config-win32-msvc.h"
 #elif defined (ACE_HAS_CEGCC) //need to be prior to MINGW32
-#    include "ace/config-win32-cegcc.h"
+#  include "ace/config-win32-cegcc.h"
 #elif defined (__MINGW32__)
+#  if defined (__MINGW64_VERSION_MAJOR)
+#    include "ace/config-win32-mingw64.h"
+#  else
 #    include "ace/config-win32-mingw.h"
+#  endif
 #elif defined (__DMC__)
-#    include "ace/config-win32-dmc.h"
+#  include "ace/config-win32-dmc.h"
 #else
-#    error Compiler is not supported
+#  error Compiler is not supported
 #endif
-
-// gethostbyaddr does not handle IPv6-mapped-IPv4 addresses
-#define ACE_HAS_BROKEN_GETHOSTBYADDR_V4MAPPED
 
 #include /**/ "ace/post.h"
 #endif /* ACE_CONFIG_WIN32_H */

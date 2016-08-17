@@ -1,5 +1,3 @@
-// $Id: ClientRequestHandler.h 93745 2011-04-05 14:28:43Z mcorino $
-
 /**
  * @file ClientRequestHandler.h
  *
@@ -74,11 +72,7 @@ namespace ACE
               * @brief
               *
               */
-#if (defined(_MSC_VER) || defined(__MINGW32__))
               class ACE_INET_Export INetConnectionKey
-#else
-              class INetConnectionKey
-#endif
                 : public ConnectionKey
                 {
                   public:

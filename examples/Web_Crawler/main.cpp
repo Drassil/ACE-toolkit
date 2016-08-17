@@ -3,11 +3,8 @@
 /**
  *  @file    main.cpp
  *
- *  $Id: main.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *   This program implements a Web crawler that can be configured to
  *   apply various strategies to URLs that it visits.
- *
  *
  *  @author Doug Schmidt <schmidt@cs.wustl.edu>
  */

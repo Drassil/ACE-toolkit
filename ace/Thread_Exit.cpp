@@ -1,5 +1,3 @@
-// $Id: Thread_Exit.cpp 92580 2010-11-15 09:48:02Z johnnyw $
-
 #include "ace/Thread_Exit.h"
 #include "ace/Managed_Object.h"
 #include "ace/Thread_Manager.h"

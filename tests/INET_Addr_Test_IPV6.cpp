@@ -1,5 +1,3 @@
-// $Id: INET_Addr_Test_IPV6.cpp 85237 2009-05-01 12:18:12Z johnnyw $
-
 // ============================================================================
 /**
  * @file INET_Addr_Test_IPV6.cpp
@@ -133,7 +131,7 @@ int run_main (int, ACE_TCHAR *[])
 
      status |= check_type_consistency (addr);
 
-#if defined (__linux__)
+#if defined (ACE_LINUX)
       // test a link local address to make sure the set_interface method works
       ACE_INET_Addr link_local_addr (80, LINK_LOCAL_ADDR);
       if (0 != ACE_OS::strcmp (ACE_TEXT_CHAR_TO_TCHAR(link_local_addr.get_host_addr ()),
@@ -153,7 +151,7 @@ int run_main (int, ACE_TCHAR *[])
                       ACE_TEXT ("IPv6 set_interface failed\n")));
           status = 1;
         }
-#endif /* __linux__ */
+#endif /* ACE_LINUX */
     }
 
 #endif /* ACE_HAS_IPV6 */

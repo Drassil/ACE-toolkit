@@ -3,10 +3,7 @@
 /**
  *  @file    Singleton_Test.cpp
  *
- *  $Id: Singleton_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a simple test of ACE Singleton
- *
  *
  *  @author Johnny Willemsen  <jwillemsen@remedy.nl>
  */

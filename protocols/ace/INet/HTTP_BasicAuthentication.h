@@ -1,5 +1,3 @@
-// $Id: HTTP_BasicAuthentication.h 91132 2010-07-20 05:28:27Z mcorino $
-
 /**
  * @file HTTP_BasicAuthentication.h
  *

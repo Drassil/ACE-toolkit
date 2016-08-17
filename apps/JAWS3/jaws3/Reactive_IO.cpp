@@ -1,5 +1,3 @@
-// $Id: Reactive_IO.cpp 85419 2009-05-22 10:52:11Z johnnyw $
-
 #include "ace/ACE.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/Reactor.h"
@@ -413,6 +411,9 @@ int
 JAWS_IO_Reactive_Transmit::handle_output_source (ACE_HANDLE handle)
 {
   ACE_Message_Block *mb = this->source_buf_;
+
+  if (mb == 0)
+    return -1;
 
   // Try to read data into the mb if data is still available.
   if (mb->space () && this->source_ != ACE_INVALID_HANDLE)

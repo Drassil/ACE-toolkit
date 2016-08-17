@@ -1,5 +1,5 @@
 /*
-** $Id: test_cancel.h 81978 2008-06-16 16:57:12Z sowayaa $
+**
 */
 
 #ifndef _TEST_CANCEL_H

@@ -2,7 +2,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     & eval 'exec perl -S $0 $argv:q'
     if 0;
 
-# $Id: generate_export_file.pl 80826 2008-03-04 14:51:23Z wotte $
+# -*- perl -*-
 # Replacement for the old trusty GenExportH.bat
 # Creates the nice little *_export file which is used for
 # importing and exporting of symbols in DLLs.

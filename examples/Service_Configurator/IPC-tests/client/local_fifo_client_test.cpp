@@ -1,5 +1,3 @@
-// $Id: local_fifo_client_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Send a file through ACE_FIFO communication channel by
 // breaking it (the file) into pieces.
 

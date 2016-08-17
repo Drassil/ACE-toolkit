@@ -1,5 +1,3 @@
-// $Id: SSLSock_IOStream.h 91118 2010-07-17 10:29:57Z mcorino $
-
 /**
  * @file SSLSock_IOStream.h
  *

@@ -4,8 +4,6 @@
 /**
  * @file MC_Test_Utilities.h
  *
- * $Id: MC_Test_Utilities.h 90163 2010-05-18 21:42:20Z mitza $
- *
  * @author Jeff Parsons <j.parsons@vanderbilt.edu>
  */
 //=============================================================================
@@ -34,7 +32,6 @@ using namespace ACE_VERSIONED_NAMESPACE_NAME::ACE::Monitor_Control;
  *
  * @brief Container for utility methods that display the output
  *        of the various OS monitors in a friendly format.
- *
  */
 struct MC_TEST_UTILITIES_Export MC_Test_Utilities
 {

@@ -4,8 +4,6 @@
 /**
  *  @file    ParserInternals.h
  *
- *  $Id: ParserInternals.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
  */
 //=============================================================================
@@ -27,7 +25,6 @@
  *
  * @brief A class to hide some of the internal implementation details of
  *        the parser.
- *
  */
 class ACEXML_PARSER_Export ACEXML_ParserInt
 {

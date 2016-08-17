@@ -2,7 +2,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     & eval 'exec perl -S $0 $argv:q'
     if 0;
 
-# $Id: regenerate_exports.pl 91813 2010-09-17 07:52:52Z johnnyw $
 # Goes through ACE/TAO and replaces
 
 use File::Find;

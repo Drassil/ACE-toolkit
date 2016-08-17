@@ -8,7 +8,6 @@ eval '(exit $?0)' && eval 'exec perl -w -S $0 ${1+"$@"}'
 #        Date: 7/10/2008
 # Description: Visual Studio doesn't support a post clean build step,
 #              so this script will do it.
-#         $Id: vs_postclean.pl 1749 2010-04-10 19:38:14Z elliott_c $
 # ******************************************************************
 
 # ******************************************************************

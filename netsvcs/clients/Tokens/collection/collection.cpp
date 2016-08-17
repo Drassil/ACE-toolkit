@@ -3,13 +3,10 @@
 /**
  *  @file    collection.cpp
  *
- *  $Id: collection.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *   Shows how applications can use the ACE_Token_Collection
  *   utility.  This example creates three collections and spawns a
  *   thread to operate on each.  The threads use the collective
  *   acquire, renew, and release features of ACE_Token_Collection.
- *
  *
  *  @author Tim Harrison
  */

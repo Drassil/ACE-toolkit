@@ -1,6 +1,4 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Stack.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "Stack.h"
 
 namespace ACE_RMCast

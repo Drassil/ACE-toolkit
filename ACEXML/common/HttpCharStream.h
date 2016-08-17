@@ -4,8 +4,6 @@
 /**
  *  @file    HttpCharStream.h
  *
- *  $Id: HttpCharStream.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
  */
 //=============================================================================
@@ -25,7 +23,7 @@
 #include "ACEXML/common/Mem_Map_Stream.h"
 
 /**
- * @class ACEXML_HttpCharStream HttpCharStream.h "ACEXML/common/HttpCharStream.h"
+ * @class ACEXML_HttpCharStream
  *
  * An implementation of ACEXML_CharStream for reading input from a URL.
  */

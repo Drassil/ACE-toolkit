@@ -1,5 +1,3 @@
-// $Id: HTBP_ID_Requestor.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "HTBP_ID_Requestor.h"
 #include "HTBP_Environment.h"
 

@@ -1,5 +1,3 @@
-// $Id: PMS_Flo.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "BS_Server.h"
 #include "PMS_Flo.h"

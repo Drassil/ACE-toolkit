@@ -1,5 +1,3 @@
-// $Id: Temperature_Grapher.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef TEMPERATURE_GRAPHER_H
 #define TEMPERATURE_GRAPHER_H
 

@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Benchmark_Performance.h 80826 2008-03-04 14:51:23Z wotte $
-
 /* Defines the class used to dynamically link in the benchmark tests */
 
 #ifndef ACE_BENCHMARK_PERFORMANCE_H

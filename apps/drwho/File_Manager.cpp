@@ -1,5 +1,3 @@
-// $Id: File_Manager.cpp 81993 2008-06-16 20:26:16Z sowayaa $
-
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_pwd.h"
 #include "ace/OS_NS_string.h"
@@ -73,8 +71,9 @@ File_Manager::get_login_and_real_name (const char *&login_name, const char *&rea
 int
 File_Manager::open_passwd_file (void)
 {
-  const char *filename = ACE_OS::tempnam ();
-  FILE *fp = ACE_OS::fopen (filename, "w");
+  char *filename = const_cast<char *> ("passwd-XXXXXX");
+  ACE_HANDLE f = ACE_OS::mkstemp (filename);
+  FILE *fp = ACE_OS::fdopen (f, "w");
 
   if (fp == 0)
     return -1;
@@ -165,7 +164,5 @@ File_Manager::open_friends_file (const char *filename)
   return this->number_of_friends;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<File_Manager, ACE_Null_Mutex> *
-  ACE_Singleton<File_Manager, ACE_Null_Mutex>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, File_Manager, ACE_Null_Mutex);
+

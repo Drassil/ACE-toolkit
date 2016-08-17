@@ -1,5 +1,4 @@
 #! /usr/bin/perl
-# $Id: ConfigList.pm 82648 2008-08-21 06:55:54Z johnnyw $
 
 package PerlACE::ConfigList;
 use strict;
@@ -89,11 +88,11 @@ sub load ($)
 
     while (<$fh>) {
         chomp;
-	       if (/^\s*$/ || /^#/) {
+        if (/^\s*$/ || /^#/) {
             next;
         }
         # compress white space
-	      s/\s+/ /g;
+        s/\s+/ /g;
 
         my $entry = '';
         my $configs = '';
@@ -104,7 +103,7 @@ sub load ($)
         $entry =~ s/\s+$//;
 
         push @{$self->{ENTRIES}}, $entry;
-	      if (defined $configs) {
+        if (defined $configs) {
             @{$self->{CONFIGS}->{$entry}} =  split (" ", $configs);
         }
     }

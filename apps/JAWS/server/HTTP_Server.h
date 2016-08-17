@@ -4,8 +4,6 @@
 /**
  *  @file    HTTP_Server.h
  *
- *  $Id: HTTP_Server.h 84502 2009-02-18 06:49:44Z johnnyw $
- *
  *  @author James Hu
  */
 //=============================================================================
@@ -50,7 +48,6 @@ typedef HTTP_SOCK_Acceptor HTTP_Acceptor;
  *
  * @brief This server is used to create HTTP Handlers for the Web
  * server
- *
  */
 class ACE_Svc_Export HTTP_Server : public ACE_Service_Object
 {

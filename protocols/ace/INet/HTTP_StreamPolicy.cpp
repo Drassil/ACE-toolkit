@@ -1,5 +1,3 @@
-// $Id: HTTP_StreamPolicy.cpp 90737 2010-06-21 09:46:14Z mcorino $
-
 #ifndef ACE_HTTP_STREAM_POLICY_CPP
 #define ACE_HTTP_STREAM_POLICY_CPP
 

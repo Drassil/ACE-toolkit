@@ -3,8 +3,6 @@
 /**
  *  @file    SSL_Asynch_Stream_Test.cpp
  *
- *  $Id: SSL_Asynch_Stream_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This program is a functionality test of ACE_SSL_Asynch_Stream.
  *    It demonstrates one proper use case of ACE_SSL_Asynch_Stream in the
  *    Proactor framework and validates its basic functionality.
@@ -19,7 +17,6 @@
  *        <client conn attempt#>: ACE_MAX_ITERATIONS
  *        <client req# per conn>: 20
  *        <delay>:                0 usec
- *
  *
  *  @author   Steve Huston <shuston@riverace.com>
  */

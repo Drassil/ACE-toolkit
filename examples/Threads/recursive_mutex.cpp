@@ -1,5 +1,3 @@
-// $Id: recursive_mutex.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This test program verifies the functionality of the ACE_OS
 // implementation of recursive mutexes on Win32 and Posix pthreads.
 

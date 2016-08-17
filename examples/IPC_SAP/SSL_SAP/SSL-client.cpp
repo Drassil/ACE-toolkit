@@ -1,5 +1,3 @@
-// $Id: SSL-client.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This tests the features of the <ACE_SSL_SOCK_Connector> and
 // <ACE_SSL_SOCK_Stream> classes.  In addition, it can be used to test the
 // oneway and twoway latency and throughput at the socket-level.  This
@@ -18,8 +16,6 @@
 #include "ace/SSL/SSL_SOCK_Connector.h"
 
 #include "SSL-client.h"
-
-
 
 Options::Options (void)
   : host_ (ACE_DEFAULT_SERVER_HOST),
@@ -400,7 +396,7 @@ run_client (void)
   else
     ACE_Thread_Manager::instance ()->wait ();
 #else
-  *(OPTIONS::instance ()->thr_func) ();
+  (void) *(OPTIONS::instance ()->thr_func) ();
 #endif /* ACE_HAS_THREADS */
   return 0;
 }

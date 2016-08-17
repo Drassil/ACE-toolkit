@@ -4,11 +4,8 @@
 /**
  *  @file    Today.h
  *
- *  $Id: Today.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This class denotes the Today magazine which is derived from
  *  Magazine.
- *
  *
  *  @author Kirthika Parameswaran <kirthika@cs.wustl.edu>
  */

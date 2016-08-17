@@ -1,4 +1,3 @@
-/* $Id: rexec.c 91813 2010-09-17 07:52:52Z johnnyw $ */
 /*
  * Copyright (c) 1994-1995 Ataman Software, Inc.  All rights reserved.
  *

@@ -1,5 +1,3 @@
-// $Id: Task_ThreadPool.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/config-lite.h"
 #if defined (ACE_HAS_THREADS)
 
@@ -39,7 +37,7 @@ public:
 private:
   void process_message (ACE_Message_Block *mb)
   {
-    ACE_TRACE (ACE_TEXT ("Workers::process_message"));
+    ACE_TRACE ("Workers::process_message");
     int msgId;
     ACE_OS::memcpy (&msgId, mb->rd_ptr (), sizeof(int));
     mb->release ();
@@ -62,12 +60,12 @@ public:
 
   Manager () : shutdown_(0)
   {
-    ACE_TRACE (ACE_TEXT ("Manager::Manager"));
+    ACE_TRACE ("Manager::Manager");
   }
 
   int svc (void)
   {
-    ACE_TRACE (ACE_TEXT ("Manager::svc"));
+    ACE_TRACE ("Manager::svc");
 
     ACE_DEBUG ((LM_INFO, ACE_TEXT ("(%t) Manager started\n")));
 

@@ -1,11 +1,7 @@
 // -*- C++ -*-
-// $Id: HTBP_Filter_Factory.h 87228 2009-10-26 10:45:28Z vzykov $
-
 //=============================================================================
 /**
  *  @file    HTBP_Filter_Factory.h
- *
- *  $Id: HTBP_Filter_Factory.h 87228 2009-10-26 10:45:28Z vzykov $
  *
  *  @author Priyanka Gontla
  */

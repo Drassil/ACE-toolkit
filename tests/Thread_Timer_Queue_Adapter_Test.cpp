@@ -1,5 +1,3 @@
-// $Id: Thread_Timer_Queue_Adapter_Test.cpp 92900 2010-12-17 14:45:11Z mcorino $
-
 /**
  *  @file    Thread_Timer_Queue_Adapter_Test.cpp
  *
@@ -7,12 +5,12 @@
  *
  * This test verifies the functionality of the ACE_Timer_Queue_Thread_Adapter.
  * It also shows the usage of custom event handlers.
- *
  */
 //=============================================================================
 
 #include "ace/Timer_Wheel.h"
 #include "ace/Timer_Queue_Adapters.h"
+#include "ace/Truncate.h"
 #include "test_config.h"
 
 #if defined (ACE_HAS_THREADS)
@@ -75,7 +73,7 @@ class CCustomEventHandlerUpcall
                      int /*recurring_timer*/,
                      const ACE_Time_Value& /*cur_time*/)
         {
-            ACE_TRACE(ACE_TEXT ("timeout"));
+            ACE_TRACE("timeout");
 
             return (*p_Handler)(const_cast<void*> (p_vParameter));
         }
@@ -97,7 +95,7 @@ class CCustomEventHandlerUpcall
         /// This method is called when a timer is canceled
         int cancel_timer(TTimerQueue&, ICustomEventHandler* p_Handler, int, int)
         {
-            ACE_TRACE(ACE_TEXT ("cancel_timer"));
+            ACE_TRACE("cancel_timer");
             delete p_Handler;
             return 0;
         }
@@ -106,7 +104,7 @@ class CCustomEventHandlerUpcall
         /// the timer is still contained in it
         int deletion(TTimerQueue&, ICustomEventHandler* p_Handler, const void*)
         {
-            ACE_TRACE(ACE_TEXT ("deletion"));
+            ACE_TRACE("deletion");
             delete p_Handler;
             return 0;
         }
@@ -143,7 +141,7 @@ class CTestEventHandler : public ICustomEventHandler
         /// @param p_vParameter
         virtual int operator() (void* p_vParameter)
         {
-            long iParameter = (long) p_vParameter;
+            long iParameter = ACE_Utils::truncate_cast<long> ((intptr_t)p_vParameter);
 
             ACE_DEBUG((LM_DEBUG,
                        ACE_TEXT("%I(%t) Incrementing test event handler call count by %d.\n"),

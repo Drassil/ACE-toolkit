@@ -1,5 +1,3 @@
-// $Id: CPP-client.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/ATM_Connector.h"
 #include "ace/ATM_Addr.h"

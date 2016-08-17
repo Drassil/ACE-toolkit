@@ -1,5 +1,3 @@
-// $Id: SC_Server.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Simple driver program for the server.  This driver dynamically
 // links in all the services in the <svc.conf> file.
 

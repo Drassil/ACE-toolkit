@@ -1,5 +1,3 @@
-// $Id: CE_ARGV.cpp 85395 2009-05-19 10:22:42Z johnnyw $
-
 #include "CE_ARGV.h"
 
 CE_ARGV::CE_ARGV(wchar_t* cmdLine)

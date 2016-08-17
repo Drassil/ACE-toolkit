@@ -2,7 +2,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     & eval 'exec perl -S $0 $argv:q'
     if 0;
 
-# $Id: generate_rel_manpages 93954 2011-04-20 08:55:09Z johnnyw $
+# $Id$
 
 use strict;
 require Cwd;

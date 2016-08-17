@@ -1,5 +1,3 @@
-// $Id: SSL-client-simple.cpp 94150 2011-06-06 13:44:42Z msmit $
-
 // This tests the features of the <ACE_SSL_SOCK_Connector> and
 // <ACE_SSL_SOCK_Stream> classes.  In addition, it can be used to test the
 // oneway and twoway latency and throughput at the socket-level.  This

@@ -2,7 +2,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     & eval 'exec perl -S $0 $argv:q'
     if 0;
 
-# $Id: svcconf-convert.pl 80826 2008-03-04 14:51:23Z wotte $
 #
 # File: svcconf-convert.pl:
 # Purpose: This perl script convert classic svc.conf file into XML svc.conf file format.

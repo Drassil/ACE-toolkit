@@ -1,6 +1,4 @@
 /*
-** $Id: TP_Logging_Server.cpp 80826 2008-03-04 14:51:23Z wotte $
-**
 ** Copyright 2002 Addison Wesley. All Rights Reserved.
 */
 
@@ -62,9 +60,6 @@ int TP_Logging_Task::svc () {
 
 ACE_FACTORY_DEFINE (TPLS, TP_Logging_Server)
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<TP_Logging_Task, ACE_Null_Mutex> *
-  ACE_Singleton<TP_Logging_Task, ACE_Null_Mutex>::singleton_;
-template ACE_Unmanaged_Singleton<TP_Logging_Task, ACE_Null_Mutex> *
-  ACE_Unmanaged_Singleton<TP_Logging_Task, ACE_Null_Mutex>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, TP_Logging_Task, ACE_Null_Mutex);
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Unmanaged_Singleton, TP_Logging_Task, ACE_Null_Mutex);
+

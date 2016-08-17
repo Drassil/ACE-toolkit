@@ -1,10 +1,6 @@
-// $Id: Proactor_UDP_Test.cpp 94132 2011-06-01 05:53:39Z msmit $
-
 // ============================================================================
 /**
  *  @file Proactor_UDP_Test.cpp
- *
- *  $Id: Proactor_UDP_Test.cpp 94132 2011-06-01 05:53:39Z msmit $
  *
  *  This program illustrates how the ACE_Proactor can be used to
  *  implement an application that uses UDP/IP communications.
@@ -2067,7 +2063,7 @@ parse_args (int argc, ACE_TCHAR *argv[])
   xfer_limit = 50 * ACE_OS::strlen (complete_message);
 
   // Linux kernels up to at least 2.6.9 (RHEL 4) can't do full duplex aio.
-# if defined (linux)
+# if defined (ACE_LINUX)
   duplex = 0;
 #endif
 
@@ -2204,7 +2200,7 @@ run_main (int, ACE_TCHAR *[])
 
   ACE_DEBUG ((LM_INFO,
               ACE_TEXT ("Threads or Asynchronous IO is unsupported.\n")
-              ACE_TEXT ("Proactor_UDP_Test will not be run.")));
+              ACE_TEXT ("Proactor_UDP_Test will not be run.\n")));
 
   ACE_END_TEST;
 

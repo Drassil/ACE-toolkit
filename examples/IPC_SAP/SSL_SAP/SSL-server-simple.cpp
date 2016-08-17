@@ -1,5 +1,3 @@
-// $Id: SSL-server-simple.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This example tests the features of the <ACE_SSL_SOCK_Acceptor>,
 // <ACE_SSL_SOCK_Stream>, and <ACE_Svc_Handler> classes.
 

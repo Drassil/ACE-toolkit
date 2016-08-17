@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: cccommon.mpt 1458 2008-07-18 18:00:41Z elliott_c $
-
 conditional_include "common"
 
 lib_prefix =

@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ace_gl.mpb 93117 2011-01-20 12:11:28Z mcorino $
-
 project : ace_x11 {
   requires += gl
 

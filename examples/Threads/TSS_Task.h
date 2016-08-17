@@ -5,8 +5,6 @@
 /**
  *  @file    TSS_Task.h
  *
- *  $Id: TSS_Task.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Prashant Jain and Doug Schmidt
  */
 //=============================================================================

@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Policy.h 93678 2011-03-29 12:38:46Z johnnyw $
-
 #ifndef JAWS_POLICY_H
 #define JAWS_POLICY_H
 

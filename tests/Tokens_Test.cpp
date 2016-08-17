@@ -3,8 +3,6 @@
 /**
  *  @file    Tokens_Test.cpp
  *
- *  $Id: Tokens_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This application tests the ACE Token library including local
  *   and remote readers/writer and mutex locks, and token
  *   collections.  This is accomplished with the ACE Token Invariant
@@ -16,11 +14,9 @@
  *   test and then fork_execs a token server and performs the same
  *   test remotely.
  *
- *
  *  @author Tim Harrison <harrison@cs.wustl.edu>
  */
 //=============================================================================
-
 
 #include "test_config.h"
 #include "ace/Process.h"
@@ -32,8 +28,6 @@
 #include "ace/Token_Invariants.h"
 #include "ace/Barrier.h"
 #include "ace/OS_NS_unistd.h"
-
-
 
 #if defined (ACE_HAS_THREADS) && defined (ACE_HAS_TOKENS_LIBRARY)
 

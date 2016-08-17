@@ -1,7 +1,5 @@
 // file      : Sender.cpp
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// cvs-id    : $Id: Sender.cpp 91750 2010-09-14 09:40:06Z johnnyw $
-
 #include "ace/Log_Msg.h"
 #include "ace/OS_NS_unistd.h"
 

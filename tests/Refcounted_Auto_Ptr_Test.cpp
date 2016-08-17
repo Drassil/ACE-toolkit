@@ -1,10 +1,6 @@
-// $Id: Refcounted_Auto_Ptr_Test.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 //=============================================================================
 /**
  *  @file    Refcounted_Auto_Ptr_Test.cpp
- *
- *  $Id: Refcounted_Auto_Ptr_Test.cpp 91673 2010-09-08 18:49:47Z johnnyw $
  *
  *  This example tests the <ACE_Refcounted_Auto_Ptr> and illustrates
  *  how they may be dispersed between multiple threads using an

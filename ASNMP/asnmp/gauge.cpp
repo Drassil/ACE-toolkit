@@ -3,11 +3,8 @@
 /**
  *  @file     gauge.cpp
  *
- *  $Id: gauge.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  * Class implemtation for SMI Gauge32 class.
  * NOTES: This does not behave exactly as a Gauge described in RFC 1155
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

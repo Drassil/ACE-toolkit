@@ -1,5 +1,3 @@
-// $Id: Temperature_Monitor.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_time.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/Log_Msg.h"

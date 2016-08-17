@@ -3,8 +3,6 @@
 /**
  *  @file    context_switch_time.cpp
  *
- *  $Id: context_switch_time.cpp 93640 2011-03-24 18:36:12Z johnnyw $
- *
  * Program that calculates context switch time between threads.
  * The Suspend-Resume test is based on the Task Context Switching
  * measurement approach described in:
@@ -34,7 +32,6 @@
  *
  * = CREATION DATE
  *  17 January 1997
- *
  *
  *  @author David L. Levine
  */
@@ -1142,7 +1139,7 @@ get_options (int argc, ACE_TCHAR *argv[])
 int
 ACE_TMAIN (int argc, ACE_TCHAR *argv [])
 {
-  ACE_LOG_MSG->open (argv[0] > 0  ?  argv[0]  :  ACE_TEXT("context_switch_time"));
+  ACE_LOG_MSG->open (argv[0] != 0  ?  argv[0] : ACE_TEXT("context_switch_time"));
 
   if (get_options (argc, argv))
     ACE_OS::exit (-1);

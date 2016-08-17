@@ -3,7 +3,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     if 0;
 
 # -*- perl -*-
-# $Id: auto_compile 80826 2008-03-04 14:51:23Z wotte $
+# $Id$
 #
 # This script checkouts ACE from CVS, updates the "clone" directory,
 # compiles $ACE_ROOT/ace and $ACE_ROOT/tests and finally runs
@@ -145,7 +145,7 @@ $ENV{'ACE_ROOT'} = $CHECKOUT . '/' . $MODULE . '/build/' . $BUILD;
 $ENV{'TAO_ROOT'} = $CHECKOUT . '/' . $MODULE . '/build/' . $BUILD . '/TAO';
 
 # We obtain our revision to report errors.
-$REVISION='$Revision: 80826 $ ';
+$REVISION='$Revision$ ';
 
 # When an error is found we try to die gracefully and send some email
 # to ADMIN.

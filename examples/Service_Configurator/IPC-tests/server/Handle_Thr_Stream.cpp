@@ -1,5 +1,3 @@
-// $Id: Handle_Thr_Stream.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #if !defined (ACE_HANDLE_THR_STREAM_C)
 #define ACE_HANDLE_THR_STREAM_C
 
@@ -158,7 +156,12 @@ CLI_Stream<PR_ST_2>::svc (void)
   ACE_OS::fflush (stdout);
 
   time_t t = ACE_OS::time (0L);
+#if !defined(ACE_LACKS_CUSERID)
   ACE_OS::cuserid (login_name);
+#else
+  login_name[0] = '.';
+  login_name[1] = '\0';
+#endif
   ACE_OS::sprintf (buf,
                    "user %s %s",
                    login_name,

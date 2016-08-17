@@ -1,5 +1,3 @@
-// $Id: main.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test the client-side of the ACE Name Server...
 
 #include "ace/Service_Config.h"

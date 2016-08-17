@@ -3,8 +3,6 @@
 /**
  *  @file    TP_Reactor_Test.cpp
  *
- *  $Id: TP_Reactor_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This program illustrates how the <ACE_TP_Reactor> can be used to
  *  implement an application that does various  operations.
  *  usage: TP_Reactor_Test
@@ -39,7 +37,6 @@
  *   This test is a "twin" of the Proactor_Test.cpp, so it can help for
  *   developers to provide independent of Reactor/Proactor solutions.
  *
- *
  *  @author   Alexander Libman <alibman@ihug.com.au>
  *  @author <alexl@rumblgroup.com>
  */
@@ -64,8 +61,6 @@
 #include "ace/OS_NS_unistd.h"
 #include "ace/Synch_Traits.h"
 #include "ace/Thread_Semaphore.h"
-
-
 
 //  Some debug helper functions
 static int disable_signal (int sigmin, int sigmax);

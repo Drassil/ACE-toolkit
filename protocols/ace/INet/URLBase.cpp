@@ -1,5 +1,3 @@
-// $Id: URLBase.cpp 90891 2010-06-28 09:55:39Z mcorino $
-
 #include "ace/INet/URLBase.h"
 #include "ace/INet/IOS_util.h"
 
@@ -202,7 +200,7 @@ namespace ACE
         // may get a url passed without the actual prefix
 
         ACE_CString::size_type pos = url_string.find (':');
-        if (pos > 0 && url_string[pos+1] == '/' && url_string[pos+1] == '/')
+        if (pos > 0 && url_string[pos+1] == '/' && url_string[pos+2] == '/')
           {
             // in case we find a scheme check for the right protocol
             if (this->get_protocol () != url_string.substr (0, pos))

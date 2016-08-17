@@ -1,6 +1,4 @@
 /**
- * $Id: Change_Instance_Default.cpp 91813 2010-09-17 07:52:52Z johnnyw $
- *
  * Sample code from The ACE Programmer's Guide,
  * Copyright 2003 Addison-Wesley. All Rights Reserved.
  *

@@ -2,11 +2,8 @@
 /**
  *  @file    Custom_Handler.cpp
  *
- *  $Id: Custom_Handler.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This is a custom event handler to be used with the thread timer queue
  *  adapter, and its appropriate upcall.
- *
  *
  *  @author Alon Diamant <diamant.alon@gmail.com
  */
@@ -57,21 +54,21 @@ Custom_Handler::on_timeout (const ACE_Time_Value &current_time,
 
 int Custom_Handler_Upcall::registration(TTimerQueue& , Custom_Handler* , const void* )
 {
-    ACE_TRACE(ACE_TEXT ("registration"));
+    ACE_TRACE("registration");
 
     return 0;
 }
 
 int Custom_Handler_Upcall::preinvoke(TTimerQueue& , Custom_Handler* , const void* , int , const ACE_Time_Value& , const void*& )
 {
-    ACE_TRACE(ACE_TEXT ("preinvoke"));
+    ACE_TRACE("preinvoke");
 
     return 0;
 }
 
 int Custom_Handler_Upcall::timeout(TTimerQueue& , Custom_Handler* handler, const void* arg, int , const ACE_Time_Value& cur_time)
 {
-    ACE_TRACE(ACE_TEXT ("timeout"));
+    ACE_TRACE("timeout");
 
     // Do the actual timer call
     handler->on_timeout(cur_time, arg);
@@ -81,28 +78,28 @@ int Custom_Handler_Upcall::timeout(TTimerQueue& , Custom_Handler* handler, const
 
 int Custom_Handler_Upcall::postinvoke(TTimerQueue& , Custom_Handler* , const void* , int , const ACE_Time_Value& , const void* )
 {
-    ACE_TRACE(ACE_TEXT ("postinvoke"));
+    ACE_TRACE("postinvoke");
 
     return 0;
 }
 
 int Custom_Handler_Upcall::cancel_type(TTimerQueue& , Custom_Handler* , int , int& )
 {
-    ACE_TRACE(ACE_TEXT ("cancel_type"));
+    ACE_TRACE("cancel_type");
 
     return 0;
 }
 
 int Custom_Handler_Upcall::cancel_timer(TTimerQueue& , Custom_Handler* handler, int , int )
 {
-    ACE_TRACE(ACE_TEXT ("cancel_timer"));
+    ACE_TRACE("cancel_timer");
     delete handler;
     return 0;
 }
 
 int Custom_Handler_Upcall::deletion(TTimerQueue& , Custom_Handler* handler, const void* )
 {
-    ACE_TRACE(ACE_TEXT ("deletion"));
+    ACE_TRACE("deletion");
     delete handler;
     return 0;
 }

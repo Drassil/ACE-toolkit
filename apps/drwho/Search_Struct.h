@@ -4,8 +4,6 @@
 /**
  *  @file    Search_Struct.h
  *
- *  $Id: Search_Struct.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Douglas C. Schmidt
  */
 //=============================================================================

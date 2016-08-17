@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Timer.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 #ifndef JAWS_TIMER_H
 #define JAWS_TIMER_H
 

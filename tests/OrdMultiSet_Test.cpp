@@ -3,13 +3,10 @@
 /**
  *  @file    OrdMultiSet_Test.cpp
  *
- *  $Id: OrdMultiSet_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This is a simple test of the <ACE_Ordered_MultiSet> and
  *  <ACE_Ordered_MultiSet_Iterator> class templates, instantiating
  *  them with type int.  No command line arguments are needed to run
  *  the test.
- *
  *
  *  @author Chris Gill <cdgill@cs.wustl.edu>
  */

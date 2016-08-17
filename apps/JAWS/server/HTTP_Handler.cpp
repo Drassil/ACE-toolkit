@@ -1,5 +1,3 @@
-// $Id: HTTP_Handler.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // HTTP_Service.cpp -- simple implementation of the HTTP protocol
 
 #include "ace/Message_Block.h"

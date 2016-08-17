@@ -4,8 +4,6 @@
 /**
  *  @file  OS.h
  *
- *  $Id: OS.h 93833 2011-04-09 17:53:42Z mcorino $
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  *  @author Jesper S. M|ller<stophph@diku.dk>
  *  @author and a cast of thousands...

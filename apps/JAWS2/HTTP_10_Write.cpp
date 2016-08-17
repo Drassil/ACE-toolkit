@@ -1,5 +1,3 @@
-// $Id: HTTP_10_Write.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "JAWS/JAWS.h"
 #include "JAWS/IO.h"
 #include "JAWS/IO_Handler.h"

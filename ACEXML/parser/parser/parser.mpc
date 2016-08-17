@@ -1,6 +1,4 @@
 //  -*- MPC -*-
-// $Id: parser.mpc 90163 2010-05-18 21:42:20Z mitza $
-
 project(ACEXML_Parser): acelib, ace_output, install {
   avoids       += ace_for_tao
   sharedname    = ACEXML_Parser

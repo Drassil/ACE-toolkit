@@ -53,7 +53,7 @@ sub pre_workspace {
 
   print $fh '# -*- makefile -*-', $crlf;
   $self->workspace_preamble($fh, $crlf, 'GNU ACE Workspace',
-                            '$Id: GNUACEWorkspaceCreator.pm 91813 2010-09-17 07:52:52Z johnnyw $');
+                            '');
   print $fh 'MAKEFILE = ', $self->get_modified_workspace_name($base, '', 1),
             $crlf;
 }
@@ -99,7 +99,7 @@ sub write_comps {
   if ($named) {
     $self->write_named_targets($fh, $crlf, \%targnum, \@list,
                                'REMAINING_TARGETS := ' .
-                               '$(filter-out all,$(TARGETS_NESTED:.nested=)) $(CUSTOM_TARGETS)' .
+                               '$(filter-out all depend,$(TARGETS_NESTED:.nested=)) $(CUSTOM_TARGETS)' .
                                "$crlf$crlf\$(REMAINING_TARGETS)", '', '',
                                $self->project_target_translation(1), 1);
   }

@@ -1,6 +1,6 @@
 \input texinfo  @c -*-texinfo-*-
 
-@c $Id: ace_gperf.texi 82161 2008-06-25 07:00:24Z johnnyw $
+@c $Id$
 
 @include version.texi
 

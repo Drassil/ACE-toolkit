@@ -1,6 +1,4 @@
 /**
- * $Id: Message_Receiver.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  * Sample code from The ACE Programmer's Guide,
  * copyright 2003 Addison-Wesley. All Rights Reserved.
  */

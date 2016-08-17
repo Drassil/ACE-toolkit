@@ -1,5 +1,3 @@
-// $Id: test_hash_map_manager.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/Hash_Map_Manager.h"
 #include "ace/ACE.h"

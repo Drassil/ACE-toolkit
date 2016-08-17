@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: AuthenticationBase.inl 90925 2010-06-29 10:50:40Z mcorino $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 namespace ACE

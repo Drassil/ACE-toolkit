@@ -1,5 +1,3 @@
-// $Id: HTTPS_Session.cpp 91122 2010-07-19 08:50:12Z mcorino $
-
 #ifndef ACE_HTTPS_SESSION_CPP
 #define ACE_HTTPS_SESSION_CPP
 

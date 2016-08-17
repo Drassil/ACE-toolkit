@@ -1,5 +1,9 @@
 # -*- Makefile -*-
-# $Id: platform_g++_common.GNU 94153 2011-06-06 17:01:01Z johnnyw $
+
+ifeq ($(openmp),1)
+FLAGS_C_CC += -fopenmp
+LDFLAGS += -fopenmp
+endif
 
 ifeq ($(insure),1)
   CC  = insure
@@ -24,9 +28,9 @@ else
       TAO_IDLFLAGS += -g $(HOST_ROOT)/bin/ace_gperf
       TAO_IDL = $(HOST_ROOT)/bin/tao_idl
       TAO_IDL_DEP = $(TAO_IDL)
-      TAO_IDL3_TO_IDL2 = $(HOST_ROOT)/TAO/CIAO/bin/tao_idl3_to_idl2
+      TAO_IDL3_TO_IDL2 = $(HOST_ROOT)/bin/tao_idl3_to_idl2
       TAO_IDL3_TO_IDL2_DEP = $(TAO_IDL3_TO_IDL2)
-      TAO_IDL3_TO_XMI = $(HOST_ROOT)/TAO/CIAO/bin/tao_idl3_to_xmi
+      TAO_IDL3_TO_XMI = $(HOST_ROOT)/bin/tao_idl3_to_xmi
       TAO_IDL3_TO_XMI_DEP = $(TAO_IDL3_TO_XMI)
       # make sure to use the target compiler, not the cross-compiler
       # as preprocessor for the cross-compiled idl tools
@@ -54,12 +58,27 @@ ifeq ($(gprof),1)
   LDFLAGS += -pg
 endif
 
-ifeq ($(c++0x),1)
-  CCFLAGS += --std=c++0x
+ifeq ($(c++1y),1)
+  CCFLAGS += -std=c++1y
+  # This is needed due to the use of the deprecated auto_ptr class
+  CCFLAGS += -Wno-deprecated
+else
+  ifeq ($(c++11),1)
+    CCFLAGS += -std=c++11
+    # This is needed due to the use of the deprecated auto_ptr class
+    CCFLAGS += -Wno-deprecated
+  else
+    ifeq ($(c++0x),1)
+      CCFLAGS += -std=c++0x
+      # This is needed due to the use of the deprecated auto_ptr class
+      CCFLAGS += -Wno-deprecated
+    endif
+  endif
 endif
 
 ifeq ($(gcov),1)
-  FLAGS_C_CC += -fprofile-arcs -ftest-coverage
+  CCFLAGS += --coverage
+  LDFLAGS += --coverage
 endif
 
 ifeq ($(CXX),insure)
@@ -97,7 +116,7 @@ templates ?= automatic
 # If the platform file didn't already set versioned_so, default to 1.
 versioned_so ?= 1
 with_ld ?=
-ifeq ($(versioned_so),1)
+ifneq ($(versioned_so),0)
   ifeq ($(with_ld),hpux)
     SOFLAGS += -Wl,+h -Wl,$(SONAME)
   else
@@ -107,6 +126,10 @@ ifeq ($(versioned_so),1)
       SOFLAGS += -Wl,-h -Wl,$(SONAME)
     endif
   endif
+endif
+
+ifeq ($(versioned_so),2)
+  FLAGS_C_CC += -DACE_VERSIONED_SO=2
 endif
 
 static_libs_only ?=
@@ -138,7 +161,7 @@ ifeq ($(no-optimize-sibling-calls), 1)
 endif
 
 ifeq ($(no_strict_aliasing), 1)
-  CCFLAGS += -fno-strict-aliasing
+  FLAGS_C_CC += -fno-strict-aliasing
 else
   ifneq ($(no_strict_aliasing), 0)
     # if not explicitly disabled enable suppression of strict-aliasing checks by default
@@ -147,7 +170,7 @@ else
     # lot of pain to attempt to solve code issues and the best way to deal is to suppress
     ifeq ($(GXX_4_OR_BETTER), 1)
       ifneq ($(findstring $(CXX_MAJOR_VERSION).$(CXX_MINOR_VERSION),4.1),$(CXX_MAJOR_VERSION).$(CXX_MINOR_VERSION))
-        CCFLAGS += -fno-strict-aliasing
+        FLAGS_C_CC += -fno-strict-aliasing
       endif
     endif
   endif
@@ -210,6 +233,13 @@ ifeq ($(minimaltoc),1)
   FLAGS_C_CC += -mminimal-toc
 endif
 
+address-sanitizer ?= 0
+ifeq ($(address-sanitizer),1)
+  CPPFLAGS += -fsanitize=address -fno-omit-frame-pointer
+  LDFLAGS += -fsanitize=address
+endif
+
 pipes ?= 1
 
 FLAGS_C_CC += -Wall -W -Wpointer-arith
+CCFLAGS += -Wnon-virtual-dtor

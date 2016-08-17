@@ -2,11 +2,8 @@
 
 /** @file   Mem_Map_Stream.h
  *
- *  $Id: Mem_Map_Stream.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
- *
  */
 
 #ifndef _ACEXML_MEM_MAP_STREAM_H
@@ -30,7 +27,7 @@ typedef ACE_Svc_Handler<ACE_SOCK_STREAM, ACE_NULL_SYNCH> Svc_Handler;
 typedef ACE_Connector<Svc_Handler, ACE_SOCK_CONNECTOR> Connector;
 
 /**
- * @class ACEXML_Mem_Map_Stream Mem_Map_Stream.h "ACEXML/common/Mem_Map_Stream.h"
+ * @class ACEXML_Mem_Map_Stream
  *
  * @brief Provides a memory-mapped stream abstraction to simplify parsing
  * of tokens.

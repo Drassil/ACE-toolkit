@@ -3,14 +3,11 @@
 /**
  *  @file    MM_Shared_Memory_Test.cpp
  *
- *  $Id: MM_Shared_Memory_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a simple test of <ACE_Shared_Memory_MM>.  The test
  *   forks two processes or spawns two threads (depending upon the
  *   platform) and then executes child and parent allowing them to
  *   exchange data using shared memory. No user input is required as
  *   far as command line arguments are concerned.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu> and Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */
@@ -22,7 +19,7 @@
 #include "ace/SV_Semaphore_Simple.h"
 #include "ace/Process_Semaphore.h"
 #include "ace/Thread_Manager.h"
-#include "ace/ACE.h"
+#include "ace/Lib_Find.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_unistd.h"
 
@@ -194,7 +191,7 @@ run_main (int, ACE_TCHAR *[])
 {
   ACE_START_TEST (ACE_TEXT ("MM_Shared_Memory_Test"));
 
-#if !defined (ACE_LACKS_MMAP)
+#if !defined (ACE_LACKS_MMAP) && !defined (ACE_DISABLE_MKTEMP)
   ACE_TCHAR temp_file[MAXPATHLEN + 1];
 
   // Get the temporary directory,
@@ -219,8 +216,8 @@ run_main (int, ACE_TCHAR *[])
 
 #else /* !ACE_LACKS_MMAP */
   ACE_ERROR ((LM_INFO,
-              ACE_TEXT ("mmap ")
-              ACE_TEXT ("is not supported on this platform\n")));
+              ACE_TEXT ("mmap and mktemp")
+              ACE_TEXT ("are required for this test\n")));
 #endif /* !ACE_LACKS_MMAP */
 
   ACE_END_TEST;

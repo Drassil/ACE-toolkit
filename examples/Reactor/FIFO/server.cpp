@@ -1,5 +1,3 @@
-// $Id: server.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Service_Config.h"
 #include "ace/Reactor.h"
 #include "ace/Event_Handler.h"

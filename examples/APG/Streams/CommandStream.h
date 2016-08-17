@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: CommandStream.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef COMMAND_STREAM_H
 #define COMMAND_STREAM_H
 

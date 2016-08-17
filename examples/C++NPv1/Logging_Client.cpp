@@ -1,6 +1,4 @@
 /*
-** $Id: Logging_Client.cpp 82610 2008-08-12 19:46:36Z parsons $
-**
 ** Copyright 2001 Addison Wesley. All Rights Reserved.
 */
 

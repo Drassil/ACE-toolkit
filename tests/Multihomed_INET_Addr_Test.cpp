@@ -3,12 +3,9 @@
 /**
  *  @file    Multihomed_INET_Addr_Test.cpp
  *
- *  $Id: Multihomed_INET_Addr_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   Performs several tests on the Multihomed_ACE_INET_Addr class.
  *   It creates several IPv4 addresses and checks that the
  *   address formed by the class is valid.
- *
  *
  *  @author Edward Mulholland (emulholl@atl.lmco.com)
  */
@@ -221,8 +218,8 @@ int run_main (int, ACE_TCHAR *[])
     if (0 != ACE_OS::strcmp (addr.get_host_addr(), primary_dotted_decimal))
       {
         ACE_ERROR ((LM_ERROR,
-                    ACE_TEXT ("%s failed get_host_addr() check\n")
-                    ACE_TEXT ("%s != %s\n"),
+                    ACE_TEXT ("%C failed get_host_addr() check\n")
+                    ACE_TEXT ("%C != %C\n"),
                     primary_dotted_decimal,
                     addr.get_host_addr (),
                     primary_dotted_decimal));
@@ -406,8 +403,8 @@ int run_main (int, ACE_TCHAR *[])
     if (0 != ACE_OS::strcmp (addr.get_host_addr(), primary_dotted_decimal))
       {
         ACE_ERROR ((LM_ERROR,
-                    ACE_TEXT ("%s failed second get_ip_address() check\n")
-                    ACE_TEXT ("%s != %s\n"),
+                    ACE_TEXT ("%C failed second get_ip_address() check\n")
+                    ACE_TEXT ("%C != %C\n"),
                     primary_dotted_decimal,
                     addr.get_host_addr (),
                     primary_dotted_decimal));

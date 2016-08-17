@@ -1,5 +1,3 @@
-// $Id: test_malloc.cpp 93582 2011-03-17 09:49:46Z olli $
-
 // This program tests out all the various ACE_Malloc combinations and
 // the ACE_Allocator_Adapter.
 

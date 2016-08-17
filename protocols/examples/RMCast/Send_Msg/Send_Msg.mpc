@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Send_Msg.mpc 91292 2010-08-05 18:07:31Z johnnyw $
-
 project(*Sender) : aceexe, rmcast {
   avoids = ace_for_tao
   exename = sender

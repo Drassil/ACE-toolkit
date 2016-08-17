@@ -1,5 +1,3 @@
-// $Id: local_pipe_client_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Another test of UNIX domain IPC-SAP abstraction.  This one opens 2
 // pipes and then ships certain ends over to the server to act as a
 // filter!

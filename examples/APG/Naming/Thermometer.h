@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Thermometer.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef THERMOMETER_H
 #define THERMOMETER_H
 

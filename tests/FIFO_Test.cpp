@@ -3,13 +3,10 @@
 /**
  *  @file    FIFO_Test.cpp
  *
- *  $Id: FIFO_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a test of basic ACE_FIFO_* class functionality.
  *   The test forks two processes or spawns two threads (depending
  *   upon the platform) and then tests various data exchange
  *   scenarios.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */

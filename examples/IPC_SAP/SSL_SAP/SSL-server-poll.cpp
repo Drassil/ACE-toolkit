@@ -1,5 +1,3 @@
-// $Id: SSL-server-poll.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 // IPC_SAP/poll server, which illustrates how to integrate the ACE
 // SSL socket wrappers with the SVR4 <poll> system call to create a
 // single-threaded concurrent server.  This server program can be

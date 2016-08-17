@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: EndTask.h 81708 2008-05-16 07:42:15Z johnnyw $
-
 #ifndef END_TASK_H
 #define END_TASK_H
 
@@ -9,7 +7,7 @@ class TheEndTask : public BasicTask {
 protected:
   virtual int process (Message *)
   {
-    ACE_TRACE (ACE_TEXT ("EndTask::process()"));
+    ACE_TRACE ("EndTask::process()");
     return 0;
   }
 

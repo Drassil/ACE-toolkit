@@ -1,6 +1,4 @@
 /**
- * $Id: ARGV_Example.cpp 80826 2008-03-04 14:51:23Z wotte $
- *
  * ACE_ARGV examples not in a larger program. Sample code from The ACE
  * Programmer's Guide, Copyright 2003 Addison-Wesley. All Rights Reserved.
  */

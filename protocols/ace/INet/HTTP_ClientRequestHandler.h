@@ -1,5 +1,3 @@
-// $Id: HTTP_ClientRequestHandler.h 93745 2011-04-05 14:28:43Z mcorino $
-
 /**
  * @file HTTP_ClientRequestHandler.h
  *
@@ -176,11 +174,7 @@ namespace ACE
                                                         std::istream* put_data = 0);
 */
 
-#if (defined(_MSC_VER) || defined(__MINGW32__))
               class ACE_INET_Export HttpConnectionKey
-#else
-              class HttpConnectionKey
-#endif
                 : public INetConnectionKey
                 {
                   public:
@@ -194,7 +188,7 @@ namespace ACE
 
                     virtual u_long hash () const;
 
-                    virtual ConnectionKey* duplicate () const;
+                    virtual ACE::INet::ConnectionKey* duplicate () const;
 
                     bool is_proxy_connection () const;
 
@@ -203,7 +197,7 @@ namespace ACE
                     u_short proxy_target_port () const;
 
                   protected:
-                    virtual bool equal (const ConnectionKey& key) const;
+                    virtual bool equal (const ACE::INet::ConnectionKey& key) const;
 
                   private:
                     bool proxy_connection_;

@@ -1,5 +1,3 @@
-// $Id: SS_State_DONE.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 #include "SS_State_DONE.h"
 #include "SS_Data.h"
 

@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: rpc.mpb 548 2004-10-05 13:53:34Z elliott_c $
-
 project {
   requires += rpc
   Define_Custom(rpcgen) {

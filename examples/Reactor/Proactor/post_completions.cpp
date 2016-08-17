@@ -2,8 +2,6 @@
 /**
  *  @file     post_completions.cpp
  *
- *  $Id: post_completions.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This program demonstrates how to post fake completions to The
  *  Proactor. It also shows the how to specify the particular
  *  real-time signals to post completions. The Real-time signal
@@ -53,7 +51,6 @@ static ACE_Atomic_Op <ACE_SYNCH_MUTEX, size_t> Completions_To_Go;
  * @class My_Result
  *
  * @brief Result Object that we will post to the Proactor.
- *
  */
 class My_Result : public RESULT_CLASS
 {
@@ -117,7 +114,6 @@ private:
  * @class My_Handler
  *
  * @brief Handler class for faked completions.
- *
  */
 class My_Handler : public  ACE_Handler
 {

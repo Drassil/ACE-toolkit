@@ -1,5 +1,3 @@
-// $Id: SS_Templates.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 #include "ace/SOCK_Acceptor.h"
 #include "ace/Singleton.h"
 

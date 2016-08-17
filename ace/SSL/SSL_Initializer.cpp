@@ -1,5 +1,3 @@
-// $Id: SSL_Initializer.cpp 93497 2011-03-07 09:43:36Z vzykov $
-
 #include "SSL_Initializer.h"
 #include "SSL_Context.h"
 

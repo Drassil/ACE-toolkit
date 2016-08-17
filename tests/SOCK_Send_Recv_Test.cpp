@@ -3,8 +3,6 @@
 /**
  *  @file    SOCK_Send_Recv_Test.cpp
  *
- *  $Id: SOCK_Send_Recv_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a test of the <ACE_SOCK>'s various send and receive
  *   methods.  The test forks two processes or spawns two threads
  *   (depending upon the platform) and then executes client and
@@ -14,7 +12,6 @@
  *   Right now, it primarily tests the iov-like send and recv
  *   functions, but others should be added to completely cover the
  *   possible scenarios.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */
@@ -196,7 +193,6 @@ client (void *arg)
   // case this tests only needs to be exercised if the socket is
   // non-blocking, so set that first.
 
-  ssize_t sent;
   char buff[Test3_Send_Size];
   if (-1 == cli_stream.enable (ACE_NONBLOCK))
     ACE_ERROR ((LM_ERROR,
@@ -205,8 +201,8 @@ client (void *arg)
   for (i = 0; i < Test3_Loops; ++i)
     {
       errno = 0;
-      sent = cli_stream.send_n (buff, sizeof (buff));
-      if (sent != sizeof (buff) && errno != 0)
+      ssize_t sent = cli_stream.send_n (buff, sizeof (buff));
+      if (sent != (ssize_t) sizeof (buff) && errno != 0)
         {
           ACE_ERROR ((LM_ERROR,
                       ACE_TEXT ("(%P|%t) Test 3, pass %d, sent %d, %p\n"),

@@ -3,15 +3,12 @@
 /**
  *  @file    Time_Service_Test.cpp
  *
- *  $Id: Time_Service_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This example tests the Time Service server and clerk
  *  components. The test forks and execs two processes to run both
  *  the clerk and the time server. The clerk and the server
  *  communicate for a short duration after which the main process
  *  kills both the processes. No command line arguments are needed
  *  to run the test.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu>
  */
@@ -20,7 +17,7 @@
 
 #include "test_config.h"
 #include "ace/Process.h"
-#include "ace/ACE.h"
+#include "ace/Lib_Find.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_unistd.h"
 

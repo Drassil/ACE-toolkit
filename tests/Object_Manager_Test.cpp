@@ -3,10 +3,7 @@
 /**
  *  @file    Object_Manager_Test.cpp
  *
- *  $Id: Object_Manager_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Tests the basic functions of the ACE_Object_Manager.
- *
  *
  *  @author David L. Levine <levine@cs.wustl.edu>
  */
@@ -16,7 +13,7 @@
 #include "test_config.h"
 #include "ace/Object_Manager.h"
 #include "ace/OS_Memory.h"
-#include "ace/ACE.h"
+#include "ace/Init_ACE.h"
 
 
 

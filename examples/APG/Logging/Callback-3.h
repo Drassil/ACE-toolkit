@@ -1,5 +1,3 @@
-// $Id: Callback-3.h 91762 2010-09-14 12:08:05Z shuston $
-
 #ifndef APG_CALLBACK3_H
 #define APG_CALLBACK3_H
 

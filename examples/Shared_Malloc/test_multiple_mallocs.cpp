@@ -1,5 +1,3 @@
-// $Id: test_multiple_mallocs.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test the capability of <ACE_Malloc> to handle multiple mallocs
 // rooted at different base addresses.
 

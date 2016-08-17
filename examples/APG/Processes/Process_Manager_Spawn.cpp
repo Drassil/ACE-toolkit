@@ -1,5 +1,3 @@
-// $Id: Process_Manager_Spawn.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_unistd.h"
 #include "ace/Log_Msg.h"
 // Listing 0 code/ch10

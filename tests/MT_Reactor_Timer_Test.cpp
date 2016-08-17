@@ -3,13 +3,10 @@
 /**
  *  @file    MT_Reactor_Timer_Test.cpp
  *
- *  $Id: MT_Reactor_Timer_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a simple test that illustrates the timer mechanism of
  *    the reactor scheduling timers, handling expired timers and
  *    cancelling scheduled timers from multiple threads.  No command
  *    line arguments are needed to run the test.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */
@@ -113,6 +110,11 @@ Time_Handler::svc (void)
 
   ACE_TEST_ASSERT (r->cancel_timer (this->timer_id_[4]) == 1);
   this->timer_id_[4] = Time_Handler::TIMER_CANCELLED;
+
+  // Test that cancelling a timers through a nill ACE_Event_Handler
+  // pointer just does nothing instead of crash
+  ACE_Event_Handler_var timer_var;
+  ACE_TEST_ASSERT (r->cancel_timer (timer_var.handler()) == 0);
 
   return 0;
 }

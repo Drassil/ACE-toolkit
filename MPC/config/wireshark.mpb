@@ -1,7 +1,3 @@
-//
-// $Id: wireshark.mpb 1909 2010-09-27 11:48:04Z johnnyw $
-//
-
 project : glib {
   requires      += wireshark
 
@@ -18,7 +14,7 @@ project : glib {
   specific(vc9) {
     macros      += MSC_VER_REQUIRED=1500
   }
-  specific(vc10) {
+  specific(vc10, vc11, vc12, vc14) {
     macros      += MSC_VER_REQUIRED=1600
   }
   verbatim(nmake, top) {

@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Supplier_Router.h 80826 2008-03-04 14:51:23Z wotte $
-
 // The interface between a supplier and an Event Service ACE_Stream.
 
 #ifndef _SUPPLIER_ROUTER_H

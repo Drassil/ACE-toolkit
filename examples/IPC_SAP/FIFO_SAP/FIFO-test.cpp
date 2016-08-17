@@ -1,5 +1,3 @@
-// $Id: FIFO-test.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Purpose: This program uses ACE_FIFO wrappers to perform
 // interprocess communication between a parent process and a child
 // process.  The parents reads from an input file and writes it into

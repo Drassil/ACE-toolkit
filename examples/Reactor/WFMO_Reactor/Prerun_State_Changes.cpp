@@ -2,12 +2,8 @@
 /**
  *  @file    Prerun_State_Changes.cpp
  *
- *  $Id: Prerun_State_Changes.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  Tests the Reactor's ability to handle state changes before
  *  getting a chance to run.
- *
  *
  *  @author Irfan Pyarali
  */
@@ -50,16 +46,16 @@ ACE_TMAIN (int, ACE_TCHAR *[])
   int result = ACE_Reactor::instance ()->register_handler (handle,
                                                            event_handler,
                                                            ACE_Event_Handler::READ_MASK);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = ACE_Reactor::instance ()->register_handler (handle,
                                                        event_handler,
                                                        ACE_Event_Handler::WRITE_MASK | ACE_Event_Handler::QOS_MASK);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = ACE_Reactor::instance ()->remove_handler (handle,
                                                      ACE_Event_Handler::READ_MASK | ACE_Event_Handler::DONT_CALL);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   return 0;
 }

@@ -1,4 +1,3 @@
-// $Id: test.cpp 80826 2008-03-04 14:51:23Z wotte $
 // A simple test for performance of the ACEXML_escape_string() function
 
 #include "ACEXML/common/XML_Util.h"

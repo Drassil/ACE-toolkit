@@ -3,15 +3,12 @@
 /**
  *  @file     address.cpp
  *
- *  $Id: address.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  The Vb class is an encapsulation of the snmp variable binding.
  * This module contains the class definition for the variable binding (VB)
  * class. The VB class is an encapsulation of a SNMP VB. A VB object is
  * composed of one SNMP++ Oid and one SMI value. The Vb class utilizes Oid
  * objects and thus requires the Oid class. To use this class,
  * set oid, value then call valid() to be sure object was constructed correctly.
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */
@@ -599,7 +596,7 @@ int IpAddress::resolve_to_address(const char *hostname, in_addr& quad_addr)
    ACE_OS::memset(&lookupResult, 0, sizeof(struct hostent));
    int loc_errno = 0;
    if (ACE_OS::gethostbyname_r( hostname, &lookupResult, buffer, &loc_errno)) {
-     if (lookupResult.h_length == sizeof(in_addr) &&
+     if (lookupResult.h_length == (int) sizeof(in_addr) &&
          lookupResult.h_addrtype == AF_INET) {
         ACE_OS::memcpy((void *) &quad_addr,
                        (void *) lookupResult.h_addr_list[0], sizeof(in_addr));
@@ -719,7 +716,7 @@ int Address_Iter::query_dns(const char *hostname)
   int loc_errno = 0;
   if (ACE_OS::gethostbyname_r( hostname, &lookupResult_, buffer_,
                                 &loc_errno)) {
-    if (lookupResult_.h_length == sizeof(IPV4LEN) &&
+    if (lookupResult_.h_length == (int) sizeof(IPV4LEN) &&
         lookupResult_.h_addrtype == AF_INET) {
       return 0;
     }
@@ -1317,7 +1314,6 @@ SnmpSyntax *IpxAddress::clone() const
 //   Second string length must be 12
 //   Each char must take on value 0-F
 //
-//
 // Input formats recognized
 //
 //  XXXXXXXX.XXXXXXXXXXXX
@@ -1881,7 +1877,6 @@ SnmpSyntax& MacAddress::operator=( SnmpSyntax &val)
 //   XXXXXXXXXXXX
 //   Total length must be 17
 //   Each char must take on value 0-F
-//
 //
 int MacAddress::parse_address( const char *inaddr)
 {

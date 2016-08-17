@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: SS_Service_Handler.h 91863 2010-09-20 13:33:11Z johnnyw $
-
 #ifndef TERA_SS_SERVICE_HANDLER_H
 #define TERA_SS_SERVICE_HANDLER_H
 

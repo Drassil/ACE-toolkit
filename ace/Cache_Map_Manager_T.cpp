@@ -1,5 +1,3 @@
-// $Id: Cache_Map_Manager_T.cpp 93359 2011-02-11 11:33:12Z mcorino $
-
 #ifndef ACE_CACHE_MAP_MANAGER_T_CPP
 #define ACE_CACHE_MAP_MANAGER_T_CPP
 
@@ -9,7 +7,7 @@
 #pragma once
 #endif /* ACE_LACKS_PRAGMA_ONCE */
 
-#include "ace/Log_Msg.h"
+#include "ace/Log_Category.h"
 #include "ace/Malloc_Base.h"
 
 #if !defined (__ACE_INLINE__)
@@ -31,7 +29,7 @@ ACE_Cache_Map_Manager<KEY, VALUE, CMAP_TYPE, ITERATOR_IMPL, REVERSE_ITERATOR_IMP
   : caching_strategy_ (caching_s)
 {
   if (this->open (size, alloc) == -1)
-    ACE_ERROR ((LM_ERROR,
+    ACELIB_ERROR ((LM_ERROR,
                 ACE_TEXT ("%p\n"),
                 ACE_TEXT ("ACE_Cache_Map_Manager::ACE_Cache_Map_Manager")));
 
@@ -320,7 +318,7 @@ ACE_Cache_Map_Manager<KEY, VALUE, CMAP_TYPE, ITERATOR_IMPL, REVERSE_ITERATOR_IMP
     {
 
       int result = this->caching_strategy_.notify_find (find_result,
-                                                        cache_value.second ());
+                                                        cache_value.second);
 
       // Unless the find and notification operations go thru, this
       // method is not successful.

@@ -5,8 +5,6 @@
 /**
  *  @file    transaction.h
  *
- *  $Id: transaction.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  *  @brief
  *
  *  @author Michael R. MacFaden port to ACE / use Reactor pattern
@@ -29,11 +27,10 @@
 /**
  * @class transaction
  *
- * @brief Used to manage the details of a particular transaction betwen
+ * @brief Used to manage the details of a particular transaction between
  * two SNMP agents. Uses SnmpTarget class to implement retry/timeout
  */
 class ASNMP_Export transaction : public ACE_Event_Handler
-
 {
   int retry_counter_;
   transaction_result * result_;

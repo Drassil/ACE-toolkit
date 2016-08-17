@@ -1,5 +1,4 @@
 // == == == == == == == == == == == == == == == == == == == == == == ==
-// $Id: TP_Reactor.cpp 82610 2008-08-12 19:46:36Z parsons $
 // Stolen from $ACE_ROOT/tests/Thread_Pool_Reactor_Test.cpp
 // Thread_Pool_Reactor_Test.cpp, v 1.29 2001/03/20 01:07:21 irfan Exp
 // = AUTHOR

@@ -1,5 +1,3 @@
-// $Id: SSL_X509Cert.h 91425 2010-08-23 11:59:32Z mcorino $
-
 /**
  * @file SSL_X509Cert.h
  *

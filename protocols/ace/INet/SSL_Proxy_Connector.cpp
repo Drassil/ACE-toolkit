@@ -1,5 +1,3 @@
-// $Id: SSL_Proxy_Connector.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #include "ace/INet/SSL_Proxy_Connector.h"
 #include "ace/INet/INet_Log.h"
 

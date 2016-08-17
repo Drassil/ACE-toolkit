@@ -2,7 +2,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
      & eval 'exec perl -S $0 $argv:q'
      if 0;
 
-# $Id: run_test.pl 88354 2009-12-29 10:48:49Z johnnyw $
 # -*- perl -*-
 
 use lib "$ENV{ACE_ROOT}/bin";

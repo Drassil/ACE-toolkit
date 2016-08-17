@@ -1,5 +1,3 @@
-// $Id: CPP-memserver.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This example tests the features of the <ACE_MEM_Acceptor>,
 // <ACE_MEM_Stream>, and <ACE_Svc_Handler> classes.  If the platform
 // supports threads it uses a thread-per-connection concurrency model.

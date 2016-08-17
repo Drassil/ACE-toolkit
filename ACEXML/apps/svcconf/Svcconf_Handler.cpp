@@ -1,5 +1,3 @@
-// $Id: Svcconf_Handler.cpp 91325 2010-08-09 15:14:39Z johnnyw $
-
 #include "Svcconf_Handler.h"
 #include "ace/ACE.h"
 #include "ace/Log_Msg.h"

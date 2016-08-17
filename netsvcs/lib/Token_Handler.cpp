@@ -1,5 +1,3 @@
-// $Id: Token_Handler.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "Token_Handler.h"
 

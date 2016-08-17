@@ -5,6 +5,9 @@
     <ProductVersion><%prversion("8.0.50727")%></ProductVersion>
     <SchemaVersion><%schemaversion("2.0")%></SchemaVersion>
     <ProjectGuid>{<%guid%>}</ProjectGuid>
+<%if(UICulture)%>
+    <UICulture><%UICulture%></UICulture>
+<%endif%>
 <%foreach(configurations)%>
 <%if(forfirst)%>
     <Configuration Condition=" '$(Configuration)' == '' "><%configuration%></Configuration>
@@ -83,6 +86,9 @@
 <%if(PlatformTarget)%>
     <PlatformTarget><%PlatformTarget%></PlatformTarget>
 <%endif%>
+<%if(Prefer32Bit)%>
+    <Prefer32Bit><%Prefer32Bit%></Prefer32Bit>
+<%endif%>
   </PropertyGroup>
 <%endfor%>
 <%endfor%>
@@ -130,6 +136,12 @@
 <%endfor%>
   </ItemGroup>
   <ItemGroup>
+<%foreach(appdef_files)%>
+    <ApplicationDefinition Include="<%appdef_file%>">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+<%endfor%>
 <%foreach(source_files)%>
 <%if(contains(flag_overrides(source_file, subtype), ^(Form|Component|UserControl)$))%>
     <Compile Include="<%source_file%>">
@@ -181,6 +193,12 @@
 <%endif%>
 <%endfor%>
 <%endfor%>
+<%foreach(page_files)%>
+    <Page Include="<%page_file%>">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+<%endfor%>
 <%foreach(resx_files)%>
     <EmbeddedResource Include="<%resx_file%>">
 <%if(flag_overrides(resx_file, subtype))%>
@@ -213,14 +231,28 @@
 <%foreach(embedded_resource_files)%>
     <EmbeddedResource Include="<%embedded_resource_file%>" />
 <%endfor%>
+<%foreach(resource_files)%>
+    <Resource Include="<%resource_file%>" />
+<%endfor%>
 <%foreach(ico_files)%>
     <Content Include="<%ico_file%>" />
 <%endfor%>
 <%foreach(config_files)%>
+<%if(flag_overrides(config_file, generates_source))%>
+    <Compile Include="<%noextension(config_file)%>.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon><%basename(config_file)%></DependentUpon>
+    </Compile>
+<%else%>
     <None Include="<%config_file%>" />
+<%endif%>
 <%endfor%>
 <%foreach(documentation_files)%>
     <None Include="<%documentation_file%>" />
+<%endfor%>
+<%foreach(splash_files)%>
+    <SplashScreen Include="<%splash_file%>" />
 <%endfor%>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,3 @@
-// $Id: HTTP_Helpers.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // HTTP_Helpers.cpp -- Helper utilities for both server and client
 
 #include "HTTP_Helpers.h"

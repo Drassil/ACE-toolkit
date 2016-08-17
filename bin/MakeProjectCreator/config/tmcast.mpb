@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: tmcast.mpb 91291 2010-08-05 16:55:50Z johnnyw $
-
 project: acelib, threads {
   avoids   += ace_for_tao
   after    += TMCast

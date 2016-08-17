@@ -1,5 +1,3 @@
-// $Id: CommandTask.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "CommandTask.h"
 
 // Listing 01 code/ch18
@@ -26,7 +24,7 @@ int CommandTask::put (ACE_Message_Block *message,
 // Listing 04 code/ch18
 int CommandTask::process (Command *)
 {
-  ACE_TRACE (ACE_TEXT ("CommandTask::process()"));
+  ACE_TRACE ("CommandTask::process()");
   return Command::RESULT_FAILURE;
 }
 // Listing 04

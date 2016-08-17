@@ -1,5 +1,3 @@
-// $Id: BidirStreamBuffer.h 94075 2011-05-23 06:57:42Z johnnyw $
-
 /**
  * @file BidirStreamBuffer.h
  *

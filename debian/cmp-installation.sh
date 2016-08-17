@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id: cmp-installation.sh 93117 2011-01-20 12:11:28Z mcorino $
 #
 # This script compares autoconf-based installation against regular builds
 # provided files.

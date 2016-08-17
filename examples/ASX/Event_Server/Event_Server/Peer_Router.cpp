@@ -1,5 +1,3 @@
-// $Id: Peer_Router.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #if !defined (_PEER_ROUTER_C)
 #define _PEER_ROUTER_C
 

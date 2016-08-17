@@ -1,4 +1,4 @@
-// -*- C++ -*-   $Id: Debug_DTD_Manager.cpp 91257 2010-08-03 11:54:04Z johnnyw $
+// -*- C++ -*-
 
 #include "ACEXML/common/SAXExceptions.h"
 #include "ACEXML/parser/debug_validator/Debug_DTD_Manager.h"

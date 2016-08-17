@@ -3,11 +3,8 @@
 /**
  *  @file    Target_Test.cpp
  *
- *  $Id: Target_Test.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Test all the member functions of the Target class.
  *  Not sure if this object is really required or not in the new framework
- *
  *
  *  @author Michael R. MacFaden <mrm@cisco.com>
  */

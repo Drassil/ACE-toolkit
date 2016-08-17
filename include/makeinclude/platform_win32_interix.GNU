@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_win32_interix.GNU 93413 2011-02-20 11:06:19Z olli $
 
 # platform_win32_interix.GNU
 

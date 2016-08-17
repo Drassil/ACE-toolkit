@@ -3,11 +3,8 @@
 /**
  *  @file    Bug_2659_Regression_Test.cpp
  *
- *  $Id: Bug_2659_Regression_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *     Reproduces the problems reported in bug 2659:
  *      http://deuce.doc.wustl.edu/bugzilla/show_bug.cgi?id=2659
- *
  *
  *  @author Ciju John <johnc at ociweb>
  */

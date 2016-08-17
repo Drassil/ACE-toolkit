@@ -1,5 +1,3 @@
-// $Id: Synch_IO.cpp 85419 2009-05-22 10:52:11Z johnnyw $
-
 #include "ace/ACE.h"
 
 #ifndef JAWS_BUILD_DLL

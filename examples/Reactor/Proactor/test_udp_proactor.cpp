@@ -3,12 +3,9 @@
 /**
  *  @file    test_udp_proactor.cpp
  *
- *  $Id: test_udp_proactor.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This program illustrates how the <ACE_Proactor> can be used to
  *  implement an application that does asynchronous operations using
  *  datagrams.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu> and Roger Tragin <r.tragin@computer.org>
  */
@@ -146,7 +143,7 @@ Receiver::open_addr (const ACE_INET_Addr &localAddr)
       ACE_DEBUG ((LM_DEBUG, "********************\n"));
       ACE_DEBUG ((LM_DEBUG,
                   "%s = %d\n",
-                  "bytes recieved immediately",
+                  "bytes received immediately",
                   number_of_bytes_recvd));
       ACE_DEBUG ((LM_DEBUG, "********************\n"));
       res = 0;

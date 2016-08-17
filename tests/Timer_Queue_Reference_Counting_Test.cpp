@@ -3,11 +3,8 @@
 /**
  *  @file    Timer_Queue_Reference_Counting_Test.cpp
  *
- *  $Id: Timer_Queue_Reference_Counting_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test is used to check reference counting of the Event
  *  Handler when it interacts with Timer Queues.
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */
@@ -263,38 +260,8 @@ invoke_expire (ACE_Timer_Queue &timer_queue)
 int
 invoke_one_upcall (ACE_Timer_Queue &timer_queue)
 {
-  // Get the current time
-  ACE_Time_Value current_time (timer_queue.gettimeofday () +
-                               timer_queue.timer_skew ());
-
-  // Look for a node in the timer queue whose timer <= the present
-  // time.
-  ACE_Timer_Node_Dispatch_Info dispatch_info;
-
-  if (timer_queue.dispatch_info (current_time,
-                                 dispatch_info))
-    {
-      const void *upcall_act = 0;
-
-      // Preinvoke.
-      timer_queue.preinvoke (dispatch_info,
-                             current_time,
-                             upcall_act);
-
-      // Call the functor
-      timer_queue.upcall (dispatch_info,
-                          current_time);
-
-      // Postinvoke
-      timer_queue.postinvoke (dispatch_info,
-                              current_time,
-                              upcall_act);
-
-      // We have dispatched a timer
-      return 1;
-    }
-
-  return 0;
+  ACE_Noop_Command command;
+  return timer_queue.expire_single(command);
 }
 
 void

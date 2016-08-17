@@ -1,8 +1,6 @@
 /**
  *  @file    CE_Screen_Output.h
  *
- *  $Id: CE_Screen_Output.h 85385 2009-05-19 10:12:29Z johnnyw $
- *
  *  @author Si Mong Park  <spark@ociweb.com>
  */
 //=============================================================================

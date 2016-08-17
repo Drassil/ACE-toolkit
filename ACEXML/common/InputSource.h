@@ -4,8 +4,6 @@
 /**
  *  @file    InputSource.h
  *
- *  $Id: InputSource.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -21,9 +19,10 @@
 #endif /* ACE_LACKS_PRAGMA_ONCE */
 
 #include "ACEXML/common/CharStream.h"
+#include "ace/Copy_Disabled.h"
 
 /**
- * @class ACEXML_InputSource InputSource.h "ACEXML/common/InputSource.h"
+ * @class ACEXML_InputSource
  *
  * @brief ACEXML_InputSource encapsulates the actual input stream with some
  * added information.
@@ -50,7 +49,7 @@
  *
  * @sa ACEXML_CharStream
  */
-class ACEXML_Export ACEXML_InputSource
+class ACEXML_Export ACEXML_InputSource : private ACE_Copy_Disabled
 {
 public:
   /**

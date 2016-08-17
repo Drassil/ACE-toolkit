@@ -6,15 +6,12 @@
 /**
  *  @file    oid.h
  *
- *  $Id: oid.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * This class is fully contained and does not rely on or any other
  * SNMP libraries. This class is portable across any platform
  * which supports C++. Ported to ACE by Mike MacFaden mrm@cisco.com
  * and modified for MT. Some API cleanup: collapse constructors,
  * add suboid() method remove unnecessary overload, and update a few
  * names and types to improve clarity.
- *
  *
  *  @author Peter E Mellquist
  */

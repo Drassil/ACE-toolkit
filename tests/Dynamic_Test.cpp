@@ -3,10 +3,7 @@
 /**
  *  @file    Dynamic_Test.cpp
  *
- *  $Id: Dynamic_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This tests the ACE_Dynamic class
- *
  *
  *  @author Johnny Willemsen  <jwillemsen@remedy.nl>
  */

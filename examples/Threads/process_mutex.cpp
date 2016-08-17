@@ -1,5 +1,3 @@
-// $Id: process_mutex.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This program tests ACE_Process_Mutexes.  To run it, open 3 or 4
 // windows and run this program in each window...
 

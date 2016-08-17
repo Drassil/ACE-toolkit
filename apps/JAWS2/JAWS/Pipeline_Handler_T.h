@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Pipeline_Handler_T.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_PIPELINE_HANDLER_T_H
 #define JAWS_PIPELINE_HANDLER_T_H
 

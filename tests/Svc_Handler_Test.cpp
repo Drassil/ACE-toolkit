@@ -3,12 +3,9 @@
 /**
  *  @file    Svc_Handler_Test.cpp
  *
- *  $Id: Svc_Handler_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This tests illustrates the "buffering" strategy of the
  *  <ACE_Buffered_Svc_Handler>.  This test also illustrates how the
  *  <ACE_FILE_IO> classes work.
- *
  *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */
@@ -87,13 +84,19 @@ run_main (int argc, ACE_TCHAR *argv[])
     ACE_FILE_Connector connector;
     ACE_FILE_IO file_io;
     // Create a temporary filename.
-    ACE_FILE_Addr file (ACE_sap_any_cast (ACE_FILE_Addr &));
 
-    // Open up the temp file.
-    if (connector.connect (file_io, file) == -1)
+    // Open up a temp file.
+    if (connector.connect (file_io, ACE_sap_any_cast (ACE_FILE_Addr &)) == -1)
       ACE_ERROR_RETURN ((LM_ERROR,
-                         ACE_TEXT ("connect failed for %p\n"),
-                         file.get_path_name ()),
+                         ACE_TEXT ("%p\n"),
+                         ACE_TEXT ("connect")),
+                        1);
+    // Find the name of the temp file
+    ACE_FILE_Addr file;
+    if (file_io.get_local_addr (file) == -1)
+      ACE_ERROR_RETURN ((LM_ERROR,
+                         ACE_TEXT ("%p\n"),
+                         ACE_TEXT ("get_local_addr")),
                         1);
 
     // Create the service handler and assign it <file_io> as its data

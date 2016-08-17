@@ -1,6 +1,4 @@
 /*
-** $Id: TPC_Logging_Server.h 80826 2008-03-04 14:51:23Z wotte $
-**
 ** This is the Thread-per-connection logging server example from Chapter 7.
 **
 ** Copyright 2002 Addison Wesley. All Rights Reserved.

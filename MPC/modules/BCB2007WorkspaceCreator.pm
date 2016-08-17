@@ -51,7 +51,6 @@ sub pre_workspace {
 
   ## Optionally print the workspace comment
 #  $self->print_workspace_comment($fh,
-#            '<!-- $Id: BCB2007WorkspaceCreator.pm 1934 2010-11-12 12:40:22Z elliott_c $ -->', $crlf,
 #            '<!-- MPC Command -->', $crlf,
 #            '<!-- ', $self->create_command_line_string($0, @ARGV), ' -->',
 #            $crlf);

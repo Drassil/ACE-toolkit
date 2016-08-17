@@ -1,5 +1,3 @@
-// $Id: wfmo.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This test program illustrates that the Win32
 // <WaitForMultipleObjects> function can be called in multiple
 // threads, all of which wait on the same set of HANDLEs.  Note that

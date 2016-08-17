@@ -1,5 +1,3 @@
-// $Id: TPOOL_Concurrency.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/OS_NS_stdlib.h"
 #include "ace/Message_Block.h"
 

@@ -1,5 +1,3 @@
-// $Id: XtReactor.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/XtReactor/XtReactor.h"
 
 #include "ace/SOCK_Acceptor.h"
@@ -323,7 +321,7 @@ ACE_XtReactor::synchronize_XtInput(ACE_HANDLE handle)
   // Finally, add input handler.
   (*XtID)->id_ = ::XtAppAddInput (this->context_,
                                   (int) handle,
-                                  (XtPointer) condition,
+                                  reinterpret_cast <XtPointer> (condition),
                                   InputCallbackProc,
                                   (XtPointer) this);
 }

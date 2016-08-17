@@ -1,6 +1,4 @@
 /*
-** $Id: AIO_Client_Logging_Daemon.h 92046 2010-09-27 11:26:41Z vzykov $
-**
 ** Copyright 2002 Addison Wesley. All Rights Reserved.
 */
 

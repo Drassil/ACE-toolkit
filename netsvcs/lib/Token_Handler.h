@@ -4,8 +4,6 @@
 /**
  *  @file    Token_Handler.h
  *
- *  $Id: Token_Handler.h 84498 2009-02-17 18:08:47Z johnnyw $
- *
  *  @author Douglas C. Schmidt (schmidt@cs.wustl.edu)
  *          Tim Harrison (harrison@cs.wustl.edu)
  */

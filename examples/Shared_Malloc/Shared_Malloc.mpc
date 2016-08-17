@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Shared_Malloc.mpc 85212 2009-04-29 13:53:34Z johnnyw $
-
 project : aceexe, avoids_ace_for_tao {
   exename = malloc
   Source_Files {

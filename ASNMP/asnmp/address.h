@@ -1,16 +1,11 @@
-
-
 #ifndef ADDRESS_
 #define ADDRESS_
 //=============================================================================
 /**
  *  @file    address.h
  *
- *  $Id: address.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  *  Address class definition. Encapsulates various network
  *  addresses into easy to use, safe and portable classes.
- *
  *
  *  @author Peter E Mellquist
  */

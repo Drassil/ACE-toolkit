@@ -3,14 +3,11 @@
 /**
  *  @file   XML_Codecs.h
  *
- *  $Id: XML_Codecs.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
  *
  *  XML_Codecs is a generic wrapper for various encoding and decoding
  *  mechanisms used in ACEXML. Currently it includes support for handling
  *  Base64 content transfer-encoding of ACEXML_Chars.
- *
  */
 
 #ifndef _ACEXML_XML_CODECS_H
@@ -34,7 +31,6 @@
  * This class provides methods to encode or decode a stream of ACEXML_Chars
  * to/from Base64 encoding. It doesn't convert the input stream to a
  * canonical form before encoding.
- *
  */
 class ACEXML_Export ACEXML_Base64 : public ACE_Base64
 {

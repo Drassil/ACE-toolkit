@@ -1,5 +1,3 @@
-// $Id: Entity_Manager.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ACEXML/parser/parser/Entity_Manager.h"
 
 #if !defined (__ACEXML_INLINE__)

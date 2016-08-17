@@ -1,4 +1,3 @@
-/* $Id: nsapi-send.c 81993 2008-06-16 20:26:16Z sowayaa $ */
 /*
  * Send random bits file
  * Once this service function is installed, any file with the extension
@@ -27,7 +26,6 @@
  * Mike Belshe
  * mbelshe@netscape.com
  * 11-5-95
- *
  */
 
 #ifndef WIN32

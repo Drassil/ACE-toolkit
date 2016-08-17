@@ -2,7 +2,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     & eval 'exec perl -S $0 $argv:q'
     if 0;
 
-# $Id: run_test.pl 90443 2010-06-07 22:36:10Z mitza $
 # -*- perl -*-
 # This file is for running the tests in the ACE tests directory.
 # It is usually used for auto_compiles.
@@ -115,6 +114,9 @@ sub run_program ($@)
     ## if the executable doesn't exist, the error will show
     ## up as part of the previous test.
     print "auto_run_tests: tests/$path $arguments\n";
+    if ($config_list->check_config ('Coverity')) {
+      $ENV{COVERITY_TEST_NAME} = "tests/$path";
+    }
 
     my ($program, $dir, $suffix) = fileparse($path);
     my $start_dir = getcwd ();
@@ -122,11 +124,11 @@ sub run_program ($@)
         print STDERR "Error: Can\'t chdir to $dir for $path\n";
         return;
     }
+
     unlink <log/$program*.log>;
     unlink "core";
 
     my $P = $target->CreateProcess($program, $arguments);
-
     if ($config_list->check_config ('Valgrind')) {
       $P->IgnoreExeSubDir(1);
     }
@@ -157,7 +159,7 @@ sub run_program ($@)
 
     print "\nauto_run_tests_finished: tests/$program $arguments Time:$time"."s Result:$status\n";
 
-    check_log ($program);
+    check_log ($target, $program);
 
     if ($config_list->check_config ('Codeguard')) {
         check_codeguard_log ($program);
@@ -193,6 +195,7 @@ sub purify_program ($)
 
 sub check_log ($)
 {
+    my $target = shift;
     my $program = shift;
 
     ### Check the logs
@@ -202,6 +205,10 @@ sub check_log ($)
     # found in the SSL subdirectory.
     local $the_program = basename($program);
     local $log = "log/".$the_program.$log_suffix;
+
+    if ($target->GetFile ($log, $log) == -1) {
+        print STDERR "ERROR: cannot retrieve file <$log>\n";
+    }
 
     if (-e "core") {
         print STDERR "Error: $program dumped core\n";
@@ -403,7 +410,7 @@ if (!getopts ('dhtvo:l:') || $opt_h) {
     print "\n";
     print "Pass in configs using \"-Config XXXXX\"\n";
     print "\n";
-    print "Possible Configs: CHECK_RESOURCES Purify Codeguard Valgrind ",
+    print "Possible Configs: CHECK_RESOURCES Purify Codeguard Valgrind Coverity ",
            $config_list->list_configs (), "\n";
     exit (1);
 }
@@ -446,24 +453,34 @@ my $target = PerlACE::TestTarget::create_target (1);
 $target->AddLibPath("$ENV{ACE_ROOT}/tests");
 
 # Put needed files in place for targets that require them.
-#
 # Service_Config_Test needs service config file.
-my $svc_conf_file = $target->LocalFile ("Service_Config_Test.conf");
-if ($target->PutFile ("Service_Config_Test.conf", $svc_conf_file) == -1) {
+my $svc_conf_file = "Service_Config_Test.conf";
+if ($target->PutFile ($svc_conf_file) == -1) {
     print STDERR "WARNING: Cannot send $svc_conf_file to target\n";
 }
 # Config_Test needs config ini file.
-my $conf_ini_file = $target->LocalFile ("Config_Test_Import_1.ini");
-if ($target->PutFile ("Config_Test_Import_1.ini", $conf_ini_file) == -1) {
+my $conf_ini_file = "Config_Test_Import_1.ini";
+if ($target->PutFile ($conf_ini_file) == -1) {
     print STDERR "WARNING: Cannot send $conf_ini_file to target\n";
 }
 # Service_Config_Stream_Test needs service config file.
-$svc_conf_file = $target->LocalFile ("Service_Config_Stream_Test.conf");
-if ($target->PutFile ("Service_Config_Stream_Test.conf", $svc_conf_file) == -1) {
+$svc_conf_file = "Service_Config_Stream_Test.conf";
+if ($target->PutFile ($svc_conf_file) == -1) {
+    print STDERR "WARNING: Cannot send $svc_conf_file to target\n";
+}
+# Bug_3334_Regression_Test needs service config file.
+$svc_conf_file = "Bug_3334_Regression_Test.conf";
+if ($target->PutFile ($svc_conf_file) == -1) {
+    print STDERR "WARNING: Cannot send $svc_conf_file to target\n";
+}
+# Bug_3912_Regression_Test needs service config file.
+$svc_conf_file = "Bug_3912_Regression_Test.conf";
+if ($target->PutFile ($svc_conf_file) == -1) {
     print STDERR "WARNING: Cannot send $svc_conf_file to target\n";
 }
 
 foreach $test (@tests) {
+
     if (defined $opt_d) {
         print "Would run test $test now\n";
     }

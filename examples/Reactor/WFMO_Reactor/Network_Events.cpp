@@ -2,9 +2,6 @@
 /**
  *  @file    Network_Events.cpp
  *
- *  $Id: Network_Events.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This application tests Reactor to make sure that it responds
  *  correctly to different kinds of network events.
  *
@@ -20,7 +17,6 @@
  *  To run this example, start an instance of this example and
  *  connect to it using telnet (to port
  *  ACE_DEFAULT_SERVER_PORT(20002)).
- *
  *
  *  @author Irfan Pyarali
  */
@@ -57,8 +53,7 @@ Network_Handler::Network_Handler (ACE_SOCK_Stream &s)
   this->reactor (ACE_Reactor::instance ());
 
   int result = this->reactor ()->register_handler (this, READ_MASK);
-  ACE_ASSERT (result == 0);
-  ACE_UNUSED_ARG (result);
+  ACE_TEST_ASSERT (result == 0);
 }
 
 ACE_HANDLE
@@ -136,8 +131,7 @@ Network_Listener::Network_Listener (void)
   this->reactor (ACE_Reactor::instance ());
   int result = this->reactor ()->register_handler (this,
                                                    ACE_Event_Handler::ACCEPT_MASK);
-  ACE_ASSERT (result == 0);
-  ACE_UNUSED_ARG (result);
+  ACE_TEST_ASSERT (result == 0);
 }
 
 Network_Listener::~Network_Listener (void)
@@ -170,13 +164,12 @@ Network_Listener::handle_input (ACE_HANDLE handle)
                                        0, // timeout
                                        1, // restart
                                        reset_new_handle);  // reset new handler
-  ACE_ASSERT (result == 0);
-  ACE_UNUSED_ARG (result);
+  ACE_TEST_ASSERT (result == 0);
 
   ACE_DEBUG ((LM_DEBUG, "Remote connection from: "));
   remote_address.dump ();
 
-  Network_Handler *handler;
+  Network_Handler *handler = 0;
   ACE_NEW_RETURN (handler, Network_Handler (stream), -1);
 
   return 0;
@@ -200,6 +193,7 @@ ACE_TMAIN (int, ACE_TCHAR *[])
 {
   Network_Listener *listener = 0;
   listener = new Network_Listener;
+  ACE_UNUSED_ARG (listener);
 
   ACE_Reactor::run_event_loop ();
 

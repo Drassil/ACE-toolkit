@@ -1,20 +1,20 @@
 #! /usr/bin/perl
+
 package PerlACE::TestTarget_VxWorks;
 
 # ******************************************************************
 # Description : Creates a PerlACE::ProcessVX
 # Author      : Chad Elliott
 # Create Date : 6/20/2008
-#          $Id: TestTarget_VxWorks.pm 91813 2010-09-17 07:52:52Z johnnyw $
 # ******************************************************************
 
 # ******************************************************************
 # Pragma Section
 # ******************************************************************
+use PerlACE::TestTarget;
 
 use strict;
 
-use PerlACE::TestTarget;
 use PerlACE::ProcessVX;
 use Cwd;
 use English;
@@ -71,7 +71,7 @@ sub WaitForFileTimed ($)
     my $file = shift;
     my $timeout = shift;
     my $cwdrel = $file;
-    my $prjroot = defined $ENV{"ACE_RUN_VX_PRJ_ROOT"} ? $ENV{"ACE_RUN_VX_PRJ_ROOT"}  : $ENV{"ACE_ROOT"};
+    my $prjroot = defined $ENV{'ACE_RUN_VX_PRJ_ROOT'} ? $ENV{'ACE_RUN_VX_PRJ_ROOT'}  : $ENV{'ACE_ROOT'};
     if (length ($cwdrel) > 0) {
         $cwdrel = File::Spec->abs2rel( cwd(), $prjroot );
     }

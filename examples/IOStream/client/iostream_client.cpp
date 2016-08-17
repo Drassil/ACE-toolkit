@@ -1,5 +1,3 @@
-// $Id: iostream_client.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/SOCK_Connector.h"
 #include "ace/IOStream.h"
 #include "ace/Log_Msg.h"

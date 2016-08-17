@@ -1,4 +1,3 @@
-# $Id: platform_aix_ibm.GNU 93986 2011-04-22 18:40:06Z shuston $
 
 # This file is for use with AIX 5.x and up, using either of the IBM
 # compilers (Visual Age C++ 6 or newer XL C++ compiler).
@@ -111,11 +110,18 @@ else
       # try-catch blocks.
       CCFLAGS     += -qeh=v6
     else
-      # Until there's a reason to change, use the V9 settings for V10.1 and 11.
+      # Until there's a reason to change, use the V9 settings for V10.1, 11.1,
+      # 12.1 and 13.1.
       ifeq ($(XLCVERSION),0x0a01)
         XLCVERSION = 0x0900
       endif
       ifeq ($(XLCVERSION),0x0b01)
+        XLCVERSION = 0x0900
+      endif
+      ifeq ($(XLCVERSION),0x0c01)
+        XLCVERSION = 0x0900
+      endif
+      ifeq ($(XLCVERSION),0x0d01)
         XLCVERSION = 0x0900
       endif
       ifeq ($(XLCVERSION),0x0900)
@@ -179,11 +185,10 @@ LIBS	    += -lxti -ldl
 
 SONAME	    =
 SOVERSION   =
-# Default OCCFLAGS builds common code for all RS/6000 architectures but
-# this can be set to optimize for your particular computer. The commented
-# out example optimizes for RS/6000 43P.
-# OCCFLAGS is not used by default.  To used it, set optimize=1
-# either in this file or on the command line.
+# Default OCCFLAGS builds turns on mid-level optimize level. Compiler defaults
+# to build machine's architecture and a reasonable tuning effort for recent
+# machine architectures. To optimize for a more specific architecture, set
+# your OCCFLAGS to the desired -qarch and/or -qtune values. For example:
 #OCCFLAGS    += -qarch=ppc -qtune=604
 
-OCCFLAGS    += -qlibansi -O2 -qarch=com
+OCCFLAGS    += -qlibansi -O2

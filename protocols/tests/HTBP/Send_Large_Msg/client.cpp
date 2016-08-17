@@ -1,5 +1,3 @@
-// $Id: client.cpp 91822 2010-09-17 09:00:19Z johnnyw $
-
 #include "ace/HTBP/HTBP_Session.h"
 #include "ace/HTBP/HTBP_Stream.h"
 #include "ace/HTBP/HTBP_Addr.h"

@@ -1,5 +1,3 @@
-// $Id: Multicast_Manager.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Multicast_Manager.h"
 #include "ace/Mem_Map.h"
 #include "ace/Log_Msg.h"

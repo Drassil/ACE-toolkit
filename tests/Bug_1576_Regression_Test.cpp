@@ -1,8 +1,6 @@
 /**
  * @file Bug_1576_Regression_Test.cpp
  *
- * $Id: Bug_1576_Regression_Test.cpp 91626 2010-09-07 10:59:20Z johnnyw $
- *
  * Reproduces the problems reported in bug 1576:
  *   http://deuce.doc.wustl.edu/bugzilla/show_bug.cgi?id=1576
  *

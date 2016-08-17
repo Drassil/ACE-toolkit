@@ -1,5 +1,3 @@
-// $Id: SSLSock_IOStream.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #ifndef ACE_IOS_SSLSOCK_IOSTREAM_CPP
 #define ACE_IOS_SSLSOCK_IOSTREAM_CPP
 

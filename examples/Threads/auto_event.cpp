@@ -1,5 +1,3 @@
-// $Id: auto_event.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // This test shows the use of an ACE_Auto_Event as a signaling
 // mechanism. Two threads are created (one a reader, the other a
 // writer). The reader waits till the writer has completed
@@ -102,10 +100,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
   return 0;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<ACE_Auto_Event, ACE_Thread_Mutex> *
-  ACE_Singleton<ACE_Auto_Event, ACE_Thread_Mutex>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, ACE_Auto_Event, ACE_Thread_Mutex);
 
 
 #else

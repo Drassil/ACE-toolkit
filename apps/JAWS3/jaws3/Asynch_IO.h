@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Asynch_IO.h 85419 2009-05-22 10:52:11Z johnnyw $
-
 #ifndef JAWS_ASYNCH_IO_H
 #define JAWS_ASYNCH_IO_H
 

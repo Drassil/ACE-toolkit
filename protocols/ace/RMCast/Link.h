@@ -1,4 +1,3 @@
-// $Id: Link.h 91626 2010-09-07 10:59:20Z johnnyw $
 // author    : Boris Kolpackov <boris@kolpackov.net>
 
 #ifndef ACE_RMCAST_LINK_H

@@ -1,4 +1,4 @@
-// -*- C++ -*-  $Id: Print_Handler.cpp 91257 2010-08-03 11:54:04Z johnnyw $
+// -*- C++ -*-
 
 #include "Print_Handler.h"
 #include "ace/ACE.h"

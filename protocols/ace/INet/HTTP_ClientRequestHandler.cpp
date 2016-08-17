@@ -1,5 +1,3 @@
-// $Id: HTTP_ClientRequestHandler.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #include "ace/INet/HTTP_ClientRequestHandler.h"
 
 #if !defined (__ACE_INLINE__)
@@ -154,7 +152,7 @@ namespace ACE
 
     ACE::INet::ConnectionKey* ClientRequestHandler::HttpConnectionKey::duplicate () const
       {
-        ConnectionKey* k = 0;
+        ACE::INet::ConnectionKey* k = 0;
         if (this->proxy_connection_)
           {
             ACE_NEW_RETURN (k,

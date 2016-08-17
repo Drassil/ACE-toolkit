@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: wb26dll.mpt 1874 2010-08-05 17:01:36Z mitza $
-
 conditional_include "common"
 
 lib_prefix = lib

@@ -2,8 +2,6 @@
 /**
  *  @file    ContentHandler_Test.cpp
  *
- *  $Id: ContentHandler_Test.cpp 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Steve Huston  <shuston@riverace.com>
  */
 //=============================================================================

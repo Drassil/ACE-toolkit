@@ -1,5 +1,3 @@
-// $Id: Compiler_Features_12_Test.cpp 94113 2011-05-27 14:44:29Z msmit $
-
 /**
  * @file
  *
@@ -9,12 +7,18 @@
  * in:
  *
  *   http://bugzilla.dre.vanderbilt.edu/show_bug.cgi?id=3715
- *
  */
 
 #include "test_config.h"
 
+// Similar to Bug_3709_Regression_Test.cpp...
 
+// HP aC++ 03.x fails this
+#if defined(__HP_aCC) && (__HP_aCC < 40000)
+#define BROKEN_TEMPLATE_TEMPLATE
+#endif
+
+#ifndef BROKEN_TEMPLATE_TEMPLATE
 
 template<typename T>
 struct Pair
@@ -37,6 +41,8 @@ struct Array
   Tuple<T> array[5];
 };
 
+#endif /* BROKEN_TEMPLATE_TEMPLATE */
+
 int
 run_main (int, ACE_TCHAR *[])
 {
@@ -46,6 +52,8 @@ run_main (int, ACE_TCHAR *[])
   // failure
   int status = 0;
 
+#ifndef BROKEN_TEMPLATE_TEMPLATE
+
   Array<int, Pair> pairs;
   pairs.array[0].x1 = 0;
   ACE_UNUSED_ARG (pairs);
@@ -53,6 +61,8 @@ run_main (int, ACE_TCHAR *[])
   Array<int, Triple> triples;
   triples.array[1].t3 = 0;
   ACE_UNUSED_ARG (triples);
+
+#endif /* BROKEN_TEMPLATE_TEMPLATE */
 
   ACE_END_TEST;
   return status;

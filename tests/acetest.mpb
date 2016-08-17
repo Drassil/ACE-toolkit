@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: acetest.mpb 83712 2008-11-13 08:06:40Z johnnyw $
-
 project : aceexe {
 
   after += Test_Output

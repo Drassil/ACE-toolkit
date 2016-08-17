@@ -27,8 +27,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 #
 # @author Arvind S. Krishna <arvindk@dre.vanderbilt.edu>
 #
-# $Id: FOCUS.pl 80826 2008-03-04 14:51:23Z wotte $
-#
 ########################################################################
 use Getopt::Long;
 

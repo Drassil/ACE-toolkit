@@ -1,8 +1,6 @@
 /**
  * @file Bug_3673_Regression_Test.cpp
  *
- * $Id: Bug_3673_Regression_Test.cpp 91626 2010-09-07 10:59:20Z johnnyw $
- *
  * Reproduces the problems reported in bug 3673
  *   http://deuce.doc.wustl.edu/bugzilla/show_bug.cgi?id=3673
  */
@@ -50,13 +48,13 @@ run_main (int, ACE_TCHAR *[])
   }
   catch (...)
   {
-    ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Caugt exception!\n")));
+    ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Caught exception!\n")));
     caught_excep = true;
   }
 
   if (!caught_excep)
   {
-    ACE_ERROR ((LM_ERROR, ACE_TEXT ("Not caugt exception\n")));
+    ACE_ERROR ((LM_ERROR, ACE_TEXT ("Not caught exception\n")));
     ++result;
   }
   if (!construct_alpha)

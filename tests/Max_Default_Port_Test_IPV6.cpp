@@ -1,4 +1,3 @@
-// $Id: Max_Default_Port_Test_IPV6.cpp 84565 2009-02-23 08:20:39Z johnnyw $
 // ============================================================================
 /**
  * @file Max_Default_Port_Test_IPV6.cpp

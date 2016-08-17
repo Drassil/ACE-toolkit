@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: C++NPv1.mpc 85212 2009-04-29 13:53:34Z johnnyw $
-
 project(*Iterative_Logging_Server) : aceexe, avoids_ace_for_tao {
   avoids += uses_wchar
   exename = iterative_logging_server

@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: HTTP_BasicAuthentication.inl 91132 2010-07-20 05:28:27Z mcorino $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 namespace ACE

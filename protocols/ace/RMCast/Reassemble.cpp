@@ -1,14 +1,12 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Reassemble.cpp 92900 2010-12-17 14:45:11Z mcorino $
-
 #include "Reassemble.h"
 #include "ace/OS_NS_stdlib.h"
 
 namespace ACE_RMCast
 {
   Reassemble::
-  Reassemble (Parameters const& params)
-      : params_ (params)
+  Reassemble (Parameters const& )
+  // : params_ (params)
   {
   }
 

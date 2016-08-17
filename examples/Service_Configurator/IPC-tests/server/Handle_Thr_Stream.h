@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Handle_Thr_Stream.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef _HANDLE_THR_STREAM_H
 #define _HANDLE_THR_STREAM_H
 

@@ -1,5 +1,3 @@
-// $Id: Baseline_Test.inl 80826 2008-03-04 14:51:23Z wotte $
-
 ACE_INLINE size_t
 Baseline_Test_Base::iteration (void)
 {

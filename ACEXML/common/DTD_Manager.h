@@ -4,8 +4,6 @@
 /**
  *  @file    DTD_Manager.h
  *
- *  $Id: DTD_Manager.h 91265 2010-08-03 16:50:54Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -24,7 +22,7 @@
 #include "ACEXML/common/Validator.h"
 
 /**
- * @class ACEXML_DTD_Manager DTD_Manager.h "common/DTD_Manager.h"
+ * @class ACEXML_DTD_Manager
  *
  * @todo Fill in the blank.
  */

@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: parse_url.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef HTTPU_HTTP_PARSE_H
 #define HTTPU_HTTP_PARSE_H
 

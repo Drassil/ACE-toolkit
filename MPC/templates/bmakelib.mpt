@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: bmakelib.mpt 1477 2008-09-16 08:36:05Z johnnyw $
-
 conditional_include "bmakecommon"
 
 Release {

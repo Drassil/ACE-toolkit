@@ -3,8 +3,6 @@
 /**
  *  @file    Message_Queue_Test.cpp
  *
- *  $Id: Message_Queue_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is:
  *    0) a test that ensures key ACE_Message_Queue features are
  *       working properly, including timeouts and priorities
@@ -15,7 +13,6 @@
  *       ACE_Message_Queue_Vx, which wraps VxWorks message queues
  *    3) a test/usage example of ACE_Message_Queue_Vx
  *    4) a test of the message counting in a message queue under load.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  *  @author David L. Levine <levine@cs.wustl.edu>
@@ -833,8 +830,8 @@ prio_test (void)
   mq.enqueue_prio (&mb1);
   mq.enqueue_prio (&mb2);
 
-  ACE_Message_Block *mb1p;
-  ACE_Message_Block *mb2p;
+  ACE_Message_Block *mb1p = 0;
+  ACE_Message_Block *mb2p = 0;
 
   mq.dequeue_prio (mb1p);
   mq.dequeue_prio (mb2p);

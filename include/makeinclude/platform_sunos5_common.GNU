@@ -1,6 +1,5 @@
 # -*- Makefile -*-
 
-# $Id: platform_sunos5_common.GNU 93597 2011-03-21 12:54:52Z johnnyw $
 
 # SunOS 5.x common settings
 

@@ -1,6 +1,4 @@
 /**
- * $Id: Timer_State_Data.cpp 91813 2010-09-17 07:52:52Z johnnyw $
- *
  * Reactor examples
  *
  * Timers & state data

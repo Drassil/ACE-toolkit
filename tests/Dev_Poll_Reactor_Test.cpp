@@ -2,8 +2,6 @@
 /**
  *  @file    Dev_Poll_Reactor_Test.cpp
  *
- *  $Id: Dev_Poll_Reactor_Test.cpp 92900 2010-12-17 14:45:11Z mcorino $
- *
  *  This test verifies that the Dev_Poll_Reactor is functioning
  *  properly, and demonstrates how "speculative reads" can be
  *  performed.  "Speculative reads" are necessary when using event

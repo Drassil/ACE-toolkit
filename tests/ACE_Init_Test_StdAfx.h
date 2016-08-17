@@ -4,12 +4,9 @@
 /**
  *  @file    ACE_Init_Test_StdAfx.h
  *
- *  $Id: ACE_Init_Test_StdAfx.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  stdafx.h : include file for standard system include files,
  *  or project specific include files that are used frequently, but
  *  are changed infrequently
- *
  *
  *  @author Steve Huston <shuston@cs.wustl.edu>
  */

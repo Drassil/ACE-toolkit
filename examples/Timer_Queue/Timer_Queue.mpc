@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Timer_Queue.mpc 90133 2010-05-12 08:42:29Z msmit $
-
 project(*Library) : acelib {
   sharedname = tqtd
   dynamicflags += ACE_BUILD_SVC_DLL

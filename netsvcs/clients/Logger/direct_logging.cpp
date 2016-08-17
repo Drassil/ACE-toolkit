@@ -1,5 +1,3 @@
-// $Id: direct_logging.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This program sends logging records directly to the server, rather
 // than going through the client logging daemon.
 
@@ -10,8 +8,6 @@
 #include "ace/OS_NS_stdlib.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/CDR_Stream.h"
-
-
 
 static u_short LOGGER_PORT = ACE_DEFAULT_SERVER_PORT;
 static const ACE_TCHAR *const LOGGER_HOST = ACE_DEFAULT_SERVER_HOST;

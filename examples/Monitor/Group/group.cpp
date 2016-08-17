@@ -1,5 +1,3 @@
-// $Id: group.cpp 82330 2008-07-15 17:30:06Z parsons $
-
 #include "ace/OS_NS_unistd.h"
 #include "ace/streams.h"
 #include "ace/Monitor_Point_Registry.h"

@@ -1,5 +1,3 @@
-// $Id: HTTPS_Context.cpp 91118 2010-07-17 10:29:57Z mcorino $
-
 #include "ace/INet/HTTPS_Context.h"
 
 #if !defined (__ACE_INLINE__)
@@ -88,10 +86,6 @@ namespace ACE
     Context& Context::instance ()
       {
         return *ACE_Unmanaged_Singleton<Context, ACE_SYNCH::MUTEX>::instance ();
-      }
-
-    Context::Context (const Context&)
-      {
       }
 
     Context::~Context ()

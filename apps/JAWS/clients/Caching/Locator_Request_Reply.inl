@@ -1,7 +1,5 @@
 /* -*- C++ -*- */
 
-// $Id: Locator_Request_Reply.inl 80826 2008-03-04 14:51:23Z wotte $
-
 #include "URL_Locator.h"
 
 ACE_INLINE

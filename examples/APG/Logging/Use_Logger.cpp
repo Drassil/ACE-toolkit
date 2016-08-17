@@ -1,5 +1,3 @@
-// $Id: Use_Logger.cpp 81978 2008-06-16 16:57:12Z sowayaa $
-
 #include "ace/Log_Msg.h"
 
 int ACE_TMAIN (int, ACE_TCHAR *argv[])

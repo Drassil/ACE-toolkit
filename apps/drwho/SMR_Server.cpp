@@ -1,5 +1,3 @@
-// $Id: SMR_Server.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "SMR_Server.h"
 #include "ace/Log_Msg.h"

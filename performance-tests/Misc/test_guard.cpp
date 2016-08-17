@@ -1,5 +1,3 @@
-// $Id: test_guard.cpp 92066 2010-09-28 08:33:14Z vzykov $
-
 // This test program illustrates the performance of ACE_GUARD
 
 #include "ace/Log_Msg.h"

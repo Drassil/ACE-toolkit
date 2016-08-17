@@ -1,12 +1,9 @@
 /**
  * @file Notification_Queue_Unit_Test.cpp
  *
- * $Id: Notification_Queue_Unit_Test.cpp 91673 2010-09-08 18:49:47Z johnnyw $
- *
  * A unit test for the ACE_Notification_Queue class.
  *
  * @author Carlos O'Ryan <coryan@atdesk.com>
- *
  */
 
 #include "test_config.h"

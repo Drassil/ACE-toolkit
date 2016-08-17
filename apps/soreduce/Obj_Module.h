@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: Obj_Module.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 // File: Obj_Module.h
 
 // Author: Phil Mesnier

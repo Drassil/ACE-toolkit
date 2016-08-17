@@ -2,15 +2,10 @@
 /**
  *  @file    Memcpy_Test.cpp
  *
- *  $Id: Memcpy_Test.cpp 91813 2010-09-17 07:52:52Z johnnyw $
- *
  *  @author Mike Marinez <mmartinez@oci.com>
  *
  * This test compares the performance of ACE_OS::memcpy with
  * that of smemcpy which unrolls the memcpy loop upto size = 16.
- * This test is also run via autoconf and if smemcpy is faster,
- * ACE_HAS_MEMCPY_LOOP_UNROLL flag is set.
- *
  */
 //=============================================================================
 

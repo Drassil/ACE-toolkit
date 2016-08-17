@@ -1,5 +1,3 @@
-// $Id: HA_Configurable_Server_Dynamic.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 // Listing 1 code/ch19
 #include "ace/OS_main.h"
 #include "ace/Service_Config.h"

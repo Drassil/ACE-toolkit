@@ -3,11 +3,8 @@
 /**
  *  @file    UPIPE_SAP_Test.cpp
  *
- *  $Id: UPIPE_SAP_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a test that uses <ACE_UPIPE_SAP> and <ACE_Thread> for
  *    intra-process communication.
- *
  *
  *  @author Gerhard Lenzer <Gerhard.Lenzer@med.siemens.de>
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>

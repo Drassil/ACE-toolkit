@@ -1,5 +1,3 @@
-// $Id: Server.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/config-lite.h"
 #include "ace/OS_NS_string.h"
 #include "ace/Get_Opt.h"

@@ -1,5 +1,3 @@
-// $Id: SS_Data.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "SS_Data.h"
 #include "SS_Service_Handler.h"
 

@@ -3,16 +3,12 @@
 /**
  *  @file    Process_Env_Test.cpp
  *
- *  $Id: Process_Env_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
- *    This program tests the limits of the Windows CreateProcess
- *    environment buffer.
- *
+ * This program tests the limits of the Windows CreateProcess
+ * environment buffer.
  *
  *  @author Chad Elliott <elliott_c@ociweb.com>
  */
 //=============================================================================
-
 
 #include "test_config.h"
 #include "ace/Process.h"
@@ -25,10 +21,11 @@ typedef void (*setenvfn_t) (const ACE_TCHAR *name, const ACE_TCHAR *value,
 
 void create_large_env (setenvfn_t setenv, void *ctx)
 {
-  static const size_t varsize = 1200;
+  static const size_t varsize = 1600;
   for (int i = 0; i < 26; i++)
     {
-      char name[2] = { 'A' + i, '\0' };
+      char name[2] = { 'A', '\0' };
+      name[0] += i;
       char value[varsize];
       ACE_OS::memset (value, 'R', varsize);
       value[varsize - 1] = '\0';
@@ -74,7 +71,7 @@ run_main (int, ACE_TCHAR*[])
   ACE_Process process;
   if (process.spawn (options) != -1)
     {
-      ACE_ERROR ((LM_DEBUG,
+      ACE_ERROR ((LM_ERROR,
                   "ERROR: This should have failed due to the large "
                   "environment buffer\n"));
       test_status = 1;
@@ -83,12 +80,12 @@ run_main (int, ACE_TCHAR*[])
   options.enable_unicode_environment ();
   if (process.spawn (options) == -1)
     {
-      ACE_ERROR ((LM_DEBUG,
+      ACE_ERROR ((LM_ERROR,
                   "ERROR: This should have succeeded\n"));
       test_status = 1;
     }
 
-  //test inheriting a large env block with enable_unicode_environment
+  // Test inheriting a large env block with enable_unicode_environment
   ACE_Process_Options opts2 (1,
                              ACE_Process_Options::DEFAULT_COMMAND_LINE_BUF_LEN,
                              128 * 1024);
@@ -100,7 +97,7 @@ run_main (int, ACE_TCHAR*[])
   ACE_Process process2;
   if (process2.spawn (opts2) == -1)
     {
-       ACE_ERROR ((LM_DEBUG,
+       ACE_ERROR ((LM_ERROR,
                   "ERROR: Failed to spawn process2.\n"));
       test_status = 1;
     }
@@ -108,13 +105,13 @@ run_main (int, ACE_TCHAR*[])
   process2.wait (&status);
   if (status != 1)
     {
-       ACE_ERROR ((LM_DEBUG,
+       ACE_ERROR ((LM_ERROR,
                   "ERROR: process2 did not inherit env var Z.\n"));
       test_status = 1;
     }
 
 #else
-  ACE_ERROR ((LM_INFO, "This test is for Win32 without ACE_USES_WCHAR\n"));
+  ACE_DEBUG ((LM_INFO, "This test is for Win32 without ACE_USES_WCHAR\n"));
 #endif /* ACE_WIN32 && !ACE_USES_WCHAR && !ACE_HAS_WINCE */
 
   ACE_END_TEST;

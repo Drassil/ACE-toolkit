@@ -1,5 +1,3 @@
-// $Id: Stacks.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_Memory.h"
 #include "ace/Log_Msg.h"
 #include "ace/Containers.h"
@@ -30,7 +28,7 @@ private:
 
 int StackExample::run (void)
 {
-  ACE_TRACE (ACE_TEXT ("StackUser::run"));
+  ACE_TRACE ("StackExample::run");
 
   ACE_ASSERT(!this->runBoundedStack());
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\n# of live objects %d\n"),
@@ -49,7 +47,7 @@ int StackExample::run (void)
 // Listing 1 code/ch05
 int StackExample::runBoundedStack (void)
 {
-  ACE_TRACE (ACE_TEXT ("StackExample::runBoundedStack"));
+  ACE_TRACE ("StackExample::runBoundedStack");
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Using a bounded stack\n")));
 
   ACE_Bounded_Stack<DataElement> bstack1 (100);
@@ -82,7 +80,7 @@ int StackExample::runBoundedStack (void)
 // Listing 2 code/ch05
 int StackExample::runFixedStack (void)
 {
-  ACE_TRACE (ACE_TEXT ("StackExample::runFixedStack"));
+  ACE_TRACE ("StackExample::runFixedStack");
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Using a fixed stack\n")));
 
   ACE_Fixed_Stack<DataElement*, 100> fstack;
@@ -106,7 +104,7 @@ int StackExample::runFixedStack (void)
 
 int StackExample::runUnboundedStack (void)
 {
-  ACE_TRACE (ACE_TEXT ("StackExample::runUnboundedStack"));
+  ACE_TRACE ("StackExample::runUnboundedStack");
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Using an unbounded stack\n")));
 
   ACE_Unbounded_Stack<DataElement*> ustack;

@@ -1,5 +1,3 @@
-// $Id: Mutex.cpp 91633 2010-09-07 14:27:13Z johnnyw $
-
 #include "ace/config-lite.h"
 #if defined (ACE_HAS_THREADS)
 

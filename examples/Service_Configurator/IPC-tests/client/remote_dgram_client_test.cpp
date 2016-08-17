@@ -1,5 +1,3 @@
-// $Id: remote_dgram_client_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Tests out the Internet domain IPC-SAP dgram abstraction.
 
 #include "ace/OS_main.h"

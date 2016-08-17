@@ -1,6 +1,4 @@
- // $Id: CPP-inserver-fancy.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
-// This example tests the features of the <ACE_SOCK_Acceptor>,
+ // This example tests the features of the <ACE_SOCK_Acceptor>,
 // <ACE_SOCK_Stream>, and <ACE_Svc_Handler> classes.  If the platform
 // supports threads it uses a thread-per-connection concurrency model.
 // Otherwise, it uses a single-threaded iterative server model.
@@ -579,8 +577,4 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
 
   return server.handle_events ();
 }
-
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<Options, ACE_SYNCH_RECURSIVE_MUTEX> *
-  ACE_Singleton<Options, ACE_SYNCH_RECURSIVE_MUTEX>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, Options, ACE_SYNCH_RECURSIVE_MUTEX);

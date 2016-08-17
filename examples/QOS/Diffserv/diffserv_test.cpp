@@ -2,7 +2,7 @@
 /**
   *  @file   diffserv_test.cpp
   *
-  *  $Id: diffserv_test.cpp 80826 2008-03-04 14:51:23Z wotte $
+  *
   *
   *  @author Craig Rodrigues <crodrigu@bbn.com>
   *  @brief  Send UDP packets to a destination host and port.

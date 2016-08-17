@@ -1,5 +1,3 @@
-// $Id: STL_algorithm_Test_T.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef ACE_TESTS_STL_ALGORITHM_TEST_T_CPP
 #define ACE_TESTS_STL_ALGORITHM_TEST_T_CPP
 

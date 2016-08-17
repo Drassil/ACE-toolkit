@@ -1,6 +1,4 @@
 //  -*- MPC -*-
-// $Id: TMCast.mpc 91294 2010-08-06 08:46:45Z johnnyw $
-
 project : acelib, ace_output, install, threads {
   avoids = ace_for_tao
   sharedname    = ACE_TMCast

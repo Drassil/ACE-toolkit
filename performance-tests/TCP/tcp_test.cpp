@@ -3,10 +3,7 @@
 /**
  *  @file   tcp_test.cpp
  *
- *  $Id: tcp_test.cpp 93640 2011-03-24 18:36:12Z johnnyw $
- *
  * Measures TCP round-trip performance.
- *
  *
  *  @author Based on udp_test by Fred Kuhns and David L. LevineModified by Carlos O'Ryan and Nanbor Wang.
  */
@@ -250,7 +247,8 @@ Client::run (void)
     }
   ACE_hrtime_t test_end = ACE_OS::gethrtime ();
 
-  ACE_UINT32 gsf = ACE_High_Res_Timer::global_scale_factor ();
+  ACE_High_Res_Timer::global_scale_factor_type gsf =
+    ACE_High_Res_Timer::global_scale_factor ();
 
   if (dump_history)
     {

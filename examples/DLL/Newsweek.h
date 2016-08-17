@@ -4,11 +4,8 @@
 /**
  *  @file    Newsweek.h
  *
- *  $Id: Newsweek.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This is a derived class from Magazine which is a magazine
  *  pertaining to news and information.
- *
  *
  *  @author Kirthika Parameswaran <kirthika@cs.wustl.edu>
  */

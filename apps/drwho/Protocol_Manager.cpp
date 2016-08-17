@@ -1,5 +1,3 @@
-// $Id: Protocol_Manager.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/config-all.h"
 #include "ace/Log_Msg.h"
 #include "ace/OS_Memory.h"

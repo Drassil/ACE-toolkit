@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Reaper.h 93678 2011-03-29 12:38:46Z johnnyw $
-
 #ifndef JAWS_REAPER_H
 #define JAWS_REAPER_H
 

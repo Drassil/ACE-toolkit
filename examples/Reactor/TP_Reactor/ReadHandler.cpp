@@ -1,7 +1,6 @@
 /*
  * ACE reactor demonstration
  *
- * $Id: ReadHandler.cpp 85321 2009-05-12 08:31:31Z johnnyw $
  * Date: 26-Jan-2006
  */
 
@@ -32,11 +31,11 @@
 
 ReadHandler::ReadHandler() : ACE_Event_Handler(), mStream(), mDataSize(0),
         mData(0), mCallCounter(0), mInvocationCounter(0) {
-    ACE_TRACE(ACE_TEXT("ReadHandler::ReadHandler()"));
+    ACE_TRACE("ReadHandler::ReadHandler()");
 }
 
 ReadHandler::~ReadHandler() {
-    ACE_TRACE(ACE_TEXT("ReadHandler::~ReadHandler()"));
+    ACE_TRACE("ReadHandler::~ReadHandler()");
 
     if (mStream.close() == -1)
       ACE_ERROR((LM_ERROR, ACE_TEXT("%N:%l: Failed to close socket. ")
@@ -46,17 +45,17 @@ ReadHandler::~ReadHandler() {
 }
 
 ACE_SOCK_Stream &ReadHandler::getStream(void) {
-    ACE_TRACE(ACE_TEXT("ReadHandler::getStream(void)"));
+    ACE_TRACE("ReadHandler::getStream(void)");
     return mStream;
 }
 
 ACE_HANDLE ReadHandler::get_handle(void) const {
-    ACE_TRACE(ACE_TEXT("ReadHandler::get_handle(void)"));
+    ACE_TRACE("ReadHandler::get_handle(void)");
     return mStream.get_handle();
 }
 
 int ReadHandler::handle_input(ACE_HANDLE) {
-    ACE_TRACE(ACE_TEXT("ReadHandler::handle_input(ACE_HANDLE)"));
+    ACE_TRACE("ReadHandler::handle_input(ACE_HANDLE)");
 
     INVOCATION_ENTER();
 
@@ -76,7 +75,7 @@ int ReadHandler::handle_input(ACE_HANDLE) {
         // Note: only use the sizeof and pointer to int on compatible
         //       platforms (i.e. little-endian/big-endian, data type size)
         if (mStream.recv_n(&mDataSize, sizeof(mDataSize),
-                &connTimeout) != sizeof(mDataSize)) {
+                &connTimeout) != (ssize_t) sizeof(mDataSize)) {
           ACE_ERROR((LM_ERROR, ACE_TEXT("%N:%l: Failed to receive ")
                      ACE_TEXT ("request. (errno = %i: %m)\n"), ACE_ERRNO_GET));
             INVOCATION_RETURN(-1);

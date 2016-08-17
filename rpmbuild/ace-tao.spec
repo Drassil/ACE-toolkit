@@ -1,49 +1,54 @@
 # Set the version number here.
-%define ACEVER  6.0.3
-%define TAOVER  2.0.3
-%define CIAOVER 1.0.3
+%define ACEVER  6.3.2
+%define TAOVER  2.3.2
+%define CIAOVER 1.3.2
 
 # Conditional build
 # Default values are
-#                    --with rnq         (ACE_HAS_REACTOR_NOTIFICATION_QUEUE)
-#                    --with ipv6        (IPv6 support)
-#                    --with opt         (Optimized build)
-#                    --with zlib        (Zlib compressor)
-#                    --with bzip2       (Bzip2 compressor)
-#                    --without autoconf (Use MPC to build)
-#                    --without fltk     (No ftlk support)
-#                    --without tk       (No tk support)
-#                    --without xt       (No xt support)
-#                    --without fox      (No fox support)
-#                    --without qt       (No qt support)
+#                    --with ipv6         (IPv6 support)
+#                    --with opt          (Optimized build)
+#                    --with zlib         (Zlib compressor)
+#                    --with bzip2        (Bzip2 compressor)
+#                    --with tao          (TAO/CIAO)
+#                    --without fltk      (No ftlk support)
+#                    --without tk        (No tk support)
+#                    --without xt        (No xt support)
+#                    --without fox       (No fox support)
+#                    --without qt        (No qt support)
+#                    --without inline    (Code inlining disabled)
+#                    --without versioned (Versioned namespace)
 
 #
 # Read: If neither macro exists, then add the default definition.
-%{!?_with_rnq: %{!?_without_rnq: %define _with_rnq --with-rnq}}
 %{!?_with_ipv6: %{!?_without_ipv6: %define _with_ipv6 --with-ipv6}}
 %{!?_with_opt: %{!?_without_opt: %define _with_opt --with-opt}}
 %{!?_with_zlib: %{!?_without_zlib: %define _with_zlib --with-zlib}}
 %{!?_with_bzip2: %{!?_without_bzip2: %define _with_bzip2 --with-bzip2}}
+%{!?_with_tao: %{!?_without_tao: %global _with_tao --with-tao}}
 %{!?_with_ftlk: %{!?_without_ftlk: %define _without_ftlk --without-ftlk}}
 %{!?_with_tk: %{!?_without_tk: %define _without_tk --without-tk}}
 %{!?_with_xt: %{!?_without_xt: %define _without_xt --without-xt}}
 %{!?_with_fox: %{!?_without_fox: %define _without_fox --without-fox}}
 %{!?_with_qt: %{!?_without_qt: %define _without_qt --without-qt}}
+%{!?_with_inline: %{!?_without_inline: %define _without_inline --without-inline}}
+%{!?_with_versioned: %{!?_without_versioned: %define _without_versioned 0}}
 #
 # Read: It's an error if both or neither required options exist.
-%{?_with_rnq: %{?_without_rnq: %{error: both _with_rnq and _without_rnq}}}
 %{?_with_ipv6: %{?_without_ipv6: %{error: both _with_ipv6 and _without_ipv6}}}
 %{?_with_opt: %{?_without_opt: %{error: both _with_opt and _without_opt}}}
 %{?_with_zlib: %{?_without_zlib: %{error: both _with_zlib and _without_zlib}}}
 %{?_with_bzip2: %{?_without_bzip2: %{error: both _with_bzip2 and _without_bzip2}}}
+%{?_with_tao: %{?_without_tao: %{error: both _with_tao and _without_tao}}}
 %{?_with_fltk: %{?_without_fltk: %{error: both _with_fltk and _without_fltk}}}
 %{?_with_tk: %{?_without_tk: %{error: both _with_tk and _without_tk}}}
 %{?_with_xt: %{?_without_xt: %{error: both _with_xt and _without_xt}}}
 %{?_with_fox: %{?_without_fox: %{error: both _with_fox and _without_fox}}}
 %{?_with_qt: %{?_without_qt: %{error: both _with_qt and _without_qt}}}
+%{?_with_inline: %{?_without_inline: %{error: both _with_inline and _without_inline}}}
+%{?_with_versioned: %{?_without_versioned: %{error: both _with_versioned and _without_versioned}}}
 
-%{!?skip_make:%define skip_make 0}
-%{!?make_nosrc:%define make_nosrc 0}
+%{!?skip_make:%global skip_make 0}
+%{!?make_nosrc:%global make_nosrc 0}
 
 %define have_fox 0
 
@@ -51,8 +56,13 @@
 %define OPTTAG .O0
 %endif
 
-Summary:      The ADAPTIVE Communication Environment (ACE) and The ACE ORB (TAO)
 Name:         ace-tao
+%if 0%{?_with_tao:1}%{?_without_tao:0}
+Summary:      The ADAPTIVE Communication Environment (ACE) and The ACE ORB (TAO)
+%else
+Summary:      The ADAPTIVE Communication Environment (ACE)
+%endif
+
 Version:      %{ACEVER}
 
 %if 0%{?opensuse_bs}
@@ -62,9 +72,13 @@ Release:      1%{?OPTTAG}%{?dist}
 %endif
 
 Group:        Development/Libraries/C and C++
-URL:          http://www.cs.wustl.edu/~schmidt/ACE.html
+URL:          http://www.dre.vanderbilt.edu/~schmidt/ACE.html
 License:      DOC License
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 Source0:      http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO+CIAO-src-%{ACEVER}.tar.gz
+%else
+Source0:      http://download.dre.vanderbilt.edu/previous_versions/ACE-src-%{ACEVER}.tar.gz
+%endif
 Source1:      ace-tao-rpmlintrc
 BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -90,7 +104,6 @@ BuildRequires:  sendmail
 BuildRequires:  openssl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
-BuildRequires:  lsb
 
 %if %{?_with_zlib:1}%{!?_with_zlib:0}
 BuildRequires:  zlib-devel
@@ -150,14 +163,16 @@ BuildRequires: fox16-devel
 %endif
 
 %if 0%{?suse_version}
-%define ace_packages ace ace-xml ace-gperf ace-kokyu
-%define tao_packages tao tao-utils tao tao-cosnaming tao-cosevent tao-cosnotification tao-costrading tao-rtevent tao-cosconcurrency
-%define all_ace_packages %{?ace_packages} %{?fltk_pac} %{?tk_pac} %{?qt_pac} %{?fox_pac} %{?xt_pac}
-%define all_tao_packages %{?tao_packages} %{?tao_fl_pac} %{?tao_qt_pac} %{?tao_xt_pac} %{?tao_tk_pac}
-%define debug_package_requires %{all_ace_packages} %{all_tao_packages}
+%global ace_packages ace ace-xml ace-gperf ace-kokyu
+%global tao_packages tao tao-utils tao tao-cosnaming tao-cosevent tao-cosnotification tao-costrading tao-rtevent tao-cosconcurrency
+%global all_ace_packages %{?ace_packages} %{?fltk_pac} %{?tk_pac} %{?qt_pac} %{?fox_pac} %{?xt_pac}
+%if 0%{?_with_tao:1}%{?_without_tao:0}
+%global all_tao_packages %{?tao_packages} %{?tao_fl_pac} %{?tao_qt_pac} %{?tao_xt_pac} %{?tao_tk_pac}
+%endif
+%global debug_package_requires %{all_ace_packages} %{?all_tao_packages}
 %endif
 
-%if %make_nosrc
+%if 0%{?make_nosrc}
 # Leave out the distro for now
 NoSource: 0
 %endif
@@ -499,6 +514,7 @@ needed to generate a "project" file for various build tools. These tools
 include Make, NMake, Visual C++ 6, Visual C++ 7, etc.
 
 # ---------------- tao ----------------
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 %package -n     tao
 Summary:        The ACE ORB (TAO)
@@ -787,6 +803,8 @@ This package contains the components needed for developing programs
 using the XtResource_Factory.
 %endif
 
+%endif
+
 # ================================================================
 # prep
 # ================================================================
@@ -802,10 +820,12 @@ using the XtResource_Factory.
 
 export ACE_ROOT=$(pwd)
 export MPC_ROOT=$ACE_ROOT/MPC
+export LD_LIBRARY_PATH=$ACE_ROOT/lib
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 export TAO_ROOT=$ACE_ROOT/TAO
 export CIAO_ROOT=$TAO_ROOT/CIAO
 export DANCE_ROOT=$TAO_ROOT/DAnCE
-export LD_LIBRARY_PATH=$ACE_ROOT/lib
+%endif
 
 # Dump the g++ versions, in case the g++ version is broken we can
 # easily see this in the build log
@@ -829,13 +849,6 @@ cat >> $ACE_ROOT/ace/config.h << EOF
 EOF
 %endif
 
-# If rnq support is indicated insert some lines into the config.h file
-%if %{?_with_rnq:1}%{!?_with_rnq:0}
-cat >> $ACE_ROOT/ace/config.h << EOF
-#define ACE_HAS_REACTOR_NOTIFICATION_QUEUE
-EOF
-%endif
-
 # Include platform include
 cat >> $ACE_ROOT/ace/config.h << EOF
 #include "ace/config-linux.h"
@@ -851,8 +864,19 @@ EOF
 
 cat >> $ACE_ROOT/include/makeinclude/platform_macros.GNU <<EOF
 ssl = 1
+EOF
+
+%if %{?_with_inline:1}%{!?_with_inline:0}
+%define inline -D__ACE_INLINE__ -U__ACE_NO_INLINE__
+cat >> $ACE_ROOT/include/makeinclude/platform_macros.GNU <<EOF
+inline = 1
+EOF
+%else
+%define inline -D__ACE_NO_INLINE__ -U__ACE_INLINE__
+cat >> $ACE_ROOT/include/makeinclude/platform_macros.GNU <<EOF
 inline = 0
 EOF
+%endif
 
 %if %{?_with_xt:1}%{!?_with_xt:0}
 cat >> $ACE_ROOT/include/makeinclude/platform_macros.GNU <<EOF
@@ -904,6 +928,12 @@ buildbits = 64
 EOF
 %endif
 
+%ifarch ppc64
+cat >> $ACE_ROOT/include/makeinclude/platform_macros.GNU <<EOF
+minimaltoc = 1
+EOF
+%endif
+
 %if %{?_with_opt:0}%{!?_with_opt:1}
 cat >> $ACE_ROOT/include/makeinclude/platform_macros.GNU <<EOF
 optimize = 0
@@ -935,6 +965,11 @@ zlib = 1
 EOF
 %endif
 
+%if %{?_with_versioned:1}%{!?_with_versioned:0}
+cat >> $ACE_ROOT/bin/MakeProjectCreator/config/default.features <<EOF
+versioned_namespace = 1
+EOF
+%endif
 
 # We don't use default.features to enable ipv6 cause it conflicts w/
 # the config.h generated version.  Config.h is superior because it is
@@ -950,55 +985,15 @@ EOF
 %endif
 %endif
 
-# Need to regenerate all of the GNUMakefiles ...
+# Need to regenerate all of the GNUMakefiles
+# then make everything that we have generated for
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 bin/mwc.pl -type gnuace TAO/TAO_ACE.mwc
-
-MAKECMD="make %{?_smp_mflags}"
-
-# build ACE components
-for ace_comp in \
-    ace \
-    Kokyu \
-    ACEXML \
-    apps/gperf \
-    protocols;
-do
-    $MAKECMD -C $ACE_ROOT/$ace_comp;
-done
-
-# build TAO components
-$MAKECMD -C $TAO_ROOT/TAO_IDL
-$MAKECMD -C $TAO_ROOT/tao
-
-# Instead of "$MAKECMD -C $TAO_ROOT/orbsvcs" use the list from
-# $ACE_ROOT/orbsvcs/GNUmakefile less the performance-tests, tests and
-# examples.
-for orbsvcs_comp in \
-    TAO_Service \
-    orbsvcs \
-    Trading_Service \
-    Time_Service \
-    Scheduling_Service \
-    Notify_Service \
-    Naming_Service \
-    Logging_Service \
-    LoadBalancer \
-    LifeCycle_Service \
-    ImplRepo_Service \
-    IFR_Service \
-    Fault_Notifier \
-    Fault_Detector \
-    FT_ReplicationManager \
-    FTRT_Event_Service \
-    Event_Service \
-    Dump_Schedule \
-    CosEvent_Service \
-    Concurrency_Service;
-do
-    $MAKECMD -C $TAO_ROOT/orbsvcs/$orbsvcs_comp;
-done
-
-$MAKECMD -C $TAO_ROOT/utils
+make %{?_smp_mflags} -C $TAO_ROOT
+%else
+bin/mwc.pl -type gnuace ACE.mwc
+make %{?_smp_mflags} -C $ACE_ROOT
+%endif
 
 %endif
 
@@ -1013,9 +1008,11 @@ $MAKECMD -C $TAO_ROOT/utils
 %install
 
 export ACE_ROOT=$(pwd)
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 export TAO_ROOT=$ACE_ROOT/TAO
 export CIAO_ROOT=$TAO_ROOT/CIAO
 export DANCE_ROOT=$TAO_ROOT/DAnCE
+%endif
 
 # ---------------- Runtime Components ----------------
 
@@ -1030,9 +1027,11 @@ install $INSTLIBS %{buildroot}%{_libdir}
 INSTLIBS=`ls ${ACE_ROOT}/lib/libKokyu.so.%{ACEVERSO}`
 install $INSTLIBS %{buildroot}%{_libdir}
 
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 # TAO libraries
 INSTLIBS=`ls ${ACE_ROOT}/lib/libTAO*.so.%{TAOVERSO}`
 install $INSTLIBS %{buildroot}%{_libdir}
+%endif
 
 # Create un-versioned symbolic links for libraries
 (cd %{buildroot}%{_libdir} && \
@@ -1041,7 +1040,9 @@ install $INSTLIBS %{buildroot}%{_libdir}
 # install binaries
 install -d %{buildroot}%{_sbindir}
 
-# Rename the service binaries:
+# Rename the TAO service binaries:
+
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 install ${ACE_ROOT}/TAO/orbsvcs/Naming_Service/tao_cosnaming \
     %{buildroot}%{_sbindir}/tao-cosnaming
@@ -1074,6 +1075,8 @@ for logfile in cosnaming cosconcurrency cosevent cosnotification costrading rtev
     touch %{buildroot}%{_localstatedir}/log/tao/tao-${logfile}.log
 done
 
+%endif
+
 # ---------------- Development Components ----------------
 
 # INSTHDR="cp --preserve=timestamps"
@@ -1090,25 +1093,31 @@ BASEHDR=`find \
     ACEXML/common \
     ACEXML/parser/parser \
     Kokyu \
+    -name '*.h' -not -name 'config-*'`
+%if 0%{?_with_tao:1}%{?_without_tao:0}
+TAO_MM_OPTS="-I TAO -I TAO/orbsvcs -I TAO/orbsvcs/orbsvcs"
+BASEHDR="$BASEHDR `find \
     TAO/tao \
     TAO/orbsvcs/orbsvcs \
-    -name '*.h' -not -name 'config-*'`
+    -name '*.h' -not -name 'config-*'`"
+%endif
 for j in $BASEHDR; do
         echo $j >> rawhdrs.log
         echo '#include <'$j'>' | \
-        g++ -I . \
+        g++ %{inline} \
+            -I . \
             -I protocols \
-            -I TAO \
-            -I TAO/orbsvcs \
-            -I TAO/orbsvcs/orbsvcs \
+            $TAO_MM_OPTS \
             -x c++ - -MM -MF mmout 2>> rawhdrs.log && cat mmout || true;
 done > mmraw.list
 
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 # Append IDL headers to the raw list.
 find \
     TAO/tao \
     TAO/orbsvcs/orbsvcs \
     -regex '.*\.p?idl$' >> mmraw.list
+%endif
 
 # Cleanup dependency output:
 #   remove '-:' sequences
@@ -1125,9 +1134,11 @@ cat mmraw.list |\
 
 # Add missing headers.
 echo ace/QtReactor/QtReactor.h >> allhdrs.list
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 echo TAO/tao/QtResource/QtResource_Factory.h >> allhdrs.list
 echo TAO/tao/QtResource/QtResource_Loader.h >> allhdrs.list
 echo TAO/tao/PortableServer/get_arg.h >> allhdrs.list
+%endif
 
 # Install headers and create header lists
 rm -f ace-headers.tmp
@@ -1191,15 +1202,22 @@ echo '%defattr(-,root,root,-)' > kokyu-headers.list
 sort -u < kokyu-headers.tmp >> kokyu-headers.list
 rm -f kokyu-headers.tmp
 
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 echo '%defattr(-,root,root,-)' > tao-headers.list
 sort -u < tao-headers.tmp >> tao-headers.list
 rm -f tao-headers.tmp
+%endif
+
 )
+
+# Will also be needed for mpc.
+install -d %{buildroot}%{_bindir}
+
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 # install the TAO_IDL compiler
 install -d %{buildroot}%{_libdir}
 
-install -d %{buildroot}%{_bindir}
 install ${ACE_ROOT}/bin/ace_gperf %{buildroot}%{_bindir}
 install ${ACE_ROOT}/bin/tao_idl %{buildroot}%{_bindir}
 install ${ACE_ROOT}/bin/tao_imr %{buildroot}%{_bindir}
@@ -1237,6 +1255,7 @@ for f in *; do
 done
 popd
 %endif
+%endif
 
 # ================================================================
 # Makefiles
@@ -1247,9 +1266,11 @@ install -d %{buildroot}%{_datadir}/ace
 install -d %{buildroot}%{_datadir}/ace/include
 install -d %{buildroot}%{_datadir}/ace/include/makeinclude
 install -d %{buildroot}%{_datadir}/mpc
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 install -d %{buildroot}%{_datadir}/tao
 install -d %{buildroot}%{_datadir}/tao/orbsvcs
 install -d %{buildroot}%{_datadir}/tao/MPC
+%endif
 
 for mk_macros in \
     all_in_one.GNU \
@@ -1270,7 +1291,9 @@ for mk_macros in \
         install ${ACE_ROOT}/include/makeinclude/$mk_macros %{buildroot}%{_datadir}/ace/include/makeinclude)
 done
 
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 install ${TAO_ROOT}/rules.tao.GNU %{buildroot}%{_datadir}/tao
+%endif
 
 cp -a ${ACE_ROOT}/MPC/* %{buildroot}%{_datadir}/mpc
 
@@ -1288,10 +1311,13 @@ install ${ACE_ROOT}/bin/add_rel_link.sh %{buildroot}%{_datadir}/ace/bin
 install ${ACE_ROOT}/bin/{ACEutils,Uniqueid}.pm %{buildroot}%{_datadir}/ace/bin
 
 ln -sfn %{_includedir}/ace %{buildroot}%{_datadir}/ace
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 ln -sfn %{_includedir}/tao %{buildroot}%{_datadir}/tao
 ln -sfn %{_includedir}/orbsvcs %{buildroot}%{_datadir}/tao/orbsvcs
+%endif
 ln -sfn %{_libdir} %{buildroot}%{_datadir}/ace/lib
 
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 cp -a ${TAO_ROOT}/MPC/* %{buildroot}%{_datadir}/tao/MPC
 
 # Set TAO_IDL setting for the user
@@ -1301,7 +1327,7 @@ TAO_IDL_DEP = %{_bindir}/tao_idl
 EOF
 cat %{buildroot}%{_datadir}/ace/include/makeinclude/platform_macros.GNU >> %{buildroot}%{_datadir}/ace/include/makeinclude/platform_macros.GNU.tmp
 mv %{buildroot}%{_datadir}/ace/include/makeinclude/platform_macros.GNU.tmp %{buildroot}%{_datadir}/ace/include/makeinclude/platform_macros.GNU
-
+%endif
 
 install -d %{buildroot}%{_sysconfdir}/profile.d
 cat > %{buildroot}%{_sysconfdir}/profile.d/mpc.sh <<EOF
@@ -1312,10 +1338,12 @@ cat > %{buildroot}%{_sysconfdir}/profile.d/ace-devel.sh <<EOF
 ACE_ROOT=/usr/share/ace
 export ACE_ROOT
 EOF
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 cat > %{buildroot}%{_sysconfdir}/profile.d/tao-devel.sh <<EOF
 TAO_ROOT=/usr/share/tao
 export TAO_ROOT
 EOF
+%endif
 
 # convenience symlinks
 ln -sfn %{_datadir}/ace/bin/mpc.pl %{buildroot}%{_bindir}/mpc.pl
@@ -1326,8 +1354,10 @@ ln -sfn %{_datadir}/ace/bin/mwc.pl %{buildroot}%{_bindir}/mwc.pl
 # ================================================================
 install -d %{buildroot}%{_mandir}
 install -d %{buildroot}%{_mandir}/man1
-install ${TAO_ROOT}/TAO_IDL/tao_idl.1 %{buildroot}%{_mandir}/man1
 install ${ACE_ROOT}/apps/gperf/ace_gperf.1 %{buildroot}%{_mandir}/man1
+%if 0%{?_with_tao:1}%{?_without_tao:0}
+install ${TAO_ROOT}/TAO_IDL/tao_idl.1 %{buildroot}%{_mandir}/man1
+%endif
 install -d  %{buildroot}%{_infodir}
 install ${ACE_ROOT}/apps/gperf/ace_gperf.info %{buildroot}%{_infodir}
 
@@ -1362,11 +1392,15 @@ comm -2 -3 all-so.list svc-so.list > nonsvc-so.list
 # Generate file lists.
 grep libACE svc-so.list > ace-svc-so.list
 grep libACE nonsvc-so.list > ace-nonsvc-so.list
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 grep libTAO svc-so.list > tao-svc-so.list
 grep libTAO nonsvc-so.list > tao-nonsvc-so.list
+%endif
 
 # Concatenate file lists as neccessary
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 cat tao-headers.list tao-nonsvc-so.list > tao-devel-files.list
+%endif
 cat ace-headers.list ace-nonsvc-so.list > ace-devel-files.list
 
 # ================================================================
@@ -1379,6 +1413,8 @@ rm -rf %{buildroot}
 # ================================================================
 # pre install
 # ================================================================
+
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 # ---------------- tao-cosnaming ----------------
 
@@ -1439,6 +1475,8 @@ getent passwd tao >/dev/null || \
 /usr/sbin/useradd -r -g tao -d %{_sysconfdir}/tao -s /sbin/nologin \
     -c "TAO Services" tao
 exit 0
+
+%endif
 
 # ================================================================
 # post install
@@ -1510,6 +1548,8 @@ exit 0
 %post -n ace-xtreactor
 /sbin/ldconfig
 %endif
+
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 # ---------------- tao ----------------
 
@@ -1613,6 +1653,8 @@ exit 0
 /sbin/ldconfig
 %endif
 
+%endif
+
 # ================================================================
 # pre uninstall
 # ================================================================
@@ -1624,6 +1666,9 @@ exit 0
 if [ $1 = 0 ]; then
     /sbin/install-info --delete %{_infodir}/ace_gperf.info%{_extension} %{_infodir}/dir
 fi
+
+
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 # ---------------- tao-cosnaming ----------------
 
@@ -1702,6 +1747,8 @@ if [ $1 = 0 ]; then
 fi
 %endif
 
+%endif
+
 # ================================================================
 # post uninstall
 # ================================================================
@@ -1757,6 +1804,8 @@ fi
 %postun -n ace-xtreactor
 /sbin/ldconfig
 %endif
+
+%if 0%{?_with_tao:1}%{?_without_tao:0}
 
 # ---------------- tao ----------------
 
@@ -1879,6 +1928,8 @@ fi
 /sbin/ldconfig
 %endif
 
+%endif
+
 # ================================================================
 # files
 # ================================================================
@@ -1897,6 +1948,8 @@ fi
 %{_libdir}/libACE_SSL.so.%{ACEVERSO}
 %{_libdir}/libACE_INet.so.%{ACEVERSO}
 %{_libdir}/libACE_INet_SSL.so.%{ACEVERSO}
+%{_libdir}/libACE_Compression.so.%{ACEVERSO}
+%{_libdir}/libACE_RLECompression.so.%{ACEVERSO}
 
 %doc ACE-INSTALL.html
 %doc AUTHORS
@@ -1939,6 +1992,7 @@ fi
 %exclude %{_includedir}/ace/XtReactor/XtReactor.h
 %exclude %{_includedir}/ace/XtReactor/ACE_XtReactor_export.h
 %endif
+%exclude %{_libdir}/libACEXML*.so
 
 %doc AUTHORS
 %doc COPYING
@@ -2180,6 +2234,8 @@ fi
 
 # ---------------- tao ----------------
 
+%if 0%{?_with_tao:1}%{?_without_tao:0}
+
 # NOTE - Some of the TAO service modules need to be found by dlopen at
 # runtime.  Currently this means these specific .so files need to be
 # shipped in the runtime package instead of the devel package.
@@ -2188,6 +2244,8 @@ fi
 %defattr(-,root,root,-)
 %{_datadir}/tao
 %exclude %{_datadir}/tao/MPC
+%exclude %{_datadir}/tao/tao
+%exclude %{_datadir}/tao/orbsvcs
 
 %{_libdir}/libTAO*.so.%{TAOVERSO}
 
@@ -2580,3 +2638,15 @@ fi
 %doc TAO/README
 
 %endif
+
+%endif
+
+%changelog
+* Fri Jan 31 2014 Steve Huston <shuston@riverace.com> 6.2.5
+- Added rpmbuild options "--with tao" and "--without tao"; defaults to 'with'.
+  Allows building ACE only (--without tao)
+
+* Thu Aug 11 2011 Thomas Lockhart <lockhart@fourpalms.org> 6.0.3-54
+- Parameterize code inlining. Defaults to not inlining which was the previous behavior.
+- Implement the rpmbuild options "--with inline" and "--without inline".
+

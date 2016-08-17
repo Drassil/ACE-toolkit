@@ -1,5 +1,3 @@
-// $Id: Sock_IOStream.h 90789 2010-06-23 10:30:53Z mcorino $
-
 /**
  * @file Sock_IOStream.h
  *

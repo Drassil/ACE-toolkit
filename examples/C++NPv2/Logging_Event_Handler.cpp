@@ -1,6 +1,4 @@
 /*
-** $Id: Logging_Event_Handler.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-**
 ** Copyright 2002 Addison Wesley. All Rights Reserved.
 */
 

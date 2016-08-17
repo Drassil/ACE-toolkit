@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: URL_Addr.inl 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/ACE.h"
 #include "ace/INET_Addr.h"
 #include "ace/Log_Msg.h"

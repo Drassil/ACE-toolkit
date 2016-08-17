@@ -3,8 +3,6 @@
 /**
  *  @file    Counter_Test.cpp
  *
- *  $Id: Counter_Test.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Test all the member functions of the Counter class. An Object
  *  representing an ASN.1 Counter SMI COUNTER SYNTAX.
  *

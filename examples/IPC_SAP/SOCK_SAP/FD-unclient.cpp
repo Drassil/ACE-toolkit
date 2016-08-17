@@ -1,5 +1,3 @@
-// $Id: FD-unclient.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_NS_fcntl.h"
 #include "ace/LSOCK_Connector.h"
 #include "ace/UNIX_Addr.h"

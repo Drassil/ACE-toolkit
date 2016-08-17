@@ -1,5 +1,3 @@
-// $Id: Service_Config_Stream_DLL.h 86283 2009-07-29 15:52:54Z shuston $
-
 #ifndef SERVICE_CONFIG_STREAM_DLL_H
 #define SERVICE_CONFIG_STREAM_DLL_H
 

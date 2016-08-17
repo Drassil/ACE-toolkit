@@ -4,12 +4,9 @@
 /**
  *  @file    BPR_Drivers_T.h
  *
- *  $Id: BPR_Drivers_T.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This code factors out common class templates for use in
  *  the different possible implementations of the Timer_Queue
  *  based bounded packet relay example.
- *
  *
  *  @author Chris Gill           <cdgill@cs.wustl.edu>  and Douglas C. Schmidt   <schmidt@cs.wustl.edu> Based on the Timer Queue Test example written by Carlos O'Ryan        <coryan@cs.wustl.edu>  and Douglas C. Schmidt   <schmidt@cs.wustl.edu> and Sergio Flores-Gaitan <sergio@cs.wustl.edu>
  */

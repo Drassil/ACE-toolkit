@@ -1,4 +1,3 @@
-// $Id: GroupFwd.hpp 91626 2010-09-07 10:59:20Z johnnyw $
 // author    : Boris Kolpackov <boris@dre.vanderbilt.edu>
 
 #ifndef TMCAST_GROUP_FWD_HPP

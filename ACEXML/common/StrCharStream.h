@@ -4,8 +4,6 @@
 /**
  *  @file    StrCharStream.h
  *
- *  $Id: StrCharStream.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -23,7 +21,7 @@
 #include "ACEXML/common/CharStream.h"
 
 /**
- * @class ACEXML_StrCharStream StrCharStream.h "common/StrCharStream.h"
+ * @class ACEXML_StrCharStream
  *
  * An implementation of ACEXML_CharStream for reading
  * input from a null-terminated ACEXML_Char string.

@@ -3,8 +3,6 @@
 #
 # @author Arvind S. Krishna <arvindk@dre.vanderbilt.edu>
 #
-# $Id: FOCUSParser.pm 80826 2008-03-04 14:51:23Z wotte $
-#
 # This parser, parses the specialization file given as an input argument
 # and *individually* visits the tags in a pre-determined order to weave
 # in the specializations.

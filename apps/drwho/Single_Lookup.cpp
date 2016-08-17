@@ -1,5 +1,3 @@
-// $Id: Single_Lookup.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "Single_Lookup.h"
 #include "ace/ACE.h"

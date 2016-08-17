@@ -3,12 +3,9 @@
 /**
  *  @file    Map_Manager_Test.cpp
  *
- *  $Id: Map_Manager_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a simple test of the <ACE_Map_Manager> and
  *   <ACE_Hash_Map_Manager> that illustrates how to use the forward
  *   and reverse iterators.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
@@ -894,9 +891,13 @@ run_test (int (*ptf) (size_t, size_t, int),
               et.user_time,
               et.system_time));
 
+  ACE_timer_t time_result = 0.0;
+  if (iterations != 0)
+    time_result = (et.real_time / ACE_timer_t (iterations)) * 1000000;
+
   ACE_DEBUG ((LM_DEBUG,
               ACE_TEXT ("time per call = %f usecs\n"),
-              (et.real_time / ACE_timer_t (iterations)) * 1000000));
+              time_result));
 
   return 0;
 }

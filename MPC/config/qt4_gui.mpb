@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: qt4_gui.mpb 1897 2010-08-30 15:39:41Z mitza $
-
 project: qt4_core {
   lit_libs += QtGui$(QT_CFG)
 

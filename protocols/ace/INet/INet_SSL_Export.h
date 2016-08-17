@@ -1,6 +1,5 @@
 
 // -*- C++ -*-
-// $Id: INet_SSL_Export.h 91425 2010-08-23 11:59:32Z mcorino $
 // Definition for Win32 Export directives.
 // This file is generated automatically by generate_export_file.pl ACE_INET_SSL
 // ------------------------------

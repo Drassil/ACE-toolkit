@@ -1,5 +1,3 @@
-// $Id: INet_Log.cpp 90928 2010-06-29 11:21:55Z mcorino $
-
 #include "ace/INet/INet_Log.h"
 #include "ace/Env_Value_T.h"
 #include "ace/SString.h"

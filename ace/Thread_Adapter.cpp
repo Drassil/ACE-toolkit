@@ -1,5 +1,3 @@
-// $Id: Thread_Adapter.cpp 92682 2010-11-23 23:41:19Z shuston $
-
 #include "ace/Thread_Adapter.h"
 #include "ace/Thread_Manager.h"
 #include "ace/Thread_Exit.h"

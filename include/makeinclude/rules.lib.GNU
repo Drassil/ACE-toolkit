@@ -1,6 +1,6 @@
 # -*- Makefile -*-
 #----------------------------------------------------------------------------
-#       $Id: rules.lib.GNU 91974 2010-09-23 16:17:42Z mitza $
+#       
 #
 #       Build libraries (i.e., contain no binary executables)
 #       GNU version
@@ -11,7 +11,7 @@
 #       Library versioning
 #---------------------------------------------------------------------------
 
-ifeq ($(versioned_so),1)
+ifneq ($(versioned_so),0)
   # Turn on symbol versioning. The scheme that we follow is to allow
   # applications dependent on libraries, with same version numbers (major,
   # minor and beta) to run, but applications with dependencies on libraries
@@ -20,13 +20,27 @@ ifeq ($(versioned_so),1)
   # Version number of the libraries
   #
   ifeq ($(SOVERSION),)
-    SOVERSION = .$(GNUACE_PROJECT_VERSION)
+    ifeq ($(versioned_so),1)
+      SOVERSION = .$(GNUACE_PROJECT_VERSION)
+    else
+      ifeq ($(versioned_so),2)
+        SOVERSION = -$(GNUACE_PROJECT_VERSION)
+      else
+        $(error unknown value for versioned_so: $(versioned_so))
+      endif
+    endif
   endif # SOVERSION
 
   # Name that will be written into the dynamic library
   #
   ifeq ($(SONAME),)
-    SONAME = $(SHLIB)$(SOVERSION)
+    ifeq ($(versioned_so),1)
+      SONAME = $(SHLIB)$(SOVERSION)
+    else
+      ifeq ($(versioned_so),2)
+        SONAME = $(patsubst %.$(SOEXT),%,$(SHLIB))$(SOVERSION).$(SOEXT)
+      endif
+    endif
   endif # SONAME
 endif # versioned_so
 
@@ -47,9 +61,15 @@ SHLIB ?=
 # Setup shared library variables, including versions.
 VSHLIB_NO_VER = $(ARCH_SHLIB:%.$(SOEXT)=%$(VAR).$(SOEXT))
 CLEANUP_VSHLIB_NO_VER = $(CLEANUP_SHLIB:%.$(SOEXT)=%$(VAR).$(SOEXT))
-VSHLIB = $(VSHLIB_NO_VER:%=%$(SOVERSION))
-CLEANUP_VSHLIB = $(CLEANUP_VSHLIB_NO_VER:%=%$(SOVERSION))
-SHLIB_WITH_VER = $(SHLIB:%=%$(SOVERSION))
+ifneq ($(versioned_so),2)
+  VSHLIB = $(VSHLIB_NO_VER:%=%$(SOVERSION))
+  CLEANUP_VSHLIB = $(CLEANUP_VSHLIB_NO_VER:%=%$(SOVERSION))
+  SHLIB_WITH_VER = $(SHLIB:%=%$(SOVERSION))
+else
+  VSHLIB = $(if $(VSHLIB_NO_VER), $(patsubst %.$(SOEXT),%,$(VSHLIB_NO_VER))$(SOVERSION).$(SOEXT))
+  CLEANUP_VSHLIB = $(if $(CLEANUP_VSHLIB_NO_VER), $(patsubst %.$(SOEXT),%,$(CLEANUP_VSHLIB_NO_VER))$(SOVERSION).$(SOEXT))
+  SHLIB_WITH_VER = $(if $(SHLIB), $(patsubst %.$(SOEXT),%,$(SHLIB))$(SOVERSION).$(SOEXT))
+endif
 
 SHLIBA ?=
 VSHLIBA = $(ARCH_SHLIBA:%.$(LIBEXT)=%$(VAR).$(LIBEXT))
@@ -172,13 +192,13 @@ $(VLIB): $(VLOBJS)
 	$(AR.cc.override)
     else
 	([ "`echo $(TMPINCDIR:%=%/*.o)`" != "$(TMPINCDIR:%=%/*.o)" ] && echo $(TMPINCDIR:%=%/*.o); \
-	echo $(filter %.o, $?)) | xargs $(AR) $(ARFLAGS) $@ $(AREXTRA)
+	echo $(filter %.o, $^)) | xargs $(AR) $(ARFLAGS) $@ $(AREXTRA)
     endif
   endif
   ifdef ibmcxx_build
 # This is required to get AIX IBM C/C++ to instantiate and compile the needed
 # templates.
-                      if test -s ./$(TEMPINCDIR)/*.C; \
+	if test -s ./$(TEMPINCDIR)/*.C; \
 	then \
 		$(LINK.cc) $(LINK_OUTPUT_FLAG) dummy $(LDFLAGS) $(ACE_ROOT)/etc/xlc_dummy.cpp $^ $(ACE_SHLIBS) $(LIBS); \
 		$(RM) dummy; \

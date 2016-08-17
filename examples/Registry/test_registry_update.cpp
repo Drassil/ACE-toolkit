@@ -1,5 +1,3 @@
-// $Id: test_registry_update.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Suppose this application belonged to AcmeSoft. AcmeSoft wants to
 // keep track of the number of times this application is
 // executed. They want two counters: one counts the number of

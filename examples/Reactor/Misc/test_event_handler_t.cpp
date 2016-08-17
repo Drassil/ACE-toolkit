@@ -1,5 +1,3 @@
-// $Id: test_event_handler_t.cpp 91685 2010-09-09 09:35:14Z johnnyw $
-
 #include "ace/Event_Handler_T.h"
 #include "ace/Log_Msg.h"
 

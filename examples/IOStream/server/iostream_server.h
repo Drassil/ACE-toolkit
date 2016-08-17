@@ -1,5 +1,3 @@
-// $Id: iostream_server.h 91685 2010-09-09 09:35:14Z johnnyw $
-
 // This file defines the class needed for iostream_server.cpp - it's a separate
 // file to satisfy IBM's xlC template instantiation.
 

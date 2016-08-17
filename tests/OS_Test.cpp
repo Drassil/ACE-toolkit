@@ -1,5 +1,3 @@
-// $Id: OS_Test.cpp 93542 2011-03-13 14:05:46Z olli $
-
 // ============================================================================
 //
 // = LIBRARY
@@ -31,8 +29,6 @@
 #include "ace/OS_NS_errno.h"
 #include "ace/OS_NS_ctype.h"
 #include "ace/OS_NS_netdb.h"
-
-
 
 #undef THIS_IS_NOT_AN_ASSERT_IT_IS_A_NON_DEBUG_TEST_AS_WELL
 #define THIS_IS_NOT_AN_ASSERT_IT_IS_A_NON_DEBUG_TEST_AS_WELL(X) \
@@ -680,6 +676,20 @@ getpwnam_r_test (void)
 #endif
 
   return result;
+}
+
+static int
+compiler_test (void)
+{
+  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Testing compiler methods\n")));
+
+  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("Using compiler %s with major version %d minor version %d beta version %d\n"),
+    ACE::compiler_name(),
+    ACE::compiler_major_version(),
+    ACE::compiler_minor_version (),
+    ACE::compiler_beta_version ()));
+
+  return 0;
 }
 
 static int
@@ -1360,6 +1370,29 @@ log2_test (void)
 }
 
 int
+swab_test (void)
+{
+  ACE_DEBUG ((LM_DEBUG,
+              ACE_TEXT ("Testing swab method\n")));
+
+  int error_count = 0;
+  char from[] =   "BADCFEHGJILKNMPORQTSVUXWZY";
+  char to[] =     "..........................";
+  char expect[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  ACE_OS::swab (from, to, sizeof (from));
+  if (ACE_OS::strcmp (to, expect) != 0)
+    {
+      ACE_ERROR ((LM_ERROR,
+                  ACE_TEXT ("swab error: %C, expected %C\n"),
+                  to, expect));
+      ++error_count;
+    }
+
+  return error_count;
+}
+
+int
 run_main (int, ACE_TCHAR *[])
 {
   ACE_START_TEST (ACE_TEXT ("OS_Test"));
@@ -1424,6 +1457,12 @@ run_main (int, ACE_TCHAR *[])
       status = result;
 
   if ((result = ace_ctype_test ()) != 0)
+      status = result;
+
+  if ((result = swab_test ()) != 0)
+      status = result;
+
+  if ((result = compiler_test ()) != 0)
       status = result;
 
   ACE_END_TEST;

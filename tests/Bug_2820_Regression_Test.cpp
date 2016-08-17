@@ -1,8 +1,6 @@
 /**
  * @file Bug_2820_Regression_Test.cpp
  *
- * $Id: Bug_2820_Regression_Test.cpp 91673 2010-09-08 18:49:47Z johnnyw $
- *
  * Verify that the event handler reference counting works correctly
  * when the reactor is destroyed.
  *
@@ -13,7 +11,6 @@
  * This test reproduces the problem and serves as a regression for it.
  *
  * @author Carlos O'Ryan <coryan@atdesk.com>
- *
  */
 
 #include "test_config.h"
@@ -25,7 +22,6 @@
  * @class Simple_Handler
  *
  * @brief A simple event handler for the test
- *
  */
 class Simple_Handler : public ACE_Event_Handler
 {
@@ -50,8 +46,13 @@ run_main (int, ACE_TCHAR *[])
   auto_ptr<ACE_Reactor> reactor(
       new ACE_Reactor(new ACE_Select_Reactor, 1));
 
+#if defined ACE_HAS_CPP11
+  ACE_Event_Handler_var v =
+    ACE::make_event_handler<Simple_Handler> (reactor.get());
+#else
   ACE_Event_Handler_var v(
       new Simple_Handler(reactor.get()));
+#endif
 
   ACE_Event_Handler::Reference_Count pre_notify_count =
     v->add_reference();

@@ -50,7 +50,7 @@ sub pre_workspace {
   my($self, $fh) = @_;
   $self->workspace_preamble($fh, $self->crlf(),
                             'Borland Workspace Makefile',
-                            '$Id: BMakeWorkspaceCreator.pm 1934 2010-11-12 12:40:22Z elliott_c $');
+                            '');
 }
 
 

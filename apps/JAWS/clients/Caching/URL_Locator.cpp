@@ -1,5 +1,3 @@
-// $Id: URL_Locator.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #if !defined (ACE_URL_LOCATOR_C)
 #define ACE_URL_LOCATOR_C
 

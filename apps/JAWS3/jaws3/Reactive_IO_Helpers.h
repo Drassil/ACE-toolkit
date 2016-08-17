@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Reactive_IO_Helpers.h 85419 2009-05-22 10:52:11Z johnnyw $
-
 #ifndef JAWS_REACTIVE_IO_HELPERS_H
 #define JAWS_REACTIVE_IO_HELPERS_H
 

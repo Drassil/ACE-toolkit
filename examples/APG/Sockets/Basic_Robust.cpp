@@ -1,5 +1,3 @@
-// $Id: Basic_Robust.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_errno.h"
 #include "ace/INET_Addr.h"
 #include "ace/SOCK_Stream.h"

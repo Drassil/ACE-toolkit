@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: config-win32-mingw.h 94251 2011-06-22 18:03:25Z parsons $
-
 //
 // The following configuration file is designed to work for win32
 // platforms using gcc/g++ with mingw32 (http://www.mingw.org).
@@ -32,6 +30,12 @@
 #  error You need a newer version (>= 2.0) of mingw32/w32api
 #endif
 
+// In strict ANSI mode (default when using --std=c++0x) the fileno()
+// macro is not defined so use the following work around.
+#if defined(__STRICT_ANSI__)
+# define ACE_FILENO_EQUIVALENT ::_fileno
+#endif
+
 #if (__MINGW32_MAJOR_VERSION >= 3)
 #  define ACE_HAS_SSIZE_T
 #  undef ACE_LACKS_STRUCT_DIR
@@ -45,8 +49,11 @@
 #  define ACE_LACKS_DIRENT_H
 #endif
 
-#if (__MINGW32_MAJOR_VERSION > 3)  || ((__MINGW32_MAJOR_VERSION == 3) && (__MINGW32_MINOR_VERSION >= 15))
+#if (__MINGW32_MAJOR_VERSION > 3) || ((__MINGW32_MAJOR_VERSION == 3) && (__MINGW32_MINOR_VERSION >= 15))
 # undef ACE_LACKS_USECONDS_T
+# if defined (ACE_LACKS_SIGSET_T)
+#   undef ACE_LACKS_SIGSET_T
+# endif
 #endif
 
 #undef ACE_HAS_WTOF

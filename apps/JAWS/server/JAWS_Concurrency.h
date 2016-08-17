@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: JAWS_Concurrency.h 85430 2009-05-25 11:26:46Z johnnyw $
-
 #ifndef JAWS_CONCURRENCY_H
 #define JAWS_CONCURRENCY_H
 

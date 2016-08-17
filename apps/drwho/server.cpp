@@ -3,13 +3,10 @@
 /**
  *  @file    server.cpp
  *
- *  $Id: server.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  * Driver program for the server.  Note that it is easy to reuse the
  * server for other distributed programs.  Pretty much all that must
  * change are the functions registered with the communciations
  * manager.
- *
  *
  *  @author Douglas C. Schmidt
  */

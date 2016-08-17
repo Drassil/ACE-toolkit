@@ -1,5 +1,3 @@
-// $Id: parse_http_response.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef HTTPU_PARSE_HTTP_RESPONSE_H
 #define HTTPU_PARSE_HTTP_RESPONSE_H
 

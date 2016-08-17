@@ -1,5 +1,3 @@
-// $Id: Web_Crawler.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "Options.h"
 #include "URL_Visitor_Factory.h"
 #include "Web_Crawler.h"

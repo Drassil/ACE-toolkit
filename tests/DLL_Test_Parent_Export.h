@@ -1,6 +1,5 @@
 
 // -*- C++ -*-
-// $Id: DLL_Test_Parent_Export.h 80826 2008-03-04 14:51:23Z wotte $
 // Definition for Win32 Export directives.
 // This file is generated automatically by generate_export_file.pl -s DLL_Test_Parent
 // ------------------------------

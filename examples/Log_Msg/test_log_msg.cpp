@@ -3,11 +3,8 @@
 /**
  *  @file    test_log_msg.cpp
  *
- *  $Id: test_log_msg.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *   This program tests the ACE_Log_Msg abstraction and demontrates
  *   several common use cases.
- *
  *
  *  @author Douglas Schmidt <schmidt@cs.wustl.edu>
  */

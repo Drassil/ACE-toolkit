@@ -1,5 +1,3 @@
-// $Id: CPP-inclient.h 80826 2008-03-04 14:51:23Z wotte $
-
 // This file defines the Options class for CPP-inclient. IBM C++ compiler'd
 // template auto-instantiator needs this in a separate file.
 

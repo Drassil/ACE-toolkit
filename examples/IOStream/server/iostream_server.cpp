@@ -1,5 +1,3 @@
-// $Id: iostream_server.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // This is a simple example of using the ACE_IOStream and
 // ACE_Streambuf_T templates to create an object based on ACE_*_Stream
 // classes, which mimic a C++ iostream.

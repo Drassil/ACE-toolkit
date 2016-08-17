@@ -1,5 +1,3 @@
-// $Id: PMS_Usr.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "SL_Server.h"
 #include "PMS_Usr.h"

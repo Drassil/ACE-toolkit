@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: misc_ipc.mpc 85212 2009-04-29 13:53:34Z johnnyw $
-
 project(UDP Broadcast) : aceexe, avoids_ace_for_tao {
   exename = UDP_Broadcast
   Source_Files {

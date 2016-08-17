@@ -1,5 +1,3 @@
-// $Id: Pool_Growth.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/Malloc_T.h"

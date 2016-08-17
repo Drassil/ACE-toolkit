@@ -1,5 +1,3 @@
-// $Id: Process_Mutex.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_NS_unistd.h"
 #include "ace/Log_Msg.h"
 #include "ace/Process.h"
@@ -11,18 +9,18 @@ class GResourceUser
 public:
   GResourceUser (ACE_Process_Mutex &mutex) : gmutex_(mutex)
   {
-    ACE_TRACE (ACE_TEXT ("GResourceUser::GResourceUser"));
+    ACE_TRACE ("GResourceUser::GResourceUser");
   }
 
   void run (void)
   {
-    ACE_TRACE (ACE_TEXT ("GResourceUser::run"));
+    ACE_TRACE ("GResourceUser::run");
 
     int count = 0;
     while (count++ < 10)
       {
         int result = this->gmutex_.acquire ();
-        ACE_ASSERT (result == 0);
+        ACE_TEST_ASSERT (result == 0);
 
         ACE_DEBUG ((LM_DEBUG,
                     ACE_TEXT ("(%P| %t) has the mutex\n")));
@@ -31,7 +29,7 @@ public:
         ACE_OS::sleep (1);
 
         result = this->gmutex_.release ();
-        ACE_ASSERT (result == 0);
+        ACE_TEST_ASSERT (result == 0);
         ACE_OS::sleep (1);     // Give other process a chance.
       }
   }

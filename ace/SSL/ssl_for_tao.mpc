@@ -1,7 +1,4 @@
 //  -*- MPC -*-
-//
-// $Id: ssl_for_tao.mpc 90826 2010-06-24 09:07:33Z johnnyw $
-
 project(SSL_FOR_TAO) : acelib, ace_output, install, ace_openssl {
   requires    += ssl ace_for_tao
   sharedname   = ACE_SSL_FOR_TAO

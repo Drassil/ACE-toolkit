@@ -1,5 +1,3 @@
-// $Id: HTBP_Addr.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "HTBP_Addr.h"
 #include "ace/OS_NS_string.h"
 

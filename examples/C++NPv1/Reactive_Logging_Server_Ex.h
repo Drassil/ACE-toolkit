@@ -1,6 +1,4 @@
 /*
-** $Id: Reactive_Logging_Server_Ex.h 80826 2008-03-04 14:51:23Z wotte $
-**
 ** Copyright 2001 Addison Wesley. All Rights Reserved.
 */
 
@@ -18,6 +16,7 @@
 #include "Logging_Server.h"
 #include "Logging_Handler.h"
 #include "ace/Null_Mutex.h"
+#include "ace/Truncate.h"
 #include "ace/os_include/os_fcntl.h"
 
 typedef ACE_Hash_Map_Manager<ACE_HANDLE,
@@ -46,7 +45,7 @@ protected:
 
   virtual int wait_for_multiple_events () {
     active_read_handles_ = master_handle_set_;
-    int width = (int) active_read_handles_.max_set () + 1;
+    int width = ACE_Utils::truncate_cast<int> ((intptr_t)active_read_handles_.max_set ()) + 1;
 
     return ACE::select (width, active_read_handles_);
   }

@@ -1,5 +1,3 @@
-// $Id: logging_app.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // This program sends logging records directly to the server, rather
 // than going through the client logging daemon.
 

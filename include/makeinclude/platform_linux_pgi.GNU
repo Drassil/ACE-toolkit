@@ -1,4 +1,3 @@
-# $Id: platform_linux_pgi.GNU 93359 2011-02-11 11:33:12Z mcorino $
 
 # This file should allow ACE to be built on Linux, using the
 # Portland Group PGI compilers

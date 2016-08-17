@@ -3,11 +3,8 @@
 /**
  *  @file    SOCK_Netlink_Test.cpp
  *
- *  $Id: SOCK_Netlink_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Tests adding of a secondary IP-address, using linux netlink
  *   sockets.
- *
  *
  *  @author Robert Iakobashvili
  *  @author coroberti@gmail.com

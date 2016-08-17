@@ -7,7 +7,7 @@
    Copyright (C) 1998-2005 Gilles Vollant
 
    Read zip.h for more info
-   $Id: zip.c 91813 2010-09-17 07:52:52Z johnnyw $
+
 */
 
 
@@ -724,9 +724,9 @@ extern MINIZIP_EXPORT int zipOpenNewFileInZip3 (zipFile file,const char* filenam
   zi->ci.flag = 0;
   if ((level==8) || (level==9))
     zi->ci.flag |= 2;
-  if ((level==2))
+  if (level==2)
     zi->ci.flag |= 4;
-  if ((level==1))
+  if (level==1)
     zi->ci.flag |= 6;
   if (password != 0)
     zi->ci.flag |= 1;
@@ -846,7 +846,7 @@ extern MINIZIP_EXPORT int zipOpenNewFileInZip3 (zipFile file,const char* filenam
       unsigned char bufHead[RAND_HEAD_LEN];
       unsigned int sizeHead;
       zi->ci.encrypt = 1;
-      zi->ci.pcrc_32_tab = get_crc_table();
+      zi->ci.pcrc_32_tab = (unsigned long*)get_crc_table();
       /*init_keys(password,zi->ci.keys,zi->ci.pcrc_32_tab);*/
 
       sizeHead=crypthead(password,bufHead,RAND_HEAD_LEN,zi->ci.keys,zi->ci.pcrc_32_tab,crcForCrypting);
@@ -932,8 +932,8 @@ extern MINIZIP_EXPORT int zipWriteInFileInZip (zipFile file,const void* buf,unsi
         {
           if (zipFlushWriteBuffer(zi) == ZIP_ERRNO)
             err = ZIP_ERRNO;
-            zi->ci.stream.avail_out = (uInt)Z_BUFSIZE;
-            zi->ci.stream.next_out = zi->ci.buffered_data;
+          zi->ci.stream.avail_out = (uInt)Z_BUFSIZE;
+          zi->ci.stream.next_out = zi->ci.buffered_data;
         }
 
 

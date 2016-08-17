@@ -3,8 +3,6 @@
 /**
  *  @file    Process_Strategy_Test.cpp
  *
- *  $Id: Process_Strategy_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a test of the <ACE_Strategy_Acceptor> and
  *   <ACE_File_Lock> classes.  The <ACE_Strategy_Acceptor> uses
  *   either the <ACE_Process_Strategy> (which forks a
@@ -27,7 +25,6 @@
  *   # Run the server in multi-processes
  *   % Process_Strategy_Test -c PROCESS
  *
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu> and Kevin Boyle <kboyle@sanwafp.com>
  */
 //=============================================================================
@@ -47,6 +44,7 @@
 #include "ace/Singleton.h"
 #include "ace/Synch_Traits.h"
 #include "ace/File_Lock.h"
+#include "ace/Lib_Find.h"
 
 // Counting_Service and Options in here
 #include "Process_Strategy_Test.h"
@@ -58,12 +56,7 @@
 #define ACE_LACKS_FORK
 #endif /* __hpux */
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-
-template ACE_Singleton<Options, ACE_Null_Mutex> *
-  ACE_Singleton<Options, ACE_Null_Mutex>::singleton_;
-
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, Options, ACE_Null_Mutex);
 
 // Define a <Strategy_Acceptor> that's parameterized by the
 // <Counting_Service>.
@@ -74,7 +67,7 @@ typedef ACE_Strategy_Acceptor <Counting_Service, ACE_SOCK_ACCEPTOR> ACCEPTOR;
 typedef ACE_Singleton<Options, ACE_Null_Mutex> OPTIONS;
 
 // counter for connections
-static int connections = 0;
+static size_t connections = 0;
 
 // Use this to show down the process gracefully.
 static void
@@ -103,7 +96,6 @@ Process_Strategy::Process_Strategy (size_t n_processes,
 
 // Destructor.  g++ 2.7.2.3 gets very confused ("Internal compiler
 // error") without it.
-
 Process_Strategy::~Process_Strategy (void)
 {
 }
@@ -227,7 +219,7 @@ Options::parse_args (int argc, ACE_TCHAR *argv[])
   // Store the initial value of the count in the file.
   if (ACE_OS::write (this->file_lock_.get_handle (),
                      (const void *) &count,
-                     sizeof count) != sizeof count)
+                     sizeof count) != (ssize_t) sizeof count)
     ACE_ERROR ((LM_ERROR,
                 ACE_TEXT ("(%P|%t) %p\n"),
                 ACE_TEXT ("write")));
@@ -305,7 +297,7 @@ Counting_Service::read (void)
   if (ACE_OS::pread (OPTIONS::instance ()->file_lock ().get_handle (),
                      (void *) &count,
                      sizeof count,
-                     0) != sizeof count)
+                     0) != (ssize_t) sizeof count)
     ACE_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("(%P|%t) %p\n"),
                        ACE_TEXT ("read")),
@@ -343,7 +335,7 @@ Counting_Service::inc (void)
   if (ACE_OS::pread (OPTIONS::instance ()->file_lock ().get_handle (),
                      (void *) &count,
                      sizeof count,
-                     0) != sizeof count)
+                     0) != (ssize_t) sizeof count)
     ACE_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("(%P|%t) %p\n"),
                        ACE_TEXT ("read")),
@@ -358,7 +350,7 @@ Counting_Service::inc (void)
   if (ACE_OS::pwrite (OPTIONS::instance ()->file_lock ().get_handle (),
                       (const void *) &count,
                       sizeof count,
-                      0) != sizeof count)
+                      0) != (ssize_t) sizeof count)
     ACE_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("(%P|%t) %p\n"),
                        ACE_TEXT ("write")),

@@ -1,5 +1,3 @@
-// $Id: MC_Test_Utilities.cpp 90163 2010-05-18 21:42:20Z mitza $
-
 #include "ace/Date_Time.h"
 #include "ace/streams.h"
 

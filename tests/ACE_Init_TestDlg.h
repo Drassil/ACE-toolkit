@@ -1,4 +1,3 @@
-// $Id: ACE_Init_TestDlg.h 80826 2008-03-04 14:51:23Z wotte $
 // ACE_Init_TestDlg.h : header file
 
 #if !defined(AFX_ACE_INIT_TESTDLG_H__64FDCA00_F7F9_11D2_89B6_00A024CC68DB__INCLUDED_)

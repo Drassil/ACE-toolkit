@@ -1,5 +1,3 @@
-// $Id: Hash_Table.cpp 81994 2008-06-16 21:23:17Z sowayaa $
-
 #include "Options.h"
 #include "Hash_Table.h"
 #include "ace/Log_Msg.h"

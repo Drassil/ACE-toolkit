@@ -3,13 +3,10 @@
 /**
  *  @file    basic_perf.cpp
  *
- *  $Id: basic_perf.cpp 93640 2011-03-24 18:36:12Z johnnyw $
- *
  *  Times various simple operations.
  *
  *  With Sun C++, use -O2: make CFLAGS="-mt -O2" BIN=basic_perf
  *  -fast seems to produce slower times.
- *
  *
  *  @author David Levine
  */

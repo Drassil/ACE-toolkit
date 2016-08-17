@@ -3,11 +3,8 @@
 /**
  *  @file    Thread_Attrs_Test.cpp
  *
- *  $Id: Thread_Attrs_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This test program ensures that attributes set on a thread via the
  *   ACE_Task/ACE_Thread_Manager are honored.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */
@@ -64,7 +61,7 @@ Cancel_Check::Cancel_Check (bool enable, bool async)
 int
 Cancel_Check::svc (void)
 {
-#if defined (ACE_HAS_PTHREADS)
+#if defined (ACE_HAS_PTHREADS) && !defined (ACE_LACKS_PTHREAD_CANCEL)
   int state;
   pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, &state);
   if (state == PTHREAD_CANCEL_ENABLE && !this->enable_req_)

@@ -1,5 +1,3 @@
-// $Id: Symbol_Table.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_BUILD_DLL
 #define JAWS_BUILD_DLL
 #endif

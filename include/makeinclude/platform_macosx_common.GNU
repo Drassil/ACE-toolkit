@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_macosx_common.GNU 93965 2011-04-21 08:16:30Z johnnyw $
 
 # support for Mac OS X 10.4 (Tiger)
 # By default, this uses the default compiler selected using gcc_select.
@@ -26,10 +25,10 @@ with_ld = macosx
 
 CC              ?= gcc
 CXX             ?= g++
-
+DCCFLAGS        += -g
 DCFLAGS         += -g
-DLD				= $(CXX)
-LD				= $(CXX)
+DLD		= $(CXX)
+LD		= $(CXX)
 #LIBS += -lstdc++.6 -lSystem -lSystemStubs
 
 OCFLAGS		   += -O2

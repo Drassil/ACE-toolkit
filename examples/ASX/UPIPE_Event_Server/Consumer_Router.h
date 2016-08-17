@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Consumer_Router.h 80826 2008-03-04 14:51:23Z wotte $
-
 // The interface between one or more consumers and an Event Server
 // ACE_Stream.
 

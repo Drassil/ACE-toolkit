@@ -4,15 +4,12 @@
 /**
  *  @file   FlReactor_Test.cpp
  *
- *  $Id: FlReactor_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  * A simple test that ilustrates the integration of the fast-light
  * toolkit (http://fltk.easysw.org/) with ACE, it uses FL to create
  * an OpenGL window and display a polygon, it uses ACE to open an
  * acceptor. Every time there is a connection the number of polygons
  * is increased, a little widget can be used to change the number of
  * polygons too.
- *
  *
  *  @author Carlos O'Ryan <coryan@cs.wustl.edu>
  */
@@ -27,6 +24,7 @@
 #include "ace/FlReactor/FlReactor.h"
 #include "ace/Event_Handler.h"
 #include "ace/Acceptor.h"
+#include "ace/Argv_Type_Converter.h"
 #include "ace/SOCK_Acceptor.h"
 #include "ace/SOCK_Connector.h"
 #include "ace/Service_Config.h"
@@ -172,12 +170,13 @@ Connection_Handler::open (void*)
 
       this->peer ().get_remote_addr (from);
       const int bufsiz = 128;
-      char buf[bufsiz];
+      ACE_TCHAR buf[bufsiz];
 
       from.addr_to_string (buf, bufsiz, 0);
 
       static char msg[256];
-      ACE_OS::sprintf (msg, "connection from <%s>\n", buf);
+      ACE_OS::sprintf (msg, "connection from <%s>\n",
+                       ACE_TEXT_ALWAYS_CHAR (buf));
 
       this->box_->label (msg);
       this->box_->redraw ();
@@ -254,18 +253,22 @@ int run_main (int argc, ACE_TCHAR *argv[])
   acceptor.acceptor ().get_local_addr (address);
 
   const int bufsiz = 128;
-  char buf[bufsiz];
+  ACE_TCHAR buf[bufsiz];
 
   address.addr_to_string (buf, bufsiz, 0);
 
   char msg[2 * bufsiz];
-  ACE_OS::sprintf (msg, "Listening on <%s>\n", buf);
+  ACE_OS::sprintf (msg, "Listening on <%s>\n",
+                   ACE_TEXT_ALWAYS_CHAR (buf));
 
   box->label (msg);
   box->redraw ();
 
   window.end ();
-  window.show (argc, argv);
+
+  ACE_Argv_Type_Converter ct (argc, argv);
+
+  window.show (argc, ct.get_ASCII_argv ());
   tw.show ();
 
   int const retval = Fl::run ();

@@ -1,5 +1,3 @@
-// $Id: test.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include <stdio.h>
 __declspec(dllimport) int test_entry(void);
 

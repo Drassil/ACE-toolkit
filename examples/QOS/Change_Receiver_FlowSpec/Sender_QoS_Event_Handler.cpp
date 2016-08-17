@@ -4,8 +4,6 @@
 /**
  *  @file    Sender_QoS_Event_Handler.cpp
  *
- *  $Id: Sender_QoS_Event_Handler.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Vishal Kachroo <vishal@cs.wustl.edu>
  */
 //=============================================================================

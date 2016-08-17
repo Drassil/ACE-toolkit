@@ -1,8 +1,6 @@
 // -*- C++ -*-
 
 /**
- * $Id: Gen_Perf.cpp 93954 2011-04-20 08:55:09Z johnnyw $
- *
  * Copyright (C) 1989 Free Software Foundation, Inc.
  * written by Douglas C. Schmidt (schmidt@cs.wustl.edu)
  *

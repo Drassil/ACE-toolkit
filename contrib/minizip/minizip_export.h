@@ -1,6 +1,5 @@
 
 // -*- C++ -*-
-// $Id: minizip_export.h 86019 2009-07-14 12:13:09Z wotte $
 // Definition for Win32 Export directives.
 
 #ifndef MINIZIP_EXPORT_H

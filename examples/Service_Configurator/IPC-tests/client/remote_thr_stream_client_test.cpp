@@ -1,5 +1,3 @@
-// $Id: remote_thr_stream_client_test.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // Test program for the INET ACE_TLI-SAPs...
 
 #include "ace/OS_main.h"

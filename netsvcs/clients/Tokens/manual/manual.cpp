@@ -3,10 +3,7 @@
 /**
  *  @file    manual.cpp
  *
- *  $Id: manual.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Allows manual operations on local and remote tokens.
- *
  *
  *  @author Tim Harrison
  */

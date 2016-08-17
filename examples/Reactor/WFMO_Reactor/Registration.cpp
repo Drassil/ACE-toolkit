@@ -2,9 +2,6 @@
 /**
  *  @file    Registration.cpp
  *
- *  $Id: Registration.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This test application tests a wide range of registration,
  *  suspension, resumption, and removal of events from Reactor.
  *
@@ -22,7 +19,6 @@
  *  - Suspension
  *  - Resumption
  *  - Removal (while active and while suspended)
- *
  *
  *  @author Irfan Pyarali
  */
@@ -141,14 +137,14 @@ ACE_TMAIN (int, ACE_TCHAR *[])
 {
   int result = reactor.register_handler (&simple_handler,
                                        simple_handler.event1_.handle ());
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = reactor.register_handler (&simple_handler,
                                      simple_handler.event2_.handle ());
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = ACE_OS::thr_create ((ACE_THR_FUNC) worker, 0, 0, 0);
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   result = 0;
   while (!stop_test && result != -1)

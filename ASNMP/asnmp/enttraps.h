@@ -5,10 +5,7 @@
 /**
  *  @file     enttraps.h
  *
- *  $Id: enttraps.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * constants for Enterprise Traps
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

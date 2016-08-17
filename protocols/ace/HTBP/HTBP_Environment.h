@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: HTBP_Environment.h 87228 2009-10-26 10:45:28Z vzykov $
-
 #ifndef ACE_HTBP_ENVIRONMENT_H
 #define ACE_HTBP_ENVIRONMENT_H
 #include /**/ "ace/pre.h"

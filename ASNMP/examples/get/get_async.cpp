@@ -2,12 +2,8 @@
 /**
  *  @file    get_async.cpp
  *
- *  $Id: get_async.cpp 93652 2011-03-28 08:55:39Z johnnyw $
- *
  *  Sample application demonstrating synchronous Snmp::get API
  *  to access an SNMP Version 1 agent.
- *
- *
  */
 //=============================================================================
 

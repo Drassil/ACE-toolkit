@@ -1,7 +1,5 @@
 // -*- MPC -*-
-// $Id: acedefaults.mpb 93792 2011-04-07 11:48:50Z mcorino $
-
-project: ipv6, vc_warnings, build_files, test_files, svc_conf_files, ace_unicode {
+project: ipv6, vc_warnings, build_files, test_files, svc_conf_files, ace_unicode, ace_idl_dependencies {
   staticflags += ACE_AS_STATIC_LIBS
   includes    += $(ACE_ROOT)
   libpaths    += $(ACE_ROOT)/lib
@@ -13,14 +11,12 @@ project: ipv6, vc_warnings, build_files, test_files, svc_conf_files, ace_unicode
     debug_macros += ACE_NO_INLINE=1
   }
 
-  specific(automake) {
-    am_release = @ACE_VERSION_NAME@
-    includes += $(ACE_BUILDDIR)
-    libpaths -= $(ACE_ROOT)/lib
-  }
-
   specific(prop:microsoft) {
     macro_for_lib_modifier=1
+  }
+
+  specific(prop:windows) {
+    lit_libs += iphlpapi
   }
 
   specific(cdt6) {

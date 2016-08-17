@@ -3,11 +3,8 @@
 /**
  *  @file    tss2.cpp
  *
- *  $Id: tss2.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *   This program tests various features of ACE_Thread and the
  *   thread-specific storage variant of <ACE_Singleton>.
- *
  *
  *  @author Prashant Jain and Doug Schmidt
  */
@@ -171,10 +168,8 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   return 0;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_TSS_Singleton<TSS_Data, ACE_SYNCH_MUTEX> *
-  ACE_TSS_Singleton<TSS_Data, ACE_SYNCH_MUTEX>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_TSS_Singleton, TSS_Data, ACE_SYNCH_MUTEX);
+
 
 #else
 

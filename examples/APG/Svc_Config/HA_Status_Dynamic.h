@@ -1,6 +1,4 @@
 /**
- * $Id: HA_Status_Dynamic.h 91730 2010-09-13 09:31:11Z johnnyw $
- *
  * Home Automation Status server. Sample code from The ACE Programmer's Guide,
  * copyright 2003 Addison-Wesley. All Rights Reserved.
  */

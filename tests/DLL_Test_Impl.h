@@ -3,8 +3,6 @@
 /**
  *  @file    DLL_Test_Impl.h
  *
- *  $Id: DLL_Test_Impl.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  @author  Kirthika Parameswaran  <kirthika@cs.wustl.edu>
  */
 //=============================================================================

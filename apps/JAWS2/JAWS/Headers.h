@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Headers.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_HEADERS_H
 #define JAWS_HEADERS_H
 

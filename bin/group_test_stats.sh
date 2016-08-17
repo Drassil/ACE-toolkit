@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if test -e tmp; then unlink tmp; fi
 if test -e tmp2; then unlink tmp2; fi
 cat t.txt | grep '+[a-z|A-Z]' > tmp

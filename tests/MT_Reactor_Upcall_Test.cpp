@@ -3,12 +3,9 @@
 /**
  *  @file    MT_Reactor_Upcall_Test.cpp
  *
- *  $Id: MT_Reactor_Upcall_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This is a test that shows how to handle upcalls from the
  *  TP_Reactor and the WFMO_Reactor when the event loop is being run
  *  by multiple threads.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */

@@ -3,13 +3,9 @@
 /**
  *  @file    test_multiple_loops.cpp
  *
- *  $Id: test_multiple_loops.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This example application shows how to write programs that
  *  combine the Proactor and Reactor event loops. This is possible
  *  only on WIN32 platform.
- *
  *
  *  @author Irfan Pyarali
  */

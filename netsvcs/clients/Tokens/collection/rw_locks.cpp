@@ -1,5 +1,3 @@
-// $Id: rw_locks.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "ace/Local_Tokens.h"
 #include "ace/Remote_Tokens.h"

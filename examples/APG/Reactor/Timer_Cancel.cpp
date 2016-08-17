@@ -1,6 +1,4 @@
 /**
- * $Id: Timer_Cancel.cpp 80826 2008-03-04 14:51:23Z wotte $
- *
  * Changing the interval and canceling
  */
 

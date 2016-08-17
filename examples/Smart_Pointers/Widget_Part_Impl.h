@@ -3,8 +3,6 @@
 /**
  *  @file    Widget_Part_Impl.h
  *
- *  $Id: Widget_Part_Impl.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  *  @author Christopher Kohlhoff <chris@kohlhoff.com>
  */
 //=============================================================================

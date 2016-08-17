@@ -1,5 +1,4 @@
 // -*- C++ -*-
-// $Id: config-qnx.h 93864 2011-04-11 17:22:04Z johnnyw $
 // The following configuration file is designed to work for QNX RTP
 // GNU C++ and the POSIX (pthread) threads package. You can get QNX
 // RTP at http://get.qnx.com.
@@ -139,6 +138,7 @@
 #define ACE_HAS_SYS_SOCKIO_H 1
 #define ACE_HAS_SYSCTL
 #define ACE_HAS_SIGACTION_CONSTP2 1
+#define ACE_LACKS_PTHREAD_SCOPE_PROCESS
 
 #if _NTO_VERSION < 650
 # define ACE_LACKS_NFDBITS
@@ -174,6 +174,7 @@
 #define ACE_LACKS_WCSICMP
 #define ACE_LACKS_WCSNICMP
 #define ACE_LACKS_WCSDUP
+#define ACE_LACKS_STD_WSTRING
 
 #if defined(ACE_MT_SAFE) && (ACE_MT_SAFE != 0)
 # define ACE_HAS_THREADS

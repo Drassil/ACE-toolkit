@@ -3,12 +3,9 @@
 /**
  *  @file    main_reactor.cpp
  *
- *  $Id: main_reactor.cpp 91673 2010-09-08 18:49:47Z johnnyw $
- *
  *    Implements an reactive timer queue.
  *    This code exercises the Timer_Queue_Test_Driver class using
  *    a reactor.
- *
  *
  *  @author Douglas Schmidt      <schmidt@cs.wustl.edu> && Sergio Flores-Gaitan <sergio@cs.wustl.edu>
  */

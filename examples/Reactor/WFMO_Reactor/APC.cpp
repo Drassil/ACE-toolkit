@@ -3,12 +3,8 @@
 /**
  *  @file    APC.cpp
  *
- *  $Id: APC.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  Tests the WFMO_Reactor's ability to handle regular APC
  *  notifications.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */
@@ -97,14 +93,14 @@ ACE_TMAIN (int, ACE_TCHAR *[])
 
   int result = ACE_Reactor::instance ()->register_handler (&event_handler,
                                                            event_handler.handle_.handle ());
-  ACE_ASSERT (result == 0);
+  ACE_TEST_ASSERT (result == 0);
 
   ACE_Time_Value timeout (2);
   result = ACE_Reactor::instance ()->schedule_timer (&event_handler,
                                                      0,
                                                      timeout,
                                                      timeout);
-  ACE_ASSERT (result != -1);
+  ACE_TEST_ASSERT (result != -1);
 
   ACE_Reactor::run_alertable_event_loop ();
 

@@ -1,5 +1,3 @@
-// $Id: test_reactors.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Perform a torture test of multiple ACE_Reactors and ACE_Tasks in
 // the same process...  Thanks to Detlef Becker for contributing this.
 

@@ -6,7 +6,6 @@ eval '(exit $?0)' && eval 'exec perl -w -S $0 ${1+"$@"}'
 # ******************************************************************
 #      Author: Chad Elliott
 # Create Date: 3/09/2004
-#         $Id: prj_install.pl 2012 2011-04-27 13:26:27Z johnnyw $
 # ******************************************************************
 
 # ******************************************************************
@@ -186,7 +185,7 @@ sub determineSpecialName {
     my $fh   = new FileHandle();
     if (opendir($fh, $odir)) {
       foreach my $file (grep(!/^\.\.?$/, readdir($fh))) {
-        if ($file =~ /^lib$name\.(a|so|sl|dylib)/ ||
+        if ($file =~ /^lib$name(-[0-9]+(\.[0-9]+)*)?\.(a|so|sl|dylib)/ ||
             $file =~ /^(lib)?$name.*\.(dll|lib)$/i) {
           push(@libs, "$dir$insdir$binarydir$file");
         }

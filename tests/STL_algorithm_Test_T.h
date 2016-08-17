@@ -6,8 +6,6 @@
  *
  *  Test ACE containers compatibility with STL <algorithm> header.
  *
- *  $Id: STL_algorithm_Test_T.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author  James H. Hill <j.hill@vanderbilt.edu>
  */
 //=============================================================================

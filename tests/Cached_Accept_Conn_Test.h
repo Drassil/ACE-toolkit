@@ -3,11 +3,8 @@
 /**
  *  @file    Cached_Accept_Conn_Test.h
  *
- *  $Id: Cached_Accept_Conn_Test.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Define class needed for generating templates. IBM C++ requires this to
  *  be in its own file for auto template instantiation.
- *
  *
  *  @author Kirthika Parameswaran  <kirthika@cs.wustl.edu>
  */
@@ -99,7 +96,6 @@ typedef ACE_NOOP_Concurrency_Strategy<Client_Svc_Handler>
 
 typedef ACE_Cached_Connect_Strategy_Ex<Client_Svc_Handler, ACE_SOCK_CONNECTOR, CACHING_STRATEGY, ATTRIBUTES, ACE_SYNCH_NULL_MUTEX>
         CACHED_CONNECT_STRATEGY;
-
 
 template <class SVC_HANDLER, ACE_PEER_ACCEPTOR_1>
 class Accept_Strategy : public ACE_Accept_Strategy<SVC_HANDLER, ACE_PEER_ACCEPTOR_2>

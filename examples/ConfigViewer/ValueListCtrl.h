@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: ValueListCtrl.h 91743 2010-09-13 18:24:51Z johnnyw $
-
 #ifndef _ConfigurationViewer_ValueListCtrl_H
 #define _ConfigurationViewer_ValueListCtrl_H
 

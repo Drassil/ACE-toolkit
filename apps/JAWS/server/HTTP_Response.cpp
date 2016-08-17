@@ -1,5 +1,3 @@
-// $Id: HTTP_Response.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_ctype.h"

@@ -1,5 +1,3 @@
-// $Id: http_response.h 80826 2008-03-04 14:51:23Z wotte $
-
 // There are two kinds of HTTP Responses in a proxy.
 // One is the kind you have to read in from the HTTP server.
 // The other is the kind you issue to the HTTP client.

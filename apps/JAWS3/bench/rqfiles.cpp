@@ -1,5 +1,3 @@
-// $Id: rqfiles.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "ace/Svc_Handler.h"
 #include "ace/Reactor.h"

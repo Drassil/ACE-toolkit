@@ -1,5 +1,3 @@
-// $Id: Log_Record.cpp 92791 2010-12-04 16:25:22Z shuston $
-
 #include "ace/Log_Record.h"
 
 #include "ace/Log_Msg.h"
@@ -8,6 +6,7 @@
 #include "ace/CDR_Stream.h"
 #include "ace/Auto_Ptr.h"
 #include "ace/Truncate.h"
+#include "ace/Log_Category.h"
 
 #if !defined (__ACE_INLINE__)
 # include "ace/Log_Record.inl"
@@ -105,17 +104,17 @@ ACE_Log_Record::dump (void) const
 #if defined (ACE_HAS_DUMP)
   // ACE_TRACE ("ACE_Log_Record::dump");
 
-  ACE_DEBUG ((LM_DEBUG, ACE_BEGIN_DUMP, this));
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("length_ = %d\n"), this->length_));
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\ntype_ = %u\n"), this->type_));
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\ntime_stamp_ = (%:, %d)\n"),
+  ACELIB_DEBUG ((LM_DEBUG, ACE_BEGIN_DUMP, this));
+  ACELIB_DEBUG ((LM_DEBUG, ACE_TEXT ("length_ = %d\n"), this->length_));
+  ACELIB_DEBUG ((LM_DEBUG, ACE_TEXT ("\ntype_ = %u\n"), this->type_));
+  ACELIB_DEBUG ((LM_DEBUG, ACE_TEXT ("\ntime_stamp_ = (%:, %d)\n"),
               this->secs_, this->usecs_));
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\npid_ = %u\n"), this->pid_));
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\nmsg_data_ (0x%@) = %s\n"),
+  ACELIB_DEBUG ((LM_DEBUG, ACE_TEXT ("\npid_ = %u\n"), this->pid_));
+  ACELIB_DEBUG ((LM_DEBUG, ACE_TEXT ("\nmsg_data_ (0x%@) = %s\n"),
               this->msg_data_, this->msg_data_));
-  ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("\nmsg_data_size_ = %B\n"),
+  ACELIB_DEBUG ((LM_DEBUG, ACE_TEXT ("\nmsg_data_size_ = %B\n"),
               this->msg_data_size_));
-  ACE_DEBUG ((LM_DEBUG, ACE_END_DUMP));
+  ACELIB_DEBUG ((LM_DEBUG, ACE_END_DUMP));
 #endif /* ACE_HAS_DUMP */
 }
 
@@ -146,7 +145,8 @@ ACE_Log_Record::ACE_Log_Record (ACE_Log_Priority lp,
     usecs_ (0),
     pid_ (ACE_UINT32 (p)),
     msg_data_ (0),
-    msg_data_size_ (0)
+    msg_data_size_ (0),
+    category_(0)
 {
   // ACE_TRACE ("ACE_Log_Record::ACE_Log_Record");
   ACE_NEW_NORETURN (this->msg_data_, ACE_TCHAR[MAXLOGMSGLEN]);
@@ -166,7 +166,8 @@ ACE_Log_Record::ACE_Log_Record (ACE_Log_Priority lp,
     usecs_ ((ACE_UINT32) ts.usec ()),
     pid_ (ACE_UINT32 (p)),
     msg_data_ (0),
-    msg_data_size_ (0)
+    msg_data_size_ (0),
+    category_(0)
 {
   // ACE_TRACE ("ACE_Log_Record::ACE_Log_Record");
   ACE_NEW_NORETURN (this->msg_data_, ACE_TCHAR[MAXLOGMSGLEN]);
@@ -197,7 +198,8 @@ ACE_Log_Record::ACE_Log_Record (void)
     usecs_ (0),
     pid_ (0),
     msg_data_ (0),
-    msg_data_size_ (0)
+    msg_data_size_ (0),
+    category_(0)
 {
   // ACE_TRACE ("ACE_Log_Record::ACE_Log_Record");
   ACE_NEW_NORETURN (this->msg_data_, ACE_TCHAR[MAXLOGMSGLEN]);
@@ -269,12 +271,20 @@ ACE_Log_Record::format_msg (const ACE_TCHAR host_name[],
   return 0;
 }
 
+inline bool
+log_priority_enabled(ACE_Log_Category_TSS* category, ACE_Log_Priority priority)
+{
+  if (category && !category->log_priority_enabled (priority))
+    return false;
+  return ACE_LOG_MSG->log_priority_enabled (priority);
+}
+
 int
 ACE_Log_Record::print (const ACE_TCHAR host_name[],
                        u_long verbose_flag,
                        FILE *fp)
 {
-  if (ACE_LOG_MSG->log_priority_enabled (ACE_Log_Priority (this->type_)))
+  if ( log_priority_enabled(this->category(), ACE_Log_Priority (this->type_)) )
     {
       ACE_TCHAR *verbose_msg = 0;
       ACE_NEW_RETURN (verbose_msg, ACE_TCHAR[MAXVERBOSELOGMSGLEN], -1);
@@ -350,7 +360,7 @@ operator>> (ACE_InputCDR &cdr,
       && (cdr >> buffer_len)) {
     ACE_TCHAR *log_msg;
     ACE_NEW_RETURN (log_msg, ACE_TCHAR[buffer_len + 1], -1);
-    auto_ptr<ACE_TCHAR> log_msg_p (log_msg);
+    ACE_Auto_Array_Ptr<ACE_TCHAR> log_msg_p (log_msg);
     log_record.type (type);
     log_record.pid (pid);
     log_record.time_stamp (ACE_Time_Value (ACE_Utils::truncate_cast<time_t> (sec),
@@ -374,7 +384,7 @@ ACE_Log_Record::print (const ACE_TCHAR host_name[],
                        u_long verbose_flag,
                        ACE_OSTREAM_TYPE &s)
 {
-  if (ACE_LOG_MSG->log_priority_enabled (ACE_Log_Priority (this->type_)))
+  if ( log_priority_enabled(this->category(), ACE_Log_Priority (this->type_)) )
     {
       ACE_TCHAR* verbose_msg = 0;
       ACE_NEW_RETURN (verbose_msg, ACE_TCHAR[MAXVERBOSELOGMSGLEN], -1);

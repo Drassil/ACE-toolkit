@@ -4,8 +4,6 @@
 /**
  *  @file    Name_Space.h
  *
- *  $Id: Name_Space.h 93359 2011-02-11 11:33:12Z mcorino $
- *
  *  @author Prashant Jain <pjain@cse.wustl.edu>
  */
 //==========================================================================

@@ -2,8 +2,6 @@
 /**
  *  @file     test_end_event_loop.cpp
  *
- *  $Id: test_end_event_loop.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This program tests the event loop mechanism of the
  *  Proactor. To end the event loop, threads that are blocked in
  *  waiting for completions are  woken up and the event loop comes

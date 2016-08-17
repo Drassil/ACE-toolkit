@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: bcb2007exe.mpt 1181 2007-06-27 06:30:40Z johnnyw $
-
 conditional_include "common"
 conditional_include "windowscommon"
 

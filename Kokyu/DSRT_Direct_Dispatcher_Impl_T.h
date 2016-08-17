@@ -2,10 +2,7 @@
 /**
  *  @file  DSRT_Direct_Dispatcher_Impl_T.h
  *
- *  $Id: DSRT_Direct_Dispatcher_Impl_T.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  *  @author Venkita Subramonian (venkita@cs.wustl.edu)
- *
  */
 
 #ifndef DSRT_DIRECT_DISPATCHER_IMPL_T_H

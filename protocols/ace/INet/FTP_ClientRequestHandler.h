@@ -1,5 +1,3 @@
-// $Id: FTP_ClientRequestHandler.h 90925 2010-06-29 10:50:40Z mcorino $
-
 /**
  * @file FTP_ClientRequestHandler.h
  *

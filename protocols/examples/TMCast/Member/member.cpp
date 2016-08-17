@@ -1,7 +1,5 @@
 // file      : TMCast/Member/member.cpp
 // author    : Boris Kolpackov <boris@dre.vanderbilt.edu>
-// cvs-id    : $Id: member.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/Log_Msg.h"
 #include "ace/Time_Value.h"
 #include "ace/OS_NS_stdlib.h"

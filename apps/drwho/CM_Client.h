@@ -4,11 +4,8 @@
 /**
  *  @file    CM_Client.h
  *
- *  $Id: CM_Client.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Provides a virtual communcations layer for the client in the
  *  drwho program.
- *
  *
  *  @author Douglas C. Schmidt
  */

@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: xscdefaults.mpb 1902 2010-09-10 15:06:42Z wotte $
-
 project {
         specific {
           xsc_bin = $(XSC_ROOT)/bin/xsc

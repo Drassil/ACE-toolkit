@@ -1,5 +1,3 @@
-// $Id: task_three.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Exercise more tests for the <ACE_Task>s.  This also shows off some
 // Interesting uses of the <ACE_Log_Msg>'s ability to print to
 // ostreams.  BTW, make sure that you set the out_stream in *every*

@@ -1,5 +1,3 @@
-// $Id: Signals2.cpp 84565 2009-02-23 08:20:39Z johnnyw $
-
 #include "ace/config-lite.h"
 #if defined (ACE_HAS_THREADS)
 

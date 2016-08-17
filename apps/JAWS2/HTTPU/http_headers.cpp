@@ -1,5 +1,3 @@
-// $Id: http_headers.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/RB_Tree.h"
 #include "HTTPU/http_headers.h"
 

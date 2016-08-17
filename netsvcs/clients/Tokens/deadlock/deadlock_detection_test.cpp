@@ -3,8 +3,6 @@
 /**
  *  @file    deadlock_detection_test.cpp
  *
- *  $Id: deadlock_detection_test.cpp 93654 2011-03-28 09:59:11Z johnnyw $
- *
  *  @author Tim Harrison
  */
 //=============================================================================

@@ -2,8 +2,6 @@
 /**
  *  @file    Parser.inl
  *
- *  $Id: Parser.inl 82513 2008-08-05 18:52:53Z parsons $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================

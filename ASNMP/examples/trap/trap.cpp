@@ -3,12 +3,8 @@
 /**
  *  @file    trap.cpp
  *
- *  $Id: trap.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Sample application demonstrating synchronous Snmp::trap API
  *  to send to an SNMP Version 1 trap listener app.
- *
- *
  */
 //=============================================================================
 

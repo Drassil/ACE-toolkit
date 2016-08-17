@@ -3,13 +3,10 @@
 /**
  *  @file    Task_Test.cpp
  *
- *  $Id: Task_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This test program illustrates how the ACE barrier
  *    synchronization mechanisms work in conjunction with the
  *    <ACE_Task> and the <ACE_Thread_Manager>.  This also illustrates
  *    how the <ACE_Thread_Hook> mechanism works.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu> and Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */

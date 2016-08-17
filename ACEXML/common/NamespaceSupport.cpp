@@ -1,4 +1,4 @@
-// -*- C++ -*-  $Id: NamespaceSupport.cpp 92916 2010-12-20 21:11:50Z olli $
+// -*- C++ -*-
 
 #include "ACEXML/common/NamespaceSupport.h"
 #include "ace/OS_NS_string.h"

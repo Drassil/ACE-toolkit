@@ -1,8 +1,6 @@
 /**
  * @file Reactor_Notification_Queue_Test.cpp
  *
- * $Id: Reactor_Notification_Queue_Test.cpp 91626 2010-09-07 10:59:20Z johnnyw $
- *
  * Verify that the notification queue can be used with large numbers
  * of events.
  *
@@ -14,7 +12,6 @@
  * empty."
  *
  * @author Carlos O'Ryan <coryan@atdesk.com>
- *
  */
 
 #include "test_config.h"

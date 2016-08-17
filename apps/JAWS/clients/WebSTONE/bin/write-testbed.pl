@@ -1,7 +1,5 @@
 #!/pkg/gnu/bin//perl5
 #
-#$Id: write-testbed.pl 91813 2010-09-17 07:52:52Z johnnyw $
-#
 # write new values from form to $wd/conf/testbed, and run WebStone
 #
 

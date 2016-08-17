@@ -4,8 +4,6 @@
 /**
  *  @file    Entity_Manager.h
  *
- *  $Id: Entity_Manager.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
  */
@@ -87,7 +85,7 @@ public:
 
 private:
   ACEXML_ENTITIES_MANAGER* entities_;
-  bool init_;
+  // bool init_;
 
 };
 

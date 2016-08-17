@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: config-win32-common.h 93571 2011-03-17 07:37:11Z olli $
-
 
 #ifndef ACE_CONFIG_WIN32_COMMON_H
 #define ACE_CONFIG_WIN32_COMMON_H
@@ -16,6 +14,21 @@
 #if defined (_WIN32_WCE)
 #  include "ace/config-WinCE.h"
 #endif /* _WIN32_WCE */
+
+#if defined(__MINGW32__)
+// When using the --std=c++0x option with MinGW the compiler omits defining
+// the following required macros (at least with the GCC 4.6.2 version)
+// So we define them ourselves here.
+# if !defined(WIN32)
+#   define _stdcall __attribute__((__stdcall__))
+#   define _cdecl __attribute__((__cdecl__))
+#   define _thiscall __attribute__((__thiscall__))
+#   define _fastcall __attribute__((__fastcall__))
+#   define WIN32 1
+#   define WINNT 1
+#   define i386 1
+# endif
+#endif
 
 // Complain if WIN32 is not already defined.
 #if !defined (WIN32) && !defined (ACE_HAS_WINCE)
@@ -119,7 +132,7 @@
 //  #endif
 
 // Define the special export macros needed to export symbols outside a dll
-#if !defined(__BORLANDC__) && (!defined (ACE_HAS_CUSTOM_EXPORT_MACROS) || (ACE_HAS_CUSTOM_EXPORT_MACROS == 0))
+#if !defined (ACE_HAS_CUSTOM_EXPORT_MACROS) || (ACE_HAS_CUSTOM_EXPORT_MACROS == 0)
 #if defined (ACE_HAS_CUSTOM_EXPORT_MACROS)
 #undef ACE_HAS_CUSTOM_EXPORT_MACROS
 #endif
@@ -232,6 +245,10 @@
 #define ACE_LACKS_SEEKDIR
 #define ACE_LACKS_TELLDIR
 
+#define ACE_LACKS_CLOCKID_T
+#define ACE_LACKS_CLOCK_REALTIME
+#define ACE_LACKS_CLOCK_MONOTONIC
+
 /* LACKS gid/pid/sid/uid facilities */
 #define ACE_LACKS_GETPGID
 #define ACE_LACKS_GETPPID
@@ -271,6 +288,7 @@
 #define ACE_LACKS_SEMBUF_T
 #define ACE_LACKS_SIGACTION
 #define ACE_LACKS_SIGSET
+#define ACE_LACKS_SIGSET_T
 #define ACE_LACKS_SOCKETPAIR
 #define ACE_LACKS_SUSECONDS_T
 #define ACE_LACKS_USECONDS_T
@@ -290,6 +308,9 @@
 #if !defined(__MINGW32__) && !defined (__BORLANDC__)
 # define ACE_LACKS_MODE_T
 #endif
+#if !defined(__MINGW32__)
+# define ACE_LACKS_PID_T
+#endif
 #if !defined (__BORLANDC__)
 # define ACE_LACKS_NLINK_T
 # define ACE_LACKS_UID_T
@@ -307,7 +328,7 @@
 
 #define ACE_SIZEOF_LONG_LONG 8
 
-#if !defined (ACE_LACKS_LONGLONG_T) && !defined (__MINGW32__)
+#if !defined (__MINGW32__)
 #define ACE_INT64_TYPE  signed __int64
 #define ACE_UINT64_TYPE unsigned __int64
 #endif
@@ -583,17 +604,13 @@
 #define ACE_LACKS_ALPHASORT
 #define ACE_LACKS_MKSTEMP
 #define ACE_LACKS_LSTAT
-// Looks like Win32 has a non-const swab function
+// Looks like Win32 has a non-const swab function, and it takes the
+// non-standard int len (rather than ssize_t).
 #define ACE_HAS_NONCONST_SWAB
+#define ACE_HAS_INT_SWAB
 
-// If we are using winsock2 then the SO_REUSEADDR feature is broken
-// SO_REUSEADDR=1 behaves like SO_REUSEPORT=1. (SO_REUSEPORT is an
-// extension to sockets on some platforms)
-// We define SO_REUSEPORT here so that ACE_OS::setsockopt() can still
-// allow the user to specify that a socketaddr can *always* be reused.
-#if defined (ACE_HAS_WINSOCK2) && ACE_HAS_WINSOCK2 != 0 && ! defined(SO_REUSEPORT)
-#define SO_REUSEPORT 0x0400  // We just have to pick a value that won't conflict
-#endif
+// gethostbyaddr does not handle IPv6-mapped-IPv4 addresses
+#define ACE_HAS_BROKEN_GETHOSTBYADDR_V4MAPPED
 
 #if defined (ACE_WIN64)
 // Data must be aligned on 8-byte boundaries, at a minimum.

@@ -1,4 +1,3 @@
-# $Id: msvc_static_compile.pl 80826 2008-03-04 14:51:23Z wotte $
 #   Win32 auto_compile script.
 if (!$ENV{ACE_ROOT}) {
     $ACE_ROOT = getcwd ()."\\";

@@ -5,10 +5,7 @@
 /**
  *  @file    oid_def.h
  *
- *  $Id: oid_def.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * Well known Oids defined in RFC 1215
- *
  *
  *  @author Peter E Mellquist
  */

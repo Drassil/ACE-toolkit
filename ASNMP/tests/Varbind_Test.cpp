@@ -3,11 +3,8 @@
 /**
  *  @file    Varbind_Test.cpp
  *
- *  $Id: Varbind_Test.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Test all the member functions of the Varbind class.
  * A varbind is a list of { oids and associated values }
- *
  *
  *  @author Michael R. MacFaden <mrm@cisco.com>
  */

@@ -1,5 +1,3 @@
-// $Id: config-kfreebsd.h 93550 2011-03-15 21:26:56Z olli $
-
 #ifndef ACE_CONFIG_KFREEBSD_H
 #define ACE_CONFIG_KFREEBSDH
 #include "ace/config-g++-common.h"
@@ -290,7 +288,7 @@
 #define ACE_HAS_SYSCTL 1
 
 /* Platform supports System V IPC (most versions of UNIX, but not Win32) */
-#define ACE_HAS_SYSV_IPC 1
+#define ACE_HAS_SYSV_IPC
 
 /* Platform/compiler supports _sys_errlist symbol */
 #define ACE_HAS_SYS_ERRLIST 1

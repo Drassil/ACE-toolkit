@@ -1,5 +1,3 @@
-// $Id: CPP-inclient.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This tests the features of the <ACE_SOCK_Connector> and
 // <ACE_SOCK_Stream> classes.  In addition, it can be used to test the
 // oneway and twoway latency and throughput at the socket-level.  This
@@ -19,8 +17,6 @@
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_unistd.h"
 #include "ace/OS_main.h"
-
-
 
 Options::Options (void)
   : host_ (ACE_DEFAULT_SERVER_HOST),
@@ -409,7 +405,7 @@ run_client (void)
   else
     ACE_Thread_Manager::instance ()->wait ();
 #else
-  *(OPTIONS::instance ()->thr_func) ();
+  (void) *(OPTIONS::instance ()->thr_func) ();
 #endif /* ACE_HAS_THREADS */
   return 0;
 }
@@ -429,7 +425,5 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
   return 0;
 }
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<Options, ACE_SYNCH_RECURSIVE_MUTEX> *
-  ACE_Singleton<Options, ACE_SYNCH_RECURSIVE_MUTEX>::singleton_;
-#endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, Options, ACE_SYNCH_RECURSIVE_MUTEX);
+

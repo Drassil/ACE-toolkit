@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Logger.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(direct logging) : aceexe {
   avoids  += ace_for_tao
   exename  = direct_logging

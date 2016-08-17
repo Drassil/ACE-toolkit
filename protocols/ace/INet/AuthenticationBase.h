@@ -1,5 +1,3 @@
-// $Id: AuthenticationBase.h 90925 2010-06-29 10:50:40Z mcorino $
-
 /**
  * @file AuthenticationBase.h
  *
@@ -65,6 +63,9 @@ namespace ACE
         class ACE_INET_Export AuthenticatorBase
           {
             public:
+              /// Default constructor
+              AuthenticatorBase ();
+
               /// Destructor
               virtual ~AuthenticatorBase ();
 

@@ -1,7 +1,4 @@
 #!/bin/sh
-#
-# $Id: generate_topinfo_charts.sh 84658 2009-03-01 18:45:35Z johnnyw $
-#
 
 gnuplot <<_EOF_ >/dev/null 2>&1
   set xdata time

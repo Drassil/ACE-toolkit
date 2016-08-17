@@ -1,5 +1,3 @@
-// $Id: HTTP_Status.h 90737 2010-06-21 09:46:14Z mcorino $
-
 /**
  * @file HTTP_Status.h
  *

@@ -3,12 +3,9 @@
 /**
  *  @file    main.cpp
  *
- *  $Id: main.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This is the main program - it just hands control off to the
  *  process instance to figure out what to do.  This program only
  *  runs on Win32.
- *
  *
  *  @author Gonzalo Diethelm <gonzo@cs.wustl.edu> and Steve Huston <shuston@riverace.com>
  */
@@ -16,6 +13,7 @@
 
 
 #include "ace/Get_Opt.h"
+#include "ace/Init_ACE.h"
 #include "ntsvc.h"
 
 #if defined (ACE_WIN32) && !defined (ACE_LACKS_WIN32_SERVICES)
@@ -141,10 +139,9 @@ Process::parse_args (int argc, ACE_TCHAR* argv[])
 
 // Define a function to handle Ctrl+C to cleanly shut this down.
 
-static BOOL __stdcall
-ConsoleHandler (DWORD ctrlType)
+static BOOL WINAPI
+ConsoleHandler (DWORD /*ctrlType*/)
 {
-  ACE_UNUSED_ARG (ctrlType);
   SERVICE::instance ()->handle_control (SERVICE_CONTROL_STOP);
   return TRUE;
 }

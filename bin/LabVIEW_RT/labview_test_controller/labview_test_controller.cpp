@@ -1,4 +1,3 @@
-// $Id: labview_test_controller.cpp 91813 2010-09-17 07:52:52Z johnnyw $
 //
 // Defines the entry point for the LabVIEW RT test controller DLL application.
 // This DLL is loaded at system boot by LabVIEW RT. The controller waits for

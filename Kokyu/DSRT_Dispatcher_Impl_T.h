@@ -1,9 +1,6 @@
 /* -*- C++ -*- */
 /**
  *  @file   DSRT_Dispatcher_Impl_T.h
- *
- *  $Id: DSRT_Dispatcher_Impl_T.h 84972 2009-03-25 19:09:06Z johnnyw $
- *
  */
 
 #ifndef DSRT_DISPATCHER_IMPL_H

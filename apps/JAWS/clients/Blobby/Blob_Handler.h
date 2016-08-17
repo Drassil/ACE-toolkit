@@ -4,12 +4,9 @@
 /**
  *  @file    Blob_Handler.h
  *
- *  $Id: Blob_Handler.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *   ACE_Blob_Handler is a base class for ACE_Blob_Reader and
  *   ACE_Blob_Writer which are created in response to calls to
  *   read/write, as appropriate
- *
  *
  *  @author Prashant Jain and Sumedh Mungee
  */

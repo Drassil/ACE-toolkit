@@ -1,5 +1,3 @@
-// $Id: Semaphores_2.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Illustrates the use of the ACE_SV_Semaphore_Complex class and the
 // ACE_Malloc class using the ACE_Shared_Memory_Pool (which uses
 // System V shared memory).  Note that it doesn't matter whether the

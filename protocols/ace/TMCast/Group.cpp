@@ -1,4 +1,3 @@
-// $Id: Group.cpp 91730 2010-09-13 09:31:11Z johnnyw $
 // author    : Boris Kolpackov <boris@dre.vanderbilt.edu>
 
 #include "Group.hpp"

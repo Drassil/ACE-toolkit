@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: Local_Locator.inl 80826 2008-03-04 14:51:23Z wotte $
-
 ACE_INLINE
 ACE_URL_Record::ACE_URL_Record (void)
   : id_ (0),

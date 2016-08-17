@@ -3,11 +3,8 @@
 /**
  *  @file    Capabilities_Test.cpp
  *
- *  $Id: Capabilities_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a test that makes sure the <ACE_Capabililties> class
  *    works correctly.
- *
  *
  *  @author Arturo Montes <mitosys@colomsat.net.co>
  */
@@ -86,7 +83,7 @@ run_main (int, ACE_TCHAR *[])
 
 
   if (ACE_OS::write (fd, file_contents, sizeof(file_contents)) !=
-      sizeof(file_contents))
+      (ssize_t) sizeof(file_contents))
     {
       ACE_OS::unlink (config);
       ACE_OS::close (fd);

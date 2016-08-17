@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: TLI_SAP.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(*ATM_client) : aceexe {
   exename = ATM-client
   Source_Files {

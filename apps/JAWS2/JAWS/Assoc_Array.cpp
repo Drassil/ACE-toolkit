@@ -1,5 +1,3 @@
-// $Id: Assoc_Array.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #ifndef JAWS_ASSOC_ARRAY_CPP
 #define JAWS_ASSOC_ARRAY_CPP
 

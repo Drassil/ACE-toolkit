@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: Handle_L_Pipe.h 80826 2008-03-04 14:51:23Z wotte $
-
 // Handle connections from local UNIX domain sockets that are sending
 // end-points from a pipe!
 

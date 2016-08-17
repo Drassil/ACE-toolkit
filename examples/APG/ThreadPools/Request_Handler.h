@@ -1,6 +1,4 @@
 /**
- * $Id: Request_Handler.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * Sample code from The ACE Programmer's Guide,
  * copyright 2003 Addison-Wesley. All Rights Reserved.
  */

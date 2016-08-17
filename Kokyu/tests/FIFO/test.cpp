@@ -1,5 +1,3 @@
-// $Id: test.cpp 91822 2010-09-17 09:00:19Z johnnyw $
-
 #include "ace/Auto_Ptr.h"
 
 #include "Kokyu.h"

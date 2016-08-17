@@ -1,5 +1,3 @@
-//$Id: Cached_Connect_Strategy_T.cpp 93359 2011-02-11 11:33:12Z mcorino $
-
 #ifndef ACE_CACHED_CONNECT_STRATEGY_T_CPP
 #define ACE_CACHED_CONNECT_STRATEGY_T_CPP
 
@@ -29,7 +27,7 @@ ACE_Cached_Connect_Strategy_Ex<SVC_HANDLER, ACE_PEER_CONNECTOR_2, CACHING_STRATE
     connection_cache_ (caching_s)
 {
   if (this->open (cre_s, con_s, rec_s) == -1)
-    ACE_ERROR ((LM_ERROR,
+    ACELIB_ERROR ((LM_ERROR,
                 ACE_TEXT ("%p\n"),
                 ACE_TEXT ("ACE_Cached_Connect_Strategy_Ex<SVC_HANDLER, ACE_PEER_CONNECTOR_2, CACHING_STRATEGY, ATTRIBUTES, MUTEX>\n")));
 }
@@ -358,9 +356,12 @@ ACE_Cached_Connect_Strategy_Ex<SVC_HANDLER, ACE_PEER_CONNECTOR_2, CACHING_STRATE
       entry->ext_id_.increment ();
     }
 
-  // For all successful cases: mark the <svc_handler> in the cache
-  // as being <in_use>.  Therefore recyclable is BUSY.
-  entry->ext_id_.recycle_state (ACE_RECYCLABLE_BUSY);
+  if (entry)
+    {
+      // For all successful cases: mark the <svc_handler> in the cache
+      // as being <in_use>.  Therefore recyclable is BUSY.
+      entry->ext_id_.recycle_state (ACE_RECYCLABLE_BUSY);
+    }
 
   return 0;
 }
@@ -640,7 +641,7 @@ ACE_Bounded_Cached_Connect_Strategy<SVC_HANDLER, ACE_PEER_CONNECTOR_2, CACHING_S
         {
           ACE_ASSERT (0); // just to see it coming
 
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("(%t)ACE_Bounded_Cached_Connect_Strategy<>::")
                       ACE_TEXT ("find_or_create_svc_handler_i - ")
                       ACE_TEXT ("error polling server socket state.\n")));

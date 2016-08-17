@@ -1,5 +1,3 @@
-// $Id: Sendfile_Test.cpp 83501 2008-10-30 12:16:38Z johnnyw $
-
 /**
  *  @file Sendfile_Test.cpp
  *

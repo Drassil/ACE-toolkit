@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Event_Analyzer.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef _EVENT_ANALYZER_H
 #define _EVENT_ANALYZER_H
 

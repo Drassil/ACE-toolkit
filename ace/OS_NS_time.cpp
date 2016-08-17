@@ -1,5 +1,3 @@
-// $Id: OS_NS_time.cpp 93561 2011-03-16 14:02:24Z olli $
-
 #include "ace/OS_NS_time.h"
 
 #if !defined (ACE_HAS_INLINED_OSCALLS)

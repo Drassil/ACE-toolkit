@@ -4,8 +4,6 @@
 /**
  *  @file    QoS_Signal_Handler.h
  *
- *  $Id: QoS_Signal_Handler.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Vishal Kachroo <vishal@cs.wustl.edu>
  */
 //=============================================================================

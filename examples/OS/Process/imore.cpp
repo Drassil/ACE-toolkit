@@ -2,8 +2,6 @@
 /**
  *  @file    imore.cpp (imore stands for indirect more.)
  *
- *  $Id: imore.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This program demonstrates how to redirect stdout of a parent
  *  process to the stdin of its child process using either unnamed pipe
  *  or named pipes to relay data to subprocess which runs "more" to
@@ -12,7 +10,6 @@
  *
  *  Unfortunately, on Win32, this program doesn't use any pipe at all because
  *  using pipes confuses MORE.COM on Win32 and it just acts like "cat" on Unix.
- *
  *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
@@ -89,7 +86,7 @@ parse_args (int argc, ACE_TCHAR **argv)
   return 0;
 }
 
-#if !defined (ACE_WIN32)
+#if !defined (ACE_WIN32) && !defined (ACE_DISABLE_TEMPNAM)
 static int
 setup_named_pipes (ACE_Process_Options &opt)
 {
@@ -227,16 +224,29 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
 #if !defined (ACE_WIN32)
   ACE_Process_Options options;
 
-  if ((use_named_pipe ? ::setup_named_pipes :
-       ::setup_unnamed_pipe) (options) == -1)
-    ACE_ERROR_RETURN ((LM_ERROR, "Error, bailing out!\n"), -1);
+  if (use_named_pipe)
+    {
+#  if defined (ACE_DISABLE_TEMPNAM)
+      ACE_ERROR_RETURN ((LM_ERROR,
+                         "ACE_DISABLE_TEMPNAM set; can't use named pipes\n"),
+                        -1);
+#  else
+      if (::setup_named_pipes (options) == -1)
+        ACE_ERROR_RETURN ((LM_ERROR, "Error, bailing out!\n"), -1);
+#  endif /* ACE_DISABLE_TEMPNAM */
+    }
+  else
+    {
+      if (::setup_unnamed_pipe (options) == -1)
+        ACE_ERROR_RETURN ((LM_ERROR, "Error, bailing out!\n"), -1);
+    }
 
   options.command_line (executable);
   if (new_process.spawn (options) == -1)
     {
-      int error = ACE_OS::last_error ();
+      int const error_number = ACE_OS::last_error ();
       ACE_ERROR_RETURN ((LM_ERROR, "%p errno = %d.\n",
-                         "test_more", error), -1);
+                         "test_more", error_number), -1);
     }
 
   // write file to ACE_STDOUT.

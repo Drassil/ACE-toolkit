@@ -1,5 +1,3 @@
-// $Id: test_mutex.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // This test program illustrates the performance difference between
 // three versions of wrappers for thread mutexes.  These three
 // versions exercise various combinations of the following classes:

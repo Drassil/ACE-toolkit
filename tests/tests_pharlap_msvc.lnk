@@ -1,4 +1,4 @@
-! $Id: tests_pharlap_msvc.lnk 80826 2008-03-04 14:51:23Z wotte $
+! $Id$
 ! Application linker command file for ACE tests.
 
 ! Visual C++ Compiler with PC-Compatible Target

@@ -65,7 +65,14 @@ my $onVMS = DirectoryManager::onVMS();
 # ************************************************************
 
 sub new {
-  my($class, $global, $inc, $template, $ti, $dynamic, $static, $relative, $addtemp, $addproj, $progress, $toplevel, $baseprojs, $feature, $features, $hierarchy, $nmodifier, $applypj, $into, $language, $use_env, $expandvars, $type) = @_;
+  my($class, $global, $inc, $template,
+     $ti, $dynamic, $static, $relative,
+     $addtemp, $addproj, $progress,
+     $toplevel, $baseprojs, $feature,
+     $features, $hierarchy, $nmodifier,
+     $applypj, $into, $language, $use_env,
+     $expandvars, $type) = @_;
+
   my $self = Parser::new($class, $inc);
 
   $self->{'relative'}        = $relative;
@@ -103,7 +110,6 @@ sub new {
 
   return $self;
 }
-
 
 sub preprocess_line {
   my($self, $fh, $line) = @_;
@@ -193,7 +199,6 @@ sub generate {
 
   return $status;
 }
-
 
 # split an inheritance list like ": a,b, c" into components
 sub parse_parents {
@@ -1023,7 +1028,7 @@ sub get_outdir {
 
 
 sub expand_variables {
-  my($self, $value, $rel, $expand_template, $scope, $expand, $warn) = @_;
+  my($self, $value, $rel, $expand_template, $scopes, $expand, $warn) = @_;
   my $cwd = $self->getcwd();
   my $start = 0;
   my $forward_slashes  = $self->{'convert_slashes'} ||
@@ -1109,8 +1114,12 @@ sub expand_variables {
            $self->expand_variables_from_template_values()) {
       my $ti = $self->get_template_input();
       my $val = (defined $ti ? $ti->get_value($name) : undef);
-      my $sname = (defined $scope ? $scope . "::$name" : undef);
-      my $arr = $self->adjust_value([$sname, $name],
+      my @snames;
+      if (defined $scopes) {
+        @snames = map { defined $_ ? $_ . '::' . $name : $name } @$scopes;
+      }
+      push(@snames, $name);
+      my $arr = $self->adjust_value(\@snames,
                                     (defined $val ? $val : []));
       if (UNIVERSAL::isa($arr, 'HASH')) {
         $self->warning("$name conflicts with a template variable scope");
@@ -1181,13 +1190,13 @@ sub replace_env_vars {
 
 
 sub relative {
-  my($self, $value, $expand_template, $scope) = @_;
+  my($self, $value, $expand_template, $scopes) = @_;
 
   if (defined $value) {
     if (UNIVERSAL::isa($value, 'ARRAY')) {
       my @built;
       foreach my $val (@$value) {
-        my $rel = $self->relative($val, $expand_template, $scope);
+        my $rel = $self->relative($val, $expand_template, $scopes);
         if (UNIVERSAL::isa($rel, 'ARRAY')) {
           push(@built, @$rel);
         }
@@ -1206,12 +1215,12 @@ sub relative {
       my $ovalue = $value;
       my($rel, $how) = $self->get_initial_relative_values();
       $value = $self->expand_variables($value, $rel,
-                                       $expand_template, $scope, $how, 0);
+                                       $expand_template, $scopes, $how, 0);
 
       if ($ovalue eq $value || index($value, '$') >= 0) {
         ($rel, $how) = $self->get_secondary_relative_values();
         $value = $self->expand_variables($value, $rel,
-                                         $expand_template, $scope,
+                                         $expand_template, $scopes,
                                          $how, 1);
       }
     }

@@ -3,8 +3,6 @@
 /**
  *  @file    TSS_Data.h
  *
- *  $Id: TSS_Data.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  @author Prashant Jain and Doug Schmidt
  */
 //=============================================================================

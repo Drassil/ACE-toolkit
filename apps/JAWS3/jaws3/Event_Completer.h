@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Event_Completer.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_EVENT_COMPLETER_H
 #define JAWS_EVENT_COMPLETER_H
 

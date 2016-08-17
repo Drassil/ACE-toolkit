@@ -1,5 +1,3 @@
-// $Id: Future_Set.cpp 92900 2010-12-17 14:45:11Z mcorino $
-
 #ifndef ACE_FUTURE_SET_CPP
 #define ACE_FUTURE_SET_CPP
 

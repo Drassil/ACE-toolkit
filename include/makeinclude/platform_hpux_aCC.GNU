@@ -1,4 +1,3 @@
-# $Id: platform_hpux_aCC.GNU 93143 2011-01-21 17:36:13Z shuston $
 #
 # This is for HP-UX 11.x using the aC++ compiler.
 #
@@ -205,4 +204,8 @@ ifeq ($(64bitoffsets),1)
   ifneq ($(HPUX_VERS), 1123)
     CCFLAGS += +W600
   endif
+endif
+
+ifeq ($(c++0x),1)
+  CCFLAGS += -Ax
 endif

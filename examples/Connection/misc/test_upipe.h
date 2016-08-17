@@ -1,7 +1,5 @@
 /* -*- C++ -*- */
 
-// $Id: test_upipe.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef ACE_TEST_UPIPE_H
 #define ACE_TEST_UPIPE_H
 

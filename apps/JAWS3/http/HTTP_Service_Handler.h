@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: HTTP_Service_Handler.h 91863 2010-09-20 13:33:11Z johnnyw $
-
 #ifndef JAWS_HTTP_SERVICE_HANDLER_H
 #define JAWS_HTTP_SERVICE_HANDLER_H
 

@@ -1,6 +1,4 @@
 /*
-** $Id: AIO_Client_Logging_Daemon.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-**
 ** Copyright 2002 Addison Wesley. All Rights Reserved.
 */
 
@@ -31,8 +29,6 @@
 #include "AIO_CLD_export.h"
 #include "AIO_Client_Logging_Daemon.h"
 #include <openssl/ssl.h>
-
-
 
 class AIO_CLD_Acceptor
   : public ACE_Asynch_Acceptor<AIO_Input_Handler> {
@@ -200,7 +196,7 @@ void AIO_CLD_Acceptor::close (void) {
   ACE_Unbounded_Set_Iterator<AIO_Input_Handler *>
     iter (clients_.begin ());
   AIO_Input_Handler **ih;
-  while (iter.next (ih))
+  for (; iter.next (ih); ++iter)
     delete *ih;
 }
 
@@ -357,6 +353,8 @@ int AIO_Client_Logging_Daemon::fini () {
   return 0;
 }
 
+#endif /* (ACE_WIN32 && !ACE_HAS_WINCE) || ACE_HAS_AIO_CALLS */
+
 ACE_FACTORY_DEFINE (AIO_CLD, AIO_Client_Logging_Daemon)
 
-#endif /* (ACE_WIN32 && !ACE_HAS_WINCE) || ACE_HAS_AIO_CALLS */
+

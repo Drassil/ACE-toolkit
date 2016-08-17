@@ -3,10 +3,7 @@
 /**
  *  @file    Timer_Cancellation_Test.cpp
  *
- *  $Id: Timer_Cancellation_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  A test to ensure the timer cancellation works correctly.
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */

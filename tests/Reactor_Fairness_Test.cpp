@@ -3,12 +3,9 @@
 /**
  *  @file    Reactor_Fairness_Test.cpp
  *
- *  $Id: Reactor_Fairness_Test.cpp 93954 2011-04-20 08:55:09Z johnnyw $
- *
  *  This test is used to time the dispatching mechanisms of the
  *  <ACE_Reactor>s. Both the <ACE_WFMO_Reactor> and
  *  <ACE_Select_Reactor> can be tested.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */

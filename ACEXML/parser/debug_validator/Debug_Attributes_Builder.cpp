@@ -1,5 +1,3 @@
-// $Id: Debug_Attributes_Builder.cpp 91257 2010-08-03 11:54:04Z johnnyw $
-
 #include "ACEXML/common/SAXExceptions.h"
 #include "ACEXML/parser/debug_validator/Debug_Attributes_Builder.h"
 

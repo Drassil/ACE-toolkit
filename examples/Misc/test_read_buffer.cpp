@@ -1,5 +1,3 @@
-// $Id: test_read_buffer.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/OS_NS_fcntl.h"
 #include "ace/OS_NS_unistd.h"

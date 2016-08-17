@@ -1,10 +1,8 @@
-// $Id: TimerDispatcher.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "TimerDispatcher.h"
 // Listing 1 code/ch20
 void Timer_Dispatcher::wait_for_event (void)
 {
-  ACE_TRACE (ACE_TEXT ("Timer_Dispatcher::wait_for_event"));
+  ACE_TRACE ("Timer_Dispatcher::wait_for_event");
 
   while (1)
     {
@@ -34,7 +32,7 @@ Timer_Dispatcher::schedule (ACE_Event_Handler *cb,
                             const ACE_Time_Value &abs_time,
                             const ACE_Time_Value &interval)
 {
-  ACE_TRACE (ACE_TEXT ("Timer_Dispatcher::schedule_timer"));
+  ACE_TRACE ("Timer_Dispatcher::schedule_timer");
 
   return this->timer_queue_->schedule
     (cb, arg, abs_time, interval);
@@ -45,14 +43,14 @@ int
 Timer_Dispatcher::cancel (ACE_Event_Handler *cb,
                           int dont_call_handle_close)
 {
-  ACE_TRACE (ACE_TEXT ("Timer_Dispatcher::cancel"));
+  ACE_TRACE ("Timer_Dispatcher::cancel");
   return timer_queue_->cancel (cb, dont_call_handle_close);
 }
 // Listing 3
 // Listing 4 code/ch20
 void Timer_Dispatcher::set (ACE_Timer_Queue *timer_queue)
 {
-  ACE_TRACE (ACE_TEXT ("Timer_Dispatcher::set"));
+  ACE_TRACE ("Timer_Dispatcher::set");
 
   timer_queue_ = timer_queue;
 }
@@ -62,12 +60,9 @@ int
 Timer_Dispatcher::reset_interval (long timer_id,
                                   const ACE_Time_Value &interval)
 {
-  ACE_TRACE (ACE_TEXT ("Timer_Dispatcher::reset_interval"));
+  ACE_TRACE ("Timer_Dispatcher::reset_interval");
 
   return timer_queue_->reset_interval(timer_id, interval);
 }
+ACE_SINGLETON_TEMPLATE_INSTANTIATE(ACE_Singleton, Timer_Dispatcher, ACE_Null_Mutex);
 
-#if defined (ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION)
-template ACE_Singleton<Timer_Dispatcher, ACE_Null_Mutex> *
-      ACE_Singleton<Timer_Dispatcher, ACE_Null_Mutex>::singleton_;
-# endif /* ACE_HAS_EXPLICIT_STATIC_TEMPLATE_MEMBER_INSTANTIATION */

@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Handle_L_SPIPE.h 80826 2008-03-04 14:51:23Z wotte $
-
 /* Handle connections from local UNIX ACE_SPIPE */
 /* Read from a well known ACE_SPIPE and write to stdout. */
 

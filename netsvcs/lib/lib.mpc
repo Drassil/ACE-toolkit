@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: lib.mpc 91073 2010-07-13 11:10:19Z johnnyw $
-
 project(netsvcs): ace_output, acelib {
   avoids       += ace_for_tao
   sharedname    = netsvcs
@@ -14,9 +12,9 @@ project(netsvcs): ace_output, acelib {
     Log_Message_Receiver.cpp
     Server_Logging_Handler.cpp
     Token_Handler.cpp
-    Base_Optimizer.cpp
   }
   Template_Files {
+    Base_Optimizer.cpp
     Server_Logging_Handler_T.cpp
   }
 }

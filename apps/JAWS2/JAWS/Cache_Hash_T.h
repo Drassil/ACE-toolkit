@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Cache_Hash_T.h 81993 2008-06-16 20:26:16Z sowayaa $
-
 #ifndef JAWS_CACHE_HASH_T_H
 #define JAWS_CACHE_HASH_T_H
 

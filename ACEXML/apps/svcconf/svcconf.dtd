@@ -1,4 +1,4 @@
-<!-- $Id: svcconf.dtd 80826 2008-03-04 14:51:23Z wotte $   -->
+<!-- $Id$   -->
 <!-- Document Type Definition for XML ACE Service Config files -->
 
 <!-- An ACE_Svc_Conf document contains zero or more entries    -->

@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: RMCast.mpc 91291 2010-08-05 16:55:50Z johnnyw $
-
 project(*Sender) : aceexe, rmcast {
   exename = sender
   Source_Files {

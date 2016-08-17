@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: HTBP_Channel.inl 87228 2009-10-26 10:45:28Z vzykov $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 ACE_INLINE

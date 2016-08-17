@@ -1,6 +1,4 @@
 //  -*- MPC -*- now wouldn't this be cool...
-// $Id: ace.mpc 93543 2011-03-14 08:25:46Z johnnyw $
-
 project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, uuid, filecache, versioned_namespace, pkgconfig, support_ostream {
   avoids       = ace_for_tao
   sharedname   = ACE
@@ -27,7 +25,6 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     ATM_Stream.cpp
     Atomic_Op.cpp
     Atomic_Op_Sparc.c
-    Auto_Event.cpp
     Barrier.cpp
     Base_Thread_Adapter.cpp
     Based_Pointer_Repository.cpp
@@ -41,6 +38,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Codeset_IBM1047.cpp
     Codeset_Registry.cpp
     Codeset_Registry_db.cpp
+    Condition_Attributes.cpp
     Condition_Recursive_Thread_Mutex.cpp
     Condition_Thread_Mutex.cpp
     Configuration.cpp
@@ -48,7 +46,6 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Connection_Recycling_Strategy.cpp
     Containers.cpp
     Copy_Disabled.cpp
-    Countdown_Time.cpp
     Date_Time.cpp
     DEV.cpp
     DEV_Addr.cpp
@@ -61,8 +58,9 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Dump.cpp
     Dynamic.cpp
     Dynamic_Message_Strategy.cpp
-    Event.cpp
+    Event_Base.cpp
     Event_Handler.cpp
+    Event_Handler_Handle_Timeout_Upcall.cpp
     FIFO.cpp
     FIFO_Recv.cpp
     FIFO_Recv_Msg.cpp
@@ -92,6 +90,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Lib_Find.cpp
     Local_Memory_Pool.cpp
     Lock.cpp
+    Log_Category.cpp
     Log_Msg.cpp
     Log_Msg_Backend.cpp
     Log_Msg_Callback.cpp
@@ -108,7 +107,6 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     LSOCK_Stream.cpp
     Malloc.cpp
     Malloc_Allocator.cpp
-    Manual_Event.cpp
     MEM_Acceptor.cpp
     MEM_Addr.cpp
     MEM_Connector.cpp
@@ -130,6 +128,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Monitor_Size.cpp
     Monitor_Control_Types.cpp
     Monitor_Control_Action.cpp
+    Monotonic_Time_Policy.cpp
     Multihomed_INET_Addr.cpp
     Mutex.cpp
     Netlink_Addr.cpp
@@ -138,6 +137,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Obchunk.cpp
     Object_Manager.cpp
     Object_Manager_Base.cpp
+    Obstack.cpp
     OS_Errno.cpp
     OS_Log_Msg_Attributes.cpp
     OS_main.cpp
@@ -259,6 +259,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Thread_Mutex.cpp
     Thread_Semaphore.cpp
     Throughput_Stats.cpp
+    Time_Policy.cpp
     Time_Value.cpp
     Timeprobe.cpp
     TLI.cpp
@@ -281,6 +282,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
   }
 
   Template_Files {
+    Abstract_Timer_Queue.cpp
     Acceptor.cpp
     Active_Map_Manager_T.cpp
     ARGV.cpp
@@ -291,6 +293,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Asynch_Connector.cpp
     Atomic_Op_T.cpp
     Atomic_Op_GCC_T.cpp
+    Auto_Event.cpp
     Auto_Functor.cpp
     Auto_IncDec_T.cpp
     Auto_Ptr.cpp
@@ -303,9 +306,11 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Condition_T.cpp
     Connector.cpp
     Containers_T.cpp
+    Countdown_Time_T.cpp
     Dump_T.cpp
     Dynamic_Service.cpp
     Env_Value_T.cpp
+    Event.cpp
     Event_Handler_T.cpp
     Framework_Component_T.cpp
     Free_List.cpp
@@ -326,6 +331,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Lock_Adapter_T.cpp
     Malloc_T.cpp
     Managed_Object.cpp
+    Manual_Event.cpp
     Map_Manager.cpp
     Map_T.cpp
     Message_Block_T.cpp
@@ -353,10 +359,13 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Task_T.cpp
     Test_and_Set.cpp
     Timeprobe_T.cpp
+    Time_Policy_T.cpp
+    Time_Value_T.cpp
     Timer_Hash_T.cpp
     Timer_Heap_T.cpp
     Timer_List_T.cpp
     Timer_Queue_Adapters.cpp
+    Timer_Queue_Iterator.cpp
     Timer_Queue_T.cpp
     Timer_Wheel_T.cpp
     Tokenizer_T.cpp
@@ -379,7 +388,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Refcounted_Auto_Ptr.inl
     Reverse_Lock_T.inl
     TSS_T.inl
-    ace_wchar.inl
+    Time_Value_T.inl
   }
 
   Header_Files {
@@ -393,7 +402,9 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     CORBA_macros.h
     Codeset_Symbols.h
     Condition_T.h
+    Countdown_Time.h
     Default_Constants.h
+    Event_Base.h
     Global_Macros.h
     Guard_T.h
     Hash_Map_Manager.h
@@ -408,6 +419,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Metrics_Cache_T.h
     Memory_Pool.h
     Min_Max.h
+    Monotonic_Time_Policy.h
     Netlink_Addr.h
     Null_Barrier.h
     Null_Condition.h
@@ -438,6 +450,8 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Synch.h
     Synch_Traits.h
     TSS_T.h
+    Time_Policy.h
+    Time_Value_T.h
     Timer_Hash.h
     Timer_Heap.h
     Timer_List.h
@@ -450,6 +464,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     Version.h
     Versioned_Namespace.h
     ace_wchar.h
+    ace_wchar.inl
     checked_iterator.h
     config-*.h
     config.h
@@ -478,6 +493,7 @@ project(ACE) : ace_output, acedefaults, install, other, codecs, token, svcconf, 
     ../bin/mpc.pl
     ../bin/add_rel_link.sh
     ../bin/depgen.pl
+    ../bin/ace_install_pkgconfig.pl
   }
   InstallData_Files {
     gendir = include

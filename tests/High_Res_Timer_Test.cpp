@@ -2,15 +2,11 @@
 /**
  *  @file    High_Res_Timer_Test.cpp
  *
- *  $Id: High_Res_Timer_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Simple test of ACE_High_Res_Timer.
- *
  *
  *  @author David L. Levine <levine@cs.wustl.edu>
  */
 //=============================================================================
-
 
 #include "test_config.h"
 #include "ace/Log_Msg.h"
@@ -18,8 +14,6 @@
 #include "ace/Sched_Params.h"
 #include "ace/Get_Opt.h"
 #include "ace/OS_NS_unistd.h"
-
-
 
 static
 u_int

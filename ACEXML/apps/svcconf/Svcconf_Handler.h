@@ -1,10 +1,6 @@
-// $Id: Svcconf_Handler.h 91257 2010-08-03 11:54:04Z johnnyw $
-
 //=============================================================================
 /**
  *  @file    Svcconf_Handler.h
- *
- *  $Id: Svcconf_Handler.h 91257 2010-08-03 11:54:04Z johnnyw $
  *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */

@@ -1,5 +1,3 @@
-// $Id: Compiler_Features_09_Test.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 /**
  * @file
  *
@@ -9,7 +7,6 @@
  * in:
  *
  *   http://bugzilla.dre.vanderbilt.edu/show_bug.cgi?id=3715
- *
  */
 
 #include "test_config.h"

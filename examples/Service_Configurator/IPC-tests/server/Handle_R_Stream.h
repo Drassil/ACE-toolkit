@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: Handle_R_Stream.h 80826 2008-03-04 14:51:23Z wotte $
-
 /* Handle connections from remote INET connections. */
 
 #ifndef _HANDLE_R_STREAM_H

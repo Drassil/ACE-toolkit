@@ -7,8 +7,6 @@
 /**
  *  @file    snmp_agent.h
  *
- *  $Id: snmp_agent.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Michael R. MacFaden (mrm@cisco.com)
  */
 //=============================================================================

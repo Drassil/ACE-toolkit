@@ -1,16 +1,13 @@
-// $Id: URL_Addr.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "URL_Addr.h"
 
 #if !defined (__ACE_INLINE__)
 #include "URL_Addr.inl"
 #endif /* __ACE_INLINE__ */
 
+#include "ace/Global_Macros.h"
 #include "ace/OS_Memory.h"
 #include "ace/OS_NS_strings.h"
 #include "ace/OS_NS_stdio.h"
-
-
 
 static ACE_TCHAR http[] = ACE_TEXT ("http:");
 static size_t http_size = sizeof(http)/sizeof(http[0]) - 1;

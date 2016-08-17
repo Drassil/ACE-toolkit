@@ -1,13 +1,13 @@
 // -*- C++ -*-
-//
-// $Id: OS_NS_stdlib.inl 93622 2011-03-22 15:45:57Z johnnyw $
-
 #include "ace/config-all.h"           /* Need ACE_TRACE */
 #include "ace/Object_Manager_Base.h"
 #include "ace/OS_NS_string.h"
 #include "ace/Global_Macros.h"
 #include "ace/os_include/os_errno.h"
 #include "ace/os_include/os_search.h"
+#if defined (ACE_ANDROID) && (__ANDROID_API__ < 19)
+# include "ace/os_include/os_signal.h"
+#endif
 
 #if defined (ACE_WCHAR_IN_STD_NAMESPACE)
 # define ACE_WCHAR_STD_NAMESPACE std
@@ -35,7 +35,9 @@ ACE_OS::_exit (int status)
 ACE_INLINE void
 ACE_OS::abort (void)
 {
-#if !defined (ACE_LACKS_ABORT)
+#if defined (ACE_ANDROID) && (__ANDROID_API__ < 19)
+  ACE_OS::_exit (128 + SIGABRT);
+#elif !defined (ACE_LACKS_ABORT)
   ::abort ();
 #else
   exit (1);
@@ -267,24 +269,26 @@ ACE_OS::mkstemp (wchar_t *s)
 }
 #endif /* ACE_HAS_WCHAR */
 
-#if !defined (ACE_LACKS_MKTEMP)
+#if !defined (ACE_DISABLE_MKTEMP)
+
+#  if !defined (ACE_LACKS_MKTEMP)
 ACE_INLINE char *
 ACE_OS::mktemp (char *s)
 {
-# if defined (ACE_WIN32)
+#    if defined (ACE_WIN32)
   return ::_mktemp (s);
-# else /* ACE_WIN32 */
+#    else /* ACE_WIN32 */
   return ::mktemp (s);
-# endif /* ACE_WIN32 */
+#    endif /* ACE_WIN32 */
 }
 
-#  if defined (ACE_HAS_WCHAR)
+#    if defined (ACE_HAS_WCHAR)
 ACE_INLINE wchar_t *
 ACE_OS::mktemp (wchar_t *s)
 {
-#    if defined (ACE_WIN32)
+#      if defined (ACE_WIN32)
   return ::_wmktemp (s);
-#    else
+#      else
   // For narrow-char filesystems, we must convert the wide-char input to
   // a narrow-char string for mktemp (), then convert the name back to
   // wide-char for the caller.
@@ -294,11 +298,12 @@ ACE_OS::mktemp (wchar_t *s)
   ACE_Ascii_To_Wide wide_s (narrow_s.char_rep ());
   ACE_OS::strcpy (s, wide_s.wchar_rep ());
   return s;
-#    endif
+#      endif
 }
 #  endif /* ACE_HAS_WCHAR */
 
-#endif /* !ACE_LACKS_MKTEMP */
+#  endif /* !ACE_LACKS_MKTEMP */
+#endif /* !ACE_DISABLE_MKTEMP */
 
 ACE_INLINE int
 ACE_OS::putenv (const char *string)
@@ -591,8 +596,6 @@ ACE_OS::system (const ACE_TCHAR *s)
   ACE_NOTSUP_RETURN (-1);
 #elif defined (ACE_WIN32) && defined (ACE_USES_WCHAR)
   ACE_OSCALL_RETURN (::_wsystem (s), int, -1);
-#elif defined (ACE_TANDEM_T1248_PTHREADS)
-  ACE_OSCALL_RETURN (::spt_system (s), int, -1);
 #else
   ACE_OSCALL_RETURN (::system (ACE_TEXT_ALWAYS_CHAR (s)), int, -1);
 #endif /* ACE_LACKS_SYSTEM */

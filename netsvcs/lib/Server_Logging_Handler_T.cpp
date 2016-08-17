@@ -1,5 +1,3 @@
-// $Id: Server_Logging_Handler_T.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #ifndef ACE_SERVER_LOGGING_HANDLERT_C
 #define ACE_SERVER_LOGGING_HANDLERT_C
 
@@ -9,8 +7,6 @@
 #include "ace/CDR_Stream.h"
 #include "Server_Logging_Handler_T.h"
 #include "ace/Signal.h"
-
-
 
 #if !defined (ACE_LACKS_STATIC_DATA_MEMBER_TEMPLATES)
 // Track number of requests.
@@ -310,7 +306,7 @@ ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::scheduling_strategy (void)
 template<class SLH, class LMR, class SST> int
 ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::init (int argc, ACE_TCHAR *argv[])
 {
-  ACE_TRACE (ACE_TEXT ("ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::init"));
+  ACE_TRACE ("ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::init");
 
   // Use the options hook to parse the command line arguments and set
   // options.
@@ -352,7 +348,7 @@ ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::init (int argc, ACE_TCHAR *argv[])
 template<class SLH, class LMR, class SST> int
 ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::parse_args (int argc, ACE_TCHAR *argv[])
 {
-  ACE_TRACE (ACE_TEXT ("ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::parse_args"));
+  ACE_TRACE ("ACE_Server_Logging_Acceptor_T<SLH, LMR, SST>::parse_args");
 
   int service_port = ACE_DEFAULT_SERVER_PORT;
 

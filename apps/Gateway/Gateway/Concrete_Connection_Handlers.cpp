@@ -1,5 +1,3 @@
-// $Id: Concrete_Connection_Handlers.cpp 91688 2010-09-09 11:21:50Z johnnyw $
-
 #define ACE_BUILD_SVC_DLL
 
 #include "ace/OS_NS_unistd.h"

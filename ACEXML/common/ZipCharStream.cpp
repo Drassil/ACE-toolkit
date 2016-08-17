@@ -1,5 +1,3 @@
-// $Id: ZipCharStream.cpp 82519 2008-08-06 07:02:28Z johnnyw $
-
 #ifdef USE_ZZIP
 
 #include "ACEXML/common/ZipCharStream.h"

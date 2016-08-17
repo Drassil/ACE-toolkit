@@ -2,12 +2,9 @@
 /**
  *  @file    Malloc_Test.h
  *
- *  $Id: Malloc_Test.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This class gets its own header file to work around AIX C++
  *  compiler "features" related to template instantiation...  It is
  *  only used by Malloc_Test.cpp.
- *
  *
  *  @author   Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */

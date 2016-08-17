@@ -1,6 +1,5 @@
 #ifndef __SYSDEP_H__
 #define __SYSDEP_H__
-/* $Id: sysdep.h 80826 2008-03-04 14:51:23Z wotte $ */
 /**************************************************************************
  *                                                                        *
  *               Copyright (C) 1995 Silicon Graphics, Inc.                *

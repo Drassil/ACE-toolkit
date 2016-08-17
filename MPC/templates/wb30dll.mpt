@@ -1,5 +1,3 @@
-// $Id: wb30dll.mpt 1926 2010-11-03 14:46:27Z mitza $
-
 
 
 conditional_include "wb26dll"

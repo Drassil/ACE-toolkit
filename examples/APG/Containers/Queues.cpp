@@ -1,5 +1,3 @@
-// $Id: Queues.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/OS_Memory.h"
 #include "ace/Log_Msg.h"
 #include "ace/Containers.h"
@@ -23,7 +21,7 @@ private:
 
 int QueueExample::run (void)
 {
-  ACE_TRACE (ACE_TEXT ("QueueExample::run"));
+  ACE_TRACE ("QueueExample::run");
 
   // Illustrate the queue with elements on the stack.
   if (this->runStackUnboundedQueue () != 0)
@@ -49,7 +47,7 @@ int QueueExample::run (void)
 // Listing 1 code/ch05
 int QueueExample::runStackUnboundedQueue (void)
 {
-  ACE_TRACE (ACE_TEXT ("QueueExample::runStackUnboundedQueue"));
+  ACE_TRACE ("QueueExample::runStackUnboundedQueue");
 
   ACE_Unbounded_Queue<DataElement> queue;
   DataElement elem1[10];
@@ -82,7 +80,7 @@ int QueueExample::runStackUnboundedQueue (void)
 // Listing 2 code/ch05
 int QueueExample::runHeapUnboundedQueue (void)
 {
-  ACE_TRACE (ACE_TEXT ("QueueExample::runHeapUnboundedQueue"));
+  ACE_TRACE ("QueueExample::runHeapUnboundedQueue");
 
   ACE_Unbounded_Queue<DataElement*> queue;
   for (int i = 0; i < 20; i++)

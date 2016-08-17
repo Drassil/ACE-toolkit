@@ -2,10 +2,7 @@
 /**
  *  @file  DSRT_Sched_Queue_T.cpp
  *
- *  $Id: DSRT_Sched_Queue_T.cpp 92916 2010-12-20 21:11:50Z olli $
- *
  *  @author Venkita Subramonian (venkita@cs.wustl.edu)
- *
  */
 #ifndef DSRT_SCHED_QUEUE_T_CPP
 #define DSRT_SCHED_QUEUE_T_CPP
@@ -258,7 +255,7 @@ change_prio(int old_prio, int new_prio, int policy)
     {
       PRIO_QUEUE_ITERATOR end_iter = dispatch_items_prio_queue_.end ();
       PRIO_QUEUE_ITERATOR iter;
-      int prio;
+      int prio = 0;
 
       iter = dispatch_items_prio_queue_.begin ();
       while( iter != end_iter )

@@ -1,5 +1,3 @@
-// $Id: test_signals_2.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test the ability of the Reactor/Signal_Handler to register multiple
 // handler per-signal.
 

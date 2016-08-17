@@ -1,5 +1,3 @@
-// $Id: SSL-server-fancy.cpp 91685 2010-09-09 09:35:14Z johnnyw $
-
 // This example tests the features of the <ACE_SSL_SOCK_Acceptor>,
 // <ACE_SSL_SOCK_Stream>, and <ACE_Svc_Handler> classes.  If the platform
 // supports threads it uses a thread-per-connection concurrency model.

@@ -1,5 +1,3 @@
-// $Id: SString.cpp 92580 2010-11-15 09:48:02Z johnnyw $
-
 #include "ace/Malloc_T.h"
 #include "ace/OS_Memory.h"
 #include "ace/SString.h"

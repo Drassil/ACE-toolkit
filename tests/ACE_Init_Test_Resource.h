@@ -4,10 +4,7 @@
 /**
  *  @file    ACE_Init_Test_Resource.h
  *
- *  $Id: ACE_Init_Test_Resource.h 93638 2011-03-24 13:16:05Z johnnyw $
- *
  * Header file for the ACE_INIT_TEST application.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */

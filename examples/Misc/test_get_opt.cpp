@@ -1,5 +1,3 @@
-// $Id: test_get_opt.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Test the ACE_Get_Opt class.
 
 #include "ace/OS_main.h"

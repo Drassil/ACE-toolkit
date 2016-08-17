@@ -3,10 +3,7 @@
 /**
  *  @file    simple_test_proactor.cpp
  *
- *  $Id: simple_test_proactor.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  Very simple version of test_proactor.cpp.
- *
  *
  *  @author Alexander Babu Arulanthu (alex@cs.wustl.edu)
  */

@@ -2,8 +2,6 @@
 /**
  *  @file     test_aiosig.cpp
  *
- *  $Id: test_aiosig.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  Check out test_aiosig_ace.cpp, the ACE'ified version of this
  *  program. This program may not be uptodate.
  *  CC -g -o test_aiosig -lrt test_aiosig.cpp

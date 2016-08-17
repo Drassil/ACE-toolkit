@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: FTP_ClientRequestHandler.inl 90924 2010-06-29 09:34:13Z mcorino $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 namespace ACE

@@ -3,12 +3,9 @@
 /**
  *  @file    Thread_Mutex_Test.cpp
  *
- *  $Id: Thread_Mutex_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This test illustrates the functionality of the
  *   ACE_Thread_Mutex. The test acquires and releases mutexes. No
  *   command line arguments are needed to run the test.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu> and Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */

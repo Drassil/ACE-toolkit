@@ -1,5 +1,3 @@
-// $Id: HTTP_10_Request.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "JAWS/JAWS.h"
 #include "HTTP_10_Request.h"
 #include "ace/OS_NS_pwd.h"

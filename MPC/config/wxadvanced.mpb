@@ -1,4 +1,3 @@
-// $Id: wxadvanced.mpb 1934 2010-11-12 12:40:22Z elliott_c $
 project: wxcore {
   specific(prop:windows) {
     Debug::lit_libs   += wx$(WX_PORT)$(WX_VERSION)$(WX_UNICODE)d_adv

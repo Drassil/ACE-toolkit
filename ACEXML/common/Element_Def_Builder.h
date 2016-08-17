@@ -4,8 +4,6 @@
 /**
  *  @file    Element_Def_Builder.h
  *
- *  $Id: Element_Def_Builder.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -24,7 +22,7 @@
 #include "ACEXML/common/SAXExceptions.h"
 
 /**
- * @class ACEXML_Element_Def_Builder Element_Def_Builder.h "common/Element_Def_Builder.h"
+ * @class ACEXML_Element_Def_Builder
  *
  * @brief An abstract virtual class that defines the interface to define an
  * element definition.

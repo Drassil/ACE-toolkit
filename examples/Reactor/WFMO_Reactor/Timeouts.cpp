@@ -2,9 +2,6 @@
 /**
  *  @file    Timeouts.cpp
  *
- *  $Id: Timeouts.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
- *
  *  This example application shows how to write Reactor event
  *  loops that handle events for some fixed amount of time.
  *
@@ -12,7 +9,6 @@
  *  expire. The order should be:
  *
  *  foo, bar, foo, bar, foo, foo, bar, foo, bar, foo
- *
  *
  *  @author Tim Harrison Irfan Pyarali
  */

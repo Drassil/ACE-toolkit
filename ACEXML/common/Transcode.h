@@ -7,8 +7,6 @@
  * This file declares functions to convert char string among different
  * unicode encoding (utf8, utf16, utf32)
  *
- *  $Id: Transcode.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -26,7 +24,7 @@
 #include "ACEXML/common/XML_Types.h"
 
 /**
- * @class ACEXML_Transcoder Transcode.h "ACEXML/common/Transcode.h"
+ * @class ACEXML_Transcoder
  *
  * @brief ACEXML_Transcoder
  *

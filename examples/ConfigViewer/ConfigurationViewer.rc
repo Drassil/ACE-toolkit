@@ -1,5 +1,5 @@
 /* -*- C++ -*- */
-// $Id: ConfigurationViewer.rc 80826 2008-03-04 14:51:23Z wotte $
+// $Id$
 
 #include "wx/msw/wx.rc"
 mondrian ICON "mondrian.ico"

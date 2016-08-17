@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Task_Timer.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_TASK_TIMER_H
 #define JAWS_TASK_TIMER_H
 

@@ -1,5 +1,3 @@
-// $Id: thread_specific.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef ACE_THREAD_SPECIFIC_H
 
 #include "ace/Guard_T.h"

@@ -1,5 +1,3 @@
-// $Id: Test_URL_Addr.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "websvcs/lib/URL_Addr.h"
 #include "ace/Log_Msg.h"
 

@@ -1,5 +1,3 @@
-// $Id: test_spipe_acceptor.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/SPIPE_Acceptor.h"
 #include "ace/SPIPE_Addr.h"
 #include "ace/Service_Config.h"

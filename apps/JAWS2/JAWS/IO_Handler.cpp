@@ -1,5 +1,3 @@
-// $Id: IO_Handler.cpp 93652 2011-03-28 08:55:39Z johnnyw $
-
 #include "ace/Proactor.h"
 #include "ace/Filecache.h"
 #include "ace/OS_NS_unistd.h"

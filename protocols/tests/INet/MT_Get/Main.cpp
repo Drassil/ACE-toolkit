@@ -1,5 +1,3 @@
-// $Id: Main.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "ace/Get_Opt.h"
 #include "ace/Task.h"
 #include "ace/Containers_T.h"

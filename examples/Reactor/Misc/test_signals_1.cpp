@@ -1,5 +1,3 @@
-// $Id: test_signals_1.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This simple program illustrates the difference between handling
 // signals via the Reactor (which doesn't cause the event loop to
 // terminate) and signals that aren't handled via the Reactor (which

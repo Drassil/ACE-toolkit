@@ -4,8 +4,6 @@
 /**
  *  @file   OS_NS_sys_socket.h
  *
- *  $Id: OS_NS_sys_socket.h 93816 2011-04-08 13:17:35Z mesnier_p $
- *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>
  *  @author Jesper S. M|ller<stophph@diku.dk>
  *  @author and a cast of thousands...
@@ -248,7 +246,7 @@ namespace ACE_OS
   int shutdown (ACE_HANDLE handle,
                 int how);
 
-#if defined (__linux__) && defined (ACE_HAS_IPV6)
+#if defined (ACE_LINUX) && defined (ACE_HAS_IPV6)
   ACE_NAMESPACE_INLINE_FUNCTION
   unsigned int if_nametoindex (const char *ifname);
 
@@ -260,7 +258,7 @@ namespace ACE_OS
 
   ACE_NAMESPACE_INLINE_FUNCTION
   void if_freenameindex (struct if_nameindex *ptr);
-#endif /* __linux__ && ACE_HAS_IPV6 */
+#endif /* ACE_LINUX && ACE_HAS_IPV6 */
 
   /// Initialize WinSock before first use (e.g., when a DLL is first
   /// loaded or the first use of a socket() call.

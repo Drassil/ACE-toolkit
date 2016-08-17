@@ -3,8 +3,6 @@
 // Current program version number.
 
 /**
- * $Id: Version.cpp 91671 2010-09-08 18:39:23Z johnnyw $
- *
  * Copyright (C) 1989 Free Software Foundation, Inc.
  * written by Douglas C. Schmidt (schmidt@cs.wustl.edu)
  *

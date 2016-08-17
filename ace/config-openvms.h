@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: config-openvms.h 93571 2011-03-17 07:37:11Z olli $
-
 // The following configuration file is designed to work for OpenVMS 7.3-2
 
 #ifndef ACE_CONFIG_H
@@ -185,5 +183,8 @@
 
 #define ACE_LACKS_SETENV
 #define ACE_LACKS_UNSETENV
+
+#define ACE_HAS_SOCK_BUF_SIZE_MAX
+#define ACE_HAS_SOCK_BUF_SIZE_MAX_VALUE 65535
 
 #endif

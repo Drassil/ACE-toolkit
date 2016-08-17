@@ -4,11 +4,8 @@
 /**
  *  @file    ntsvc.h
  *
- *  $Id: ntsvc.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *    This is the definition of the sample NT Service class.  This example
  *    only runs on Win32 platforms.
- *
  *
  *  @author Gonzalo Diethelm and Steve Huston
  */

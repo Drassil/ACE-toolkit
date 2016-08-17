@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: bmakedllexe.mpt 1607 2009-08-04 16:29:55Z elliott_c $
-
 conditional_include "bmakecommon"
 
 configurations = Debug Release "Static Debug" "Static Release"

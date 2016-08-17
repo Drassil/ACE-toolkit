@@ -1,5 +1,3 @@
-// $Id: Jaws_IO.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Message_Block.h"
 #include "ace/SOCK_Stream.h"
 #include "ace/Filecache.h"

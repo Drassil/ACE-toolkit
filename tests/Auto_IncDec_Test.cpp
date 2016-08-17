@@ -3,11 +3,8 @@
 /**
  *  @file     Auto_IncDec_Test.cpp
  *
- *  $Id: Auto_IncDec_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a simple test of the Auto Increment/Decrement Class in
  *   ACE.
- *
  *
  *  @author  Edan Ayal <EdanA@cti2.com>
  */

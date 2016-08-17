@@ -1,5 +1,3 @@
-// $Id: file-reverse.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Print a file in reverse by using the ACE memory mapped file
 // wrapper.  It is SO easy to do compared with alternatives!
 

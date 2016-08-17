@@ -3,12 +3,9 @@
 /**
  *  @file    test_proactor.cpp
  *
- *  $Id: test_proactor.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This program illustrates how the <ACE_Proactor> can be used to
  *  implement an application that does various asynchronous
  *  operations.
- *
  *
  *  @author Irfan Pyarali <irfan@cs.wustl.edu>
  */

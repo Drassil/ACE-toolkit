@@ -1,5 +1,3 @@
-// $Id: PMC_Flo.cpp 81993 2008-06-16 20:26:16Z sowayaa $
-
 #include "Options.h"
 #include "BS_Client.h"
 #include "PMC_Flo.h"

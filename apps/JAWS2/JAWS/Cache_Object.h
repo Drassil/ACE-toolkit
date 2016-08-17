@@ -1,7 +1,5 @@
 // -*- C++ -*-
 
-// $Id: Cache_Object.h 93367 2011-02-12 09:19:17Z johnnyw $
-
 
 #ifndef JAWS_CACHE_OBJECT_H
 #define JAWS_CACHE_OBJECT_H

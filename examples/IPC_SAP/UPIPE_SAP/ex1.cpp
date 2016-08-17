@@ -3,11 +3,8 @@
 /**
  *  @file   ex1.cpp
  *
- *  $Id: ex1.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  Example for using <ACE_UPIPE_SAP> and <ACE_Thread> for
  *  intra-process communication.
- *
  *
  *  @author Gerhard Lenzer and Douglas C. Schmidt
  */

@@ -5,10 +5,7 @@
 /**
  *  @file    ctr64.h
  *
- *  $Id: ctr64.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  SNMP Counter64 class definition.
- *
  *
  *  @author Peter E Mellquist
  */

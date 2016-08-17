@@ -1,5 +1,3 @@
-// $Id: Message_Blocks.cpp 93500 2011-03-07 16:19:27Z vzykov $
-
 #include "ace/OS_main.h"
 #include "ace/OS_Memory.h"
 #include "ace/OS_NS_stdio.h"

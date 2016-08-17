@@ -4,8 +4,6 @@
 /**
  *  @file    File_Manager.h
  *
- *  $Id: File_Manager.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Douglas C. Schmidt
  */
 //=============================================================================

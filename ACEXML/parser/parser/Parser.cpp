@@ -1,5 +1,3 @@
-// $Id: Parser.cpp 91257 2010-08-03 11:54:04Z johnnyw $
-
 #include "ACEXML/parser/parser/Parser.h"
 
 #if !defined (__ACEXML_INLINE__)
@@ -1735,7 +1733,7 @@ ACEXML_Parser::parse_child (int skip_open_paren)
     }
 
   ACEXML_Char node_type = 0;
-  ACEXML_Char nextch;
+  ACEXML_Char nextch = 0;
 
   do {
     this->check_for_PE_reference ();
@@ -1902,7 +1900,7 @@ ACEXML_Char*
 ACEXML_Parser::parse_reference_name (void)
 {
   ACEXML_Char ch = this->get ();
-  if (!this->isLetter (ch) && (ch != '_' || ch != ':'))
+  if (!this->isLetter (ch) && (ch != '_' && ch != ':'))
     return 0;
   while (ch) {
     this->alt_stack_.grow (ch);

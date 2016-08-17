@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_netbsd.GNU 93437 2011-02-26 07:26:20Z olli $
 
 # platform_netbsd.GNU
 

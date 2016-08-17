@@ -4,8 +4,6 @@
 /**
  *  @file    DefaultHandler.h
  *
- *  $Id: DefaultHandler.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -25,7 +23,7 @@
 #include "ACEXML/common/ErrorHandler.h"
 
 /**
- * @class ACEXML_DefaultHandler DefaultHandler.h "ACEXML/common/DefaultHandler.h"
+ * @class ACEXML_DefaultHandler
  *
  * @brief ACEXML_DefaultHandler
  *

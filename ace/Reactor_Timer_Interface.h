@@ -4,8 +4,6 @@
 /**
  *  @file    Reactor_Timer_Interface.h
  *
- *  $Id: Reactor_Timer_Interface.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */
 //=============================================================================

@@ -1,6 +1,5 @@
 #!/pkg/gnu/bin//perl5
 #
-#$Id: webstone-gui.pl 91813 2010-09-17 07:52:52Z johnnyw $
 
 require 'conf/paths.pl';
 

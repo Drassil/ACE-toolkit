@@ -3,11 +3,8 @@
 /**
  *  @file    wpdu.cpp
  *
- *  $Id: wpdu.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Adapter class. Converts between raw wire format and Pdu objects
  *  that can be stuffed out a I/O port or reconstructed
- *
  *
  *  @author Michael R. MacFaden rework the class api and impl using ACEPeter E Mellquist  implementation/code from snmp++ snmpmsg class
  */
@@ -123,7 +120,6 @@ int wpdu::set_trap_info(snmp_pdu *raw_pdu, const Pdu& pdu) const
      cmu_snmp::free_pdu( raw_pdu);
      return SNMP_CLASS_INVALID_NOTIFYID;
   }
-
 
   raw_pdu->specific_type=0;
 
@@ -380,8 +376,7 @@ int wpdu::get_pdu(Pdu& pdu, snmp_version& version)
   if (iovec_.iov_len == 0)
     return -1; // NO DATA
 
-  snmp_pdu *raw_pdu;
-  raw_pdu = cmu_snmp::pdu_create(0);
+  snmp_pdu *raw_pdu = cmu_snmp::pdu_create(0);
   if (!raw_pdu) {
     return SNMP_CLASS_RESOURCE_UNAVAIL;
   }

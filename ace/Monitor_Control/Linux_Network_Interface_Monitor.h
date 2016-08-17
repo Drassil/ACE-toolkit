@@ -4,8 +4,6 @@
 /**
  * @file Linux_Network_Interface_Monitor.h
  *
- * $Id: Linux_Network_Interface_Monitor.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  * @author Jeff Parsons <j.parsons@vanderbilt.edu>
  */
 //=============================================================================
@@ -23,7 +21,7 @@
 
 #include "ace/Monitor_Control/Monitor_Control_export.h"
 
-#if defined (linux) || defined (AIX)
+#if defined (ACE_LINUX) || defined (AIX)
 
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
@@ -69,7 +67,7 @@ namespace ACE
 
 ACE_END_VERSIONED_NAMESPACE_DECL
 
-#endif /* defined (linux) || defined (AIX) */
+#endif /* defined (ACE_LINUX) || defined (AIX) */
 
 #include /**/ "ace/post.h"
 

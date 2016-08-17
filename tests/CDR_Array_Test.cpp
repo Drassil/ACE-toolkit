@@ -3,15 +3,12 @@
 /**
  *  @file    CDR_Array_Test.cpp
  *
- *  $Id: CDR_Array_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Checks ACE_OutputCDR::write_XX_array.
  *  Checks ACE_InputCDR::read_XX_array.
  *  Checks operator<< and operator>> for CDR Streams in
  *  each of the basic CDR types.
  *  Gives a measure of the speed of the ACE CDR streams wrt those
  *  operations.
- *
  *
  *  @author Cristian Ferretti <cristian_ferretti@yahoo.com>
  */
@@ -622,7 +619,7 @@ CDR_Test<T, H>::do_test (int total, int niter, int use_array,
             CDR_Test<T, H>::ttoh (cv, cs);
             ACE_ERROR((LM_ERROR,
                        ACE_TEXT ( "Wrong value at pos %d:" )
-                       ACE_TEXT ( " '%s' should be '%s'.\n" ),
+                       ACE_TEXT ( " '%C' should be '%C'.\n" ),
                        i, rs, cs));
             errors++;
             if (errors == maxerrors)
@@ -788,7 +785,6 @@ struct LongHelper
     }
 };
 
-#if !defined (ACE_LACKS_LONGLONG_T)
 struct LongLongHelper
 {
   static const ACE_TCHAR* name ()
@@ -821,7 +817,6 @@ struct LongLongHelper
       return sizeof(ACE_CDR::LongLong);
     }
 };
-#endif /* ! ACE_LACKS_LONGLONG_T */
 
 struct CharHelper
 {
@@ -981,12 +976,10 @@ run_main (int argc, ACE_TCHAR *argv[])
         CDR_Test<ACE_CDR::Float, FloatHelper>
           test (ftotal, niter, use_array);
       }
-#if !defined (ACE_LACKS_LONGLONG_T)
       {
         CDR_Test<ACE_CDR::LongLong, LongLongHelper>
           test (qtotal, niter, use_array);
       }
-#endif /* ! ACE_LACKS_LONGLONG_T */
       {
         CDR_Test<ACE_CDR::Long, LongHelper>
           test (wtotal, niter, use_array);

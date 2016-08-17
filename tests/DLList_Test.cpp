@@ -3,10 +3,7 @@
 /**
  *  @file    DLList_Test.cpp
  *
- *  $Id: DLList_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This test illustrates the use of <ACE_DLList>.
- *
  *
  *  @author James Hu <jxh@cs.wustl.edu> and Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */

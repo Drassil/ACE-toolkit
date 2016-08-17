@@ -2,8 +2,8 @@ diff -u -r -N ./JAWS3/jaws3/Timer.cpp /c/dev/Win32/ACE_wrappers/apps/JAWS3/jaws3
 --- ./JAWS3/jaws3/Timer.cpp	Tue Apr 25 16:24:21 2000
 +++ /c/dev/Win32/ACE_wrappers/apps/JAWS3/jaws3/Timer.cpp	Wed May 03 10:13:27 2000
 @@ -1,11 +1,11 @@
--// $Id: jaws3-msvc.pat 80826 2008-03-04 14:51:23Z wotte $
-+// $Id: jaws3-msvc.pat 80826 2008-03-04 14:51:23Z wotte $
+-// $Id$
++// $Id$
  
  #define JAWS_BUILD_DLL
  

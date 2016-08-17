@@ -1,5 +1,3 @@
-// $Id: Drwho_Node.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Drwho_Node.h"
 
 Drwho_Node::Drwho_Node (const char *h_name, Drwho_Node *n)

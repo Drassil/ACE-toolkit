@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: MessageInfo.h 94075 2011-05-23 06:57:42Z johnnyw $
-
 #ifndef MESSAGE_INFO_H
 #define MESSAGE_INFO_H
 

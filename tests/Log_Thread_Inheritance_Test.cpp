@@ -1,5 +1,3 @@
-// $Id: Log_Thread_Inheritance_Test.cpp 93489 2011-03-06 09:25:23Z johnnyw $
-
 #include "test_config.h"
 #include "ace/Log_Msg.h"
 #include "ace/Task.h"

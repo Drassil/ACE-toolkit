@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: Export.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(*Lib) : acelib {
   sharedname    = Export_Lib
   dynamicflags += TEST_BUILD_DLL

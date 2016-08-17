@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: SPIPE-acceptor.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef SP_ACCEPTOR_H
 #define SP_ACCEPTOR_H
 

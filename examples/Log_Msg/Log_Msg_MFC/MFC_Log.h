@@ -4,8 +4,6 @@
 /**
  *  @file    MFC_Log.h
  *
- *  $Id: MFC_Log.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Craig Rodrigues <crodrigu@bbn.com>
  *  @author Chris Hafey <chafey@stentor.com>
  *  @author Don Hinton <dhinton@ieee.org>

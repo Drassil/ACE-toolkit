@@ -1,5 +1,3 @@
-// $Id: Locator_Request_Reply.cpp 92580 2010-11-15 09:48:02Z johnnyw $
-
 #if !defined (ACE_LOCATOR_REQUEST_REPLY_C)
 #define ACE_LOCATOR_REQUEST_REPLY_C
 

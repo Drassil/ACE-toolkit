@@ -1,5 +1,3 @@
-// $Id: ConnectionCache.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/INet/ConnectionCache.h"
 
 #if !defined (__ACE_INLINE__)

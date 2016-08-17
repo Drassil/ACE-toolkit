@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ssl.mpb 80826 2008-03-04 14:51:23Z wotte $
-
 // In the future, other ssl libraries could be supported
 // by creating a new xyzssl.mpb similar to openssl.mpb.
 // You would then derive the following project from this base.

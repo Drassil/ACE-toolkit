@@ -1,5 +1,3 @@
-/* $Id: gettimeofday.c 91813 2010-09-17 07:52:52Z johnnyw $ */
-
 /*
  *  This file defines functions that are required for unix compatibility.
  *
@@ -10,7 +8,6 @@
  *
  *  FUNCTIONS:
  *     SHARED   _gettimeofday
- *
  */
 
 

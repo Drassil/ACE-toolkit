@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: svc_config.mpc 90826 2010-06-24 09:07:33Z johnnyw $
-
 project(*HA Status) : acelib, avoids_ace_for_tao {
   sharedname   = HA_Status
   dynamicflags += HASTATUS_BUILD_DLL

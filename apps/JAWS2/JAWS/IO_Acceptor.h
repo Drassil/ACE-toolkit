@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: IO_Acceptor.h 85415 2009-05-22 07:26:32Z johnnyw $
-
 #ifndef JAWS_IO_ACCEPTOR_H
 #define JAWS_IO_ACCEPTOR_H
 

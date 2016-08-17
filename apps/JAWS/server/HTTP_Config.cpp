@@ -1,5 +1,3 @@
-// $Id: HTTP_Config.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 // HTTP_Config.cpp
 
 #include "ace/OS_NS_stdlib.h"

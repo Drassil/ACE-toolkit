@@ -1,5 +1,3 @@
-// $Id: Reaper.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "JAWS/Reaper.h"
 #include "JAWS/Concurrency.h"
 #include "JAWS/IO_Acceptor.h"

@@ -1,5 +1,3 @@
-// $Id: notification.cpp 93359 2011-02-11 11:33:12Z mcorino $
-
 #include "ace/OS_NS_unistd.h"
 #include "ace/Service_Config.h"
 #include "ace/Reactor.h"

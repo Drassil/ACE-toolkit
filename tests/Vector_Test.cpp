@@ -3,10 +3,7 @@
 /**
  *  @file    Vector_Test.cpp
  *
- *  $Id: Vector_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This is a simple test of the ACE_Vector class and its iterators.
- *
  *
  *  @author Gonzalo A. Diethelm <gonzalo.diethelm@aditiva.com> and Karl-Heinz Wind <wind@itq.de>
  */

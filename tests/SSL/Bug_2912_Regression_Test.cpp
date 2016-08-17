@@ -1,8 +1,6 @@
 /**
  * @file Bug_2912_Regression_Test.cpp
  *
- * $Id: Bug_2912_Regression_Test.cpp 91750 2010-09-14 09:40:06Z johnnyw $
- *
  * Reproduces the problems reported in bug 2912:
  *   http://deuce.doc.wustl.edu/bugzilla/show_bug.cgi?id=2912
  *
@@ -41,7 +39,7 @@
    test requires */
 #if defined (ACE_HAS_THREADS) && \
     (defined (ACE_HAS_WIN32_OVERLAPPED_IO) || defined (ACE_HAS_AIO_CALLS)) && \
-    !defined (linux)
+    !defined (ACE_LINUX)
 
 /**
  * Data payload sent between client and server.  Test is not dependent

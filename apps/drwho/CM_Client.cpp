@@ -1,5 +1,3 @@
-// $Id: CM_Client.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "Options.h"
 #include "Multicast_Manager.h"
 #include "CM_Client.h"

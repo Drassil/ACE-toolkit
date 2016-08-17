@@ -1,5 +1,3 @@
-// $Id: Signature.cpp 91691 2010-09-09 11:57:39Z johnnyw $
-
 #include "Signature.h"
 
 Signature::Signature (const ACE_CString &name)

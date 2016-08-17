@@ -1,5 +1,3 @@
-// $Id: SOCK_SEQPACK_srv.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "ace/Multihomed_INET_Addr.h"
 #include "ace/SOCK_SEQPACK_Association.h"
 #include "ace/SOCK_SEQPACK_Acceptor.h"

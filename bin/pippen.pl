@@ -1,4 +1,3 @@
-# $Id: pippen.pl 80826 2008-03-04 14:51:23Z wotte $
 
 BEGIN {
     use Cwd;

@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ace_gtk.mpb 93117 2011-01-20 12:11:28Z mcorino $
-
 project {
   macros   += ACE_HAS_GTK
 

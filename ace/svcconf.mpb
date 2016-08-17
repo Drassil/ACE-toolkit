@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: svcconf.mpb 89216 2010-02-25 07:39:30Z johnnyw $
-
 feature(ace_svcconf) {
   macros -= ACE_LACKS_ACE_SVCCONF
 

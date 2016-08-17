@@ -1,7 +1,11 @@
 # -*- Makefile -*-
-# $Id: platform_clang_common.GNU 91093 2010-07-15 09:12:20Z wotte $
 #
 # Common file help turn on/off explicit template instantiation
+
+ifeq ($(openmp),1)
+FLAGS_C_CC += -fopenmp
+LDFLAGS += -fopenmp
+endif
 
 ifeq ($(CXX),insure)
   # insure does not pass through the -dumpversion option.
@@ -62,6 +66,14 @@ ifeq ($(no_strict_aliasing), 1)
   CCFLAGS += -fno-strict-aliasing
 endif
 
+ifeq ($(c++0x),1)
+  CCFLAGS += -std=c++0x
+else
+  ifeq ($(c++11),1)
+    CCFLAGS += -std=c++11
+  endif # c++11
+endif # c++0x
+
 ifeq ($(shared_libs), 1)
   ifneq ($(static_libs_only), 1)
     # Add all symbols to the dynamic symbol table.  Needed to enable
@@ -108,3 +120,4 @@ else
   CPPFLAGS += -DACE_HAS_CUSTOM_EXPORT_MACROS=0
 endif # shared_libs
 
+FLAGS_C_CC += -W -Wall

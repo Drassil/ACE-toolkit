@@ -1,6 +1,4 @@
 /**
- * $Id: Client.cpp 91626 2010-09-07 10:59:20Z johnnyw $
- *
  * A simple client program using ACE_Svc_Handler and ACE_Connector.
  */
 

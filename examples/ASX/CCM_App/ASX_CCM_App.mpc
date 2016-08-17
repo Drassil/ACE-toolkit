@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ASX_CCM_App.mpc 81239 2008-04-04 22:28:48Z iliyan $
-
 project(*Lib) : acelib {
   sharedname = CCM_App
   Source_Files {

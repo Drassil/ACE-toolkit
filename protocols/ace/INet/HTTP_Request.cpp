@@ -1,5 +1,3 @@
-// $Id: HTTP_Request.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/String_Base.h"
 #include "ace/OS_NS_ctype.h"
 #include "ace/INet/HTTP_Request.h"

@@ -1,6 +1,4 @@
 /*
- * $Id: RecordingDevice_Text.cpp 80826 2008-03-04 14:51:23Z wotte $
- *
  * A RecordingDevice that listens to a socket and collects text.
  */
 

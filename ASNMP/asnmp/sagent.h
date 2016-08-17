@@ -5,8 +5,6 @@
 /**
  *  @file    sagent.h
  *
- *  $Id: sagent.h 80826 2008-03-04 14:51:23Z wotte $
- *
  * SNMP agent class defintion. The sagent class provides an object oriented
  * approach for creating SNMP Agents. The sagent class is an encapsulation of SNMP
  * sessions, gets, sets, etc.
@@ -43,34 +41,32 @@
  */
 class ASNMP_Export sagent : public ACE_Event_Handler, private Snmp
 {
- public:
-
-
-    // override the next three methods (callbacks) to implment your agent
+public:
+    // override the next three methods (callbacks) to implement your agent
     //
 
-    /// retrieve data from a peer agent for a given list of oid values
-    virtual int handle_get( Pdu &pdu, UdpTarget &target) = 0;
+  /// retrieve data from a peer agent for a given list of oid values
+  virtual int handle_get( Pdu &pdu, UdpTarget &target) = 0;
 
-    /// retrieve data lexically adjacent to the oids specified in the pdu
-    /// from the peer agent
-    virtual int handle_get_next( Pdu &pdu, UdpTarget &target) = 0;
+  /// retrieve data lexically adjacent to the oids specified in the pdu
+  /// from the peer agent
+  virtual int handle_get_next( Pdu &pdu, UdpTarget &target) = 0;
 
-    /// set data in the agent from the list of oids in the pdu
-    virtual int handle_set( Pdu &pdu, UdpTarget &target) = 0;
+  /// set data in the agent from the list of oids in the pdu
+  virtual int handle_set( Pdu &pdu, UdpTarget &target) = 0;
 
-    /// new pdu received from mgr (reactor calls this)
-    virtual int handle_input(ACE_HANDLE);
+  /// new pdu received from mgr (reactor calls this)
+  virtual int handle_input(ACE_HANDLE);
 
-    /// retrieve io descriptor (reactor uses this)
-    virtual ACE_HANDLE get_handle() const;
+  /// retrieve io descriptor (reactor uses this)
+  virtual ACE_HANDLE get_handle() const;
 
-    /// send a response pdu to the mgr
-    int respond(Pdu& pdu, UdpTarget& tgt);
+  /// send a response pdu to the mgr
+  int respond(Pdu& pdu, UdpTarget& tgt);
 
- protected:
-    sagent(unsigned short port = DEF_AGENT_PORT);
-    virtual ~sagent();
+protected:
+  sagent(unsigned short port = DEF_AGENT_PORT);
+  virtual ~sagent();
 
 private:
   sagent(const sagent&);

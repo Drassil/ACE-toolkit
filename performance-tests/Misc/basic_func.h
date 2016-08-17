@@ -3,10 +3,7 @@
 /**
  *  @file    basic_func.h
  *
- *  $Id: basic_func.h 93640 2011-03-24 18:36:12Z johnnyw $
- *
  *  For use with basic_perf.cpp.
- *
  *
  *  @author David Levine
  */

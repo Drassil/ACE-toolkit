@@ -1,5 +1,3 @@
-// $Id: transceiver.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 // Test program for the event transceiver.  This program can play the
 // role of either Consumer or Supplier.  You can terminate this
 // program by typing ^C....

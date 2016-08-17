@@ -2,12 +2,9 @@
 /**
  *  @file   config-win32-msvc.h
  *
- *  $Id: config-win32-msvc.h 93543 2011-03-14 08:25:46Z johnnyw $
- *
  *  @brief  Microsoft Visual C++ configuration file.
  *
- *  This file is the ACE configuration file for Microsoft Visual C++ versions
- *  5.0, 6.0, and 7.0 (.NET)
+ *  This file is the ACE configuration file for Microsoft Visual C++
  *
  *  @author Darrell Brunsch <brunsch@cs.wustl.edu>
  */
@@ -41,7 +38,13 @@
 #endif /* _WIN32_WCE */
 
 //FUZZ: disable check_for_msc_ver
-#if (_MSC_VER >= 1600)
+#if (_MSC_VER >= 1900)
+# include "ace/config-win32-msvc-14.h"
+#elif (_MSC_VER >= 1800)
+# include "ace/config-win32-msvc-12.h"
+#elif (_MSC_VER >= 1700)
+# include "ace/config-win32-msvc-11.h"
+#elif (_MSC_VER >= 1600)
 # include "ace/config-win32-msvc-10.h"
 #elif (_MSC_VER >= 1500)
 # include "ace/config-win32-msvc-9.h"

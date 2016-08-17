@@ -3,7 +3,6 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
     if 0;
 
 # -*- perl -*-
-# $Id: generate_doxygen.pl 91755 2010-09-14 11:35:53Z johnnyw $
 #
 
 require POSIX;
@@ -11,6 +10,7 @@ require File::Path;
 
 use Cwd;
 use File::Spec;
+use File::Temp qw/ tempfile tempdir /;
 use Env qw(ACE_ROOT TAO_ROOT CIAO_ROOT DDS_ROOT);
 
 # Configuration and default values
@@ -33,6 +33,7 @@ $exclude_dance = !-r "$DANCE_ROOT/VERSION";
 $verbose = 0;
 $perl_path = '/usr/bin/perl';
 $html_output_dir = '.';
+$footer = '';
 
 $dds = 0;
 if (defined $DDS_ROOT && -r "$DDS_ROOT/VERSION") {
@@ -44,7 +45,6 @@ if (defined $DDS_ROOT && -r "$DDS_ROOT/VERSION") {
 }
 
 @ACE_DOCS = ('ace',
-             'ace_man',
              'ace_rmcast',
              'ace_ssl',
              'ace_qos',
@@ -128,6 +128,9 @@ sub parse_args {
     } elsif ($ARGV[0] eq "-perl_path" && $#ARGV >= 1) {
       $perl_path = $ARGV[1];
       shift;
+    } elsif ($ARGV[0] eq "-footer" && $#ARGV >= 1) {
+      $footer = $ARGV[1];
+      shift;
     } elsif ($ARGV[0] eq "-html_output" && $#ARGV >= 1) {
       $html_output_dir = $ARGV[1];
       shift;
@@ -171,7 +174,7 @@ sub generate_doxy_files {
     }
 
     my $input = "$ROOT_DIR/etc/".$i.".doxygen";
-    my $output = "/tmp/".$i.".".$$.".doxygen";
+    ($fh, $output) = tempfile(TEMPLATE => 'XXXXXXXX', SUFFIX => '.doxygen', TMPDIR => 1, DESTROY => 1);
 
     open(DOXYINPUT, $input)
       || die "Cannot open doxygen input file $input\n";
@@ -229,6 +232,7 @@ sub generate_doxy_files {
           $value .= ' ' . $line;
 	}
 	my @values = split(' ', $value);
+  print DOXYOUTPUT "HTML_FOOTER = $footer\n";
 	map {$_ = $html_output_dir . '/' . $_; } @values;
 	print DOXYOUTPUT 'TAGFILES = ' . join(' ', @values) . "\n";
 	next;

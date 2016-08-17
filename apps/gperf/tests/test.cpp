@@ -1,5 +1,3 @@
-// $Id: test.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Tests the generated perfect hash function.
 
 // The -v option prints diagnostics as to whether a word is in the set

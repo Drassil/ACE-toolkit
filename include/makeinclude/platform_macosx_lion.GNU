@@ -1,6 +1,3 @@
-# $Id: platform_macosx_lion.GNU 93965 2011-04-21 08:16:30Z johnnyw $
-
-ssl=0
 
 INSLIB?=$(ACE_ROOT)/lib
 
@@ -16,6 +13,14 @@ ifeq ($(buildbits),universal)
   FLAGS_C_CC += -arch i386 -arch x86_64
   LDFLAGS    += -arch i386 -arch x86_64
 endif
+
+ifeq (,$(buildbits))
+  FLAGS_C_CC += -m64
+  LDFLAGS    += -m64
+endif
+
+CC:=clang
+CXX:=clang++
 
 PLATFORM_NDDS_FLAGS=-ppPath cpp-4.2 -I.
 

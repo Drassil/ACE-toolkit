@@ -1,5 +1,3 @@
-// $Id: SPIPE-connector.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #if !defined (SPIPE_CONNECTOR_C)
 
 #define SPIPE_CONNECTOR_C

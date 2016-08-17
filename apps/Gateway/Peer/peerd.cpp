@@ -3,12 +3,9 @@
 /**
  *  @file    peerd.cpp
  *
- *  $Id: peerd.cpp 93652 2011-03-28 08:55:39Z johnnyw $
- *
  *  Driver for the peer daemon (peerd).  Note that this is
  *  completely generic code due to the Service Configurator
  *  framework!
- *
  *
  *  @author Douglas C. Schmidt
  */

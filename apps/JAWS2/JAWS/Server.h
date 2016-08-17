@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Server.h 82739 2008-09-16 12:20:46Z johnnyw $
-
 #ifndef JAWS_SERVER_H
 #define JAWS_SERVER_H
 

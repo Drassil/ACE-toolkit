@@ -3,12 +3,9 @@
 /**
  *  @file    Naming_Test.cpp
  *
- *  $Id: Naming_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This is a test to illustrate the Naming Services. The test
  *    does binds, rebinds, finds, and unbinds on name bindings using
  *    the local naming context.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu> and Irfan Pyarali <irfan@cs.wustl.edu>
  */
@@ -17,7 +14,7 @@
 
 #include "test_config.h"
 #include "randomize.h"
-#include "ace/ACE.h"
+#include "ace/Lib_Find.h"
 #include "ace/SString.h"
 #include "ace/Naming_Context.h"
 #include "ace/Profile_Timer.h"
@@ -221,7 +218,7 @@ run_main (int argc, ACE_TCHAR *argv[])
   ** mapped areas of memory, like the heap, or the C library, and get very
   ** unexpected results.    (Steve Huston, 24-August-2007)
   */
-# if defined (linux) && defined (__x86_64__)
+# if defined (ACE_LINUX) && defined (__x86_64__)
   name_options->base_address ((char*)0x3c00000000);
 #endif
   bool unicode = false;
@@ -244,8 +241,7 @@ run_main (int argc, ACE_TCHAR *argv[])
       // for Tru64 when the current directory is NFS mounted from a
       // system that does not properly support locking.
       ACE_TCHAR temp_dir [MAXPATHLEN];
-      if (ACE::get_temp_dir (temp_dir, MAXPATHLEN - 15) == -1)
-        // -15 for ace-file-XXXXXX
+      if (ACE::get_temp_dir (temp_dir, MAXPATHLEN) == -1)
         {
           ACE_ERROR_RETURN ((LM_ERROR,
                              ACE_TEXT ("Temporary path too long, ")
@@ -256,13 +252,18 @@ run_main (int argc, ACE_TCHAR *argv[])
         {
           ACE_OS::chdir (temp_dir);
         }
-      ACE_OS::strcpy (temp_file, pname);
-      ACE_OS::strcat (temp_file, ACE_TEXT ("XXXXXX"));
+      // Set the database name using the pid. mktemp isn't always available.
+      ACE_OS::snprintf(temp_file, BUFSIZ,
+#if !defined (ACE_WIN32) && defined (ACE_USES_WCHAR)
+                       ACE_TEXT ("%ls%d"),
+#else
+                       ACE_TEXT ("%s%d"),
+#endif
+                       pname,
+                       (int)(ACE_OS::getpid ()));
 
-      // Set the database name using mktemp to generate a unique file name
-      name_options->database (ACE_OS::mktemp (temp_file));
+      name_options->database (temp_file);
     }
-
   if (ns_context->open (ACE_Naming_Context::PROC_LOCAL, 1) == -1)
     {
       ACE_ERROR_RETURN ((LM_ERROR,
@@ -270,7 +271,6 @@ run_main (int argc, ACE_TCHAR *argv[])
                          ACE_TEXT ("failed")),
                         -1);
     }
-
   ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("time to test %d iterations using %s\n"),
               ACE_NS_MAX_ENTRIES, name_options->use_registry () ?
               ACE_TEXT ("Registry") : ACE_TEXT ("ACE")));

@@ -3,11 +3,8 @@
 /**
  *  @file    task_five.cpp
  *
- *  $Id: task_five.cpp 93639 2011-03-24 13:32:13Z johnnyw $
- *
  * Stress testing thread creation and thread cancellation using
  * ACE_Task.
- *
  *
  *  @author Author: Detlef Becker <Detlef.Becker@med.siemens.de>
  */

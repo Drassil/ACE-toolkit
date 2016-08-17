@@ -2,10 +2,7 @@
 /**
  *  @file    RW_Process_Mutex_Test.cpp
  *
- *  $Id: RW_Process_Mutex_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Tests an <ACE_RW_Process_Mutex> shared between multiple child processes.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */

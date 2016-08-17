@@ -1,5 +1,3 @@
-// $Id: test_URL.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "Locator_Request_Reply.h"
 
 int ACE_TMAIN (int , ACE_TCHAR *[])

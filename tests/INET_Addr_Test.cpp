@@ -3,12 +3,9 @@
 /**
  *  @file    INET_Addr_Test.cpp
  *
- *  $Id: INET_Addr_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   Performs several tests on the ACE_INET_Addr class.  It creates several
  *   IPv4 and IPv6 addresses and checks that the address formed by the
  *   class is valid.
- *
  *
  *  @author John Aughey (jha@aughey.com)
  */
@@ -20,10 +17,11 @@
 #include "ace/INET_Addr.h"
 #include "ace/Log_Msg.h"
 #include "ace/OS_NS_arpa_inet.h"
+#include "ace/SString.h"
 
 // Make sure that ACE_Addr::addr_type_ is the same
 // as the family of the inet_addr_.
-int check_type_consistency (const ACE_INET_Addr &addr)
+static int check_type_consistency (const ACE_INET_Addr &addr)
 {
   int family = -1;
 
@@ -52,6 +50,90 @@ int check_type_consistency (const ACE_INET_Addr &addr)
   return 0;
 }
 
+static bool test_tao_use (void)
+{
+  char host[256];
+  if (::gethostname (host, 255) != 0)
+    {
+      ACE_ERROR ((LM_ERROR,
+                  ACE_TEXT ("Test TAO Use fail %p\n"),
+                  ACE_TEXT ("gethostname")));
+      return false;
+    }
+
+  ACE_INET_Addr addr;
+  addr.set ((unsigned short)0, host);
+
+  ACE_CString full (host);
+  full += ":12345";
+
+  addr.set (full.c_str ());
+
+  u_short p = addr.get_port_number ();
+
+  if (p != 12345)
+    {
+      ACE_ERROR ((LM_ERROR,
+                  ACE_TEXT ("Test TAO Use expected port 12345 got %d\n"),
+                  p));
+      return false;
+   }
+
+  ACE_DEBUG ((LM_DEBUG,
+              ACE_TEXT ("Test TAO Use passed\n")));
+  return true;
+}
+
+
+static bool test_multiple (void)
+{
+
+  bool success = true;
+
+  // Check the behavior when there are multiple addresses assigned to a name.
+  // The NTP pool should always return multiples, though always different.
+  ACE_INET_Addr ntp;
+  if (ntp.set (123, ACE_TEXT ("pool.ntp.org")) == -1)
+    {
+      // This is just a warning to prevent fails on lookups on hosts with no
+      // DNS service. The real value of this test is to accurately get
+      // multiples from the result.
+      ACE_ERROR ((LM_WARNING, ACE_TEXT ("%p\n"), ACE_TEXT ("pool.ntp.org")));
+      return true;
+    }
+  size_t count = 0;
+  ACE_TCHAR addr_string[256];
+  do
+    {
+      ++count;      // If lookup succeeded, there's at least one
+      ntp.addr_to_string (addr_string, sizeof (addr_string));
+      ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("IPv4 %B: %s\n"), count, addr_string));
+    }
+  while (ntp.next ());
+  success = count > 1;
+
+#if defined (ACE_HAS_IPV6)
+  ACE_INET_Addr ntp6;
+  if (ntp6.set (123, ACE_TEXT ("2.pool.ntp.org"), 1, AF_INET6) == -1)
+    {
+      ACE_ERROR ((LM_ERROR, ACE_TEXT ("%p\n"), ACE_TEXT ("2.pool.ntp.org")));
+      return false;
+    }
+  count = 0;
+  do
+    {
+      ++count;      // If lookup succeeded, there's at least one
+      ntp6.addr_to_string (addr_string, sizeof (addr_string));
+      ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("IPv6 %B: %s\n"), count, addr_string));
+    }
+  while (ntp6.next ());
+  if (count <= 1)
+    success = false;
+#endif /* ACE_HAS_IPV6 */
+
+  return success;
+}
+
 struct Address {
   const char* name;
   bool loopback;
@@ -62,6 +144,94 @@ int run_main (int, ACE_TCHAR *[])
   ACE_START_TEST (ACE_TEXT ("INET_Addr_Test"));
 
   int status = 0;     // Innocent until proven guilty
+
+  // Try to set up known IP and port.
+  u_short port (80);
+  ACE_UINT32 const ia_any = INADDR_ANY;
+  ACE_INET_Addr local_addr(port, ia_any);
+  status |= check_type_consistency (local_addr);
+  if (local_addr.get_port_number () != 80)
+    {
+      ACE_ERROR ((LM_ERROR,
+                  ACE_TEXT ("Got port %d, expecting 80\n"),
+                  (int)(local_addr.get_port_number ())));
+      status = 1;
+    }
+  if (local_addr.get_ip_address () != ia_any)
+    {
+      ACE_ERROR ((LM_ERROR, ACE_TEXT ("Mismatch on local IP addr\n")));
+      status = 1;
+    }
+
+  // Assignment constructor
+  ACE_INET_Addr local_addr2 (local_addr);
+  status |= check_type_consistency (local_addr2);
+  if (local_addr2.get_port_number () != 80)
+    {
+      ACE_ERROR ((LM_ERROR,
+                  ACE_TEXT ("Copy got port %d, expecting 80\n"),
+                  (int)(local_addr2.get_port_number ())));
+      status = 1;
+    }
+  if (local_addr2.get_ip_address () != ia_any)
+    {
+      ACE_ERROR ((LM_ERROR, ACE_TEXT ("Mismatch on copy local IP addr\n")));
+      status = 1;
+    }
+  if (local_addr != local_addr2)
+    {
+      ACE_ERROR ((LM_ERROR, ACE_TEXT ("Copy local addr mismatch\n")));
+      status = 1;
+    }
+
+  // Try to parse out a simple address:port string. Intentionally reuse
+  // the ACE_INET_Addr to ensure resetting an address works.
+  const char *addr_ports[] =
+    {
+      "127.0.0.1:80", "www.dre.vanderbilt.edu:80", 0
+    };
+  ACE_INET_Addr addr_port;
+  for (int i = 0; addr_ports[i] != 0; ++i)
+    {
+      if (addr_port.set (addr_ports[i]) == 0)
+        {
+          status |= check_type_consistency (addr_port);
+          if (addr_port.get_port_number () != 80)
+            {
+              ACE_ERROR ((LM_ERROR,
+                          ACE_TEXT ("Got port %d from %s\n"),
+                          (int)(addr_port.get_port_number ()),
+                          addr_ports[i]));
+              status = 1;
+            }
+          ACE_INET_Addr check (addr_ports[i]);
+          if (addr_port != check)
+            {
+              ACE_ERROR ((LM_ERROR, ACE_TEXT ("Reset on iter %d failed\n"), i));
+              status = 1;
+            }
+        }
+      else
+        {
+          // Sometimes this fails because the run-time host lacks the capability to
+          // resolve a name. But it shouldn't fail on the first one, 127.0.0.1.
+          if (i == 0)
+            {
+              ACE_ERROR ((LM_ERROR,
+                          ACE_TEXT ("%C: %p\n"),
+                          addr_ports[i],
+                          ACE_TEXT ("lookup")));
+              status = 1;
+            }
+          else
+            {
+              ACE_ERROR ((LM_WARNING,
+                          ACE_TEXT ("%C: %p\n"),
+                          addr_ports[i],
+                          ACE_TEXT ("lookup")));
+            }
+        }
+    }
 
   const char *ipv4_addresses[] =
     {
@@ -82,7 +252,7 @@ int run_main (int, ACE_TCHAR *[])
 
       ACE_OS::memcpy (&addr32, &addrv4, sizeof (addr32));
 
-      addr.set (80, ipv4_addresses[i]);
+      status |= !(addr.set (80, ipv4_addresses[i]) == 0);
       status |= check_type_consistency (addr);
 
       /*
@@ -96,7 +266,7 @@ int run_main (int, ACE_TCHAR *[])
                       ACE_TEXT ("0x%x != 0x%x\n"),
                       ipv4_addresses[i],
                       addr.get_ip_address (),
-                      addr32));
+                      ACE_HTONL (addr32)));
           status = 1;
         }
 
@@ -228,11 +398,25 @@ int run_main (int, ACE_TCHAR *[])
 
           if (0 != ACE_OS::strcmp (addr.get_host_name (), ipv6_names[i]))
             {
-              ACE_ERROR ((LM_WARNING,
-                          ACE_TEXT ("IPv6 name mismatch: %s (%s) != %s\n"),
-                          addr.get_host_name (),
-                          addr.get_host_addr (),
-                          ipv6_names[i]));
+              // Alias? Check lookup on the reverse.
+              ACE_INET_Addr alias_check;
+              if (alias_check.set (80, addr.get_host_name ()) == 0)
+                {
+                  if (addr != alias_check)
+                    ACE_ERROR ((LM_WARNING,
+                                ACE_TEXT ("IPv6 name mismatch: %s (%s) != %s\n"),
+                                addr.get_host_name (),
+                                addr.get_host_addr (),
+                                ipv6_names[i]));
+                }
+              else
+                {
+                  ACE_ERROR ((LM_WARNING,
+                              ACE_TEXT ("IPv6 reverse lookup mismatch: %s (%s) != %s\n"),
+                              addr.get_host_name (),
+                              addr.get_host_addr (),
+                              ipv6_names[i]));
+                }
             }
         }
     }
@@ -273,6 +457,21 @@ int run_main (int, ACE_TCHAR *[])
       ACE_ERROR ((LM_ERROR,
                   ACE_TEXT ("ACE_INET_Addr::string_to_addr() ")
                   ACE_TEXT ("failed to detect port number overflow\n")));
+      status = 1;
+    }
+
+  if (!test_tao_use ())
+    status = 1;
+
+  if (!test_multiple ())
+    status = 1;
+
+  ACE_INET_Addr a1 (80, "127.0.0.1");
+  ACE_INET_Addr a2 = a1;
+  if (a1 != a2)
+    {
+      ACE_ERROR ((LM_ERROR,
+                  ACE_TEXT ("Address equality check failed after assignment\n")));
       status = 1;
     }
 

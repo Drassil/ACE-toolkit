@@ -3,12 +3,9 @@
 /**
  *  @file    Recursive_Mutex_Test.cpp
  *
- *  $Id: Recursive_Mutex_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This test program verifies the functionality of the ACE_OS
  *    implementation of recursive mutexes on Win32 and Posix
  *    pthreads.
- *
  *
  *  @author Prashant Jain <pjain@cs.wustl.edu> and Douglas C. Schmidt <schmidt@cs.wustl.edu>
  */

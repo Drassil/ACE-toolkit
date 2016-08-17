@@ -7,8 +7,6 @@
  * This file provides utility functions to determine the encoding of a file
  * or a byte stream automatically.
  *
- *  $Id: Encoding.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Krishnakumar B <kitty@cs.wustl.edu>
  */
 //=============================================================================
@@ -26,7 +24,7 @@
 #include "ACEXML/common/XML_Types.h"
 
 /**
- * @class ACEXML_Encoding Encoding.h "ACEXML/common/Encoding.h"
+ * @class ACEXML_Encoding Encoding.h
  *
  * @brief ACEXML_Encoding
  *

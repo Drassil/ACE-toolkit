@@ -1,4 +1,3 @@
-// $Id: ConfigTreeCtrl.cpp 91813 2010-09-17 07:52:52Z johnnyw $
 #include "stdafx.h"
 #include "ConfigTreeCtrl.h"
 #include "MainFrame.h"

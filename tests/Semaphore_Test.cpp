@@ -3,11 +3,8 @@
 /**
  *  @file    Semaphore_Test.cpp
  *
- *  $Id: Semaphore_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test verifies the functionality of the <ACE_Thread_Semaphore>
  *  implementation.
- *
  *
  *  @author Darrell Brunsch <brunsch@cs.wustl.edu>
  */

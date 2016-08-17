@@ -3,10 +3,7 @@
 /**
  *  @file    udp_test.cpp
  *
- *  $Id: udp_test.cpp 93640 2011-03-24 18:36:12Z johnnyw $
- *
  *  Measures UDP round-trip performance.
- *
  *
  *  @author Fred Kuhns and David L. Levine
  */
@@ -261,15 +258,9 @@ Client::run (void)
 
       if (i < 0 )
         {
-#ifndef ACE_LACKS_LONGLONG_T
           ACE_DEBUG ((LM_DEBUG,
                       "Ignoring first sample of %u usecs\n",
                        (ACE_UINT32) (sample)));
-#else
-          ACE_DEBUG ((LM_DEBUG,
-                      "Ignoring first sample of %u usecs\n",
-                      (ACE_UINT32) (sample.lo())));
-#endif
           continue;
         }
       else if (max_allow > 0  &&  sample > max_allow)
@@ -364,13 +355,10 @@ Client::run (void)
         }
     }
 
-  if (window)
-    {
-      window = window * 1000; // convert to nsec.
-      ndist = (int)((max-min) / window) + 1;
-      Dist = (u_int *) ACE_OS::calloc (ndist,
-                                       sizeof (u_int));
-    }
+  window = window * 1000; // convert to nsec.
+  ndist = (int)((max-min) / window) + 1;
+  Dist = (u_int *) ACE_OS::calloc (ndist,
+                                   sizeof (u_int));
 
   for (i = 0; i < (ACE_INT32) nsamples; i++)
     {
@@ -597,7 +585,7 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv[])
           break;
         case 'w':
           window = ACE_OS::atoi (getopt.opt_arg ());
-          if (window < 0)
+          if (window < 2)
             ACE_ERROR_RETURN ((LM_ERROR,
                                "Invalid window!\n\n"),
                               1);

@@ -1,5 +1,3 @@
-// $Id: test_tli_acceptor.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 // ACE_TLI Server.
 
 #include "ace/TLI_Acceptor.h"

@@ -1,5 +1,3 @@
-// $Id: String_IOStream.h 90757 2010-06-22 07:52:02Z mcorino $
-
 /**
  * @file String_IOStream.h
  *

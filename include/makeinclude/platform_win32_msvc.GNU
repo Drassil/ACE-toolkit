@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_win32_msvc.GNU 88756 2010-01-27 22:52:17Z mitza $
 
 # TODO:
 # - per-source-file flag_overrides (gnu.mpd)
@@ -115,7 +114,7 @@ CCFLAGS = $(CFLAGS)
 CXXFLAGS = $(CFLAGS)
 RC_INCLUDE_FLAG = -I
 RC_OUTPUT_FLAG = -fo
-SYSTEMLIBS += advapi32.lib user32.lib
+SYSTEMLIBS += advapi32.lib user32.lib iphlpapi.lib
 MSVC_LINK = $(LD) $(SYSTEMLIBS) $(MSVC_LDFLAGS) $(patsubst %\,%,$(patsubst -L%,-libpath:%, $(subst /,\,$(LDFLAGS)))) $(patsubst -l%,%.lib,$(ACE_SHLIBS)) $(LIBS) -out:$@
 define SOLINK.cc.override
 $(MSVC_LINK) $(MSVC_DLLFLAGS) $^

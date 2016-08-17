@@ -1,4 +1,3 @@
-# $Id: platform_aix.GNU 91285 2010-08-05 08:29:30Z johnnyw $
 
 # AIX 5.x using the IBM C Set++ compiler.
 #

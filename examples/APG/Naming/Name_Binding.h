@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Name_Binding.h 94076 2011-05-23 07:11:11Z johnnyw $
-
 #ifndef NAME_BINDING_H
 #define NAME_BINDING_H
 

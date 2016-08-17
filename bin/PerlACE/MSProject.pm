@@ -1,5 +1,4 @@
 #! /usr/bin/perl
-# $Id: MSProject.pm 91813 2010-09-17 07:52:52Z johnnyw $
 
 package PerlACE::MSProject;
 

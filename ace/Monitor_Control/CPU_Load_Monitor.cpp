@@ -1,5 +1,3 @@
-// $Id: CPU_Load_Monitor.cpp 92173 2010-10-07 12:36:17Z olli $
-
 #include "ace/Monitor_Control/CPU_Load_Monitor.h"
 
 #if defined (ACE_HAS_MONITOR_FRAMEWORK) && (ACE_HAS_MONITOR_FRAMEWORK == 1)
@@ -8,7 +6,7 @@
 #include <sys/sysinfo.h>
 #endif
 
-#if defined (linux)
+#if defined (ACE_LINUX)
 #include "ace/OS_NS_stdio.h"
 #endif
 
@@ -26,7 +24,7 @@ namespace ACE
 #if defined (ACE_HAS_WIN32_PDH)
       , Windows_Monitor (ACE_TEXT("\\Processor(_Total)\\% Processor Time"))
 #endif
-#if defined (linux) || defined (ACE_HAS_KSTAT)
+#if defined (ACE_LINUX) || defined (ACE_HAS_KSTAT)
       , user_ (0)
       , wait_ (0)
       , kernel_ (0)
@@ -34,7 +32,7 @@ namespace ACE
       , prev_idle_ (0)
       , prev_total_ (0.0)
 #endif
-#if defined (linux)
+#if defined (ACE_LINUX)
       , file_ptr_ (0)
 #elif defined (ACE_HAS_KSTAT)
       , kstats_ (0)
@@ -51,13 +49,13 @@ namespace ACE
 #if defined (ACE_HAS_WIN32_PDH)
       this->update_i ();
       this->receive (this->value_);
-#elif defined (linux)
+#elif defined (ACE_LINUX)
       this->access_proc_stat (&this->idle_);
 #elif defined (ACE_HAS_KSTAT)
       this->access_kstats (&this->idle_);
 #endif
 
-#if defined (linux) || defined (ACE_HAS_KSTAT)
+#if defined (ACE_LINUX) || defined (ACE_HAS_KSTAT)
       double delta_idle = this->idle_ - this->prev_idle_;
       double total =
         this->user_ + this->wait_ + this->kernel_ + this->idle_;
@@ -100,7 +98,7 @@ namespace ACE
     void
     CPU_Load_Monitor::init (void)
     {
-#if defined (linux)
+#if defined (ACE_LINUX)
       /// All data in this file are stored as running 'jiffy' totals, so we
       /// get values here in the constructor to subtract for the difference
       /// in subsequent calls.
@@ -117,7 +115,7 @@ namespace ACE
 #endif
     }
 
-#if defined (linux)
+#if defined (ACE_LINUX)
     void
     CPU_Load_Monitor::access_proc_stat (unsigned long *which_idle)
     {
@@ -126,7 +124,7 @@ namespace ACE
 
       if (this->file_ptr_ == 0)
         {
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("CPU load - opening /proc/stat failed\n")));
           return;
         }
@@ -168,7 +166,7 @@ namespace ACE
 
       if (this->kstats_ == 0)
         {
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("opening kstats file failed\n")));
           return;
         }
@@ -224,7 +222,7 @@ namespace ACE
 
               if (! this->kstat_id_ > 0)
                 {
-                  ACE_ERROR ((LM_ERROR,
+                  ACELIB_ERROR ((LM_ERROR,
                               ACE_TEXT ("kstat chain update ")
                               ACE_TEXT ("returned null id\n")));
                   return;
@@ -241,7 +239,7 @@ namespace ACE
 
       if (status != 0)
         {
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("closing kstats file failed\n")));
         }
     }

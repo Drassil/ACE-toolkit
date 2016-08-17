@@ -1,7 +1,5 @@
 /**
  * server for a reactor based connection establishment test using HTBP
- *
- * $Id: server.cpp 91822 2010-09-17 09:00:19Z johnnyw $
  */
 
 #include "ace/Log_Msg.h"

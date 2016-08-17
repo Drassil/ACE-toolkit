@@ -1,5 +1,3 @@
-// $Id: Data_Block.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "JAWS/Data_Block.h"
 #include "JAWS/Policy.h"
 

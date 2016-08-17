@@ -1,5 +1,3 @@
-// $Id: Wrap_Macros.cpp 92385 2010-10-28 07:12:17Z johnnyw $
-
 #include "Trace.h"
 
 // Listing 1 code/ch03

@@ -1,5 +1,3 @@
-// $Id: Blob_Handler.cpp 93539 2011-03-13 09:40:44Z vzykov $
-
 #include "Blob_Handler.h"
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_string.h"

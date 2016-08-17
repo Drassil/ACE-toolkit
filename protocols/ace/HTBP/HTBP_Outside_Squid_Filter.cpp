@@ -1,5 +1,3 @@
-// $Id: HTBP_Outside_Squid_Filter.cpp 91673 2010-09-08 18:49:47Z johnnyw $
-
 #include "ace/Log_Msg.h"
 
 #include "HTBP_Session.h"

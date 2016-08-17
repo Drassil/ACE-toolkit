@@ -1,5 +1,5 @@
 #! /bin/sh
-# $Id: ace_components 93117 2011-01-20 12:11:28Z mcorino $
+# $Id$
 #
 # Encapsulates set/access of a components file, which records set of
 # components that were built in a library.  Intended to be used by

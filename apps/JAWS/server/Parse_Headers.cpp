@@ -1,5 +1,3 @@
-// $Id: Parse_Headers.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/Log_Msg.h"
 
 #include "Parse_Headers.h"

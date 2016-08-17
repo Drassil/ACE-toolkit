@@ -1,5 +1,3 @@
-// $Id: ExitHandler.cpp 84565 2009-02-23 08:20:39Z johnnyw $
-
 // Listing 1 code/ch13
 #include "ace/Task.h"
 #include "ace/Log_Msg.h"

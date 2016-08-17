@@ -1,5 +1,3 @@
-// $Id: Options.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #define ACE_BUILD_SVC_DLL
 
 #include "Event.h"

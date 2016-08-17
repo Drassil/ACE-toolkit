@@ -1,5 +1,3 @@
-// $Id: FILE.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "ace/config-all.h"
 #include "ace/Guard_T.h"
 #include "ace/Synch_Traits.h"

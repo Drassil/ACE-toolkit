@@ -1,4 +1,3 @@
-# $Id: clean_dsp.pl 91813 2010-09-17 07:52:52Z johnnyw $
 #   DSP cleaner
 
 $if_depth = 0;

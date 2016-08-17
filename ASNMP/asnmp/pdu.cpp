@@ -3,11 +3,8 @@
 /**
  *  @file     pdu.cpp
  *
- *  $Id: pdu.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Pdu class implementation. Encapsulation of an SMI Protocol
  *  Data Unit (PDU) in C++.
- *
  *
  *  @author Peter E MellquistMichael R MacFaden  mrm@cisco.com - rework & ACE port
  */

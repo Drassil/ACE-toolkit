@@ -1,6 +1,4 @@
 // Log_Msg_MFCDlg.cpp : implementation file
-// $Id: Log_Msg_MFCDlg.cpp 81978 2008-06-16 16:57:12Z sowayaa $
-
 #include "Log_Msg_MFC.h"
 
 #if defined (ACE_WIN32)

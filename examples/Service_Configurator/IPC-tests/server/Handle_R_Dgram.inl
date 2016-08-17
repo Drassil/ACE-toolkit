@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Handle_R_Dgram.inl 81978 2008-06-16 16:57:12Z sowayaa $
-
 #include "ace/Get_Opt.h"
 #include "ace/OS_NS_stdio.h"
 #include "ace/OS_NS_string.h"

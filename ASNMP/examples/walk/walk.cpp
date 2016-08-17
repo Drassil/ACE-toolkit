@@ -3,12 +3,8 @@
 /**
  *  @file    walk.cpp
  *
- *  $Id: walk.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Sample application demonstrating synchronous Snmp::get, get_next API
  *  to access an SNMP Version 1 agent.
- *
- *
  */
 //=============================================================================
 

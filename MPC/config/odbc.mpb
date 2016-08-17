@@ -1,5 +1,3 @@
-// $Id: odbc.mpb 1684 2010-01-04 15:49:29Z hillj $
-
 project {
   specific(prop:windows) {
     // Out of the box, Windows supports ODBC since ODBC originated

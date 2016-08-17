@@ -1,5 +1,3 @@
-// $Id: task_two.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // Exercise more tests for the ACE Tasks.  This test can spawn off
 // zillions of tasks and then wait for them using both polling and the
 // ACE Thread Manager.

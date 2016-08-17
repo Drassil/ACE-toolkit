@@ -1,5 +1,4 @@
 # -*- Makefile -*-
-# $Id: platform_gnuwin32_common.GNU 93413 2011-02-20 11:06:19Z olli $
 
 ifneq ($(mingw32),1)
   ifneq ($(cygwin32),1)
@@ -61,9 +60,11 @@ AR      = ${COMPARCH}ar
 RANLIB  = ${COMPARCH}ranlib
 
 DCFLAGS    += -g
+DCCFLAGS   += -g
 DLD        = $(CXX)
 LD         = $(CXX)
 OCFLAGS    += -O3
+OCCFLAGS   += -O3
 ARFLAGS    = rsuv
 SOEXT      = dll
 EXEEXT     = .exe

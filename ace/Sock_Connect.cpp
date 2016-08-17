@@ -1,8 +1,6 @@
-// $Id: Sock_Connect.cpp 93622 2011-03-22 15:45:57Z johnnyw $
-
 #include "ace/Sock_Connect.h"
 #include "ace/INET_Addr.h"
-#include "ace/Log_Msg.h"
+#include "ace/Log_Category.h"
 #include "ace/Handle_Set.h"
 #include "ace/Auto_Ptr.h"
 #include "ace/SString.h"
@@ -182,7 +180,7 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
     s = ACE_OS::socket (AF_INET, SOCK_STREAM, 0);
 
   if (s == ACE_INVALID_HANDLE)
-    ACE_ERROR_RETURN ((LM_ERROR,
+    ACELIB_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("%p\n"),
                        ACE_TEXT ("ACE_OS::socket")),
                       -1);
@@ -196,7 +194,7 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
   // Get interface structure and initialize the addresses using UNIX
   // techniques
   if (ACE_OS::ioctl (s, SIOCGIFCONF_CMD, (char *) &ifc) == -1)
-    ACE_ERROR_RETURN ((LM_ERROR,
+    ACELIB_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("%p\n"),
                        ACE_TEXT ("ACE::get_bcast_addr:")
                        ACE_TEXT ("ioctl (get interface configuration)")),
@@ -253,7 +251,7 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
 
       if (ifr->ifr_addr.sa_family != AF_INET)
         {
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("%p\n"),
                       ACE_TEXT ("ACE::get_bcast_addr:")
                       ACE_TEXT ("Not AF_INET")));
@@ -265,7 +263,7 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
 
       if (ACE_OS::ioctl (s, SIOCGIFFLAGS, (char *) &flags) == -1)
         {
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("%p\n"),
                       ACE_TEXT ("ACE::get_bcast_addr:")
                       ACE_TEXT (" ioctl (get interface flags)")));
@@ -274,7 +272,7 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
 
       if (ACE_BIT_DISABLED (flags.ifr_flags, IFF_UP))
         {
-          ACE_ERROR ((LM_ERROR,
+          ACELIB_ERROR ((LM_ERROR,
                       ACE_TEXT ("%p\n"),
                       ACE_TEXT ("ACE::get_bcast_addr:")
                       ACE_TEXT ("Network interface is not up")));
@@ -289,7 +287,7 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
           if (ACE_OS::ioctl (s,
                              SIOCGIFBRDADDR,
                              (char *) &if_req) == -1)
-            ACE_ERROR ((LM_ERROR,
+            ACELIB_ERROR ((LM_ERROR,
                         ACE_TEXT ("%p\n"),
                         ACE_TEXT ("ACE::get_bcast_addr:")
                         ACE_TEXT ("ioctl (get broadaddr)")));
@@ -311,10 +309,10 @@ ACE::get_bcast_addr (ACE_UINT32 &bcast_addr,
             }
         }
       else
-        ACE_ERROR ((LM_ERROR,
+        ACELIB_ERROR ((LM_ERROR,
                     ACE_TEXT ("%p\n"),
                     ACE_TEXT ("ACE::get_bcast_addr:")
-                    ACE_TEXT ("Broadcast is not enable for this interface.")));
+                    ACE_TEXT ("Broadcast is not enabled for this interface.")));
 
       if (handle == ACE_INVALID_HANDLE)
         ACE_OS::close (s);
@@ -376,7 +374,7 @@ ACE::get_fqdn (ACE_INET_Addr const & addr,
      return -1;
 
    if (ACE::debug())
-     ACE_DEBUG ((LM_DEBUG,
+     ACELIB_DEBUG ((LM_DEBUG,
                  ACE_TEXT ("(%P|%t) - ACE::get_fqdn, ")
                  ACE_TEXT ("canonical host name is %C\n"),
                  hp->h_name));
@@ -409,7 +407,7 @@ ACE::get_fqdn (ACE_INET_Addr const & addr,
                      continue;
 
                    if (ACE::debug ())
-                     ACE_DEBUG ((LM_DEBUG,
+                     ACELIB_DEBUG ((LM_DEBUG,
                                  ACE_TEXT ("(%P|%t) - ACE::get_fqdn, ")
                                  ACE_TEXT ("found fqdn within alias as %C\n"),
                                  *q));
@@ -744,6 +742,7 @@ get_ip_interfaces_win32 (size_t &count,
 
 # endif /* ACE_HAS_WINCE */
 }
+
 #elif defined (ACE_HAS_GETIFADDRS)
 static int
 get_ip_interfaces_getifaddrs (size_t &count,
@@ -777,8 +776,14 @@ get_ip_interfaces_getifaddrs (size_t &count,
        p_if != 0;
        p_if = p_if->ifa_next)
     {
-      if (p_if->ifa_addr &&
-          p_if->ifa_addr->sa_family == AF_INET)
+      if (p_if->ifa_addr == 0)
+        continue;
+
+      // Check to see if it's up.
+      if ((p_if->ifa_flags & IFF_UP) != IFF_UP)
+        continue;
+
+      if (p_if->ifa_addr->sa_family == AF_INET)
         {
           struct sockaddr_in *addr =
             reinterpret_cast<sockaddr_in *> (p_if->ifa_addr);
@@ -794,8 +799,7 @@ get_ip_interfaces_getifaddrs (size_t &count,
             }
         }
 # if defined (ACE_HAS_IPV6)
-      else if (p_if->ifa_addr &&
-               p_if->ifa_addr->sa_family == AF_INET6)
+      else if (p_if->ifa_addr->sa_family == AF_INET6)
         {
           struct sockaddr_in6 *addr =
             reinterpret_cast<sockaddr_in6 *> (p_if->ifa_addr);
@@ -828,7 +832,7 @@ get_ip_interfaces_hpux (size_t &count,
   ACE_HANDLE handle_ipv6 = ACE_INVALID_HANDLE;
 
   if (handle == ACE_INVALID_HANDLE)
-    ACE_ERROR_RETURN ((LM_ERROR,
+    ACELIB_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("%p\n"),
                        ACE_TEXT ("ACE::get_ip_interfaces:open")),
                       -1);
@@ -892,7 +896,7 @@ get_ip_interfaces_hpux (size_t &count,
                      (char *) &ifcfg) == -1)
     {
       ACE_OS::close (handle);
-      ACE_ERROR_RETURN ((LM_ERROR,
+      ACELIB_ERROR_RETURN ((LM_ERROR,
                          ACE_TEXT ("%p\n"),
                          ACE_TEXT ("ACE::get_ip_interfaces:")
                          ACE_TEXT ("ioctl - SIOCGIFCONF failed")),
@@ -957,7 +961,7 @@ get_ip_interfaces_hpux (size_t &count,
                          (char *) &lifcfg) == -1)
         {
           ACE_OS::close (handle);
-          ACE_ERROR_RETURN ((LM_ERROR,
+          ACELIB_ERROR_RETURN ((LM_ERROR,
                              ACE_TEXT ("%p\n"),
                              ACE_TEXT ("ACE::get_ip_interfaces:")
                              ACE_TEXT ("ioctl - SIOCGLIFCONF failed")),
@@ -996,7 +1000,7 @@ get_ip_interfaces_aix (size_t &count,
   struct ifconf ifc;
 
   if (handle == ACE_INVALID_HANDLE)
-    ACE_ERROR_RETURN ((LM_ERROR,
+    ACELIB_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("%p\n"),
                        ACE_TEXT ("ACE::get_ip_interfaces_aix:")),
                       -1);
@@ -1006,7 +1010,7 @@ get_ip_interfaces_aix (size_t &count,
                      (caddr_t)&ifc.ifc_len) == -1)
   {
       ACE_OS::close (handle);
-      ACE_ERROR_RETURN((LM_ERROR,
+      ACELIB_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT ("%p\n"),
                         ACE_TEXT ("get ifconf size")),
                        -1);
@@ -1020,7 +1024,7 @@ get_ip_interfaces_aix (size_t &count,
   if (ACE_OS::ioctl(handle, SIOCGIFCONF, (caddr_t)&ifc) == -1)
   {
       ACE_OS::close (handle);
-      ACE_ERROR_RETURN((LM_ERROR,
+      ACELIB_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT ("%p\n"),
                         ACE_TEXT ("get ifconf")),
                        -1);
@@ -1096,7 +1100,7 @@ ACE::get_ip_interfaces (size_t &count, ACE_INET_Addr *&addrs)
   ACE_HANDLE handle = ACE::get_handle();
 
   if (handle == ACE_INVALID_HANDLE)
-    ACE_ERROR_RETURN ((LM_ERROR,
+    ACELIB_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("%p\n"),
                        ACE_TEXT ("ACE::get_ip_interfaces:open")),
                       -1);
@@ -1144,7 +1148,7 @@ ACE::get_ip_interfaces (size_t &count, ACE_INET_Addr *&addrs)
                      (caddr_t) &ifcfg) == -1)
     {
       ACE_OS::close (handle);
-      ACE_ERROR_RETURN ((LM_ERROR,
+      ACELIB_ERROR_RETURN ((LM_ERROR,
                          ACE_TEXT ("%p\n"),
                          ACE_TEXT ("ACE::get_ip_interfaces:")
                          ACE_TEXT ("ioctl - SIOCGIFCONF failed")),
@@ -1288,7 +1292,7 @@ ACE::count_interfaces (ACE_HANDLE handle, size_t &how_many)
   int if_num = 0;
 # endif /* SIOCGLIFNUM */
   if (ACE_OS::ioctl (handle, cmd, (caddr_t)&if_num) == -1)
-    ACE_ERROR_RETURN ((LM_ERROR,
+    ACELIB_ERROR_RETURN ((LM_ERROR,
                        ACE_TEXT ("%p\n"),
                        ACE_TEXT ("ACE::count_interfaces:")
                        ACE_TEXT ("ioctl - SIOCGLIFNUM failed")),
@@ -1307,10 +1311,10 @@ return 0;
   // algorithm
 
   // Probably hard to put this many ifs in a unix box..
-  int const MAX_IF = 50;
+  int const MAX_INTERFACES = 50;
 
   // HACK - set to an unreasonable number
-  int const num_ifs = MAX_IF;
+  int const num_ifs = MAX_INTERFACES;
 
   struct ifconf ifcfg;
   size_t ifreq_size = num_ifs * sizeof (struct ifreq);
@@ -1333,7 +1337,7 @@ return 0;
                      (caddr_t) &ifcfg) == -1)
     {
       ACE_OS::free (ifcfg.ifc_req);
-      ACE_ERROR_RETURN ((LM_ERROR,
+      ACELIB_ERROR_RETURN ((LM_ERROR,
                          ACE_TEXT ("%p\n"),
                          ACE_TEXT ("ACE::count_interfaces:")
                          ACE_TEXT ("ioctl - SIOCGIFCONF failed")),
@@ -1425,8 +1429,26 @@ ip_check (int &ipvn_enabled, int pf)
 
   if (ipvn_enabled == -1)
     {
+
+#if defined (ACE_WIN32)
+      // as of the release of Windows 2008, even hosts that have IPv6 interfaces disabled
+      // will still permit the creation of a PF_INET6 socket, thus rendering the socket
+      // creation test inconsistent. The reccommended solution is to get the list of
+      // endpoint addresses and see if any match the desired family.
+      ACE_INET_Addr *if_addrs = 0;
+      size_t if_cnt = 0;
+
+      ipvn_enabled = 1; // assume enabled to avoid recursion during interface lookup.
+      ACE::get_ip_interfaces (if_cnt, if_addrs);
+      ipvn_enabled = 0;
+      for (size_t i = 0; ipvn_enabled == 0 && i < if_cnt; i++)
+        {
+          ipvn_enabled = (if_addrs[i].get_type () == pf);
+        }
+      delete [] if_addrs;
+#else
       // Determine if the kernel has IPv6 support by attempting to
-      // create a PF_INET socket and see if it fails.
+      // create a PF_INET6 socket and see if it fails.
       ACE_HANDLE const s = ACE_OS::socket (pf, SOCK_DGRAM, 0);
       if (s == ACE_INVALID_HANDLE)
         {
@@ -1437,6 +1459,7 @@ ip_check (int &ipvn_enabled, int pf)
           ipvn_enabled = 1;
           ACE_OS::closesocket (s);
         }
+#endif
     }
   return ipvn_enabled;
 }

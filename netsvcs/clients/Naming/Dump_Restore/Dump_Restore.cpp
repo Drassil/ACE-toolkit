@@ -1,5 +1,3 @@
-// $Id: Dump_Restore.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/Malloc_Base.h"
 #include "ace/Read_Buffer.h"
 #include "ace/Thread_Manager.h"

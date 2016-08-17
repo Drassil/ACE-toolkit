@@ -1,5 +1,3 @@
-// $Id: CM_Server.cpp 85282 2009-05-05 13:26:00Z olli $
-
 #include "global.h"
 #include "Options.h"
 #include "CM_Server.h"

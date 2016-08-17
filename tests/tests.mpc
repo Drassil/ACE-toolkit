@@ -1,6 +1,4 @@
 //  -*- MPC -*-
-// $Id: tests.mpc 94050 2011-05-11 12:48:39Z cbeaulac $
-
 project(Test_Output) : acelib, script {
   libout       = .
   sharedname = Test_Output
@@ -17,12 +15,6 @@ project(Test_Output) : acelib, script {
   Script_Files {
     run_test.pl
     run_test.lst
-  }
-
-  verbatim(automake,local) {
-dist_check_SCRIPTS = run_test.pl run_test.lst
-TESTS = $(noinst_PROGRAMS)
-TESTS_ENVIRONMENT = $(srcdir)/run_test.pl -t
   }
 }
 
@@ -41,7 +33,6 @@ project(Framework Component DLL) : acelib {
   Resource_Files {
   }
 }
-
 
 project(DLL Test Parent Lib) : acelib {
   libout       = .
@@ -131,6 +122,13 @@ project(ACE Init Test) : acemfcexe {
   Build_Files {
     tests.mpc
     tests.mwc
+  }
+}
+
+project(Task Wait Test) : acetest {
+  exename = Task_Wait_Test
+  Source_Files {
+    Task_Wait_Test.cpp
   }
 }
 
@@ -318,11 +316,15 @@ project (Bug_2980_Regression_Test) {
   after += Bug_2980_Regression_Dll
   avoids += uses_wchar
   includes    += $(ACE_ROOT)
+  staticflags += ACE_AS_STATIC_LIBS
   exename = Bug_2980_Regression_Test
   Source_Files {
     Bug_2980_Regression_Test.cpp
   }
   Resource_Files {
+  }
+  specific(vxtest) {
+    libs += Bug_2980_Regression ACE
   }
 }
 
@@ -459,6 +461,27 @@ project(Bug_3943_Regression_Test) : acetest {
   }
 }
 
+project(Bug_3974_Regression_Test) : acetest {
+  exename = Bug_3974_Regression_Test
+  Source_Files {
+    Bug_3974_Regression_Test.cpp
+  }
+}
+
+project(Bug_4055_Regression_Test) : acetest, threads {
+  exename = Bug_4055_Regression_Test
+  Source_Files {
+    Bug_4055_Regression_Test.cpp
+  }
+}
+
+project(Bug_4189_Regression_Test) : acetest, threads {
+  exename = Bug_4189_Regression_Test
+  Source_Files {
+    Bug_4189_Regression_Test.cpp
+  }
+}
+
 project(Cache Map Manager Test) : acetest {
   exename = Cache_Map_Manager_Test
   Source_Files {
@@ -514,10 +537,25 @@ project(CDR File Test) : acetest {
   }
 }
 
+project(CDR Fixed Test) : acetest {
+  avoids += ace_for_tao
+  exename = CDR_Fixed_Test
+  Source_Files {
+    CDR_Fixed_Test.cpp
+  }
+}
+
 project(CDR Test) : acetest {
   exename = CDR_Test
   Source_Files {
     CDR_Test.cpp
+  }
+}
+
+project(Chrono Test) : acetest {
+  exename = Chrono_Test
+  Source_Files {
+    Chrono_Test.cpp
   }
 }
 
@@ -628,6 +666,166 @@ project(Compiler_Features_14_Test) : acetest {
   }
 }
 
+project(Compiler_Features_15_Test) : acetest {
+  exename = Compiler_Features_15_Test
+  Source_Files {
+    Compiler_Features_15_Test.cpp
+  }
+}
+
+project(Compiler_Features_16_Test) : acetest {
+  exename = Compiler_Features_16_Test
+  Source_Files {
+    Compiler_Features_16_Test.cpp
+  }
+  macros      += NOMINMAX // Don't #define min and max in Win32 headers
+}
+
+project(Compiler_Features_17_Test) : acetest {
+  exename = Compiler_Features_17_Test
+  Source_Files {
+    Compiler_Features_17_Test.cpp
+  }
+  macros      += NOMINMAX // Don't #define min and max in Win32 headers
+}
+
+project(Compiler_Features_18_Test) : acetest {
+  exename = Compiler_Features_18_Test
+  Source_Files {
+    Compiler_Features_18_Test.cpp
+  }
+}
+
+project(Compiler_Features_19_Test) : acetest {
+  exename = Compiler_Features_19_Test
+  Source_Files {
+    Compiler_Features_19_Test.cpp
+  }
+}
+
+project(Compiler_Features_20_Test) : acelib {
+  libout       = .
+  sharedname   = Compiler_Features_20
+  dynamicflags += COMPILER_FEATURES_20_DLL_BUILD_DLL
+
+  Source_Files {
+    Compiler_Features_20_DLL.cpp
+  }
+  Header_Files {
+    Compiler_Features_20_DLL.h
+    Compiler_Features_20_DLL_Export.h
+  }
+  Resource_Files {
+  }
+}
+
+project(Compiler_Features_21_Test) : acetest {
+  exename = Compiler_Features_21_Test
+  Source_Files {
+    Compiler_Features_21_Test.cpp
+  }
+}
+
+project(Compiler_Features_22_Test) : acelib {
+  libout       = .
+  sharedname   = Compiler_Features_22
+  dynamicflags += COMPILER_FEATURES_22_DLL_BUILD_DLL
+
+  Source_Files {
+    Compiler_Features_22_DLL.cpp
+  }
+  Header_Files {
+    Compiler_Features_22_DLL.h
+    Compiler_Features_22_DLL_Export.h
+  }
+  Resource_Files {
+  }
+}
+
+project(Compiler_Features_23_Test) : acetest {
+  exename = Compiler_Features_23_Test
+  Source_Files {
+    Compiler_Features_23_Test.cpp
+  }
+}
+
+project(Compiler_Features_24_Test) : acetest {
+  exename = Compiler_Features_24_Test
+  Source_Files {
+    Compiler_Features_24_Test.cpp
+  }
+}
+
+project(Compiler_Features_25_Test) : acetest {
+  exename = Compiler_Features_25_Test
+  Source_Files {
+    Compiler_Features_25_Test.cpp
+  }
+}
+
+project(Compiler_Features_26_Test) : acetest {
+  exename = Compiler_Features_26_Test
+  Source_Files {
+    Compiler_Features_26_Test.cpp
+  }
+}
+
+project(Compiler_Features_27_Test) : acetest {
+  exename = Compiler_Features_27_Test
+  Source_Files {
+    Compiler_Features_27_Test.cpp
+  }
+}
+
+project(Compiler_Features_28_Test) : acetest {
+  exename = Compiler_Features_28_Test
+  Source_Files {
+    Compiler_Features_28_Test.cpp
+  }
+}
+
+project(Compiler_Features_29_Test) : acetest {
+  exename = Compiler_Features_29_Test
+  Source_Files {
+    Compiler_Features_29_Test.cpp
+  }
+}
+
+project(Compiler_Features_31_Test) : acetest {
+  exename = Compiler_Features_31_Test
+  Source_Files {
+    Compiler_Features_31_Test.cpp
+  }
+}
+
+project(Compiler_Features_32_Test) : acetest {
+  exename = Compiler_Features_32_Test
+  Source_Files {
+    Compiler_Features_32_Test.cpp
+  }
+}
+
+project(Compiler_Features_33_Test) : acetest {
+  exename = Compiler_Features_33_Test
+  Source_Files {
+    Compiler_Features_33_Test.cpp
+  }
+}
+
+project(Compiler_Features_34_Test) : acetest {
+  exename = Compiler_Features_34_Test
+  Source_Files {
+    Compiler_Features_34_Test.cpp
+  }
+}
+
+project(Compiler_Features_35_Test) : acetest {
+  exename = Compiler_Features_35_Test
+  Source_Files {
+    Compiler_Features_35_Test.cpp
+  }
+}
+
 project(Config Test) : acetest {
   avoids += ace_for_tao
   exename = Config_Test
@@ -660,6 +858,13 @@ project(Dev Poll Reactor Test) : acetest {
   exename = Dev_Poll_Reactor_Test
   Source_Files {
     Dev_Poll_Reactor_Test.cpp
+  }
+}
+
+project(Dev Poll Reactor Echo Test) : acetest {
+  exename = Dev_Poll_Reactor_Echo_Test
+  Source_Files {
+    Dev_Poll_Reactor_Echo_Test.cpp
   }
 }
 
@@ -943,6 +1148,29 @@ project(Message Queue Test) : acetest {
   }
 }
 
+project(Monotonic_Manual_Event Test) : acetest {
+  exename = Monotonic_Manual_Event_Test
+  Source_Files {
+    Monotonic_Manual_Event_Test.cpp
+  }
+}
+
+project(Monotonic_Task Test) : acetest {
+  avoids += ace_for_tao
+  exename = Monotonic_Task_Test
+  Source_Files {
+    Monotonic_Task_Test.cpp
+  }
+}
+
+project(Monotonic_Message Queue Test) : acetest {
+  avoids += ace_for_tao
+  exename = Monotonic_Message_Queue_Test
+  Source_Files {
+    Monotonic_Message_Queue_Test.cpp
+  }
+}
+
 project(Message Queue Test Ex) : acetest {
   avoids += ace_for_tao
   exename = Message_Queue_Test_Ex
@@ -1051,6 +1279,14 @@ project(Proactor Test) : acetest {
   exename = Proactor_Test
   Source_Files {
     Proactor_Test.cpp
+  }
+}
+
+project(Proactor_File Test) : acetest {
+  avoids += ace_for_tao
+  exename = Proactor_File_Test
+  Source_Files {
+    Proactor_File_Test.cpp
   }
 }
 
@@ -1338,6 +1574,13 @@ project(Simple Message Block Test) : acetest {
   exename = Simple_Message_Block_Test
   Source_Files {
     Simple_Message_Block_Test.cpp
+  }
+}
+
+project(Message Block Large Copy Test) : acetest {
+  exename = Message_Block_Large_Copy_Test
+  Source_Files {
+    Message_Block_Large_Copy_Test.cpp
   }
 }
 
@@ -1656,6 +1899,9 @@ project(Service Config Test) : acetest {
   Source_Files {
     Service_Config_Test.cpp
   }
+  specific(vxtest) {
+    libs += Service_Config_DLL
+  }
 }
 
 project(Framework Component Test) : acetest {
@@ -1867,6 +2113,9 @@ project(Based Pointer Test) : acetest {
   Source_Files {
     Based_Pointer_Test.cpp
   }
+  specific(vxtest) {
+    libs += Based_Pointer_Test_Lib
+  }
 }
 
 project(Library Unload): unload_libace {
@@ -1945,6 +2194,9 @@ project(Service Config Stream Test) : acetest {
   exename = Service_Config_Stream_Test
   Source_Files {
     Service_Config_Stream_Test.cpp
+  }
+  specific(vxtest) {
+    libs += Service_Config_Stream_DLL
   }
 }
 

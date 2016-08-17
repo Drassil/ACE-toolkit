@@ -1,6 +1,4 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Acknowledge.cpp 92900 2010-12-17 14:45:11Z mcorino $
-
 #include "ace/Time_Value.h"     // ACE_Time_Value
 #include "ace/OS_NS_unistd.h"
 #include "ace/OS_NS_stdlib.h"   // abort

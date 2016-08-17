@@ -1,4 +1,3 @@
-// $Id: ConfigurationViewer.cpp 80826 2008-03-04 14:51:23Z wotte $
 #ifdef __GNUG__
     #pragma implementation "minimal.cpp"
     #pragma interface "minimal.cpp"

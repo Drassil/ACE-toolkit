@@ -4,11 +4,8 @@
 /**
  *  @file    Custom_Handler.h
  *
- *  $Id: Custom_Handler.h 93639 2011-03-24 13:32:13Z johnnyw $
- *
  *  This is a custom event handler to be used with the thread timer queue
  *  adapter, and its appropriate upcall.
- *
  *
  *  @author Alon Diamant <diamant.alon@gmail.com>
  */
@@ -19,6 +16,7 @@
 #define _CUSTOM_HANDLER_H_
 
 #include "ace/Timer_Queue.h"
+#include "ace/svc_export.h"
 
 /**
  * @class Custom_Handler
@@ -60,7 +58,7 @@ class Custom_Handler
 ///
 /// Implements the Upcall interface used by the ACE_Timer_Queue, specifically for the
 /// IWorkItem interface.
-class Custom_Handler_Upcall
+class ACE_Svc_Export Custom_Handler_Upcall
 {
     public:
 

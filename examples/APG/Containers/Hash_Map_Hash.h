@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: Hash_Map_Hash.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef __HASH_MAP_HASH_H_
 #define __HASH_MAP_HASH_H_
 

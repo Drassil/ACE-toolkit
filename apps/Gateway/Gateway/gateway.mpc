@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: gateway.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(Gateway) : acelib, ace_output {
   sharedname = Gateway
   Source_Files {

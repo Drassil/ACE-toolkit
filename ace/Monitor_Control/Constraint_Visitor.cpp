@@ -1,5 +1,3 @@
-// $Id: Constraint_Visitor.cpp 86518 2009-08-18 12:30:56Z olli $
-
 #include "ace/Monitor_Control/Constraint_Visitor.h"
 
 #if defined (ACE_HAS_MONITOR_FRAMEWORK) && (ACE_HAS_MONITOR_FRAMEWORK == 1)

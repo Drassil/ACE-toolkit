@@ -1,5 +1,3 @@
-// $Id: StreamInterceptor.cpp 90737 2010-06-21 09:46:14Z mcorino $
-
 #ifndef ACE_IOS_STREAM_INTERCEPTOR_CPP
 #define ACE_IOS_STREAM_INTERCEPTOR_CPP
 

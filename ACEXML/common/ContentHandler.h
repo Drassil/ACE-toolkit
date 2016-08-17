@@ -4,8 +4,6 @@
 /**
  *  @file    ContentHandler.h
  *
- *  $Id: ContentHandler.h 91257 2010-08-03 11:54:04Z johnnyw $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -24,7 +22,7 @@
 #include "ACEXML/common/Attributes.h"
 
 /**
- * @class ACEXML_ContentHandler ContentHandler.h "ACEXML/common/ContentHandler.h"
+ * @class ACEXML_ContentHandler
  *
  * @brief ACEXML_ContentHandler
  *

@@ -1,10 +1,6 @@
-// $Id: SAXPrint_Handler.h 91257 2010-08-03 11:54:04Z johnnyw $
-
 //=============================================================================
 /**
  *  @file    SAXPrint_Handler.h
- *
- *  $Id: SAXPrint_Handler.h 91257 2010-08-03 11:54:04Z johnnyw $
  *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */

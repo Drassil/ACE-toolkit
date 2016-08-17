@@ -1,5 +1,3 @@
-// $Id: Cache_Object.cpp 93792 2011-04-07 11:48:50Z mcorino $
-
 #include "JAWS/Cache_Object.h"
 
 #include "ace/Malloc_Base.h"

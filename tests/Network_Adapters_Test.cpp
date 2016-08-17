@@ -2,10 +2,7 @@
 /**
  *  @file    Network_Adapters_Test.cpp
  *
- *  $Id: Network_Adapters_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  Tests the ICMP-echo support in ACE.
- *
  *
  *  @author Robert S. Iakobashvili <coroberti@gmail.com> <coroberti@walla.co.il> Gonzalo A. Diethelm <gonzalo.diethelm@aditiva.com>
  */
@@ -28,6 +25,8 @@
 #include "ace/Timer_Queue.h"
 #include "ace/OS_NS_string.h"
 #include "ace/OS_NS_signal.h"
+#include "ace/Timer_Heap.h"
+#include "ace/Auto_Ptr.h"
 
 #include "Network_Adapters_Test.h"
 
@@ -86,8 +85,6 @@
  * as not a ICMP_ECHOREPLY message and further ICMP_ECHOREPLY
  * received. Don't worry, be happy - it's ok.
  */
-
-
 Echo_Handler::Echo_Handler (void)
   : ping_socket_ (),
     reply_wait_ (),
@@ -561,6 +558,7 @@ Stop_Handler::open (void)
                        ACE_TEXT ("(%P|%t) Stop_Handler::open: %p <%d>\n"),
                        ACE_TEXT ("register_handler for SIGINT"), SIGINT),
                       -1);
+  this->registered_signals_.sig_add (SIGINT);
 #endif /* SIGINT != 0 */
 
 #if (SIGTERM != 0)
@@ -569,6 +567,7 @@ Stop_Handler::open (void)
                        ACE_TEXT ("(%P|%t) Stop_Handler::open: %p <%d>\n"),
                        ACE_TEXT ("register_handler for SIGTERM"), SIGTERM),
                       -1);
+  this->registered_signals_.sig_add (SIGTERM);
 #endif /* SIGTERM != 0 */
 
 #if (SIGQUIT != 0)
@@ -577,6 +576,7 @@ Stop_Handler::open (void)
                        ACE_TEXT ("(%P|%t) Stop_Handler::open: %p <%d>\n"),
                        ACE_TEXT ("register_handler for SIGQUIT"), SIGQUIT),
                       -1);
+  this->registered_signals_.sig_add (SIGQUIT);
 #endif /* SIGQUIT != 0 */
   return 0;
 }
@@ -639,9 +639,7 @@ Stop_Handler::handle_input (ACE_HANDLE handle)
         }
     }
 
-  this->reactor ()->remove_handler (this,
-                                    ACE_Event_Handler::SIGNAL_MASK |
-                                    ACE_Event_Handler::DONT_CALL);
+  this->reactor ()->remove_handler (this->registered_signals_);
 
   if (reactor ()->end_reactor_event_loop () == -1)
     {
@@ -657,10 +655,12 @@ Stop_Handler::handle_input (ACE_HANDLE handle)
 }
 
 int
-Stop_Handler::handle_close (ACE_HANDLE, ACE_Reactor_Mask)
+Stop_Handler::handle_close (ACE_HANDLE, ACE_Reactor_Mask m)
 {
   ACE_DEBUG ((LM_INFO,
               ACE_TEXT ("(%P|%t) Stop_Handler::handle_close - entered.\n")));
+  if (m == ACE_Event_Handler::SIGNAL_MASK)
+    return 0;
   this->reactor ()->remove_handler (this,
                                     ACE_Event_Handler::SIGNAL_MASK |
                                     ACE_Event_Handler::DONT_CALL);
@@ -1035,8 +1035,26 @@ run_main (int argc, ACE_TCHAR *argv[])
   ACE_NEW_RETURN (main_reactor, ACE_Reactor, -1);
 
   (void) ACE_High_Res_Timer::global_scale_factor ();
-  main_reactor->timer_queue ()->gettimeofday
-    (&ACE_High_Res_Timer::gettimeofday_hr);
+
+  // Change the source of time in the reactor to the high-resolution
+  // timer.  Why does this test require such precision for a 1 second
+  // timer is beyond me ...  I think it is a cut&paste error.
+  //
+  // The use of auto_ptr<> is optional, ACE uses dangerous memory
+  // management idioms everywhere, I thought I could demonstrate how
+  // to do it right in at least one test.  Notice the lack of
+  // ACE_NEW_RETURN, that monstrosity has no business in proper C++
+  // code ...
+  auto_ptr<ACE_Timer_Heap_Variable_Time_Source> tq(
+      new ACE_Timer_Heap_Variable_Time_Source);
+  // ... notice how the policy is in the derived timer queue type.
+  // The abstract timer queue does not have a time policy ...
+  tq->set_time_policy(&ACE_High_Res_Timer::gettimeofday_hr);
+  // ... and then the timer queue is replaced.  Strangely, the reactor
+  // does *not* copy the timers, it just deletes the existing timer
+  // queue ....
+  main_reactor->timer_queue(tq.get());
+  // ... the reactor does not assume ownership
 
   /**
    * Stop_Handler's is supposed to stop the activity of all
@@ -1082,6 +1100,7 @@ run_main (int argc, ACE_TCHAR *argv[])
                               2,  // max_attempts_number
                               local_adapter) == -1)
         {
+          int res = 0;
           // If this process doesn't have privileges to open a raw socket, log
           // a warning instead of an error.
           if (errno == EPERM || errno == EACCES)
@@ -1089,16 +1108,21 @@ run_main (int argc, ACE_TCHAR *argv[])
               ACE_ERROR ((LM_WARNING,
                           ACE_TEXT ("(%P|%t) main() - ping_handler->open: ")
                           ACE_TEXT ("insufficient privs to run this test\n")));
-              ACE_END_TEST;
-              return 0;
             }
           else
             {
               ACE_ERROR ((LM_ERROR,
                           ACE_TEXT ("(%P|%t) %p\n"),
                           ACE_TEXT ("main() - ping_handler->open")));
-              return -4;
+              res = -4;
             }
+          delete ping_handler;
+          delete [] ping_status;
+          delete main_reactor;
+          delete stop_handler;
+
+          ACE_END_TEST;
+          return res;
         }
     }
   else
@@ -1113,21 +1137,27 @@ run_main (int argc, ACE_TCHAR *argv[])
                               ping_status,
                               2) == -1)   // max_attempts_number
         {
+          int res = 0;
           if (errno == EPERM || errno == EACCES)
             {
               ACE_ERROR ((LM_WARNING,
                           ACE_TEXT ("(%P|%t) main() - ping_handler->open: ")
                           ACE_TEXT ("insufficient privs to run this test\n")));
-              ACE_END_TEST;
-              return 0;
             }
           else
             {
               ACE_ERROR ((LM_ERROR,
                           ACE_TEXT ("(%P|%t) %p\n"),
                           ACE_TEXT ("main() - ping_handler->open")));
-              return -4;
+              res = -4;
             }
+          delete ping_handler;
+          delete [] ping_status;
+          delete main_reactor;
+          delete stop_handler;
+
+          ACE_END_TEST;
+          return res;
         }
     }
 
@@ -1140,7 +1170,15 @@ run_main (int argc, ACE_TCHAR *argv[])
       ACE_ERROR ((LM_ERROR,
                   ACE_TEXT ("(%P|%t) %p\n"),
                   ACE_TEXT ("main() - repeats_handler->open")));
-      ACE_OS::exit (-4);
+
+      delete repeats_handler;
+      delete ping_handler;
+      delete [] ping_status;
+      delete main_reactor;
+      delete stop_handler;
+
+      ACE_END_TEST;
+      return -4;
     }
 
   stop_handler->register_handler (repeats_handler);
@@ -1159,8 +1197,8 @@ run_main (int argc, ACE_TCHAR *argv[])
   delete repeats_handler;
   delete ping_handler;
   delete [] ping_status;
-  delete stop_handler;
   delete main_reactor;
+  delete stop_handler;
 
   ACE_END_TEST;
   return 0;
@@ -1169,11 +1207,8 @@ run_main (int argc, ACE_TCHAR *argv[])
 #else
 
 int
-run_main (int argc, ACE_TCHAR *argv[])
+run_main (int, ACE_TCHAR *[])
 {
-  ACE_UNUSED_ARG (argc);
-  ACE_UNUSED_ARG (argv);
-
   ACE_START_TEST (ACE_TEXT ("Network_Adapters_Test"));
 
   ACE_DEBUG ((LM_INFO,

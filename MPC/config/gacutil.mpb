@@ -1,5 +1,3 @@
-// $Id: gacutil.mpb 1617 2009-08-12 17:56:32Z johnnyw $
-
 project {
   specific(prop:microsoft) {
     postbuild += \

@@ -3,12 +3,9 @@
 /**
  *  @file    Log_Msg_Backend_Test.cpp
  *
- *  $Id: Log_Msg_Backend_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *   This program tests the ACE_Log_Msg class's use of a custom backend,
  *   including its initialization and reset as well as logging information
  *   through the backend.
- *
  *
  *  @author Steve Huston <shuston@riverace.com>
  */

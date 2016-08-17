@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: Handle_L_SPIPE.inl 81978 2008-06-16 16:57:12Z sowayaa $
-
 
 #include "ace/SPIPE_Stream.h"
 

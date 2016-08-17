@@ -3,12 +3,9 @@
 /**
  *  @file    MT_Reference_Counted_Notify_Test.cpp
  *
- *  $Id: MT_Reference_Counted_Notify_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *  This test is used to check reference counting of the event
  *  handlers when it interacts with the reactor notification
  *  mechanism.
- *
  *
  *  @author Irfan Pyarali <irfan@oomworks.com>
  */

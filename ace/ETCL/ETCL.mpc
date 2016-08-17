@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: ETCL.mpc 90826 2010-06-24 09:07:33Z johnnyw $
-
 project(ACE_ETCL) : acelib, install, ace_output {
   sharedname   = ACE_ETCL
   dynamicflags += ACE_ETCL_BUILD_DLL

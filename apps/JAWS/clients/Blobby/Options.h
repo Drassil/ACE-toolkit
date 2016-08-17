@@ -4,10 +4,7 @@
 /**
  *  @file    Options.h
  *
- *  $Id: Options.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *   Options is an Singleton for blobby
- *
  *
  *  @author Prashant Jain and Sumedh Mungee
  */

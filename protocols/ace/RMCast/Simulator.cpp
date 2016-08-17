@@ -1,6 +1,4 @@
 // author    : Boris Kolpackov <boris@kolpackov.net>
-// $Id: Simulator.cpp 91626 2010-09-07 10:59:20Z johnnyw $
-
 #include "ace/OS_NS_time.h"
 #include "Simulator.h"
 

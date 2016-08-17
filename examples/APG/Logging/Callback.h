@@ -1,5 +1,3 @@
-// $Id: Callback.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef APG_CALLBACK_H
 #define APG_CALLBACK_H
 

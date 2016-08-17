@@ -4,8 +4,6 @@
 /**
  *  @file    TSS_Adapter.h
  *
- *  $Id: TSS_Adapter.h 93792 2011-04-07 11:48:50Z mcorino $
- *
  *   Originally in Synch.h
  *
  *  @author Douglas C. Schmidt <schmidt@cs.wustl.edu>

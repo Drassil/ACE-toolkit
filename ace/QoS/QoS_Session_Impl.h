@@ -4,8 +4,6 @@
 /**
  *  @file    QoS_Session_Impl.h
  *
- *  $Id: QoS_Session_Impl.h 91743 2010-09-13 18:24:51Z johnnyw $
- *
  *  @author Vishal Kachroo <vishal@cs.wustl.edu>
  */
 //=============================================================================

@@ -1,7 +1,5 @@
 #!/pkg/gnu/bin//perl5
 #
-#$Id: WebStone-common.pl 91813 2010-09-17 07:52:52Z johnnyw $
-#
 
 1;
 

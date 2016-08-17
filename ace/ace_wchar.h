@@ -4,8 +4,6 @@
 /**
  *  @file    ace_wchar.h
  *
- *  $Id: ace_wchar.h 93597 2011-03-21 12:54:52Z johnnyw $
- *
  *  @author Darrell Brunsch <brunsch@uci.edu>
  */
 //=============================================================================

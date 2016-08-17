@@ -1,5 +1,3 @@
-// $Id: ID_Generator.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #if !defined (ACE_ID_GENERATOR_C)
 #define ACE_ID_GENERATOR_C
 

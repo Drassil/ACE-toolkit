@@ -4,8 +4,6 @@
 /**
  *  @file    TS_Clerk_Handler.h
  *
- *  $Id: TS_Clerk_Handler.h 84498 2009-02-17 18:08:47Z johnnyw $
- *
  *  @author Prashant Jain
  */
 //=============================================================================

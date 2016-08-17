@@ -1,5 +1,3 @@
-// $Id: asnmp.mpc 90826 2010-06-24 09:07:33Z johnnyw $
-
 project (asnmp_lib) : ace_output, acelib {
   sharedname   = asnmp
   dynamicflags += ASNMP_BUILD_DLL

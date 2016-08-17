@@ -1,7 +1,6 @@
 /*
  * ACE reactor demonstration
  *
- * $Id: server.cpp 91730 2010-09-13 09:31:11Z johnnyw $
  * Date: 26-Jan-2006
  */
 

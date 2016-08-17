@@ -1,6 +1,4 @@
 // -*- C++ -*-
-// $Id: HTBP_ID_Requestor.h 91633 2010-09-07 14:27:13Z johnnyw $
-
 #ifndef HTID_REQUESTOR_H
 #define HTID_REQUESTOR_H
 #include /**/ "ace/pre.h"

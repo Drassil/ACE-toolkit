@@ -1,5 +1,3 @@
-// $Id: Event_Forwarding_Discriminator.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #if !defined (_CONSUMER_MAP_C)
 #define _CONSUMER_MAP_C
 

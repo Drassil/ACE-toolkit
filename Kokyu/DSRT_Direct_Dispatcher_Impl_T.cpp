@@ -1,5 +1,3 @@
-// $Id: DSRT_Direct_Dispatcher_Impl_T.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #ifndef DSRT_DIRECT_DISPATCHER_IMPL_T_CPP
 #define DSRT_DIRECT_DISPATCHER_IMPL_T_CPP
 

@@ -1,5 +1,3 @@
-// $Id: db-client.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/TLI_Connector.h"
 #include "ace/Log_Msg.h"
 #include "ace/OS_NS_stdio.h"

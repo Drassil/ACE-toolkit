@@ -1,5 +1,3 @@
-// $Id: Logging_Handler.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "ace/Log_Msg.h"
 #include "ace/Message_Block.h"
 #include "ace/Log_Record.h"

@@ -4,8 +4,6 @@
 /**
  *  @file test_config.h
  *
- *  $Id: test_config.h 90163 2010-05-18 21:42:20Z mitza $
- *
  *   This file factors out common macros and other utilities used by the
  *   ACE automated regression tests.  It also shows how to redirect ACE_DEBUG/ACE_ERROR
  *   output to a file.
@@ -47,6 +45,10 @@
 # define ACE_LOG_DIRECTORY ACE_TEXT ("log\\")
 # define ACE_LOG_DIRECTORY_FOR_MKDIR ACE_TEXT ("log\\")
 # define MAKE_PIPE_NAME(X) ACE_TEXT ("\\\\.\\pipe\\"#X)
+#elif defined (ANDROID)
+# define ACE_LOG_DIRECTORY_FOR_MKDIR ACE_TEXT ("/sdcard/log/")
+# define ACE_LOG_DIRECTORY ACE_TEXT ("/sdcard/log/")
+# define MAKE_PIPE_NAME(X) ACE_TEXT (X)
 #else
 # define ACE_LOG_DIRECTORY_FOR_MKDIR ACE_TEXT ("log/")
 # define ACE_LOG_DIRECTORY ACE_TEXT ("log/")
@@ -57,7 +59,9 @@
 # define ACE_DEFAULT_TEST_DIR ACE_TEXT ("")
 #endif
 
-#define ACE_LOG_FILE_EXT_NAME ACE_TEXT (".log")
+#if !defined (ACE_LOG_FILE_EXT_NAME)
+# define ACE_LOG_FILE_EXT_NAME ACE_TEXT (".log")
+#endif /* ACE_LOG_FILE_EXT_NAME */
 
 #if defined (ACE_HAS_WINCE) || defined (ACE_HAS_PHARLAP)
 size_t const ACE_MAX_CLIENTS = 4;
@@ -73,6 +77,16 @@ size_t const ACE_MAX_INTERVAL = 0;
 size_t const ACE_MAX_ITERATIONS = 10;
 size_t const ACE_MAX_PROCESSES = 10;
 size_t const ACE_MAX_THREADS = 4;
+
+#if defined ACE_HAS_CONSOLE_TEST_OUTPUT
+#ifndef ACE_START_TEST
+# define ACE_START_TEST(NAME) const ACE_TCHAR *program = NAME; ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("(%P|%t) Starting %s test at %D\n"), NAME))
+#endif /* ACE_START_TEST */
+
+#ifndef ACE_END_TEST
+# define ACE_END_TEST ACE_DEBUG ((LM_DEBUG, ACE_TEXT ("(%P|%t) Ending %s test %D\n"), program));
+#endif /* ACE_END_TEST */
+#endif /* ACE_HAS_CONSOLE_TEST_OUTPUT */
 
 #ifndef ACE_START_TEST
 #define ACE_START_TEST(NAME) \

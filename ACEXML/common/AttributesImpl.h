@@ -4,8 +4,6 @@
 /**
  *  @file    AttributesImpl.h
  *
- *  $Id: AttributesImpl.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
@@ -31,7 +29,7 @@
 class ACEXML_AttributesImpl;
 
 /**
- * @class ACEXML_Attribute AttributesImpl.h "ACEXML/common/AttributesImpl.h"
+ * @class ACEXML_Attribute
  *
  * @brief ACEXML_Attribute defines the data structure of an attribute
  *

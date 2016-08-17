@@ -3,17 +3,13 @@
 /**
  *  @file    Message_Block_Test.cpp
  *
- *  $Id: Message_Block_Test.cpp 93638 2011-03-24 13:16:05Z johnnyw $
- *
  *    This test program is a torture test that illustrates how
  *    <ACE_Message_Block> reference counting works in multi-threaded
  *    code.
  *
- *
  *  @author Doug Schmidt <schmidt@cs.wustl.edu> and Nanbor Wang <nanbor@cs.wustl.edu>
  */
 //=============================================================================
-
 
 #include "test_config.h"
 #include "ace/OS_NS_stdio.h"

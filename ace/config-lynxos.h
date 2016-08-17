@@ -1,5 +1,3 @@
-// $Id: config-lynxos.h 93895 2011-04-14 07:59:18Z olli $
-
 // The following configuration file is designed to work for LynxOS,
 // version 4.0.0 and later, using the GNU g++ compiler.
 
@@ -108,6 +106,7 @@
 #define ACE_LACKS_SUSECONDS_T
 #define ACE_LACKS_TIMESPEC_T
 #define ACE_LACKS_UCONTEXT_H
+#define ACE_LACKS_STD_WSTRING
 
 #define ACE_DEFAULT_BASE_ADDR ((char *) 0)
 #define ACE_EXPLICIT_TEMPLATE_DESTRUCTOR_TAKES_ARGS

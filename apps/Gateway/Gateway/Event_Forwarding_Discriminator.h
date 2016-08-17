@@ -4,8 +4,6 @@
 /**
  *  @file    Event_Forwarding_Discriminator.h
  *
- *  $Id: Event_Forwarding_Discriminator.h 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  @author Doug Schmidt
  */
 //=============================================================================

@@ -1,5 +1,3 @@
-// $Id: Adaptive_Lock_Performance_Test_Base.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #define  ACE_BUILD_SVC_DLL
 #include "Performance_Test_Options.h"
 #include "Adaptive_Lock_Performance_Test_Base.h"

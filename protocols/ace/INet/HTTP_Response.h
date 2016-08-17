@@ -1,5 +1,3 @@
-// $Id: HTTP_Response.h 91626 2010-09-07 10:59:20Z johnnyw $
-
 /**
  * @file HTTP_Response.h
  *

@@ -1,6 +1,4 @@
 /**
- * $Id: client.cpp 91822 2010-09-17 09:00:19Z johnnyw $
- *
  * client for a basic connection establishment test using HTBP
  */
 

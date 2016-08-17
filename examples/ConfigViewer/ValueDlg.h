@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: ValueDlg.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef _ConfigurationViewer_ValueDlg_H
 #define _ConfigurationViewer_ValueDlg_H
 

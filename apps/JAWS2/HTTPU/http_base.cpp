@@ -1,5 +1,3 @@
-// $Id: http_base.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 #include "JAWS/Parse_Headers.h"
 #include "HTTPU/http_base.h"
 #include "HTTPU/http_headers.h"

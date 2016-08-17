@@ -1,5 +1,3 @@
-// $Id: HTTP_BasicAuthentication.cpp 94075 2011-05-23 06:57:42Z johnnyw $
-
 #include "ace/INet/HTTP_BasicAuthentication.h"
 #include "ace/Codecs.h"
 #include "ace/Auto_Ptr.h"

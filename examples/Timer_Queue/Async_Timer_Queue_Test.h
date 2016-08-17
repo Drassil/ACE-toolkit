@@ -5,11 +5,8 @@
 /**
  *  @file    Async_Timer_Queue_Test.h
  *
- *  $Id: Async_Timer_Queue_Test.h 90086 2010-05-06 12:02:19Z johnnyw $
- *
  *    This test exercises the <ACE_Asynch_Timer_Queue_Adapter>
  *    using an <ACE_Timer_Heap>.
- *
  *
  *  @author Douglas C. Schmidt and Sergio Flores-Gaitan
  */

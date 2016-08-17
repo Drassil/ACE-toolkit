@@ -1,6 +1,7 @@
 ==
 == Copyright and Licensing Information
 ==
+==
 
 ACE(tm) and TAO(tm) are copyrighted by Dr. Douglas C. Schmidt and the Center for Distributed
 Object Computing ('DOC' group) at Washington University, Copyright (C) 1993 - 2002, all rights

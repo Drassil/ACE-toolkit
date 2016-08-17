@@ -1,5 +1,3 @@
-// $Id: SM_Client.cpp 91813 2010-09-17 07:52:52Z johnnyw $
-
 #include "Options.h"
 #include "PMC_All.h"
 #include "PMC_Flo.h"

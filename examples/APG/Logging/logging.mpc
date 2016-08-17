@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: logging.mpc 80826 2008-03-04 14:51:23Z wotte $
-
 project(Simple1) : aceexe {
   exename = Simple1
   Source_Files {

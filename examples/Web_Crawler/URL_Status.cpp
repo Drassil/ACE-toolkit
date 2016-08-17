@@ -1,6 +1,4 @@
 /* -*- C++ -*- */
-// $Id: URL_Status.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "URL_Status.h"
 
 

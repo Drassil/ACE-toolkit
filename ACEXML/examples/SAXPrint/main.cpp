@@ -1,5 +1,3 @@
-// $Id: main.cpp 94123 2011-05-31 07:13:38Z msmit $
-
 #include "ACEXML/common/FileCharStream.h"
 #include "ACEXML/common/HttpCharStream.h"
 #include "ACEXML/common/StrCharStream.h"

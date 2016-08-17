@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: HTTP_States.h 91730 2010-09-13 09:31:11Z johnnyw $
-
 #ifndef JAWS_HTTP_STATES_H
 #define JAWS_HTTP_STATES_H
 

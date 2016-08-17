@@ -1,4 +1,3 @@
-# $Id: platform_macros.GNU 93792 2011-04-07 11:48:50Z mcorino $
 
 debug          = 0
 optimize       = 1
@@ -14,8 +13,9 @@ qt4            = 1
 ace_qt4reactor = 1
 
 bzip2          = 1
-lzo1           = 1
 zlib           = 1
+
+versioned_so   = 2
 
 # Work-around #593225
 ARMEL_TARGET := $(shell echo '__ARMEL__' | $(CC) -E - | tail -n 1)

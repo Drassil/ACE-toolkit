@@ -1,5 +1,3 @@
-// $Id: Time_Request_Reply.cpp 91688 2010-09-09 11:21:50Z johnnyw $
-
 #include "ace/Basic_Types.h"
 #include "ace/CDR_Base.h"
 #include "ace/Log_Msg.h"
@@ -9,17 +7,13 @@
 
 #include "Time_Request_Reply.h"
 
-
-
 // Default "do nothing" constructor.
-
 ACE_Time_Request::ACE_Time_Request (void)
 {
   ACE_TRACE ("ACE_Time_Request::ACE_Time_Request");
 }
 
 // Create a ACE_Time_Request message.
-
 ACE_Time_Request::ACE_Time_Request (ACE_INT32 t, // Type of request.
                                     const time_t time,
                                     ACE_Time_Value *timeout) // Max time waiting for request.

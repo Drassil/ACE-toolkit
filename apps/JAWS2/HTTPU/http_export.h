@@ -1,5 +1,3 @@
-// $Id: http_export.h 80826 2008-03-04 14:51:23Z wotte $
-
 // Definition for Win32 Export directives.
 // This file is generated automatically by
 // ${TAO_ROOT}/TAO_IDL/GenExportH.BAT

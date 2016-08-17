@@ -1,10 +1,8 @@
-// $Id: Async_Cancel.cpp 93275 2011-02-04 19:53:09Z olli $
-
 #include "ace/OS_NS_unistd.h"
 #include "ace/Task.h"
 #include "ace/Log_Msg.h"
 
-#if defined (ACE_HAS_PTHREADS)
+#if defined (ACE_HAS_PTHREADS) && !defined (ACE_LACKS_PTHREAD_CANCEL)
 // Only works on Pthreads...
 
 // Listing 1 code/ch13

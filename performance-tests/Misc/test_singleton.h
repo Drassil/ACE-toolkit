@@ -1,5 +1,3 @@
-// $Id: test_singleton.h 80826 2008-03-04 14:51:23Z wotte $
-
 // Define the DC_Singleton here - it needs to be in a separate file to
 // get picked up correctly on AIX with auto template instantiation using
 // IBM C++ compiler (xlC).

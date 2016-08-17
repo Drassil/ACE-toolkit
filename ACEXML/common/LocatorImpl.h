@@ -4,8 +4,6 @@
 /**
  *  @file    LocatorImpl.h
  *
- *  $Id: LocatorImpl.h 80826 2008-03-04 14:51:23Z wotte $
- *
  *  @author Nanbor Wang <nanbor@cs.wustl.edu>
  *  @author Krishnakumar Balasubramanian <kitty@cs.wustl.edu>
  */
@@ -22,9 +20,10 @@
 #endif /* ACE_LACKS_PRAGMA_ONCE */
 
 #include "ACEXML/common/Locator.h"
+#include "ace/Copy_Disabled.h"
 
 /**
- * @class ACEXML_LocatorImpl LocatorImpl.h "ACEXML/common/LocatorImpl.h"
+ * @class ACEXML_LocatorImpl
  *
  * @brief ACEXML_LocatorImpl is an implementation of ACEXML_Locator.
  *
@@ -58,7 +57,9 @@
  *
  * @sa ACEXML_Locator
  */
-class ACEXML_Export ACEXML_LocatorImpl : public ACEXML_Locator
+class ACEXML_Export ACEXML_LocatorImpl :
+  public ACEXML_Locator,
+  private ACE_Copy_Disabled
 {
 public:
   /*

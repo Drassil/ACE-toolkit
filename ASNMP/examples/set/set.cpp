@@ -3,12 +3,8 @@
 /**
  *  @file    set.cpp
  *
- *  $Id: set.cpp 93651 2011-03-28 08:49:11Z johnnyw $
- *
  *  Sample application demonstrating synchronous Snmp::set API
  *  to update an oid in an SNMP Version 1 agent.
- *
- *
  */
 //=============================================================================
 

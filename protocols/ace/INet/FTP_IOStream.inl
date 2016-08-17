@@ -1,7 +1,4 @@
 // -*- C++ -*-
-//
-// $Id: FTP_IOStream.inl 90891 2010-06-28 09:55:39Z mcorino $
-
 ACE_BEGIN_VERSIONED_NAMESPACE_DECL
 
 namespace ACE

@@ -1,7 +1,5 @@
-/* $Id: cgi-send.c 81993 2008-06-16 20:26:16Z sowayaa $ */
 /*
  * Send 10K file; send random bits.
- *
  */
 
 //FUZZ: disable check_for_improper_main_declaration

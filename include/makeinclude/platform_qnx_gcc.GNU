@@ -1,4 +1,3 @@
-# $Id: platform_qnx_gcc.GNU 93845 2011-04-10 17:21:15Z johnnyw $
 #
 # QNX/RTP hosted, using GCC
 

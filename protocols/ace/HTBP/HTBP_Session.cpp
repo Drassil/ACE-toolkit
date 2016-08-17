@@ -1,6 +1,4 @@
 // SOCK_Stream.cpp
-// $Id: HTBP_Session.cpp 91730 2010-09-13 09:31:11Z johnnyw $
-
 #include "ace/Log_Msg.h"
 
 #include "HTBP_Session.h"

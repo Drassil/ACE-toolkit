@@ -1,5 +1,3 @@
-// $Id: Kokyu_dsrt.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "Kokyu_dsrt.h"
 
 #include "ace/Dynamic_Service.h"

@@ -3,8 +3,6 @@
 /**
  *  @file    blobby.cpp
  *
- *  $Id: blobby.cpp 93652 2011-03-28 08:55:39Z johnnyw $
- *
  *   Simple client application to illustrate the use of the ACE_Blob class
  *
  *   It reads "length" number of bytes, after skipping offset "offset"
@@ -12,7 +10,6 @@
  *
  *   It writes "length" number of bytes, after skipping offset "offset"
  *   to hostname, port and filename as specified (if -w specified)
- *
  *
  *  @author Prashant Jain and Sumedh Mungee
  */

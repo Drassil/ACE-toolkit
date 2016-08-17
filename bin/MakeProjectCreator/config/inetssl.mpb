@@ -1,6 +1,4 @@
 // -*- MPC -*-
-// $Id: inetssl.mpb 91395 2010-08-19 12:11:30Z mcorino $
-
 project : inet, ssl {
   after    += INet_SSL
   libs     += ACE_INet_SSL

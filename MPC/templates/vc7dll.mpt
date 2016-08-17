@@ -1,12 +1,10 @@
 // -*- MPC -*-
-// $Id: vc7dll.mpt 1121 2007-01-06 00:10:13Z shuston $
-
 conditional_include "common"
 conditional_include "windowscommon"
 
-configurations = Debug Release
-common_defines = WIN32 _WINDOWS
-output_subdir  = I386
+configurations       = Debug Release
+common_defines       = WIN32 _WINDOWS
+output_subdir        = I386
 
 Release {
   LinkIncremental  = 1

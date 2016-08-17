@@ -1,5 +1,3 @@
-// $Id: FTP_IOStream.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/INet/FTP_IOStream.h"
 #include "ace/INet/IOS_util.h"
 

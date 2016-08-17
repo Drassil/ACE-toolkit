@@ -1,5 +1,3 @@
-// $Id: Array_Map.cpp 92386 2010-10-28 07:44:37Z johnnyw $
-
 #ifndef ACE_ARRAY_MAP_CPP
 #define ACE_ARRAY_MAP_CPP
 

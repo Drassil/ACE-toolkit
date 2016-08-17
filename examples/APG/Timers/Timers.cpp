@@ -1,5 +1,3 @@
-// $Id: Timers.cpp 80826 2008-03-04 14:51:23Z wotte $
-
 // Listing 1 code/ch20
 #include "ace/Timer_Queue.h"
 #include "ace/Timer_Heap.h"
@@ -40,7 +38,7 @@ int ACE_TMAIN (int, ACE_TCHAR *[])
         Timer::instance ()->schedule
           (&cb[i],
            &args[i],
-           timer_queue->gettimeofday () + (ACE_Time_Value)5,
+           timer_queue->gettimeofday () + ACE_Time_Value(5),
            timeout);
 
       // Set the timerID state variable of the handler.

@@ -1,5 +1,3 @@
-// $Id: test_non_existent.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 #include "ace/OS_main.h"
 #include "ace/Naming_Context.h"
 #include "ace/Log_Msg.h"

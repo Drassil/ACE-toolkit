@@ -1,6 +1,4 @@
 /* -*- c++ -*- */
-// $Id: Config_File.h 80826 2008-03-04 14:51:23Z wotte $
-
 #ifndef JAWS_CONFIG_FILE_H
 #define JAWS_CONFIG_FILE_H
 

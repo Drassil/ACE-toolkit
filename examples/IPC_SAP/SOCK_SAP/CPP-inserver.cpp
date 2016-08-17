@@ -1,5 +1,3 @@
-// $Id: CPP-inserver.cpp 91671 2010-09-08 18:39:23Z johnnyw $
-
 // This example tests the features of the <ACE_SOCK_Acceptor>,
 // <ACE_SOCK_Stream>, and <ACE_Svc_Handler> classes.  If the platform
 // supports threads it uses a thread-per-connection concurrency model.
@@ -12,7 +10,7 @@
 #include "ace/Basic_Types.h"
 #include "ace/OS_NS_sys_select.h"
 #include "ace/OS_main.h"
-
+#include "ace/Truncate.h"
 
 
 // Are we running verbosely?
@@ -90,7 +88,7 @@ twoway_server (void *arg)
                       "(%P|%t) reached end of input, connection closed by client\n"));
           break;
         }
-      else if (r_bytes != sizeof (ACE_INT32))
+      else if (r_bytes != (ssize_t) sizeof (ACE_INT32))
         {
           ACE_ERROR ((LM_ERROR,
                       "(%P|%t) %p\n",
@@ -206,7 +204,7 @@ oneway_server (void *arg)
                       "(%P|%t) reached end of input, connection closed by client\n"));
           break;
         }
-      else if (r_bytes != sizeof (ACE_INT32))
+      else if (r_bytes != (ssize_t) sizeof (ACE_INT32))
         {
           ACE_ERROR ((LM_ERROR,
                       "(%P|%t) %p\n",
@@ -328,7 +326,7 @@ run_event_loop (u_short port)
       ACE_Time_Value timeout (ACE_DEFAULT_TIMEOUT);
       ACE_Handle_Set temp = handle_set;
 
-      int result = ACE_OS::select (int (oneway_acceptor.get_handle ()) + 1,
+      int result = ACE_OS::select (ACE_Utils::truncate_cast<int> ((intptr_t)oneway_acceptor.get_handle ()) + 1,
                                    (fd_set *) temp,
                                    0,
                                    0,

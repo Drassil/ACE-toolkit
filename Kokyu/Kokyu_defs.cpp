@@ -1,5 +1,3 @@
-// $Id: Kokyu_defs.cpp 91670 2010-09-08 18:02:26Z johnnyw $
-
 #include "Kokyu_defs.h"
 
 #if ! defined (__ACE_INLINE__)
